@@ -18,10 +18,6 @@ import random
 #         print("아하하하하하하하ㅏ하ㅏ AI다!!!!!")
 #         return render(request, 'main/main-page.html')
 
-class MainView(View):
-    def get(self, request):
-        return render(request, 'main/main-page.html')
-
 class GetRecommendationsAPIView(APIView):
     def get_index_from_member_tag(self, member_tag):
         model_path = os.path.join(Path(__file__).resolve().parent, 'test_onelab.pkl')
