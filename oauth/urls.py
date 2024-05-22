@@ -1,6 +1,6 @@
 # from django.urls import path
 #
-# # from oauth.views import OAuthLoginView
+# from oauth.views import OAuthLoginView
 #
 # app_name = 'oauth'
 #
