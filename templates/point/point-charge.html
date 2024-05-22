@@ -1,0 +1,358 @@
+{% extends 'point/base.html' %}
+{% load static %}
+
+{%  block static %}
+        <link rel="stylesheet" href="{% static 'payment/css/payment.css' %}" />
+{#        <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />#}
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'payment/images/favicon-32x32.png' %}" />
+        <link rel="stylesheet" href="{% static 'myPage/css/myPage-footer.css' %}">
+{% endblock %}
+{% block title %}결제하기{% endblock %}
+{% block content %}
+  {% include 'mypage/header.html' %}
+{#    <body style="overflow: auto">#}
+    <form action="{% url 'point:new' %}" method="POST" name="point-new" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div id="page-container">
+            <main id="main-app">
+                <!-- 헤더부분 -->
+                <div class="web-header"></div>
+
+                <div class="MainWrapper_content">
+                    <div>
+                        <div class="PaymentLayout_root">
+                            <div class="PaymentLayout_paymentLayoutContainer">
+                                <!-- 왼쪽 부분쪽 -->
+                                <div class="PaymentLayout_leftPanel">
+                                    <h2 class="PaymentLayout_pageTitle">포인트 충전</h2>
+                                    <section class="StorePaymentSection_container">
+                                        <!-- 서포터 정보부분 쪽-->
+                                        <div class="StorePaymentSection_titleContainer">
+                                            <h3 class="StorePaymentSection_title">회원 정보</h3>
+                                            <div class="StorePaymentSection_headerContent"></div>
+                                        </div>
+                                        <div class="StorePaymentSection_sectionContent">
+                                            <div class="StorePaymentInformation_storePaymentInformation">
+                                                <div class="StorePaymentInformation_row">
+                                                    <span>{{ member.member_name }}</span>
+{#                                                       <span>조성현</span>#}
+                                                </div>
+                                                <div class="StorePaymentInformation_row">
+                                                    <span>{{ member.member_email }}</span>
+{#                                                       <span>Email</span>  #}
+                                                </div>
+                                            </div>
+                                            <div class="StorePaymentInformation_mobileAuthContainer">
+                                                <div class="StorePaymentInformation_mobileAuth">
+                                                 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="StorePaymentSection_divider">
+                                        
+                                    </div>
+
+                                    <!-- 배송정보 부분쪽 -->
+{#                                    <form id="payment-submit"  action="{% url 'point:new' %}" method="public">#}
+                                        <div class="StorePaymentSection_divider">
+                                            
+                                        </div>
+
+                                        <!-- 상품 정보 쪽 -->
+                                        <section class="StorePaymentSection_container">
+                                            <div class="StorePaymentSection_titleContainer">
+                                                <h3 class="StorePaymentSection_title">충전 정보</h3>
+                                                <div class="StorePaymentSection_headerContent"></div>
+                                            </div>
+                                            <div class="StorePaymentSection_sectionContent">
+                                                <div class="StorePaymentProducts_container">
+                                                    <div class="StorePaymentProductInfo_container">
+                                                        <div class="StorePaymentProductInfo_contents">
+                                                            <p class="StorePaymentProductInfo_title">포인트 충전(최소단위 1000원)</p>
+                                                            <span class="StorePaymentProductInfo_info"></span>
+                                                            <span class="StorePaymentProductInfo_info">1개</span>
+                                                            <div class="StorePaymentProductInfo_promotion">
+                                                                <div class="StorePaymentProductInfo_priceWrap">
+                                                                    <span class="StorePaymentProductInfo_price"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 배송 요청 사항쪽 -->
+                                                    <label class="DeliveryRequestMessage_deliveryRequestLabel" for="deliveryRequest">포인트 충전 선택해주세요</label>
+
+                                                    <input id="check-btn4" type="checkbox" class="DeliveryRequestMessage_container" name="check"/>
+
+                                                    <label for="check-btn4" class="select-menu small menu_btn">
+                                                        <div class="select-menu-hidden-input-box">
+                                                            <input type="text" name="number" readonly />
+                                                        </div>
+                                                        <div class="container">
+                                                            <span class="Textf"></span>
+                                                            <div class="select_menu_control menu">
+                                                                <div class="select_menu_container">
+                                                                    <div class="select-menu__placeholder">포인트 충전</div>
+                                                                    <input class="dummyInput" type="text" />
+                                                                </div>
+                                                                <div class="select_menu">
+                                                                    <span class="select_menu_indicator_separator"></span>
+                                                                    <div class="select_menu_indicator">
+                                                                        <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon">
+                                                                            <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </label>
+
+                                                    <div class="select_menu_menu_list">
+                                                        <div class="select_menu_option new_menu"  data-price=1000>
+                                                            포인트 1000 충전
+                                                        </div>
+                                                        <div class="select_menu_option sec_menu"  data-price=5000>
+                                                            
+                                                            포인트 5000 충전
+                                                        </div>
+                                                        <div class="select_menu_option sec_menu" data-price=10000>
+                                                            포인트 10000 충전
+                                                        
+                                                        </div>
+                                                        <div class="select_menu_option sec_menu" data-price=30000>포인트 30000 충전</div>
+                                                        <div class="select_menu_option sec_menu"  data-price=50000>포인트 50000 충전</div>
+                                                        <div class="select_menu_option sec_menu point-choice" data-price="">직접 입력해주세요</div>
+                                                    </div>
+                                                    <input name="point" placeholder="예: 10000" type="text" class="Input_input input_d" id="input_detail" style="display: none" />
+                                                </div>
+                                            </div>
+                                        </section>
+                              
+                                </div>
+
+                                <!-- 오른쪽 부분쪽 -->
+                                <div class="PaymentLayout_rightPanel">
+                                    <div class="PaymentLayout_floatingSection">
+                                        <section class="StorePaymentSection_container PaymentLayout_floating">
+                                            <div class="StorePaymentSection_titleContainer">
+                                                <h3 class="StorePaymentSection_title">결제 금액</h3>
+                                                <div class="StorePaymentSection_headerContent"></div>
+                                            </div>
+                                            <div class="StorePaymentSection_sectionContent">
+                                                <!-- 결제금액 밑에쪽 리스트 -->
+                                                <div class="PaymentLayout_paymentAmount">
+                                                    <div class="BasePrice_contents">
+                                                        <div class="BasePrice_priceArea">
+                                                            <div class="TitleValuePrice_container">
+                                                                <dl>
+                                                                    <dt>충전금액</dt>
+                                                                    <dd>
+                                                                        <span class="TitleValuePrice_value" >
+                                                                            <em class="TitleValuePrice_money" id="priceDisplay">0</em>
+                                                                            원
+                                                                        </span>
+                                                                    </dd>
+                                                                </dl>
+                                                            </div>
+                                                                <div class="BasePrice_totalPrice">
+                                                                    <span>총 합산 포인트</span>
+    {#                                                                <span class="BasePrice_price" id="totalPrice">#}
+                                                                    <span>
+                                                                        <input class=BasePrice_price  id="totalPrice" name="point-number" value="0" type="text" readonly style="text-align: right; width: 70px ">
+                                                                        <span >P</span>
+                                                                    </span>
+                                                               </div>
+                                                            </div>
+                                                        <hr class="Divider_horizontal" />
+
+                                                        <!-- 총 결제금액 밑에꺼 -->
+                                                        <div class="SupporterClubPromotion_container">
+                                                            <div class="SupporterClubPromotion_title">
+                                                                <span class="SupporterClubPromotion_text">서포터클럽 올인원 특별 금액</span>
+                                                                <div class="SupporterClubPromotion_subText">무료 가입하고, 스토어 최대 6,000원 할인과 12,000원 쿠폰팩</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+
+                                        <!-- 결제 진행 필수 동의 부분쪽 -->
+                                        <section class="StorePaymentSection_container PaymentLayout_floating">
+                                            <div class="StorePaymentSection_sectionContent">
+                                                <div class="PaymentTerms_container">
+                                                    <div class="PaymentTerms_header">
+                                                        <label for="all_check" class="Checkbox_checkbox">
+                                                            <input name="paymentRequiredTerms" id="all_check" type="checkbox" class="Checkbox_input" />
+                                                            <span class="checkbox-icon" id="">
+                                                                <svg viewBox="0 0 16 2" focusable="false" role="presentation" hidden="true" class="withIcon_icon Checkbox_removeIcon">
+                                                                    <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
+                                                                </svg>
+                                                                <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="withIcon_icon c_icon">
+                                                                    <path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"></path>
+                                                                </svg>
+                                                            </span>
+                                                            <span class="Checkbox_content"></span>
+                                                        </label>
+                                                        <p class="PaymentTerms_title">결제 진행 필수 동의</p>
+                                                    </div>
+                                                    <hr class="Divider_horizontal" />
+                                                    <div class="PaymentTerms_contents">
+                                                        <div class="PaymentTerms_termsItem">
+                                                            <label for="check1" class="Checkbox_checkbox" for="">
+                                                                <input name="paymentRequiredTerms" id="check1" type="checkbox" class="Checkbox_input check_on" />
+                                                                <span class="checkbox-icon">
+                                                                    <svg viewBox="0 0 16 2" focusable="false" role="presentation" hidden="true" class="withIcon_icon Checkbox_removeIcon">
+                                                                        <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
+                                                                    </svg>
+                                                                    <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="withIcon_icon c_icon">
+                                                                        <path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="Checkbox_content"></span>
+                                                            </label>
+                                                            <div>
+                                                                <span class="PaymentTerms_text">구매조건, 결제 진행 및 결제 대행 서비스 동의 (필수)</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="PaymentTerms_termsItem">
+                                                            <div class="PaymentTerms_subContents">
+                                                                <div class="PaymentTerms_TermsItem">
+                                                                    <span>· 전자금융거래 이용약관</span>
+                                                                    <button class="Button_button btns">
+                                                                        <span>
+                                                                            <span class="Button_children">
+                                                                                <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="withIcon_icon c_box" style="width: 16px; height: 16px">
+                                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="PaymentTerms_subTermsItem">
+                                                                    <span>· 개인정보 수집 및 이용 및 제3자 제공의 대한 동의</span>
+                                                                    <button class="Button_button Button_text">
+                                                                        <span>
+                                                                            <span class="Button_children">
+                                                                                <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="withIcon_icon agree_svg" style="width: 16px; height: 16px">
+                                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+    
+                                                        <!-- 개인 3자 동의 쪽 -->
+                                                        <div class="PaymentTerms_termsItem">
+                                                            <label class="Checkbox_checkbox" for="check2">
+                                                                <input name="paymentRequiredTerms" type="checkbox" id="check2" class="Checkbox_input check_on" />
+                                                                <span class="checkbox-icon">
+                                                                    <svg viewBox="0 0 16 2" focusable="false" role="presentation" hidden="true" class="withIcon_icon Checkbox_removeIcon">
+                                                                        <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>
+                                                                    </svg>
+                                                                    <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="withIcon_icon c_icon">
+                                                                        <path d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"></path>
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="Checkbox_content"></span>
+                                                            </label>
+                                                            <div>
+                                                                <span class="PaymentTerms_text">개인정보 제3자 제공 동의 (필수)</span>
+                                                                <button class="Button_button Button_text">
+                                                                    <span>
+                                                                        <span class="Button_children">
+                                                                            <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="withIcon_icon icon_btns" style="width: 16px; height: 16px">
+                                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                            </svg>
+                                                                        </span>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <!-- 버튼 부분 쪽 -->
+                                                <button class="Button_button Button_primary payment" id="order-button" type="button">
+                                                    <span>
+                                                        <span class="Button_children">
+                                                            
+                                                            <div class="PaymentLayout_buttonContent">
+                                                                <span id="pay-price">0원 결제하기</span>
+                                                                <input type="hidden">
+                                                            </div>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-----버튼 클릭 시 나오는 모달 창--------------->
+                      <div class="modal" style="    display: none;
+                       position: fixed;
+                       flex-direction: column;
+                       inset: 0px;
+                       z-index: 1000;
+                       align-items: center;
+                       justify-content: center;
+                       text-align: center;
+                       background-color: #8586898a;">
+                        <div class="warn-modal" style="padding: 24px; box-sizing: border-box;
+                        position: unset;
+                        width: 288px;
+                        margin: 20vh 0px;
+                        background: rgb(255, 255, 255);
+                        box-shadow: rgb(33 35 41 / 12%) 0px 2px 12px;
+                        border-radius: 8px">
+                            <div id="content-wrap">
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 푸터 부분 -->
+                    <footer>
+                        {% include 'header/main-page-footer.html' %}
+                    </footer>
+                </div>
+            </main>
+        </div>
+    </form> 
+{% endblock %}
+{% block js %}
+     <script>
+    const csrf_token = "{{ csrf_token }}"
+    </script>
+    <script
+        src="https://js.bootpay.co.kr/bootpay-4.3.4.min.js"
+        type="application/javascript"
+    ></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="{% static 'payment/js/payment.js' %}"></script>
+    <script src="{% static 'payment/js/payContent.js' %}"></script>
+    <script src="{%  static 'payment/js/payAPI.js' %}"></script>
+    
+    <script>
+        purchaseBtn = document.querySelector('#order-button')
+        purchaseBtn.addEventListener('click', (e) => {
+            let price = document.querySelector('#totalPrice')
+            if(price.value < 100){
+                let modalMessage = "<span>100원 부터 충전 가능합니다!</span>"
+                showWarnModal(modalMessage)
+            }
+            else {
+                let modalMessage = "<span>충전중입니다.</span>"
+                showWarnModal(modalMessage)
+            }
+            
+        });
+    </script>
+
+{% endblock %}

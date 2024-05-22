@@ -1,0 +1,476 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+html {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font-family: Pretendard Variable,pretendard,-apple-system,blinkmacsystemfont,system-ui,roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+}
+html {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+body {
+    overflow-x: hidden;
+    line-height: inherit;
+    color: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: inherit;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+body {
+    display: block;
+}
+:before {
+    box-sizing: border-box;
+}
+:root {
+    --scrollbar-width : 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+div {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+div {
+    display:block;
+}
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+h2 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+h4 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+em {
+    font-weight: inherit;
+    font-style: normal;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+i {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+input {
+    color:inherit;
+    font-family: inherit;
+}
+input {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+button {
+    font-family: inherit;
+    background-color: transparent;
+    color: inherit;
+    outline: none;
+}
+button {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+span {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    vertical-align: baseline;
+}
+
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    vertical-align: baseline;
+}
+
+dl {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+dt {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+dd{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+/* ----------메인----------- */
+
+.black-bg-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .6;
+    z-index: 9999;
+    background: #000;
+}
+
+#mypageWrap {
+    width: 100%;
+}
+
+h2.mypage-top-title {
+    width: 960px;
+    margin: 0 auto;
+    padding: 56px 24px 24px;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: left;
+    color: rgba(0, 0, 0, .84);
+}
+
+.mypage-top-title.short {
+    font-size: 32px;
+    padding: 56px 16px 24px;
+    display: block;
+    max-width: 1032px;
+    box-sizing: border-box;
+    font-weight: 700;
+}
+
+.point-guide {
+    color: #44484b;
+    text-align: left;
+    margin: 24px auto;
+    padding: 0 16px;
+    width: 960px;
+    margin-top: 0;
+}
+
+.usable-point {
+    padding: 0 24px;
+    position: relative;
+    margin: 0 auto;
+    background: #fff;
+}
+
+.usable-point p {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+    height: 48px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 48px;
+    color: #4a4a4a;
+}
+
+.usable-point p em {
+    padding-left: 4px;
+    color: #557CF2;
+    font-weight: 500;
+}
+
+.usable-point:after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #212529;
+    width: 960px;
+    height: .1px;
+    content: "";
+}
+.point-tab-container {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+    padding: 0;
+    width: 100%;
+    height: 40px;
+    white-space: nowrap;
+}
+
+.point-tab-container:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+.point-keywords-children{
+    font-size: 18px;
+}
+.point-keywords {
+    display: flex;
+    align-items: center;
+    padding-right: 16px;
+    height: 50px;
+    overflow-x: auto;
+    gap: 16px;
+    white-space: nowrap;
+    width: 960px;
+    margin: 0 auto;
+}
+
+.point-keywords-tab {
+    border: 0;
+    border-color: rgba(0, 0, 0, 0);
+    padding: 0;
+    height: auto;
+    font-size: 20px;
+    position: relative;
+    transition-property: background-color, border-color, color, opacity;
+    transition-duration: 0.15s;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.002);
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #495057;
+    margin-right: 10px;
+}
+
+.point-keywords-tab.active {
+    border-bottom: 2px solid #008243;
+    gap: 40px;
+    font-weight: 600;
+}
+
+.point-keywords-tab span {
+    color: #000;
+}
+
+
+
+.point-list {
+    display: none;
+    margin: 0 auto;
+    padding: 0px 24px 64px;
+    background: #fff;
+    animation-name: point-list-open;
+    animation-duration: 0.3s;
+}
+
+@keyframes point-list-open {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity : 1;
+    }
+}
+
+
+.show {
+    display: block;
+}
+#emptyProjectText {
+    width: 960px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 80px 0;
+}
+
+.bottom-notice {
+    width: 960px;
+    margin: 0 auto;
+    padding: 24px 0;
+}
+
+.bottom-notice h4 {
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #44484B;
+}
+
+.bottom-notice p {
+    max-width: 700px;
+    font-size: 13px;
+    color: #7C8288;
+    line-height: 20px;
+}
+
+.bottom-notice p a {
+    text-decoration: underline;
+}
+
+i.wadizicon{
+    display: inline-block;
+    margin-top: -0.2em;
+    vertical-align: middle;
+    text-transform: none;
+    line-height: 1;
+    font-family: 'wadizicon' !important;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+}
+
+.wa-chevron-right::before{
+    content: "";
+}
+
+.point-list ul {
+    max-width: 960px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+}
+
+.point-list li {
+    max-width: 800px;
+    margin-bottom: -1px;
+    border-top: 1px solid #E6EAED;
+    border-bottom: 1px solid #E6EAED;
+}
+
+.point-card {
+    padding: 24px 0;
+    background : #fff;
+}
+
+.point-card dl {
+    width: 100%;
+    display: table;
+}
+
+.point-card dl dt {
+    width: 50%;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.point-card dl dt .title {
+    margin-bottom: 8px;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #44484B;
+}
+
+.point-card dl dt .sub-title {
+    font-size: 13px;
+    line-height: 18px;
+    color: #008244;
+}
+
+.point-card dl dd {
+    width: 50%;
+    display: table-cell;
+    vertical-align: top;
+    text-align: right;
+}
+
+.point-card dl dd .point.plus {
+    color: #557CF2;
+}
+
+.point-card dl dd .point {
+    margin-bottom: 8px;
+    font-size: 19px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.point-card dl dd .date {
+    font-size: 13px;
+    line-height: 18px;
+    color: #90949C;
+}
+
+.no-point-list {
+    display: none;
+}

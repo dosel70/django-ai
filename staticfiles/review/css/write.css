@@ -1,0 +1,517 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color: #403b3b;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 2;
+}
+
+
+main {
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+nav, header {
+    display: block;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Pretendard';
+    margin: 0.5rem 0 3rem;
+    line-height: 1.4;
+    color: rgba(8, 8, 8, 1);
+}
+
+button, input {
+    overflow: visible;
+}
+
+input {
+    line-height: inherit;
+}
+
+footer {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+button, input, optgroup, select, .nesty-input, .hc-multiselect-toggle, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+nav.route-wrap-nav, div.review-form-wrapper {
+    position: relative;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    width: 100%;
+    min-height: 1px;
+    min-width: 0;
+}
+
+div.container {
+    padding-bottom: 1rem;
+    padding-top: 6rem;
+    flex: 1;
+}
+
+div.container {
+    max-width: 1140px;
+}
+
+div.container {
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
+    /* padding: 0 2rem; */
+}
+
+div.route-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav.route-wrap-nav {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+
+div.review-form-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.review-form-wrapper {
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+
+form.review-request-form>input[type="hidden"] {
+    touch-action: manipulation;
+}
+
+div.form-field-select-product {
+    margin-bottom: 1.5rem;
+}
+
+label.select-product-text {
+    touch-action: manipulation;
+    display: block;
+    margin: 0 0 0.5rem;
+    font-size: 0.9375rem;
+}
+
+a.select-product-box, div.form-field-select-product select {
+    padding-right: 2em;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' width='10' height='6'%3E%3Cpath fill='%232D3748' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E") no-repeat #fff;
+    background-position: right 0.75em center;
+    appearance: none;
+    padding: 0.5em 0.75em;
+    color: inherit;
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    border-radius: 8px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    height: auto;
+    text-transform: none;
+    line-height: inherit;
+    touch-action: manipulation;
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 150px;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+a.select-product-box {
+    cursor: pointer;
+    display: inline-block;
+    min-width: 150px;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+a.select-product-box::after {
+    content: "";
+    color: rgb(153, 153, 153);
+    /* content: "▾"; */
+    line-height: 1em;
+    position: absolute;
+    right: 10px;
+    top: 25%;
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+    white-space: nowrap;
+}
+
+div.form-field-review-score {
+    margin-bottom: 1.5rem;
+}
+
+label.select-review-score {
+    display: block;
+    margin: 0 0 0.5rem;
+    font-size: 0.9375rem;
+    touch-action: manipulation;
+}
+
+div.form-field-review-text {
+    margin-bottom: 1.5rem;
+}
+
+label.write-reivew-text {
+    display: block;
+    margin: 0 0 0.5rem;
+    font-size: 0.9375rem;
+    touch-action: manipulation;
+}
+
+label.write-reivew-text::after, label.select-product-text::after, label.select-review-score::after {
+    margin-left: 2px;
+    content: "*";
+    color: #FC8181;
+}
+
+div.form-field-review-text textarea {
+    touch-action: manipulation;
+    line-height: inherit;
+    overflow: auto;
+    resize: vertical;
+    outline: none;
+    min-height: 8em;
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+div.select-product-panel {
+    height: auto;
+    max-height: 150px;
+    background: #fff;
+    border: 1px solid #aaa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    min-width: 100px;
+    position: absolute !important;
+    z-index: 999;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+div.select-product-panel ul {
+    position: relative;
+    background: #fff;
+    border: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    top: 0;
+    width: 100% !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 100%
+}
+
+div.select-product-panel li {
+    background: #fff;
+    border: 0;
+    color: #333;
+    cursor: pointer;
+    display: block;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    font-family: sans-serif;
+    line-height: 1;
+    margin: 0 !important;
+    min-height: 27px;
+    padding: 0.5em !important;
+    position: relative;
+    box-sizing: border-box;
+    font-size: 100%
+}
+
+div.review-score-wrap {
+    position: relative;
+    padding: 10px 0 22px;
+    text-align: center;
+}
+
+div.review-score-box {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+}
+
+div.review-score-select-btn {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: top;
+    text-align: center;
+}
+
+div.review-score-select-btn::before {
+    display: table;
+    content: "";
+    white-space: nowrap;
+}
+
+button.score-btn{
+    width: 44px;
+    float: right;
+    border: 0 none;
+    background: transparent;
+    outline: none;
+    color: #000000;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+/* button.score-btn::before {
+    background-image: url(https://static-resource-smartstore.pstatic.net/popup/m/static/20240130133617/img/sprite/svg/spPopup_icon_svg.svg);
+    background-size: 404px 374px;
+    background-position: -280px -166px;
+    width: 44px;
+    height: 44px;
+    display: block;
+    margin: 0 5px;
+    will-change: animation;
+    content: "";
+    color: #000000;
+    cursor: pointer;
+} */
+
+span.blind {
+    overflow: hidden;
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+}
+
+div.choice-text {
+    font-size: 13px;
+    text-align: center;
+    color: #008243;
+}
+
+div.choice-text.none {
+    color: #959595;
+}
+
+button.score-btn-select {
+    float: right;
+    border: 0 none;
+    background: transparent;
+    outline: none;
+    color: #000000;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+button.score-btn-select::after {
+    float: right;
+    border: 0 none;
+    background: transparent;
+    outline: none;
+    color: #000000;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+button.score-btn img {
+    width: 44px;
+}
+
+button.score-btn img.active-star {
+    display: none;
+}
+
+.star-rating {
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-flex;
+    float: left;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .star-rating .star {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+    display: inline-block;
+    background: url('../images/star.png') no-repeat;
+    background-size: 100%;
+  }
+  .star-rating .star.on {
+    width: 44px;
+    height: 44px;
+    margin-right: 10px;
+    display: inline-block;
+    background: url('../images/active-star.png') no-repeat;
+    background-size: 100%;
+  }
+
+ div.form-field-file {
+    margin-bottom: 1.5rem;
+ }
+
+ label.file-upload {
+    display: block;
+    margin: 0 0 0.5rem;
+    font-size: 0.9375rem;
+    touch-action: manipulation;
+ }
+
+ span.optional {
+    margin-left: 2px;
+ }
+
+ div.upload-dropzone {
+    color: inherit;
+    border: 1px solid #e2e8f0;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 8px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font-size: 12px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+div.upload-dropzone input[type=file] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    touch-action: manipulation;
+}
+
+div.upload-dropzone span {
+    color: inherit;
+    display: inline-block;
+    line-height: 24px;
+    padding: 10px;
+}
+
+div.upload-dropzone a {
+    text-decoration: none;
+    font-size: 13px;
+    color: rgb(89 189 181);
+    background-color: transparent;
+    touch-action: manipulation;
+}
+
+div.upload-error {
+    margin-top: 10px;
+    background-color: #fff0f1;
+    border: 1px solid #e35b66;
+    color: #cc3340;
+    border-radius: 4px;
+    line-height: 14px;
+    padding: 5px;
+    position: relative;
+    text-align: left;
+    vertical-align: middle;
+    background: #ffeded;
+    font-family: sans-serif;
+    font-size: 13px;
+    transition: height .2s;
+    width: 100%;
+}
+
+ul.upload-pool {
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.15s ease-in-out;
+    color: #fff;
+    border-color: rgba(5, 5, 6, 1);
+    background-color: rgba(5, 5, 6, 1);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 0.5em 1.5em;
+    font-size: 1.125rem;
+    touch-action: manipulation;
+}
+
+div.select-product-panel ul li:hover {
+    background-color: #dedede;
+}
+
+a.select-product-box:hover, div.form-field-review-text>textarea:hover {
+    border: 1px solid #afb5bc;
+}
+
+#file-list {
+    display: flex;
+    float: left;
+}
+
+/* #thumbail {
+    position: relative;
+}
+
+button.cancel-upload {
+    position: absolute;
+    left: 100px;
+} */

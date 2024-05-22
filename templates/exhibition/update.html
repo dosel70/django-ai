@@ -1,0 +1,268 @@
+{% extends 'exhibition/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'exhibition/css/exhibit_write.css' %}">
+{% endblock %}
+
+{% block title %}공모전 수정하기{% endblock %}
+
+{% block content %}
+   <div id="root">
+        <div class="modal">
+            <div class="warn-modal">
+                <div id="content-wrap"></div>
+            </div>
+        </div>
+        <div id="layout-container">
+            <div class="layout-main">
+                <!-- 왼쪽 사이드바 -->
+                <div class="sidebar-layout-contents">
+                    <div class="sidebar-reword-info-container">
+                        <div class="sidebar-reward-info-flag-group">
+                            <span class="sidebar-reward-info-flag1">공모전</span>
+                            <span class="sidebar-reward-info-flag2">글쓰기</span>
+                        </div>
+                        <a href="" class="sidebar-reward-info-project-name" target="_blank">
+                            {{ request.session.member.member_name }} 님의<br>공모전 글 수정
+                        </a>
+                        <button class="project-number-box" type="button">
+                            <span>
+                                <span class="project-number-text">
+                                    
+                                </span>
+                                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="down-icon-svg" aria-hidden="true" style="width: 20px; height: 20px;">
+                                    <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <nav class="sidebar-menu-list-container">
+                        <div class="sidebar-menu-list-margin"></div>
+                    </nav>
+                </div>
+                <!-- 페이지 루트 -->
+                <div id="layout-contents" class="layout-contents">
+                    <section class="page-container">
+                        <span class="blind-text-hidden">사이트 이동 경로</span>
+                        <ol class="current-page-position-list">
+                            <li class="page-position-item">공모전 수정하기</li>
+                        </ol>
+                        <!-- 랩원 등록 시, 랩원 계정 추가하는 섹션 -->
+                        <div class="maker-info-container-btn-wrapper">
+                            <h2 class="page-title">공모전 수정하기</h2>
+                            <button class="save-btn" onclick="send">
+                                <span>
+                                    <span class="save-btn-text">저장하기</span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="page-description">공모전에 관한 정보를 입력해주세요.</div>
+                        <div class="page-guide">
+                            <button type="button" class="banner-link-button-container banner-guide-button">
+                                <div class="banner-link-button-icon">
+                                    <i class="banner-guide-gpt-icon"></i>
+                                </div>
+                                <div class="banner-link-button-content">
+                                    <p class="banner-link-button-content">
+                                        <p class="banner-link-button-description">궁금한 모든 것을 물어보세요</p>
+                                        <strong class="banner-link-button-title">AI 어드바이저</strong>
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        <!-- 헤더 navigation -->
+                        <div class="page-content">
+                            <nav class="project-navbar-container">
+                                <div style="display: flex; align-items: center;">
+                                        <div style="overflow: hidden; border-radius: 999px;">
+                                            <h1 class="nav-logo">
+                                                <!-- <span class="blind-text-hidden">메이커 스튜디오</span> -->
+                                            </h1>
+                                        </div>
+                                        <span style="padding-left: 10px;color: #008243;font-weight: bold;">ONELAB</span>
+                                    </div>
+                                <div class="project-navbar-maker">
+                                    <div class="profile-img">
+                                        <span></span>
+                                    </div>
+                                    <!-- 회원 이름 -->
+                                    <div>{{ request.session.member.member_name }}</div>
+                                </div>
+                                <div class="project-navbar-btn-group">
+                                    <button type="button" class="pre-save-btn">
+                                        <span>
+                                            <span class="pre-save-btn-text">저장 하기</span>
+                                        </span>
+                                    </button>
+                                    <div class="announce-button-container">
+                                        <!-- 이미지 태그에 쪽지 아이콘 -->
+                                        <img src="https://static.wadiz.kr/studio/funding/static/media/announcement.56f4b8e3.svg" alt="" class="announce-button-icon">
+                                        <!-- a태그 클릭시 쪽지함으로 이동 -->
+                                        <a href=""></a>
+                                    </div>
+                                    <button class="exit-button" type="button">
+                                        <span>
+                                            <span class="exit-button-text">나가기</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </nav>
+                            <!-- 저장버튼 클릭시 전송될 form -->
+                            <form action="{% url 'exhibition:update' id=exhibition.id %}" method="post" name="write-form" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <section class="section-container">
+                                    <div style="max-width: 712px;">
+                                        <div class="section-header spacing">
+                                                <h3 class="section-title">공모전 제목
+                                                    <span class="blind-text-text-hidden"></span>
+                                                </h3>
+                                        </div>
+                                    </div>        
+                                    <div class="section-content">
+                                        <div class="text-field">
+                                            <label></label>
+                                            <div class="text-field-field">
+                                                <input placeholder="제목을 입력해 주세요" maxlength="40" type="text" class="input-input input-lg" name="exhibition-title" value="{{ exhibition.exhibition_title }}">
+                                            </div>
+                                            <em class="helper-message-helper-message"></em>
+                                        </div>
+                                        <em class="helper-msg">40자 남음</em>
+                                    </div>
+                                </section>
+                                <section class="section-container">
+                                    <div style="max-width: 712px;">
+                                        <div class="section-header profile">
+                                            <h3 class="section-title">공모전 이미지
+                                                <span class="blind-text-hidden">필수</span>
+                                            </h3>
+                                        </div>
+                                        <div class="section-description">
+                                            <p class="spacing">원랩 메인페이지 및 여러 곳에서 노출할 메인 이미지를 등록해 주세요.</p>
+                                            <div></div>
+                                        </div>
+                                        <div class="message-box-message-box">
+                                            <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="with-icon-icon message-box-icon">
+                                                <path fill="none" d="M0 0h40v40H0z"></path>
+                                                <path d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm1 28.6h-2v-13h2zm-1-15.84A1.8 1.8 0 1 1 21.8 12a1.8 1.8 0 0 1-1.8 1.76z"></path>
+                                            </svg>
+                                            <div class="message-box-content">
+                                                <p class="message-box-title msg-title">대표 이미지 등록 가이드</p>
+                                                <div class="message-box-description">
+                                                    <ul>
+                                                        <li>10MB 이하의 JPG, JPEG, PNG 파일</li>
+                                                        <li>가로 237px, 세로 360px의 크기를 맞춰주세요!</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="section-content" style="margin-top: 25px;">
+                                        <div class="attach-wrap">
+                                             <label for="upload1" class="attach">
+                                                 <img src="" class="thumbnail">
+                                                 <div class="x">
+                                                     <img src="{% static 'exhibition/images/x.png' %}">
+                                                 </div>
+                                                 <h6 class="plus">+</h6>
+                                                 <h6>대표 이미지</h6>
+                                             </label>
+                                             <label for="upload2" class="attach">
+                                                 <img src="" class="thumbnail">
+                                                 <div class="x">
+                                                     <img src="{% static 'exhibition/images/x.png' %}">
+                                                 </div>
+                                                 <h6 class="plus">+</h6>
+                                                 <h6>이미지 추가</h6>
+                                            </label>
+                                            <label for="upload3" class="attach">
+                                                <img src="" class="thumbnail">
+                                                <div class="x">
+                                                    <img src="{% static 'exhibition/images/x.png' %}">
+                                                </div>
+                                                <h6 class="plus">+</h6>
+                                                <h6>이미지 추가</h6>
+                                            </label>
+                                        </div>
+                                        <input type="file" name="upload1" id="upload1" class="upload" style="display: none;">
+                                        <input type="file" name="upload2" id="upload2" class="upload" style="display: none;">
+                                        <input type="file" name="upload3" id="upload3" class="upload" style="display: none;">
+                                    </div>
+                                </section>
+                                 <!-- 프로젝트 요약 레이아웃 -->
+                                <section class="section-container">
+                                    <div style="max-width: 712px;">
+                                        <div class="section-header">
+                                            <h3 class="section-title section-is-required">공모전 소개</h3>
+                                            <div class="section-guide"></div>
+                                        </div>
+                                        <div class="section-description">소개 사진과 함께 보이는 글이에요. 공모전에 대해 소개해 주세요.</div>
+                                        <div class="section-content">
+                                            <div class="story-summary-field-container">
+                                                <div class="field form-field form-field-textarea-field">
+                                                    <div class="wide column-2"></div>
+                                                    <div class="wide column-4">
+                                                        <div class="wz input">
+                                                            <textarea placeholder="내용 입력" helper="[object Object]" maxlength="1000" name="exhibition-content" rows="15" class="content-input">{{ exhibition.exhibition_content }}</textarea>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <em class="content-helper helper-msg">1000자 남음</em>
+                                    </div>
+
+                                </section>
+                                <section class="section-container">
+                                    <div class="section-header">
+                                        <h3 class="section-title section-is-required">공모전 양식 업로드</h3>
+                                        <div class="section-guide"></div>
+                                    </div>
+                                    <div class="section-description">공모전의 양식을 업로드해주세요.</div>
+                                    <div class="attach-wrap download-wrap">
+                                        <label for="upload4" class="attach" id="download-attach">
+                                            <img src="" class="thumbnail">
+                                            <div class="x">
+                                                <img src="{% static 'exhibition/images/x.png' %}">
+                                            </div>
+                                            <h6 class="plus">+</h6>
+                                        </label>
+                                    </div>
+                                    <input type="file" name="upload4" id="upload4" class="upload-download" style="display: none;">
+                                </section>
+                                <section class="section-container">
+                                    <div class="section-header">
+                                        <h3 class="section-title section-is-required">공모전 URL 입력</h3>
+                                        <div class="section-guide"></div>
+                                    </div>
+                                    <div class="section-description">해당 공모전으로 이동할 수 있는 URL을 입력해주세요.</div>
+                                    <div class="section-content">
+                                        <div class="text-field">
+                                            <label></label>
+                                            <div class="text-field-field">
+                                                <input placeholder="http://www.naver.com" maxlength="500" type="text" class="input-input input-lg" name="exhibition-url" value="{{ exhibition.exhibition_url }}">
+                                            </div>
+                                            <em class="helper-message-helper-message"></em>
+                                        </div>
+{#                                        <em class="helper-msg">40자 남음</em>#}
+                                    </div>
+                                </section>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            
+        </div>
+    </div> 
+    
+{% endblock %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+    <script src="{% static 'exhibition/js/exhibit_write.js' %}"></script>
+{% endblock %}
+

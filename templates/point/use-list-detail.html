@@ -1,0 +1,156 @@
+{% extends 'point/base.html' %}
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="{% static 'payment/css/pay-list-detail.css' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'payment/images/favicon-32x32.png'%}">
+{% endblock %}
+{% block title %}포인트 이용 상세 내역{% endblock %}
+
+{% block content %}
+ <div class="main-wrapper-content">
+    <div class="order-detail-page-container">
+        <div>
+            <div class="order-detail-page-inner">
+                <div class="order-card-info-area">
+                    <!-- 주문번호 및 결제 시간 -->
+                    <div class="detail-header-card-item">
+                        <div class="detail-header-etc-area">
+                            <span>회원 이메일 {{ member.member_email }}</span>
+                            <span>{{ date.updated_date }} 사용</span> <!-- 수정 -->
+                        </div>
+                        <!-- 결제한 상품 -->
+                        <div class="detail-header-card-content">
+                            <div class="detail-header-card-title-area">
+                                <a href="" class="detail-header-card-title">[{{ point.point }} 포인트 사용!]</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 결제 상태 -->
+                <div class="state-msg-box-container">
+                    <div>
+                        <span class="badge-container">
+                            <span class="badge">이용 완료</span>
+                        </span>
+                    </div>
+                    <div class="state-msg-box">
+                        <span>이용이 완료되었어요.</span>
+                    </div>
+                    <div class="state-msg-box-footer"></div>
+                </div>
+
+                <!-- 결제 정보 -->
+                <div>
+                    <div>
+                        <div class="payment-info-header">
+                            <h3>이용 정보</h3>
+                            <p>{{ member.member_name }}</p>
+                        </div>
+                        <div class="value-list-container">
+                            <div class="value-list-wrapper">
+                                <dl>
+                                    <dt class="price">
+                                        <span>이용 포인트</span>
+                                    </dt>
+                                    <dd class="value-text price-value">
+                                        <span>{{ point.point }} 포인트</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="total-price-box">
+                                <dl class="value-list-strong">
+                                    <dt class="total-price">
+                                        <span>최종 이용 포인트</span>
+                                    </dt>
+                                    <dd class="value-text total-price-value">{{ point.point }} 포인트</dd>
+                                </dl>
+                                <dl>
+                                    <dt class="how-to-purchase">
+                                        <span>사용 항목</span>
+                                    </dt>
+                                    {% if place_true %}
+                                    <dd class="value-text purchase-value">
+                                        <span>장소대여</span>
+                                    </dd>
+                                    {% elif share_true %}
+                                    <dd class="value-text purchase-value">
+                                        <span>자료 공유</span>
+                                    </dd>
+                                    {% endif %}
+                                </dl>
+                                <dl>
+                                    <dt class="card-info">
+                                        <span>사용 내역</span>
+                                    </dt>
+                                    {% if place_true %}
+                                    <dd class="value-text card-info-value">
+                                        <a href="/place/detail/{{ place.id }}">
+                                            <span>{{ place_title }}</span>
+                                        </a>
+                                    </dd>
+                                    {% elif share_true %}
+                                    <dd class="value-text card-info-value">
+                                        <a href="/share/detail/{{ share.id }}">
+                                            <span>{{ share_title }}</span>
+                                        </a>
+                                    </dd>
+                                    {% endif %}
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 상품 정보 -->
+                    <div>
+                        <h3>상품 정보</h3>
+                    </div>
+                    <div class="value-list-container">
+                        <div class="order-card-container">
+                            <div class="order-card-content">
+                                <!-- 상품명 -->
+                                <span class="order-card-title">{{ point.point }} 포인트 사용</span>
+                                <!-- 상품개수 -->
+                                <span class="order-card-option">1개</span>
+                                <!-- 상품가격 -->
+                                <span class="order-card-price">{{ point.point }}원</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 판매자 정보 -->
+                <div>
+                    <h3>판매자 정보</h3>
+                    <div class="value-list-container">
+                        <div class="value-list-wrapper seller">
+                            <dl>
+                                <dt>
+                                    <span>판매자명</span>
+                                </dt>
+                                {% if place_true %}
+                                <dd class="value-text">
+                                    <span>{{ sale_member.member_name }}</span>
+                                </dd>
+                                {% elif share_true %}
+                                <dd class="value-text">
+                                    <span>{{ share_member }}</span>
+                                </dd>
+                                {% endif %}
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <hr class="order-detail-page-space"> -->
+    </div>
+    <!-- 푸터 -->
+</div>
+    
+{% endblock %}
+
+{% block js %}
+    
+{% endblock %}

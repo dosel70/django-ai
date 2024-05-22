@@ -1,0 +1,122 @@
+{% extends 'community/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'community/css/community-list.css' %}">
+{% endblock %}
+
+{% block title %}커뮤니티 목록{% endblock %}
+
+{% block content %}
+    <!--헤더-->
+    {% include 'community/header.html' %}
+    <!-- 메인 시작 -->
+    <main class="main-board">
+        <div class="board-header">
+            <!-- 큰 제목 쪽 -->
+            <h2 class="title">커뮤니티 목록</h2>
+        </div>
+
+        <div></div>
+        <!-- 게시글 유형 탭 -->
+        <div class="list-tabs main-list-filter-container">
+            <ul class="filter-list-wrapper">
+                <div style="margin-right: 245px;">
+                    <a href="?post_status=all" class="major-btn {% if post_status == 'all' %}active-btn{% endif %}">
+                        <span>전체</span>
+                    </a>
+                    <a href="?post_status=1" class="major-btn {% if post_status == '1' %}active-btn{% endif %}">
+                        <span>자료요청</span>
+                    </a>
+                    <a href="?post_status=2" class="major-btn {% if post_status == '2' %}active-btn{% endif %}">
+                        <span>질문</span>
+                    </a>
+                    <a href="?post_status=3" class="major-btn {% if post_status == '3' %}active-btn{% endif %}">
+                        <span>기타</span>
+                    </a>
+                </div>
+                <div class="search">
+                    <form action="" id="list-search">
+                        <div class="field">
+                            <label for="search-text-in-list" class="text-hidden">검색창</label>
+                            <input type="text" class="search-form" id="search-text-in-list" name="q">
+                            <button class="btn-search" type="submit">검색</button>
+                        </div>
+                    </form>
+                </div>
+            </ul>
+        </div>
+        <!-- 리스트들 감싸는 div -->
+        <div class="board-list-main">
+            <ul>
+                {% for community in communities %}
+                    <!-- 리스트 1개 -->
+                    <li>
+                        <a href="{{ community.get_absolute_url }}" class="article">
+                            <div class="info">
+                                {% for community_file in community.files.all %}
+                                    {% if community_file.path %}
+                                        <div class="thumb">
+                                            <img src="{{ community_file.path.url }}" class="preview">
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <h3 class="title">{{ community.community_title }}</h3>
+                                <span class="author">{{ community.member.member_name }}</span><br>
+                                <span
+                                    class="created-at">{{ community.updated_date|date:"Y년 m월 d일 A h시 i분" }}</span>
+{#                                    <div class="preview-img">#}
+{#                                        {% for communityfile in community.communityfile_set.all %}#}
+{#                                            {% if communityfile.preview %}#}
+{#                                                <img src="/upload/{{ communityfile.path }}" class="preview">#}
+{#                                            {% endif %}#}
+{#                                        {% endfor %}#}
+{#                                    </div>#}
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="board-footer">
+            <div class="pagination">
+                <span class="step-links">
+                    {% if communities.has_previous %}
+                        <a href="?page=1&post_status={{ post_status }}">&laquo; 처음</a>
+                        <a href="?page={{ communities.previous_page_number }}&post_status={{ post_status }}">이전</a>
+                    {% endif %}
+
+                    {% for i in communities.paginator.page_range %}
+                        {% if communities.number == i %}
+                            <span class="current">{{ i }}</span>
+                        {% else %}
+                            <a href="?page={{ i }}&post_status={{ post_status }}">{{ i }}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if communities.has_next %}
+                        <a href="?page={{ communities.next_page_number }}&post_status={{ post_status }}">다음</a>
+                        <a href="?page={{ communities.paginator.num_pages }}&post_status={{ post_status }}">마지막 &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+            <div aria-hidden="true"
+                 style="position: relative; left: 0; bottom: 48px; width: 100%;"></div>
+        </div>
+    </main>
+    <!-- 글쓰기 버튼 -->
+    <div class="floating-buttons-container">
+        <a href="/community/write/">
+            <button type="button" class="float-top-btn">
+                <img src="{% static 'community/images/write_pen.png' %}" class="write-form-img">
+            </button>
+        </a>
+    </div>
+    <!-- 푸터 자리 -->
+{% endblock %}
+
+{% block js %}
+    <script src="{% static '/community/js/community-list.js' %}"></script>
+{% endblock %}

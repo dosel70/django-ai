@@ -1,0 +1,113 @@
+{% extends 'admin/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'admin/css/login.css' %}">
+{% endblock %}
+
+{% block title %}관리자 로그인{% endblock %}
+
+{% block content %}
+    <div id="page-container">
+            <main id="main-app">
+                <div class="web-header">
+                    <div class="web-large">
+                        <header class="header-simple">
+                            <div class="header-container">
+                                <h1 class="wadiz-logo">
+                                    <a href="">
+                                        <span class="label">OneLab</span>
+                                        <img
+                                            src="{% static 'admin/images/header-logo.png' %}"
+                                        />
+                                    </a>
+                                </h1>
+                                <ul class="gnb-large">
+                                    <!-- <li class="login">
+                                        <a href="" class="item">
+                                            <span>관리자 로그인</span>
+                                        </a>
+                                    </li> -->
+                                    
+                                </ul>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="MainWrapper">
+                    <div class="account-login">
+                        <div class="Account-25">
+                            <h2 class="Account-Xf">관리자 로그인</h2>
+                            <section aria-labelledby="emailLogin">
+                                <form class="SignInForm-1G" action="/member/admin_login/" method="post" name="admin_login-form">
+                                    {% csrf_token %}
+                                    <div
+                                        class="SignInForm-Nh"
+                                        data-test-id="emailField"
+                                    >
+                                        <label class="BlindText-K9"
+                                            >이메일</label
+                                        >
+                                        <input
+                                            data-test-id="email"
+                                            id="email"
+                                            name="member-email"
+                                            placeholder="아이디 입력"
+                                            maxlength="20"
+                                            title="아이디 입력"
+                                            class="Input-email"
+                                            aria-invalid="false"
+                                        />
+                                        <p id="emailError">
+                                            이메일 형식이 올바르지 않습니다.
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="SignInForm-Nh"
+                                        data-test-id="passwordField"
+                                    >
+                                        <label class="BlindText-K9"
+                                            >비밀번호</label
+                                        >
+                                        <input
+                                            data-test-id="password"
+                                            id="password"
+                                            name="member-password"
+                                            maxlength="20"
+                                            placeholder="비밀번호 입력"
+                                            title="비밀번호 입력"
+                                            class="Input-pw"
+                                            aria-invalid="false"
+                                        />
+                                    </div>
+                                    <div
+                                        class="SignInForm-kc"
+                                        style="margin-top: 0%"
+                                    >
+                                    </div>
+                                    <button
+                                        data-test-id="loginSubmitButton"
+                                        class="Button-1G"
+                                        type="submit"
+                                    >
+                                        <span class="Button-7g"
+                                            >관리자 로그인</span
+                                        >
+                                    </button>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'admin/js/login-id.js' %}"></script>
+    <script src="{% static 'admin/js/login-pw.js' %}"></script>
+{% endblock %}
+
+
+

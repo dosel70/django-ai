@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+{#    공용으로 쓸 css 자리#}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+    <link rel="icon" href="{% static 'admin/images/header-logo_RE.png' %}" />
+    {% block static %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+{#    {% include '' %}#}
+    {% block content %}{% endblock %}
+</body>
+{% block js %}{% endblock %}
+</html>

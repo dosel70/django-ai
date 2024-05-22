@@ -1,0 +1,296 @@
+{% extends 'exhibition/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'exhibition/css/exhibition_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
+{% endblock %}
+
+{% block title %}공모전 상세페이지{% endblock %}
+
+{% block content %}
+    {% include  "header/main-page-header-login.html"%}
+    <div id="page-container">
+            <main id="main" style="visibility: visible">
+                <!-- 헤더 -->
+                <div class="main-wrapper-content">
+                    <div>
+                        <div class="community-container">
+                            <div class="community-content-wrapper">
+                                <div class="community-content">
+                                    <div class="community-detail-container">
+                                    {% if request.session.member.member_status == False %}
+                                        <a href="{% url 'member:admin_main_exhibition' %}">
+                                    {% elif request.session.member.member_status == True %}
+                                        <a href="{% url 'exhibition:list' %}">
+                                    {% endif %}
+                                        
+                                            <button type="button" class="go-to-list-btn">
+                                                <span>
+                                                    <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="go-to-list-svg" aria-hidden="true">
+                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.076 2.576l.848.848L8.35 12l8.575 8.576-.848.848L6.65 12l9.425-9.424z"></path>
+                                                    </svg>
+                                                    <span class="go-to-list-text">목록으로 이동</span>
+                                                </span>
+                                            </button>
+                                        </a>
+                                        <div class="community-title-container">
+                                            <p>
+                                                <span class="community-detail-head">이벤트</span>
+                                                <span class="community-detail-line"></span>
+                                                <span class="community-detail-state">오픈예정</span>
+                                            </p>
+                                            <div class="community-title-wrapper">
+                                                <p class="community-title">공모전 상세페이지</p>
+                                                <!-- 공유하기 버튼 -> 추천 버튼? -->
+                                                <div class="community-like-icon">
+                                                    <button type="button" style="position: relative">
+                                                        <div style="position: absolute; visibility: hidden; left: -10px; top: -10px; width: 44px; height: 44px"></div>
+                                                        <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="community-like-svg" aria-hidden="true" style="width: 32px; height: 32px">
+                                                            <!-- <path d="M30 26a6 6 0 0 0-4.7 2.3L13.7 22a5.9 5.9 0 0 0 0-3.9l11.6-6.3a6 6 0 1 0-1-1.8l-11.6 6.3a6 6 0 1 0 0 7.4L24.3 30a6 6 0 1 0 5.7-4zM26 8a4.1 4.1 0 1 1 .1 1 4 4 0 0 1-.1-1zM8 24a4 4 0 1 1 3.9-5A4 4 0 0 1 8 24zm22 12a4 4 0 0 1-4-4 4 4 0 0 1 4-4 4 4 0 0 1 0 8z"></path> -->
+                                                            <path
+                                                                class="like-icon"
+                                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
+                                                            ></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <p class="community-write-date">{{ exhibition.created_date }}</p>
+                                        </div>
+                                        <div class="community-detail-contents-container">
+                                            <div class="community-detail-contents-wrapper">
+                                                <div class="community-detail-contents">
+                                                    <div>
+                                                        <div class="DetailInfoHeader_productInfo DetailInfoHeader_productInfoDivider">
+                                                            <dl>
+                                                                <div class="DetailInfoHeader_termsBox">
+                                                                    <dt class="DetailInfoHeader_terms">작성자</dt>
+                                                                    <dd class="DetailInfoHeader_termsDescription">
+                                                                        <div class="DeliveryInfoField_container">
+                                                                            <div class="DeliveryInfoField_deliveryContent">
+                                                                                <span aria-hidden="true"></span>
+                                                                                <!-- class="DeliveryInfoField_deliveryDesc" -->
+                                                                                <ul class="">
+                                                                                    <li>{{ member_name }}</li>
+                                                                                    <!-- <li>
+                                                                                <div class="DetailInfoHeader_shippingChargeContainer">
+                                                                                    <span class="DetailInfoHeader_shippingChargeText">배송비</span>
+                                                                                    <span>3,500원</span>
+                                                                                </div>
+                                                                            </li> -->
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </dd>
+                                                                </div>
+    {#                                                            <div class="DetailInfoHeader_termsBox">#}
+    {#                                                                <dt class="DetailInfoHeader_terms">신청인원</dt>#}
+    {#                                                                <dd class="DetailInfoHeader_termsDescription">#}
+    {#                                                                    <div class="SupporterClubSubscriptionBanner_supporterClub">#}
+    {#                                                                        <div class="DetailInfoHeader_orderInfo">#}
+    {#                                                                            <span class="DetailInfoHeader_texts">1,631</span>#}
+    {#                                                                            명 참여#}
+    {#                                                                        </div>#}
+    {#                                                                    </div>#}
+    {#                                                                </dd>#}
+    {#                                                            </div>#}
+                                                            </dl>
+                                                        </div>
+                                                <!-- 파일 출력 쪽 -->
+                                                    <div class="detail-info-header-product-info header-containers">
+                                                        <dl>
+                                                            <div class="detail-info-header-app-coupon-banner">
+                                                                {% for file in exhibition.exhibitionfile_set.all %}
+                                                                    {% if file.download_path %}
+                                                                        <a href="{% url 'download' file_path=file.download_path %}" class="available-coupon-button-button">
+                                                                        <input type="file" style="display: none" />양식 다운로드
+                                                                        <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="with-icon-icon available-coupon-button-icon">
+                                                                            <path d="M40.8 43.2H7.2v-2.4h33.6v2.4zm-5.28-22.08L25.2 31.44V4.8h-2.4v26.64L12.48 21.12 10.8 22.8 24 36l13.2-13.2-1.68-1.68z"></path>
+                                                                        </svg>
+                                                                    </a>
+                                                                    {% endif %}
+                                                                    
+                                                                {% endfor %}
+                                                                    
+                                                            </div>
+                                                            <div></div>
+                                                            <div></div>
+                                                        </dl>
+                                                    </div>
+                                                    </div>
+                                                    <!-- 배송 혜택 부분 -->
+                                                    
+                                                    <div class="slick-slide slick-active slick-current" id="big" aria-hidden="false" style="outline: none; width: 705px; margin-top: 92px; margin-left: 276px">
+                                                        <div>
+                                                            <div style="width: 100%; max-height: 100%; display: inline-block; margin-left: -158px">
+                                                                {% if exhibition.exhibitionfile_set.all %}
+                                                                    {% for file in exhibition.exhibitionfile_set.all %}
+                                                                        {% if forloop.counter0 == 0 %}
+                                                                            {% if file.file %}
+                                                                                <img src="/upload/{{ file.path }}" class="lazy-load-img" id="big-img"  style="display: block; margin: 5px auto; text-align: center"/>
+                                                                            {% endif %}
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- 미리보기 쪽 -->
+                                                    <div class="prod-image" style="margin-top: 30px; margin-left: 341px">
+                                                        <div class="prod-image-item">
+                                                            {% if exhibition.exhibitionfile_set.all %}
+                                                                {% for file in exhibition.exhibitionfile_set.all %}
+                                                                    {% if forloop.counter0 == 0 %}
+                                                                        {% if file.file %}
+                                                                            <img src="/upload/{{ file.path }}" class="lazy-load-img" />
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="prod-image-item line-space">
+                                                            {% if exhibition.exhibitionfile_set.all %}
+                                                                {% for file in exhibition.exhibitionfile_set.all %}
+                                                                    {% if forloop.counter0 == 1 and file.file %}
+                                                                        {% if '.jpg' in file.path.name|lower or '.jpeg' in file.path.name|lower or '.png' in file.path.name|lower or '.gif' in file.path.name|lower %}
+                                                                            <img src="/upload/{{ file.path }}" class="lazy-load-img" />
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </div>
+                                                        <div class="prod-image-item line-space">
+                                                            {% if exhibition.exhibitionfile_set.all %}
+                                                                {% for file in exhibition.exhibitionfile_set.all %}
+                                                                    {% if forloop.counter0 == 2 and file.file %}
+                                                                        {% if '.jpg' in file.path.name|lower or '.jpeg' in file.path.name|lower or '.png' in file.path.name|lower or '.gif' in file.path.name|lower %}
+                                                                            <img src="/upload/{{ file.path }}" class="lazy-load-img" />
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                    <div class="exhibition-content-box" id="content">
+                                                        {{ exhibition.exhibition_content }}
+                                                    </div>
+                                                
+                                                        <a href="{{ exhibition.exhibition_url }}" target="_blank">
+                                                            <button class="button-button button-primary" style="margin-left: 116px;">
+                                                                <span>
+                                                                    <span class="Button_children">
+                                                                        <span>공모전으로 바로가기</span>
+                                                                    </span>
+                                                                </span>
+                                                            </button>
+                                                        </a>
+                                                <!--------공모전 참여 버튼 -----------!-->
+                                                   <!--------공모전 참여 버튼 -----------!-->
+                                                <div style="height: 15px"></div>
+                                                <a href="{% url 'exhibition:list' %}" target="_blank">
+                                                    <form action="{% url 'exhibition:detail' %}" method="POST" enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="id" value="{{ exhibition.id }}">
+                                                        <button type="submit" class="button-button button-primary" style="margin-left: 116px;">
+                                                            <span>
+                                                                <input type="hidden" name="join-btn">
+                                                                <span class="Button_children">
+                                                                    <span>공모전 참여하기</span>
+                                                                </span>
+                                                            </span>
+                                                        </button>
+                                                    </form>     
+                                                </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- AI가 추천하는 공모전 섹션 추가 -->
+                <div class="rc">
+                    <div class="rc-ex">
+                        <div class="rc-header">
+                            <span>
+                                <h2 class="rc-name">AI가 추천하는 공모전</h2>
+                            </span>
+                            <div class="rc-list-card">
+                                <span>안녕하세요</span>
+                                <div class="rc-item" >
+                                    <div class="rc-item-title">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 푸터 -->
+                <div class="floating-buttons-container">
+                    <button type="button" class="float-top-btn">
+                        <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="go-up-arrow-svg" aria-hidden="true">
+                            <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 푸터 -->
+                <div class="floating-buttons-container">
+                    <button type="button" class="float-top-btn">
+                        <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="go-up-arrow-svg" aria-hidden="true">
+                            <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </main>
+        </div>
+    <div class="login-modal">
+            <div class="login-modal-container">
+                <div class="login-modal-container-inner">
+                    <div class="login-modal-box">
+                        <div class="login-modal-box-inner">
+                            <div class="login-modal-wrapper">
+                                <p class="login-modal-title">로그인이 필요합니다.</p>
+                                <div class="login-modal-buttons">
+                                    <button type="button" class="login-modal-btn go-member-btn">
+                                        <span>
+                                            <span class="go-member-text">회원가입</span>
+                                        </span>
+                                    </button>
+                                    <button type="button" class="login-modal-btn go-to-login-btn">
+                                        <span>
+                                            <span class="go-to-login-text">로그인</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="button" class="close-btn">
+                                <span>
+                                    <span class="close-icon">
+                                        <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="close-svg" aria-hidden="true">
+                                            <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% include  "header/main-page-footer.html"%}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'exhibition/js/exhibition_detail.js' %}"></script>
+{% endblock %}
+
+
+
+

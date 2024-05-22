@@ -1,0 +1,359 @@
+{% extends 'school/base.html' %}
+{% load static %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'school/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'school/css/school-modal.css' %}">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+{% endblock %}
+{% block title %}학교 메인{% endblock %}
+{% block content %}
+<div id="__next">
+            <div class="SpaceBackground_bg"></div>
+            <div class="SpaceHeader_observer"></div>
+            <div class="modal">
+                <div class="warn-modal">
+                    <div id="content-wrap">
+                        <form action="{% url 'school:member' %}" method="POST" enctype="multipart/form-data" name="school-member-form">
+                            {% csrf_token %}
+                            <div class="content-wrap"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal2">
+                <div class="warn-modal2">
+                    <div id="content-wrap2">
+
+                    </div>
+                </div>
+            </div>
+            <!-- 헤더 -->
+            <header class="SpaceHeader_header">
+                <div class="SpaceHeader_wrapper">
+                    <div class="SpaceHeader_top">
+                        <a href="/">
+                            <!-- <svg class="SpaceHeader_logo" style="background-image: url('/staticfiles/images/dislike.png')">
+                                <path
+                                    d="M92.012 0v19.876h-1.714V0h1.714zM14.03 12.974c2.017 0 3.683 1.469 3.683 3.455 0 2.019-1.64 3.447-3.654 3.447H5.476c-2.021 0-3.712-1.462-3.712-3.447 0-1.986 1.662-3.455 3.676-3.455zM67.981 0v8.069h3.81v1.714h-3.81v10.093h-1.712v-3.724c-1.466.599-3.036.9-4.619.886H50.081v-1.714h6.126V12.06h1.714v3.264h3.735c.188.003 2.797.03 4.613-1.079V0h1.712zM26.217 13.31v4.207h13.447v1.719h-15.16V13.31h1.713zm90.245 3.245v1.714H95.624v-1.714h20.838zM14.03 14.69h-8.59c-1.089 0-1.972.779-1.972 1.739 0 .96.883 1.738 1.971 1.738h8.591c1.088 0 1.974-.781 1.974-1.738 0-.958-.886-1.739-1.974-1.739zM84.745 1.276V2.99h-8.39v11.396H82.9c.44.001 4.067-.015 6.02-1.04v1.847c-2.378.978-5.902.907-6.064.907H74.64V1.276h10.105zM39.733 0v4.874H43.1v1.714h-3.367v5.288H38.02V0h1.714zm74.748 1.352v1.715h-7.424c-.062.94.103 2.804 1.243 4.245h.012c1.29 1.628 3.586 2.602 6.824 2.902v1.624c-3.874-.328-6.617-1.452-8.246-3.526-.278-.314-.527-.653-.745-1.012-.237.388-.51.754-.816 1.09-1.674 2.077-4.41 3.165-8.22 3.455v-1.63c3.196-.267 5.496-1.191 6.822-2.839 1.183-1.466 1.412-3.357 1.383-4.31H97.62V1.353h16.862zM33.683.364v.834l-.01-.008v.045c-.01.462-.18 4.055-2.885 6.698-2.19 2.143-4.648 2.743-8.017 2.743V8.962c2.912.062 5.205-.731 6.784-2.264 1.578-1.534 2.102-3.5 2.283-4.624h-8.333V.364h10.178zm21.57.126c1.936-.802 4.164-.359 5.646 1.123 1.482 1.481 1.925 3.71 1.123 5.646s-2.69 3.198-4.786 3.198c-2.86-.002-5.179-2.32-5.181-5.18 0-2.096 1.262-3.985 3.198-4.787zm-45.2 4.743V8.44h9.418v1.715H0V8.44h8.338V5.233h1.714zM57.235 1.81c-1.914 0-3.466 1.552-3.467 3.466 0 1.915 1.552 3.467 3.467 3.467 1.914 0 3.466-1.552 3.466-3.467 0-1.914-1.552-3.466-3.466-3.466zM17.38 0c0 .207 0 .455-.014.733v.138c-.072 1.571-.298 3.131-.677 4.658h-1.754c.365-1.247.598-2.524.693-3.815H2.109V0z"
+                                ></path>
+                            </svg> -->
+                            <img src="{% static 'school/images/gongan-school-lab-white-re.svg' %}" alt="" style="height: 24px; margin-left: -28px" />
+                        </a>
+                    </div>
+
+                    <!-- 헤더 네비 쪽 -->
+                    <nav class="SpaceHeader_nav">
+                        <ul style="margin-left: -167px">
+                            <li aria-hidden="true" class="SpaceHeader_current"></li>
+                            
+                                {% if request.session.school_member_check == True %}
+                                    <li>
+                                        <a class="SpaceHeader_link place" href="{% url 'place:write' %}" style="cursor: pointer">장소</a>
+                                    </li>
+                                    <li>
+                                        <a class="SpaceHeader_link place" href="{% url 'exhibition:write' %}">대회</a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a class="SpaceHeader_link place" style="cursor: pointer" >장소</a>
+                                    </li>
+                                    <li>
+                                        <a class="SpaceHeader_link place" href="">대회</a>
+                                    </li>
+                                {% endif %}
+                            
+                            
+{#                                {% if request.session.school_member_check == True %}#}
+{#                                    <a class="SpaceHeader_link place" href="">대회</a>#}
+{#                                {% else %}#}
+{#                                    <a class="SpaceHeader_link place" href="{% url 'exhibition:write' %}">대회</a>#}
+{#                                {% endif %}#}
+                            
+                        </ul>
+                    </nav>
+                    <div class="SpaceHeader_home">
+                        <a href="">
+                            <!-- <svg class="SpaceHeader_wadizLogo" width="74" height="26" viewBox="0 0 74 26">
+                                <path
+                                    d="M51.259 2.803h1.855v18.78h-1.407c-.642-.004-1.212-.414-1.424-1.023-2.892 2.103-6.83 2.002-9.61-.247-1.655-1.347-2.557-3.415-2.419-5.548C38.448 12.19 40.09 9.95 42.483 9c2.393-.952 5.117-.45 7.017 1.292V4.567c0-.974.788-1.764 1.759-1.764zm-5.54 16.425c2.104-.095 3.738-1.875 3.658-3.987.118-1.39-.555-2.728-1.74-3.46-1.184-.731-2.678-.731-3.862 0-1.185.732-1.858 2.07-1.74 3.46-.08 2.121 1.57 3.906 3.684 3.987zm-8.96 2.356h-1.336c-.65.002-1.229-.409-1.442-1.024-2.892 2.103-6.83 2.002-9.611-.247-1.655-1.347-2.556-3.415-2.418-5.548.18-2.594 1.83-4.852 4.24-5.807 2.41-.955 5.152-.436 7.05 1.334.09-.868.8-1.54 1.67-1.579h1.847v12.87zm-7.395-2.356h.018c2.103-.095 3.733-1.877 3.649-3.987.08-2.113-1.56-3.892-3.667-3.978-2.106.086-3.746 1.865-3.666 3.978-.08 2.115 1.559 3.897 3.666 3.987zm43.86-10.506v1.861l-6.217 7.993h6.208v3.06h-11.43v-1.852l6.225-8h-5.821v-1.298c0-.974.787-1.764 1.758-1.764h9.277zM57.739 7.275c-1.204 0-2.18-.98-2.18-2.187 0-1.209.976-2.188 2.18-2.188 1.205 0 2.181.98 2.181 2.188 0 1.208-.976 2.187-2.18 2.187zM18.48 8.722h3.64l-4.274 12.87h-3.649l-2.822-8.256-2.823 8.257H4.902L.637 8.723H4.27l2.594 7.991L9.06 9.887c.244-.7.897-1.172 1.636-1.183h2.55l2.638 8.01 2.594-7.992zm37.502 12.87l-.035-11.106c0-.974.787-1.764 1.758-1.764h1.855v12.87h-3.578z"
+                                ></path>
+                            </svg> -->
+                            <a href="{% url 'main' %}">
+                                <img src="{% static 'school/images/one-lab-whtite.svg' %}" alt="" style="height: 18px" />
+                            </a>
+                        </a>
+                    </div>
+                </div>
+            </header>
+
+            <!-- main 쪽 -->
+            <div id="main" class="SpaceMain_main">
+                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon SpaceMain_more">
+                    <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                </svg>
+            </div>
+
+            <!-- 공간 소개 부분 -->
+            <section id="about" class="SpaceSection_section">
+                <div class="SpaceSection_container SpaceAboutSection_about">
+                    <div class="SpaceSection_wrapper">
+                        <h2 class="SpaceSection_title">
+                            <div role="img" class="SpaceSectionTitle_title title_back"></div>
+                        </h2>
+                        <div class="SpaceSection_main">
+                            <p>
+                                <strong class="SpaceAboutSection_strong">함께 나누는 공간, 장소 공유</strong>
+                                <br />
+                                여러분 안녕하세요!
+                                <br />
+                                우리는 함께 모이고 소통하며 새로운 경험을 만들어내는 것이 얼마나 중요한지 알고 있습니다.
+                                <br />
+                                그래서 우리는 장소 공유를 통해 이러한 경험을 더욱 풍부하게 만들고자 합니다. 장소 공유란 무엇일까요?
+                                <br />
+                                간단하게 말하자면, 우리가 소유하고 있는 공간을 다른 사람들과 나누는 것입니다. 이는 여러 가지 이점을 제공합니다. 우선, 비용을 절감할 수 있습니다. 혼자 사용하지 않는 공간을 다른 사람들과 공유함으로써 공간에 대한 비용을 나눌 수 있습니다. 또한, 새로운 사람들과의 만남을
+                                통해 네트워크를 확장하고, 다양한 아이디어와 경험을 공유할 수 있습니다.
+                            </p>
+                            <p>
+                                <strong class="SpaceAboutSection_strong">다양한 종류의 공간을 공유</strong>
+                                <br />
+                                회의실, 스튜디오, 사무실, 파티 공간 등 다양한 목적에 맞는 장소를 공유할 수 있습니다.
+                                <br />
+                                또한, 공간을 임대하는 사람과 임차하는 사람이 서로의 요구사항을 충족시키기 위해 유연하게 협력할 수 있습니다.
+                            </p>
+                            <p>
+                                <strong class="SpaceAboutSection_strong">장소 공유는 또한 지속 가능성 측면에서도 이점을 제공</strong>
+                                <br />
+                                이미 존재하는 공간을 활용함으로써 새로운 건축이나 자원 소비를 줄일 수 있습니다. 이는 환경에도 도움이 되는 긍정적인 영향을 미칩니다.
+                                <br />
+                                우리는 공유의 가치를 믿습니다. 함께 모여 새로운 아이디어를 형성하고, 지식을 공유하며, 서로에게 영감을 주는 것이 우리의 목표입니다. 우리의 장소를 여러분과 함께 나누어 새로운 경험을 만들어보시기를 기대합니다. 원랩과 함께 나누는 공간, 공간 스쿨랩.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 대관 안내 쪽-->
+            <!-- <section id="introduce" class="SpaceSection_section">
+                <div class="SpaceSection_container">
+                    <div class="SpaceIntroduceSection_wrapper">
+                        <h2 class="SpaceSection_title SpaceIntroduceSection_title">
+                            <div role="img" class="SpaceSectionTitle_titles SpaceSectionTitle_introduce"></div>
+                        </h2>
+                        <div class="SpaceIntroduceSection_main">
+                            <div class="SpaceIntroduceSection_floor"></div>
+                            <div class="SpaceIntroduceSection_workStation">
+                                <div class="SpaceIntroduceSection_btnWrap">
+                                    <a href="" target="_blank" class="SpaceIntroduceSection_workStationRequest">
+                                        <span class="SpaceIntroduceSection_workStationDocText"></span>
+                                    </a>
+                                    <a href="" class="SpaceIntroduceSection_workStationRequest">
+                                        <span class="SpaceIntroduceSection_workStationRequestText"></span>
+                                    </a>
+                                </div>
+                                <p>
+                                    공간 와디즈는
+                                    <br />
+                                    다양한 브랜드, 크리에이터, 아티스트와 함께 하고자 합니다.
+                                    <br />
+                                    누구나 공간 와디즈를 대관할 수 있어요.
+                                </p>
+                                <p>
+                                    공간 와디즈가 보유한 다채로운 공간에서
+                                    <br />
+                                    특별한 콘텐츠를 만들어 보세요.
+                                </p>
+                                <div>
+                                    <ul class="SpaceIntroduceSection_list">
+                                        <li>
+                                            <div>
+                                                <b>월 1만명 이상</b>
+                                                이 고정적으로 방문하는 성수동의 상설 운영 공간입니다.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                B1F부터 3F(루프탑)까지
+                                                <b>4개층 총 500평 규모</b>
+                                                의 공간입니다.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                B1F부터 3F(루프탑)까지
+                                                <b>4개층 총 500평 규모</b>
+                                                의 공간입니다.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                B1F부터 3F(루프탑)까지
+                                                <b>4개층 총 500평 규모</b>
+                                                의 공간입니다.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                B1F부터 3F(루프탑)까지
+                                                <b>4개층 총 500평 규모</b>
+                                                의 공간입니다.
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                B1F부터 3F(루프탑)까지
+                                                <b>4개층 총 500평 규모</b>
+                                                의 공간입니다.
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- 입점 안내 쪽 -->
+            <section id="store" class="SpaceSection_section">
+                <div class="SpaceSection_container SpaceStoreSection_store">
+                    <div class="SpaceSection_wrappers">
+                        <h2 class="SpaceSection_title space_title">
+                            <div class="spaceSection_titles spaceSectionTitle_titles">학교 회원</div>
+                        </h2>
+                        <div class="spaceSection_main">
+                            <div class="SpaceStoreSection_box">
+                                <div class="SpaceStoreBox_box">
+                                    <div class="SpaceStoreBox_main">
+                                        <div class="SpaceStoreBox_content">
+                                            <p class="SpaceStoreBox_subtitle">학교 회원이 되어 바꾸는 미래</p>
+                                            <p class="SpaceStoreBox_title">공간 스쿨랩</p>
+                                            <div class="SpaceStoreBox_description">
+                                                <p>
+                                                    학교 회원 신청을 고민하는 지금,
+                                                    <br />
+                                                    주저하지 말고 도전해 보시기를 권합니다.
+                                                    <br />
+                                                    원랩과 소중한 인연은 맺어보세요.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="SpaceStoreBox_buttons">
+                                        <a href="" target="_blank" rel="noopener nofollow noreferrer" class="SpaceStoreBox_button">
+                                            <span class="SpaceStoreBox_buttonText SpaceStoreBox_guide">공간 안내</span>
+                                            &nbsp;
+                                        </a>
+                                        <a href="" target="_blank" rel="noopener nofollow noreferrer" class="SpaceStoreBox_button go-school-member">
+                                            <span class="SpaceStoreBox_buttonText SpaceStoreBox_request">학교회원 전환</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 오시는 길 쪽 -->
+            <!-- <section id="location" class="SpaceSection_section">
+                <div class="SpaceSection_container SpaceLocationSection_location">
+                    <div class="SpaceLocationSection_wrapper">
+                        <h2 class="SpaceSection_title">
+                            <div role="img" class="SpaceSectionTitles_title SpaceSectionTitle_location"></div>
+                        </h2>
+                        <div class="SpaceLocationSection_main"> -->
+            <!-- 지도 쪽 -->
+            <!-- <div class="SpaceLocationSection_map">
+                                <iframe src="/templates/html/school-wooram/map.html" scrolling="no" frameborder="0" class="SpaceLocationMap_frame"></iframe>
+                            </div>
+                            <dl class="SpaceLocationSection_address">
+                                <dt>
+                                    <strong>•주소</strong>
+                                </dt>
+                                <dd>서울 강남구 테헤란로26길 12</dd>
+                            </dl>
+                            <dl class="SpaceLocationSection_openHour">
+                                <dt>
+                                    <strong>•운영시간</strong>
+                                </dt>
+                                <dd>
+                                    <a href="" target="_blank" rel="noopener nofollow noreferrer">공간 와디즈 인스타그램</a>
+                                    을 참고해 주세요.
+                                </dd>
+                            </dl>
+                            <div class="SpaceLocationSection_parking">
+                                * 공간 와디즈 내에는 주차 공간이 마련되어 있지 않아요.
+                                <br />
+                                &nbsp;&nbsp;주차장 앱 또는 포털 서비스 지도 검색을 통해
+                                <br />
+                                &nbsp;&nbsp;주변 주차장을 이용해 주시길 바랍니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+        </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'school/js/school-modal.js' %}"></script>
+    <script>
+        const csrfToken = '{{ csrf_token }}';
+        {#학교 횐원 전환 신청시 모달#}
+        schoolMemberBtn = document.querySelector('.go-school-member')
+        schoolMemberBtn.addEventListener('click', (e) => {
+            e.preventDefault()
+            let modalMessage = "<span style='display: flex'>학교회원 전환 추가정보 입력 <p class='close-btn'>X</p></span>" +
+                "<input type='text' placeholder='학교명' class='school-name' name='school-name'>" +
+                '<input type="text" class="school-address" id="sample6_address" name="school-input-address" onclick="sample6_execDaumPostcode()" placeholder="주소"><br>' +
+                '<input type="button" class="school-address" onclick="sample6_execDaumPostcode()" value="주소 찾기"><br>' +
+                "<button type='submit' class='school-submit-btn' name='school-member-form'>신청하기</button>"
+            showWarnModal(modalMessage);
+        })
+        {#학교 회원 아닐경우 모달#}
+        const placeWrite = document.querySelector(('.place'))
+        var school_member_check = "{{ request.session.school_member_check }}"
+        placeWrite.addEventListener('click', (e) => {
+            if(school_member_check === 'False'){
+                e.preventDefault()
+                let modalMessage = "<span>학교회원 전환 후, 작성 가능합니다.</span>"
+                showWarnModal2(modalMessage);
+            }
+        })
+        
+    </script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        function sample6_execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var addr = ''; // 주소 변수
+                    var extraAddr = ''; // 참고항목 변수
+
+                    //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                    if(data.userSelectedType === 'R'){
+                        // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                        if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                            extraAddr += data.bname;
+                        }
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    {#document.getElementById('sample6_postcode').value = data.zonecode;#}
+                    document.getElementById("sample6_address").value = addr;
+                }
+            }).open();
+        }
+    </script>
+{% endblock %}

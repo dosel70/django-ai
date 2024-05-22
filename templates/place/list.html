@@ -1,0 +1,164 @@
+{#헤더 경로#}
+{% extends 'place/base.html' %}
+{% load static %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'place/css/list.css' %}">
+<link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+{% endblock %}
+{% block title %}장소공유 목록{% endblock %}
+{% block content %}
+    {% if request.session.member %}
+        {% include  "header/main-page-header-login.html"%}
+    {% else %}
+        {% include "header/main-page-header-all.html" %}
+    {% endif %}
+    <div id="page-container">
+            <main id="main-app">
+                <div></div>
+                <div class="ain-wrapper-content">
+                    <div></div>
+                    <div class="desktop-search-result-container">
+                        <!-- 검색결과 쪽 -->
+                        <div class="desktop-search-result-head-container">
+                            <div class="desktop-search-result-keyword">장소공유</div>
+                            <h2>목록</h2>
+                            <div class="desktop-search-result-number">{{ place_total_count }}</div>
+                            <div class="desktop-search-result-unit">개</div>
+                            <hr />
+                        </div>
+
+                        <!-- 전체 펀딩 오픈예정 쪽 -->
+                        <div class="DesktopSearchResult_tabContainer">
+                            <ul class="SearchResultTabs_tabContainer">
+                                <button type="button" class="Tab_tab Tab_first Tab_active Tab_rectangle Tab_sm">
+                                    <span>전체</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>서울</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>경기</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>인천</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>울산</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>대구</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>광주</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>대전</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>부산</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>제주</span>
+                                </button>
+{#                                <a href="{% url 'place:write' %}">#}
+{#                                    <button type="button" class="Tab_tab Tab_rectangle Tab_sm tab_end">#}
+{#                                        <span>글 쓰기</span>#}
+{#                                    </button>#}
+{#                                </a>#}
+                            </ul>
+                        </div>
+
+                        <!-- 목록 쪽 -->
+                        <div class="SearchResult_container">
+                            <!-- ad banner쪽 -->
+                            <div class="AdBanner_container">
+                                <div class="banner_eventBanner" style="background-color: rgb(210, 217, 222)">
+                                    <div class="banner_adBadge">AD</div>
+                                    <a href="https://www.wadiz.kr/web/campaign/detail/230063?acid=10047924&_refer_section_st=SPA_1" class="banner_link">
+                                        <div class="banner_inner">
+                                            <div class="banner_contents" style="background-image: url('https://cdn1.wadiz.kr/images/20240131/1706693471860.png/wadiz/optimize')">
+                                                <div class="banner_text">
+                                                    <p>9가지 솔루션 제공으로</p>
+                                                    <strong>편안한 무중력 쿠셔닝슈즈</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 목록 페이지 쪽 -->
+                            <div class="search-result-card-container">
+                                <div class="css-dlxsy">
+                                    <div class="css-uhtu">
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper" style="display: flex; flex-wrap: wrap;">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="board-footer">
+                    <div class="pagination">
+                        <!-- 모바일용 버튼 -->
+                        <button class="prev-page-icon mobile-only">
+                            <span class="text-hidden">이전 목록</span>
+                        </button>
+                        <div class="page">
+                            <!-- 모바일용 페이지 리스트 -->
+                            <div class="mobile-only">
+                                <span class="current-count">1</span>
+                                /
+                                <span class="total-count">
+                                    <span>122</span>
+                                    페이지
+                                </span>
+                            </div>
+                            <div class="desktop-only">
+                                <!-- 데스크탑용 버튼 -->
+                                <button class="prev-page-icon">
+                                    <span class="text-hidden">이전 목록</span>
+                                </button>
+                                <!-- 데스크탑용 페이지 리스트 -->
+                                <a href="" class="current">1</a>
+                                <a href="" class="">2</a>
+                                <a href="">3</a>
+                                <a href="">4</a>
+                                <a href="">5</a>
+                                <a href="">6</a>
+                                <!-- 데스크탑용 버튼 -->
+                                <button class="next-page-icon">
+                                    <span class="text-hidden">다음 목록</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- 모바일용 버튼 -->
+                        <button class="next-page-icon mobile-only">
+                            <span class="text-hidden">다음 목록</span>
+                        </button>
+                    </div>
+
+                    <div aria-hidden="true" style="position: relative; left: 0; bottom: 48px; width: 100%;"></div>
+                </div>
+            </main>
+    {% include  "header/main-page-footer.html"%}
+        </div>
+{% endblock %}
+{% block js %}
+    <script>
+        const placeFilePath = "{{ place.placefile_set.first.path.url }}";
+        const place_id = '{{ place_id }}'
+        const csrfToken = '{{ csrf_token }}'
+        const jsonData = JSON.stringify({'place_id': place_id})
+
+    </script>
+    <script src="{% static 'place/js/list.js' %}"></script>
+{% endblock %}

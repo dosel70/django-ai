@@ -1,0 +1,169 @@
+{% extends 'login/base.html' %}
+{% load socialaccount %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/css/login/login.css' %}" />
+{% endblock %}
+
+{% block title %}로그인{% endblock %}
+{% block content %}
+    <div id="page-container">
+            <main id="main-app">
+                <div class="web-header">
+                    <div class="web-large">
+                        <header class="header-simple">
+                            <div class="header-container">
+                                <h1 class="wadiz-logo">
+                                    <a href="/">
+                                        <span class="label">OneLab</span>
+                                        <img src="{% static 'public/images/header-logo.png' %}" onclick="location.href='{% url 'main' %}'" alt="" />
+                                    </a>
+                                </h1>
+                                <ul class="gnb-large">
+                                    <li class="login">
+                                        <a href="로그인화면 이동" class="item">
+                                            <span>로그인</span>
+                                        </a>
+                                    </li>
+                                    <li class="signup">
+                                        <a href="{% url 'member:join-normal' %}" class="item">
+                                            <span>회원가입</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+                <div class="MainWrapper">
+                    <div class="account-login">
+                        <div class="Account-25">
+                            <h2 class="Account-Xf">로그인</h2>
+                            <form action="{% url 'member:login' %}" name="login" method="post">
+                                {% csrf_token %}
+                                <section aria-labelledby="emailLogin">
+                                <!-- <h3 class="BlindText">email 로그인</h3> -->
+                                <form class="SignInForm-1G">
+                                    <div class="SignInForm-Nh" data-test-id="emailField">
+                                        <label class="BlindText-K9">이메일</label>
+                                        <input data-test-id="email" id="id" name="member-email" placeholder="이메일 입력" maxlength="20" title="이메일 입력" type="email" class="Input-email" aria-invalid="false" />
+                                        <p id="emailError">이메일 형식이 올바르지 않습니다.</p>
+                                    </div>
+                                    <div class="SignInForm-Nh" data-test-id="passwordField">
+                                        <label class="BlindText-K9">비밀번호</label>
+                                        <input data-test-id="password" id="password" name="member-password" maxlength="20" placeholder="비밀번호 입력" title="비밀번호 입력" type="password" class="Input-pw" aria-invalid="false" />
+                                    </div>
+                                    <div class="SignInForm-kc" style="margin-top: 0%">
+                                        <p class="SignInForm-e2">
+                                            <a href="{% url 'member:account-find' %}" data-test-id="findPasswordLink"> 로그인 정보를 잊으셨나요? </a>
+                                        </p>
+                                    </div>
+                                    <button data-test-id="loginSubmitButton" class="Button-1G login" type="button">
+                                        <span class="Button-7g">이메일로 로그인하기</span>
+                                    </button>
+                                </form>
+                            </section>
+                                <section aria-labelledby="snsLogin">
+                                <!-- <h3 class="BlindText_textHidden__1Jk0-">
+                                    SNS 로그인 </h3>-->
+                                <div>
+                                    <div class="oauth-wrap">
+{#                                        <form action="{% provider_login_url 'kakao' %}" method="post">#}
+{#                                            {% csrf_token %}#}
+{#                                            <button class="sns-Button-kakao btn-first">#}
+{#                                                <span>#}
+{#                                                    <span class="Button-child">#}
+{#                                                        <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="kakao" aria-hidden="true">#}
+{#                                                            <path d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-.96 4.96 5.44-3.6 2.4.16c6.96 0 12.64-4.48 12.64-10.08S22.96 4.56 16 4.64z"></path>#}
+{#                                                        </svg>#}
+{#                                                        카카오로 시작하기#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </button>#}
+{#                                        </form>#}
+{#                                        <form action="{% provider_login_url 'google' %}" method="post">#}
+{#                                            {% csrf_token %}#}
+{#                                            <button aria-label="구글로 인증하기" class="login-btn google">#}
+{#                                                <span>#}
+{#                                                    <span class="Button-child">#}
+{#                                                        <svg#}
+{#                                                            xmlns="http://www.w3.org/2000/svg"#}
+{#                                                            width="20"#}
+{#                                                            height="20"#}
+{#                                                            viewBox="0 0 20 20"#}
+{#                                                            focusable="false"#}
+{#                                                            role="presentation"#}
+{#                                                            class="login-btn-icon"#}
+{#                                                      >#}
+{#                                                        <defs>#}
+{#                                                          <path id="a" d="M0 0h348v46H0z"></path>#}
+{#                                                        </defs>#}
+{#                                                        <g fill="none" fill-rule="evenodd">#}
+{#                                                          <g transform="translate(-16 -13)">#}
+{#                                                            <use></use>#}
+{#                                                            <path#}
+{#                                                              stroke="#DADCE0"#}
+{#                                                              d="M-.5-.5h349v47H-.5z"#}
+{#                                                            ></path>#}
+{#                                                          </g>#}
+{#                                                          <path#}
+{#                                                            fill="#4285F4"#}
+{#                                                            d="M18.64 10.205c0-.639-.057-1.252-.164-1.841H10v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"#}
+{#                                                          ></path>#}
+{#                                                          <path#}
+{#                                                            fill="#34A853"#}
+{#                                                            d="M10 19c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H1.957v2.332A8.997 8.997 0 0 0 10 19z"#}
+{#                                                          ></path>#}
+{#                                                          <path#}
+{#                                                            fill="#FBBC05"#}
+{#                                                            d="M4.964 11.71A5.41 5.41 0 0 1 4.682 10c0-.593.102-1.17.282-1.71V5.958H1.957A8.996 8.996 0 0 0 1 10c0 1.452.348 2.827.957 4.042l3.007-2.332z"#}
+{#                                                          ></path>#}
+{#                                                          <path#}
+{#                                                            fill="#EA4335"#}
+{#                                                            d="M10 4.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C14.463 1.891 12.426 1 10 1a8.997 8.997 0 0 0-8.043 4.958L4.964 8.29C5.672 6.163 7.656 4.58 10 4.58z"#}
+{#                                                          ></path>#}
+{#                                                          <path d="M0 0h20v20H0z"></path>#}
+{#                                                        </g></svg#}
+{#                                                      >#}
+{#                                                        구글로 시작하기#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </button>#}
+{#                                        </form>#}
+{#                                        <form action="{% provider_login_url 'naver' %}" method="post">#}
+{#                                            {% csrf_token %}#}
+{#                                            <button aria-label="네이버로 인증하기" class="sns-Button-naver btn-first">#}
+{#                                                <span>#}
+{#                                                    <span class="Button-child">#}
+{#                                                        <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="kakao" aria-hidden="true">#}
+{#                                                            <path d="M19.52 5.76v10.32L12.48 5.76H4.8v20.48h7.68V15.92l7.12 10.32h7.6V5.76z"></path>#}
+{#                                                        </svg>#}
+{#                                                        네이버로 시작하기#}
+{#                                                    </span>#}
+{#                                                </span>#}
+{#                                            </button>#}
+{#                                        </form>#}
+                                    </div>
+                                </div>
+                            </section>
+                            </form>
+
+                            <div class="SignInApp">
+                                <p>
+                                    아직 원랩 계정이 없나요?
+                                    <a href="#" onclick="location.href='{% url 'member:join-normal' %}'" data-test-id="signupLink">회원가입</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+{% endblock %}
+{% block js %}
+    <script>const memberEmail = `{{ memberEmail }}`</script>
+    <script>const check = `{{ check }}`</script>
+    <script src="{% static 'member/js/login/login.js' %}"></script>
+    <script src="{% static 'member/js/login/login-id.js' %}"></script>
+    <script src="{% static 'member/js/login/login-pw.js' %}"></script>
+{% endblock %}

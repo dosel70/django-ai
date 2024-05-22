@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="map" style="width: 100%; height: 350px"></div>
+    </body>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c281ff5f552c978b368ddcb4e81b9cd1&libraries=services"></script>
+    <script>
+         // URL의 쿼리 문자열을 파싱하여 객체로 반환하는 함수
+        function parseQueryString() {
+            var queryString = window.location.search.substring(1);
+            var queryObject = {};
+            var pairs = queryString.split('&');
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i].split('=');
+                var key = decodeURIComponent(pair[0]);
+                var value = decodeURIComponent(pair[1]);
+                queryObject[key] = value;
+            }
+            return queryObject;
+        }
+
+        // 쿼리 문자열을 파싱하여 객체로 변환합니다.
+        var queryObject = parseQueryString();
+
+        // place_address와 place_name을 추출합니다.
+        var placeAddress = queryObject['place_address'];
+        var placeName = queryObject['place_name'];
+
+        // 추출한 정보를 사용하여 원하는 작업을 수행합니다.
+        console.log('Place Address:', placeAddress);
+        console.log('Place Name:', placeName);
+        // 이 곳에 지도 또는 다른 내용을 추가할 수 있습니다.
+        if (placeName.includes('snu')) {
+            placeName = '서울대학교';
+        }else if (placeName.includes('kaist')) {
+            placeName = '카이스트';
+         } else {
+            placeName = placeName
+        }
+
+        let mapContainer = document.getElementById("map"), // 지도를 표시할 div
+            mapOption = {
+                center: new kakao.maps.LatLng(37.499437, 127.035846), // 지도의 중심좌표
+                level: 2, // 지도의 확대 레벨
+            };
+        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+        let map = new kakao.maps.Map(mapContainer, mapOption);
+        // 주소-좌표 변환 객체를 생성합니다
+        let geocoder = new kakao.maps.services.Geocoder();
+        let addresses = [placeAddress];
+        // 주소로 좌표를 검색합니다
+        for (let i = 0; i < addresses.length; i++) {
+            geocoder.addressSearch(addresses[i], (result, status) => {
+                let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                if (status === kakao.maps.services.Status.OK) {
+                    // 결과값으로 받은 위치를 마커로 표시합니다
+                    let marker = new kakao.maps.Marker({
+                        map: map,
+                        position: coords,
+                    });
+                    // 인포윈도우로 장소에 대한 설명을 표시합니다
+                    let infowindow = new kakao.maps.InfoWindow({
+                        content: `<div style="width:150px;text-align:center;padding:6px 0;">`+ placeName + `</div>`,
+                    });
+                    infowindow.open(map, marker);
+                }
+                let positions = new Array();
+                positions.push(coords);
+                let markerPosition = new kakao.maps.LatLng(result[0].y, result[0].x);
+                // 마커를 생성합니다
+                let marker = new kakao.maps.Marker({
+                    position: markerPosition,
+                });
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                map.setCenter(positions[0]);
+                // 마커가 지도 위에 표시되도록 설정합니다
+                marker.setMap(map);
+            });
+        }
+    </script>
+</html>

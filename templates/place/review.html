@@ -1,0 +1,474 @@
+{% extends 'place/base.html' %}
+{% load static %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'place/css/detail.css' %}">
+<link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
+{% endblock %}
+{% block title %}장소공유 후기페이지{% endblock %}
+{% block content %}
+    {% if request.session.member %}
+        {% include  "header/main-page-header-login.html"%}
+    {% else %}
+        {% include "header/main-page-header-all.html" %}
+    {% endif %}
+    <div id="page-container">
+            <main id="main-app" style="visibility: visible">
+                <div></div>
+                <!-- 메인 바디쪽 -->
+                <div class="main-wrapper-content">
+                    <section>
+                        <div class="main-container-root">
+                            <div class="detail-header-container">
+                                <!-- 왼쪽 맨위 그림 쪽 -->
+                                <div class="detail-header-detail-image-area">
+                                    <div class="store-slider-container">
+                                        <div class="store-slider-slick-list">
+                                            <div class="slick-slider">
+                                                <!-- <img class="prod-image-detail" src="https://cdn2.wadiz.kr/2021/11/16/413d671e-223d-4ebc-85b2-62088b6bc68d.jpg/wadiz/resize/1200/format/jpg/quality/80/" alt="" /> -->
+                                                <div class="slick-list" style="height: 480px">
+                                                    <div class="slick-track" style="width: 4382px; opacity: 1; transform: translate3d(-626px, 0px, 0px)">
+                                                        <div class="slick-slide slick-cloned" aria-hidden="true" style="width: 626px">
+                                                            <div>
+                                                                <div style="width: 100%; display: inline-block">
+                                                                    <div class="store-slider-slick-background-image"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="slick-slide slick-active slick-current" id="big" aria-hidden="false" style="outline: none; width: 626px">
+                                                            <div>
+                                                                <div style="width: 100%; max-height: 100%; display: inline-block">
+                                                                    <!-- <div class="store-slider-slick-background-image" style="background-image: url('https://cdn2.wadiz.kr/2021/11/16/002723b4-8fd1-406d-90e7-de50140f187a.jpg/wadiz/resize/1200/format/jpg/quality/80/')"></div> -->
+                                                                    {% for place_file in place_files %}
+                                                                    <img
+                                                                        class="cover-img"
+                                                                        src="/upload/{{ place_file.path }}"
+                                                                        id="big-img"
+                                                                        style="margin-top: 35px"
+                                                                        width="70%"
+                                                                        height="100%"
+                                                                    />
+                                                                    {% endfor %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 미리보기 쪽 -->
+                                    <div class="prod-image" style="margin-top: 30px; margin-left: 171px">
+                                        {% for place_file in place_files %}
+                                        <div class="prod-image-item{% if forloop.first %} line-space{% endif %}">
+                                            <img src="/upload/{{ place_file.path }}" alt="" class="lazy-load-img" />
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div style="margin-left: -107px; width: 1134px; margin-top: 130px">
+                                        <div class="DetailContent_container">
+                                            <!-- 네비 쪽 -->
+                                            <nav class="DetailTab_container">
+                                                <ul>
+                                                    <li class="detail-tab">
+                                                        <a href="{% url 'place:detail' id=place_id %}">
+                                                            <span>상세보기</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="DetailTab_isActive">
+                                                          <a href="{% url 'place:review_list_api' place_id=place_id page=1 %}" id="review-link">
+{#                                                        <a href="{% url 'place:review_list' %}?place_id={{ place_id }}" id="review-link">#}
+                                                            <span>후기</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                            <!-- 네비 밑 쪽 -->
+                                            <div class="storeTabContentsWrapper">
+                                                <div class="storeTabContents">
+                                                    
+                                                    <!-- 후기 쪽 -->
+                                                    <div class="detail-satisfaction-container">
+                                                        <!-- 스토리 쪽 -->
+                                                        <div class="detail-satisfaction-summary-wrap">
+
+                                                            <!-- 펀딩 쪽 -->
+                                                            <div class="satisfaction-summary-containers">
+                                                                <h4 class="satisfaction-summary-title">평점</h4>
+                                                                <div class="rating-score-lg-full">
+                                                                    <div class="rating-score-icon"></div>
+                                                                        <span class="rating-score-score">0.0</span>
+                                                                        <span class="rating-score-max-score">5.0</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div></div>
+
+                                                        <!-- 아래 댓글 쪽 -->
+                                                        <div>
+                                                            <div class="funding-satisfaction-list-container">
+                                                                <div class="funding-satisfaction-list-wrapper">
+                                                                    <div class="common-comment-container-comment-ontainer">
+                                                                        <!-- 최신 순 쪽 -->
+                                                                        <section class="store-satisfaction-title-container">
+                                                                            <div class="store-satisfaction-title-filter-area">
+                                                                                <ul class="order-select-desktop-sort-container">
+                                                                                    <li class="order-select-desktop-sort-item order-select-desktop-active">최신순</li>
+                                                                                    <li class="order-select-desktop-sort-item">높은평점순</li>
+                                                                                    <li class="order-select-desktop-sort-item">낮은평점순</li>
+                                                                                </ul>
+                                                                                <a href="{% url 'review:place-write' %}?id={{ place_id }}">
+                                                                                    <button style="color: #008243; font-size: 12px">후기 작성</button>
+                                                                                </a>
+                                                                            </div>
+
+                                                                        </section>
+
+                                                                        <!-- 만족도 사진 쪽 -->
+                                                                        <div class="comment-container-comment-wrapper">
+
+
+                                                                        </div>
+                                                                        <button id="more">더보기</button>
+                                                                        <div></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div></div>
+                                                    </div>
+
+                                                    <!-- 구매전 반드시 확인 쪽 -->
+                                                    <div class="DetailStory_container">
+                                                        <!-- 프로젝트에 문제가 생겼어요 쪽 -->
+
+                                                        <!-- 맨밑 그림 쪽 -->
+                                                        <section style="margin-top: 190px">
+                                                            <div class="DetailPageRecommendationContainer_container">
+                                                                <div class="DetailPageRecommendationContainer_recommendationWrapper">
+                                                                    
+                                                                    <!-- 맨아래 두번쨰 그림 쪽 -->
+                                                                    <!-- <div class="AdBannerPanel_container"> -->
+                                                                    <!-- <div class="AdBannerPanel_bannerWrapper" style="flex-grow: 1">
+                                                                            <a href="https://www.wadiz.kr/web/campaign/detail/243124?acid=10047609&_refer_section_st=MHBD_2" class="AdvertisementBanner_container">
+                                                                                <p class="AdvertisementBanner_title">향기로 탈모균을 없애다, 무궁화 탈모 샴푸</p>
+                                                                                <div class="AdvertisementBanner_thumbnailWrap">
+                                                                                    <div aria-hidden="true" class="CardThumbnail_thumbnail" style="background-image: url('https://cdn1.wadiz.kr/images/20240129/1706501565512.png/wadiz/optimize')"></div>
+                                                                                    <div class="AdvertisementBanner_ad">AD</div>
+                                                                                    <div class="AdvertisementBanner_badge">
+                                                                                        바로가기
+                                                                                        <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="with-icon-icon" style="width: 12px; height: 12px">
+                                                                                            <path fill-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div> -->
+                                                                    <!-- <div class="AdBannerPanel_bannerWrapper" style="flex-grow: 1">
+                                                                            <a href="https://www.wadiz.kr/web/maker/detail/5718442?acid=10047813&_refer_section_st=MHBD_1" class="AdvertisementBanner_container">
+                                                                                <p class="AdvertisementBanner_title">매일 피부에 콜라겐 한알</p>
+                                                                                <div class="AdvertisementBanner_thumbnailWrap">
+                                                                                    <div class="CardThumbnail_thumbnail" style="background-image: url('https://cdn1.wadiz.kr/images/20240131/1706653322113.jpg/wadiz/optimize')"></div>
+                                                                                    <div class="AdvertisementBanner_ad">AD</div>
+                                                                                    <div class="AdvertisementBanner_badge">
+                                                                                        바로가기
+                                                                                        <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="with-icon-icon" style="width: 12px; height: 12px">
+                                                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                        </div> -->
+                                                                    <!-- </div> -->
+
+                                                                    <!-- 아래꺼 그림 목록 쪽 -->
+                                                                    <div class="RecommendationBest_container">
+
+                                                                        <!-- 맨밑 버튼 쪽 -->
+                                                                        <div class="RecommendationBest_linkButton">
+                                                                            <div class="RecommendationBest_buttonWrapper">
+                                                                                <a href="{% url 'place:list' %}" class="Button_lg l">
+                                                                                    <span>
+                                                                                        <span class="Button_children">
+                                                                                            전체보기
+                                                                                            <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="with-icon-icon ic">
+                                                                                                <path fill-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                                            </svg>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="DetailPageRecommendationContainer_banner">
+                                                                <a href="https://www.wadiz.kr/web/wcampaign/search?curatedTag=CLOSE_SOON" class="DetailPageRecommendationContainer_content">
+                                                                    <div class="DetailPageRecommendationContainer_title">마감임박 프로젝트는 어때요?</div>
+                                                                    <div class="DetailPageRecommendationContainer_description">
+                                                                        <span>지금 보러가기</span>
+                                                                        <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="with-icon-icon" style="width: 16px; height: 16px">
+                                                                            <path fill-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </a>
+                                                                <button class="DetailPageRecommendationContainer_close">
+                                                                    <svg viewBox="0 0 40 40" role="presentation" class="with-icon-icon g" style="width: 16px; height: 16px">
+                                                                        <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                                                    </svg>
+                                                                </button>
+                                                            </div>
+                                                        </section>
+                                                    </div>
+                                                </div>
+
+                                                <!-- 밑에쪽 오른쪽부분 -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 오른쪽 글씨 쪽 -->
+                                <div class="detail-header-detail-info-area" style="margin-left: 40px;">
+                                    <div class="detail-info-container">
+                                        <div class="detail-infoHeader-container">
+                                            <h2 class="detail-info-header-text-blind">스토어 스토리 상세페이지</h2>
+
+                                            <div>
+                                                <div id="move_button">
+                                                    <div class="FloatingButton_button"></div>
+                                                </div>
+                                            </div>
+                                            <div class="DetailInfoHeader_badgeContainer"></div>
+                                            <div class="DetailInfoHeader_titleInfo">
+                                                <h3 class="DetailInfoHeader_title">{{ place_title }}</h3>
+                                            </div>
+                                            <div class="DetailInfoHeader_participationInfo">
+                                                <div>
+                                                    <a class="DetailInfoHeader_rating" href="">
+                                                        <div class="RatingScore_smTitle">
+                                                            <div class="RatingScore_icon"></div>
+                                                            <span class="RatingScore_score">0.0</span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="DetailInfoHeader_orderInfo">
+                                                    <span class="DetailInfoHeader_text">0</span>
+                                                    명 참여
+                                                    <div>
+                                                        <button type="button" class="Tooltip_button" aria-describedby="Tooltip_1">
+                                                            <span class="Tooltip_label"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 가격 적혀있던 부분 !--->
+                                            <div class="DetailInfoHeader_buyInfo">
+                                                <div class="DetailInfoHeader_priceWrapper">
+                                                    <div class="DetailInfoHeader_priceArea">
+                                                        <input type="text" readonly name="price" value="{{ place_points }}"
+                                                        style="margin-right: -40px; width: 120px; line-height: 38px; font-size: 28px; font-weight: 700; outline: none">포인트
+{#                                                        <span>포인트</span>#}
+{#                                                        <span class="LabelBadge_badge">품절</span>#}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                             <!-- 가격 적혀있던 부분 !--->
+
+                                            <!-- 배송 혜택 부분 -->
+                                            <div class="DetailInfoHeader_productInfo DetailInfoHeader_productInfoDivider">
+                                                <dl>
+                                                    <div class="DetailInfoHeader_termsBox">
+                                                        <dt class="DetailInfoHeader_terms">장소의 주소</dt>
+                                                        <dd class="DetailInfoHeader_termsDescription">
+                                                            <div class="DeliveryInfoField_container">
+                                                                <div class="DeliveryInfoField_deliveryContent">
+                                                                    <span aria-hidden="true"></span>
+                                                                    <!-- class="DeliveryInfoField_deliveryDesc" -->
+                                                                    <ul class="">
+                                                                        <li>{{ school_member_address }}</li>
+                                                                        <!-- <li>
+                                                                            <div class="DetailInfoHeader_shippingChargeContainer">
+                                                                                <span class="DetailInfoHeader_shippingChargeText">배송비</span>
+                                                                                <span>3,500원</span>
+                                                                            </div>
+                                                                        </li> -->
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
+                                                    </div>
+                                                    <div class="DetailInfoHeader_termsBox">
+                                                        <dt class="DetailInfoHeader_terms">작성자</dt>
+                                                        <dd class="DetailInfoHeader_termsDescription">
+                                                            <div class="SupporterClubSubscriptionBanner_supporterClub">
+                                                                <span class="SupporterClubSubscriptionBanner_icon"></span>
+                                                                <div class="SupporterClubSubscriptionBanner_desc">
+                                                                    <p class="SupporterClubSubscriptionBanner_description">{{ member_name }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </dd>
+                                                    </div>
+                                                </dl>
+                                            </div>
+                                            <!-- 팝업 베너쪽 -->
+                                            <div class="PopBanner_container">
+                                                <div class="PopBanner_header">
+                                                    <button type="button" aria-label="배너 닫기">
+                                                        <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="with-icon-icon" aria-hidden="true" style="width: 16px; height: 16px">
+                                                            <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <img src class="PopBanner_banner" alt="" />
+                                            </div>
+                                        </div>
+
+                                        <!-- 상품 선택 -->
+                                        <div class="ProductSelectMenu_container">
+                                            <div class="ProductSelect_container">
+                                                <input type="checkbox" id="check-btn" class="ProductSelect_title menu" />
+
+                                                <div class="ProductSelect_moreButton"></div>
+                                                <div class="ProductSelect_moreButtons">
+                                                    <!-- <svg 
+                                                            viewBox="0 0 32 32"
+                                                            focusable="false"
+                                                            role="presentation"
+                                                            class="with-icon-icon"
+                                                            aria-hidden="true"
+                                                        >
+                                                            <path
+                                                                d="M16 9.6L26.4 20l-1.12 1.12L16 11.84l-9.28 9.28L5.6 20 16 9.6z"
+                                                            ></path>
+                                                        </svg> -->
+                                                </div>
+
+                                                <!-- ul쪽 -->
+                                                <label for="check-btn" class="ProductSelectMenu_defaultValue" style="cursor: pointer; margin-left: 14px">날짜 선택</label>
+                                                <ul class="menubars up">
+                                                    <li>
+                                                        <div class="ProductSelectMenuItem_container" style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px">
+                                                            <div class="ProductSelectMenuItem_titleWrapper ProductSelectMenuItem_bluredP">
+                                                                <div class="ProductSelectMenuItem_title">
+                                                                    <div class="ProductSelectMenuItem_name">{{place_date}}</div>
+                                                                    <div class="ProductSelectMenuItem_description">{{school_name}}</div>
+                                                                </div>
+{#                                                                <img class="title_img" src="https://cdn2.wadiz.kr/2021/11/16/91cd76ed-8601-443a-9ab9-d29e7693f3be.jpg/wadiz/quality/80/" alt="" />#}
+                                                            </div>
+                                                            <div class="ProductSelectMenuItem_bottom">
+                                                                <div class="ProductSelectMenuItem_left">
+                                                                    <p class="ProductSelectMenuItem">{{place_points}}포인트</p>
+                                                                </div>
+{#                                                                <a href="{% url place: %}">#}
+                                                                    <button class="Button_button ProductSelectMenuItem_outOfStock purchase-btn">
+                                                                        <span>
+                                                                            <span class="Button_children">대여 하기</span>
+                                                                        </span>
+                                                                    </button>
+{#                                                                </a>#}
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <!-- 재입고 알림신청 쪽 -->
+                                        <div class="ProductBuyInfo_container">
+                                            <div class="ProductFloatButton_container">
+                                                <div class="ProductFloatButton_wishButtonBox">
+                                                    <button aria-label="찜하기 버튼" aria-pressed="false" class="Button_button ProductFloatButton_wishButton like_btn" id="like-btn" type="button">
+                                                        <span>
+                                                            <span class="Button_children">
+                                                                <div>
+                                                                    <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="with-icon-icon" aria-hidden="true" style="width: 24px; height: 24px">
+                                                                        <path
+                                                                            d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
+                                                                        ></path>
+                                                                    </svg>
+                                                                    <span class="ProductFloatButton_count" id="like-count">{{ place_like_count }}</span>
+                                                                </div>
+                                                            </span>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <button class="Button_button Button_primary purchase-btn">
+                                                    <span>
+                                                        <span class="Button_children">
+                                                            <span>대여 하기</span>
+                                                        </span>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- 이전 펀딩 정보 쪽 -->
+
+                                        <!-- 엔드식스 주식회사 쪽 -->
+                                        <div class="SpaceLocationSection_map">
+                                            <iframe style="margin-top: 20px; height: 400px; width: 455px;" src="{% static 'map.html' %}?place_address={{ school_member_address }}&place_name={{ member_email }}" scrolling="no" frameborder="0" class="SpaceLocationMap_frame"></iframe>
+                                        </div>
+                                    </div>
+                                    <div class="DetailInfo_observer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+    {% include  "header/main-page-footer.html"%}
+        </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'public/js/modal.js' %}"></script>
+    <script>
+        const place_id = '{{ place_id }}'
+        const csrfToken = '{{ csrf_token }}'
+        const jsonData = JSON.stringify({'place_id': place_id})
+        // 좋아요
+        async function likePost(place_id) {
+            try {
+                const response = await fetch('/place/like/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: jsonData
+                });
+                if (!response.ok) {
+                    throw new Error('서버 응답 오류');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('에러:', error);
+            }
+        }
+        document.getElementById('like-btn').addEventListener('click', async function() {
+            const updatedLikes = await likePost(place_id);
+            if (updatedLikes) {
+                document.getElementById('like-count').textContent = updatedLikes.like_count;
+            }
+        });
+
+        {#결제 완료시 모달#}
+        purchaseBtns = document.querySelectorAll('.purchase-btn')
+        purchaseBtns.forEach((purchaseBtn) => {
+            purchaseBtn.addEventListener('click', (e) => {
+            let modalMessage = "<span>결제 완료되었습니다.</span>"
+            showWarnModal(modalMessage);
+            })
+        })
+    </script>
+    <script src="{% static 'place/js/detail.js' %}"></script>
+    <script src="{% static 'place/js/review-list.js' %}"></script>
+
+{% endblock %}

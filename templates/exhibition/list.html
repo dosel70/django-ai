@@ -1,0 +1,198 @@
+{% extends 'exhibition/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'exhibition/css/exhibition_list.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
+{% endblock %}
+
+{% block title %}공모전목록{% endblock %}
+
+{% block content %}
+    {% include  "header/main-page-header-login.html"%}
+    <div id="page-container">
+            <main id="main-app">
+                <div></div>
+                <div class="ain-wrapper-content">
+                    <div></div>
+                    <div class="desktop-search-result-container">
+                        <!-- 검색결과 쪽 -->
+                        <div class="desktop-search-result-head-container">
+                            <div class="desktop-search-result-keyword">공모전</div>
+                            <h2>목록</h2>
+                            <div class="desktop-search-result-number">{{ exhibitions|length }}</div>
+                            <div class="desktop-search-result-unit">개</div>
+                            <hr />
+                        </div>
+
+                        <!-- 전체 펀딩 오픈예정 쪽 -->
+                        <div class="DesktopSearchResult_tabContainer">
+                            <ul class="SearchResultTabs_tabContainer">
+                                <button type="button" class="Tab_tab Tab_first Tab_active Tab_rectangle Tab_sm">
+                                    <span>전체</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>진행중</span>
+                                </button>
+                                <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">
+                                    <span>종료</span>
+                                </button>
+                            </ul>
+                        </div>
+
+                        <!-- 목록 쪽 -->
+                        <div class="SearchResult_container">
+                            <!-- ad banner쪽 -->
+                            <div class="AdBanner_container">
+                                <div class="banner_eventBanner" style="background-color: rgb(210, 217, 222)">
+                                    <div class="banner_adBadge">AD</div>
+                                    <a href="" class="banner_link">
+                                        <div class="banner_inner">
+                                            <div class="banner_contents" style="background-image: url('https://cdn1.wadiz.kr/images/20240131/1706693471860.png/wadiz/optimize')">
+                                                <div class="banner_text">
+                                                    <p>9가지 솔루션 제공으로</p>
+                                                    <strong>편안한 무중력 쿠셔닝슈즈</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- 목록 페이지 쪽 -->
+                            <div class="SearchResult_cardContainer">
+                                {% for exhibition in exhibitions %}
+                                    <a href="{{ exhibition.get_absolute_url }}">
+                                        <div class="swiper-slide swiper-slide-active" style="width: 236.8px; margin-right: 24px">
+                                            <div class="css-1pulbqw">
+                                                <div class="css-3xk0il">
+                                                    {% for exhibitionfile in exhibition.exhibitionfile_set.all %}
+                                                        {% if exhibitionfile.preview %}
+                                                            <img src="/upload/{{ exhibitionfile.path }}" class="preview">
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </div>
+                                                <div class="css-qn01ot">
+                                                    <div class="css-18m1pdx">{{ exhibition.exhibition_title }}</div>
+                                                    <div class="css-ivvewn">성공 메이커 이야기 연말 결산</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+                <div></div>
+            </main>
+    {% include  "header/main-page-footer.html"%}
+        </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'exhibition/js/exhibition_list.js' %}"></script>
+{% endblock %}
+
+
+
+
+
+{#{% extends 'exhibition/base.html' %}#}
+{##}
+{#{% load static %}#}
+{#    #}
+{#{% block static %}#}
+{#    <link rel="stylesheet" href="{% static 'exhibition/css/exhibition_list.css' %}">#}
+{#    <link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">#}
+{#{% endblock %}#}
+{##}
+{#{% block title %}공모전목록{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    {% include "header/main-page-header-login.html" %}#}
+{#    <div id="page-container">#}
+{#        <main id="main-app">#}
+{#            <div></div>#}
+{#            <div class="ain-wrapper-content">#}
+{#                <div></div>#}
+{#                <div class="desktop-search-result-container">#}
+{#                    <!-- 검색결과 쪽 -->#}
+{#                    <div class="desktop-search-result-head-container">#}
+{#                        <div class="desktop-search-result-keyword">공모전</div>#}
+{#                        <h2>목록</h2>#}
+{#                        <div class="desktop-search-result-number">{{ page_obj.paginator.count }}</div>#}
+{#                        <div class="desktop-search-result-unit">개</div>#}
+{#                        <hr />#}
+{#                    </div>#}
+{##}
+{#                    <!-- 전체 펀딩 오픈예정 쪽 -->#}
+{#                    <div class="DesktopSearchResult_tabContainer">#}
+{#                        <ul class="SearchResultTabs_tabContainer">#}
+{#                            <button type="button" class="Tab_tab Tab_first Tab_active Tab_rectangle Tab_sm">#}
+{#                                <span>전체</span>#}
+{#                            </button>#}
+{#                            <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">#}
+{#                                <span>진행중</span>#}
+{#                            </button>#}
+{#                            <button type="button" class="Tab_tab Tab_first Tab_rectangle Tab_sm">#}
+{#                                <span>종료</span>#}
+{#                            </button>#}
+{#                        </ul>#}
+{#                    </div>#}
+{##}
+{#                    <!-- 목록 쪽 -->#}
+{#                    <div class="SearchResult_container">#}
+{#                        <!-- ad banner쪽 -->#}
+{#                        <div class="AdBanner_container">#}
+{#                            <div class="banner_eventBanner" style="background-color: rgb(210, 217, 222)">#}
+{#                                <div class="banner_adBadge">AD</div>#}
+{#                                <a href="" class="banner_link">#}
+{#                                    <div class="banner_inner">#}
+{#                                        <div class="banner_contents" style="background-image: url('https://cdn1.wadiz.kr/images/20240131/1706693471860.png/wadiz/optimize')">#}
+{#                                            <div class="banner_text">#}
+{#                                                <p>9가지 솔루션 제공으로</p>#}
+{#                                                <strong>편안한 무중력 쿠셔닝슈즈</strong>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            </div>#}
+{#                        </div>#}
+{##}
+{#                        <!-- 목록 페이지 쪽 -->#}
+{#                        <div id="exhibition-list" class="SearchResult_cardContainer">#}
+{#                            {% for exhibition in page_obj %}#}
+{#                                <a href="{{ exhibition.get_absolute_url }}">#}
+{#                                    <div class="swiper-slide swiper-slide-active" style="width: 236.8px; margin-right: 24px">#}
+{#                                        <div class="css-1pulbqw">#}
+{#                                            <div class="css-3xk0il">#}
+{#                                                {% for exhibitionfile in exhibition.exhibitionfile_set.all %}#}
+{#                                                    {% if exhibitionfile.preview %}#}
+{#                                                        <img src="/upload/{{ exhibitionfile.path }}" class="preview">#}
+{#                                                    {% endif %}#}
+{#                                                {% endfor %}#}
+{#                                            </div>#}
+{#                                            <div class="css-qn01ot">#}
+{#                                                <div class="css-18m1pdx">{{ exhibition.exhibition_title }}</div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </a>#}
+{#                            {% endfor %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div></div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div></div>#}
+{#        </main>#}
+{#    {% include "header/main-page-footer.html" %}#}
+{#    </div>#}
+{#{% endblock %}#}
+{##}
+{#{% block js %}#}
+{#    <script src="{% static 'exhibition/js/exhibition_list.js' %}"></script>#}
+{#{% endblock %}#}

@@ -1,0 +1,107 @@
+{% extends 'login/base.html' %}
+{% load static %}
+
+{% block title %}로그인{% endblock %}
+{% block content %}
+    <!--헤더-->
+        <div class="web-header">
+            <div class="web-header-large">
+                <header class="header-wrapper">
+                    <div class="header-container">
+                        <h1 class="wadiz-logo">
+                            <a href="">
+                                <span class="label">원랩</span>
+                                <img id="one-lab" src="{% static 'public/images/header-logo_RE.png' %}" alt="" />
+                            </a>
+                        </h1>
+                        <!--메뉴 탭-->
+                        <ul class="desktop-container">
+                            <!--원랩-->
+                            <li class="desktop-item">
+                                <a class="desktop-link" href=""><span>원랩</span></a>
+                            </li>
+                            <!--공지-->
+                            <li class="desktop-item">
+                                <a class="desktop-link" href=""><span>공지</span></a>
+                            </li>
+                            <!--장소공유-->
+                            <li class="desktop-item">
+                                <a class="desktop-link" href=""><span>장소공유</span></a>
+                            </li>
+                            <!--커뮤니티-->
+                            <li class="desktop-item">
+                                <a class="desktop-link" href=""><span>커뮤니티</span></a>
+                            </li>
+                            <!--학교-->
+                            <li class="desktop-item">
+                                <a class="desktop-link" href=""><span>학교</span></a>
+                            </li>
+                        </ul>
+                        <div class="web-header-utils">
+                            <!--검색창-->
+                            <div class="desktop-search-app-container">
+                                <form>
+                                    <div class="search-controller-container" tabindex="-1">
+                                        <div class="search-tag-empty-tag"></div>
+                                        <div class="search-controller-keyword">
+                                            <input
+                                                type="search"
+                                                placeholder="새로운 일상이 필요하신가요?"
+                                                aria-label="검색"
+                                                value=""
+                                            />
+                                        </div>
+                                        <button type="submit" class="search-controller-search-icon" aria-label="검색">
+                                            <svg
+                                                viewBox="0 0 40 40"
+                                                focusable="false"
+                                                role="presentation"
+                                                class="withicon-icon"
+                                                aria-hidden="true"
+                                                style="width: 24px; height: 24px;"
+                                            >
+                                                <path fill="none" d="M0 0h40v40H0z"></path>
+                                                <path
+                                                    d="M29.2 27.91a14.38 14.38 0 1 0-1.42 1.4l7.16 7.15.07.08 1.41-1.41zM18.45 6a12.36 12.36 0 0 1 8.35 3.23 12.24 12.24 0 0 1 4 8.59A12.39 12.39 0 1 1 17.88 6z"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                           <!--로그인 회원가입-->
+                            <div class="header-desktop-user">
+                                <div class="user-container">
+                                    <button type="button" class="user-btn-sign" onclick="location.href='{% url 'member:login' %}'">로그인</button
+                                    ><button data-event="iam.signup" class="user-btn-sign" onclick="location.href='/member/join-normal/'">회원가입</button>
+                                </div>
+                            </div>
+                            <!--포인트 충전-->
+                            <div class="charge-point">
+                                <button aria-label="포인트 충전" class="charge-point-button" type="button" onclick="location.href='/point/new/'" >
+                                    <span><span class="button-children">포인트 충전</span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <!--헤더 상세 컨텐츠-->
+        <div class="main-wrapper-content"></div>
+        <div>
+            <div class="categorybar-container">
+                <div class="categorybar-main-categories-wrapper">
+                    <ul class="categorybar-main-categories">
+                        <li class="categorybar-main-category">장소공유목록</li>
+                        <li class="categorybar-main-category">원랩목록</li>
+                        <li class="categorybar-main-category">질의응답</li>
+                        <li class="categorybar-main-category">자료공유</li>
+                        <li class="categorybar-main-category">공모전·대회</li>
+                        <li class="categorybar-main-category">회사소개</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+

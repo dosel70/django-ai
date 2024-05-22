@@ -1,0 +1,428 @@
+{% extends 'place/base.html' %}
+{% load static %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'place/css/write.css' %}">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+{% endblock %}
+{% block title %}장소공유 글쓰기{% endblock %}
+{% block content %}
+    <div id="root">
+            <div id="layout-container">
+                <div class="layout-main">
+                    <!-- 왼쪽 사이드바 -->
+                    <div class="sidebar-layout-contents">
+                        <div class="sidebar-reword-info-container">
+                            <div class="sidebar-reward-info-flag-group">
+{#                                <span class="sidebar-reward-info-flag1">프로젝트</span>#}
+                                <span class="sidebar-reward-info-flag2">작성 중</span>
+                            </div>
+                            <a href="" class="sidebar-reward-info-project-name" target="_blank"> {{ request.session.member.member_name }}님<br />글 작성 페이지 </a>
+                            <button class="project-number-box" type="button">
+                                <span>
+{#                                    <span class="project-number-text"> 프로젝트 번호 272066 </span>#}
+{#                                    <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="down-icon-svg" aria-hidden="true" style="width: 20px; height: 20px">#}
+{#                                        <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>#}
+{#                                    </svg>#}
+                                </span>
+                            </button>
+                        </div>
+                        <nav class="sidebar-menu-list-container">
+                            <div class="sidebar-menu-list-margin"></div>
+                            <ul>
+                                <li>
+                                    <a href="" class="sidebar-menu-item-nav-link"> 마이 포스트 </a>
+                                    <a href="" class="sidebar-menu-item-nav-link result">{{ total_post_count }}개</a>
+                                </li>
+                            </ul>
+                            <ul class="sidebar-sub-menus hidden">
+                                {% for place in places %}
+                                    <li class="sidebar-sub-menu">
+                                        <a href="{% url 'place:detail' id=place.id %}" class="sidebar-menu-item-nav-link sub">{{ place.place_title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- 저장버튼 클릭시 전송될 form -->
+                                <form action="{% url 'place:write' %}" method="post" name="write-form" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                    <!-- 페이지 루트 -->
+                    <div id="layout-contents" class="layout-contents">
+                        <section class="page-container">
+
+                            <ol class="current-page-position-list">
+                                <li class="page-position-item">장소공유</li>
+                            </ol>
+                            <div class="maker-info-container-btn-wrapper">
+                                <h2 class="page-title">장소공유 글쓰기</h2>
+                                <button class="save-btn">
+                                    <span>
+                                        <span class="save-btn-text">저장하기</span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="page-guide">
+                                <button class="banner-link-button-container" type="button">
+                                    <div class="banner-link-button-icon">
+                                        <i class="banner-guide-icon"></i>
+                                    </div>
+                                    <div class="banner-link-button-content">
+                                        <p class="banner-link-button-description">다른 메이커들 다 본다는</p>
+                                        <strong class="banner-link-button-title">필수 가이드 모음집</strong>
+                                    </div>
+                                </button>
+                                <button type="button" class="banner-link-button-container banner-guide-button">
+                                    <div class="banner-link-button-icon">
+                                        <i class="banner-guide-gpt-icon"></i>
+                                    </div>
+                                    <div class="banner-link-button-content">
+                                        <p class="banner-link-button-content"></p>
+                                        <p class="banner-link-button-description">궁금한 모든 것을 물어보세요</p>
+                                        <strong class="banner-link-button-title">AI 어드바이저</strong>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <!-- 헤더 navigation -->
+                            <div class="page-content">
+                                <nav class="project-navbar-container">
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="overflow: hidden; border-radius: 999px;">
+                                            <h1 class="nav-logo">
+                                                <!-- <span class="blind-text-hidden">메이커 스튜디오</span> -->
+                                            </h1>
+                                        </div>
+                                        <span style="padding-left: 10px; color: #008243; font-weight: bold">ONELAB</span>
+                                    </div>
+                                    <div class="project-navbar-maker">
+                                        <div class="profile-img">
+                                            <span></span>
+                                        </div>
+                                        <!-- 회원 이름 -->
+                                        <div>{{ request.session.member.member_name }}님</div>
+                                    </div>
+                                    <div class="project-navbar-btn-group">
+                                        <button type="button" class="pre-save-btn">
+                                            <span>
+                                                <span class="pre-save-btn-text">저장 하기</span>
+                                            </span>
+                                        </button>
+                                        <!-- 알림 아이콘 -->
+                                    <div class="announce-button-container">
+                                        <img src="https://static.wadiz.kr/studio/funding/static/media/announcement.56f4b8e3.svg" alt="" class="announce-button-icon">
+                                        <span class="badge-container"></span>
+                                        <div class="announce-pop-over-container">
+                                            <div class="announce-list-container">
+                                                <strong class="announce-list-title">안내</strong>
+                                                <ul class="announce-list">
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                            <span class="important-badge-container">
+                                                                <span class="important-text-badge">중요</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 24일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title important">
+                                                                프로젝트 카테고리 확장 및 기능 개편
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                            <span class="important-badge-container">
+                                                                <span class="important-text-badge">중요</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 24일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title important">
+                                                                펀딩.프리오더 요금제 서비스 개편
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                결제일 및 환불 정책 개편 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                서포터 안심번호 서비스 도입
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                '오늘 데이터 한번에 보기' 오픈
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                배송
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                추석 연휴 배송정보 사전 제공 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                펀딩/프리오더 요금제 개편 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                새소식 알림 서비스 오류 해결 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                프리오더 서비스 정책 변경 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="announce-detail-drawer-container">
+                                                    <div class="announce-detail-drawer-btn-group">
+                                                        <button class="announce-detail-drawer-back-btn" type="button">
+                                                            <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="announce-drawer-icon" aria-hidden="true" style="width: 24px; height: 24px;">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.076 2.576l.848.848L8.35 12l8.575 8.576-.848.848L6.65 12l9.425-9.424z"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <button class="exit-button" type="button">
+                                            <span>
+                                                <span class="exit-button-text">나가기</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </nav>
+                                
+                                    <section class="section-container" style="max-width: 630px">
+                                        <div class="section-header">
+                                            <h3 class="section-title">
+                                                제목
+                                                <span class="blind-text-hidden">필수</span>
+                                            </h3>
+                                        </div>
+                                        <div class="section-description">
+                                            <p>장소 공유글의 제목을 작성해 주세요.</p>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="text-field">
+                                                <input type="text" maxlength="30" name="place-title" id="title-input" class="maker-input input-maker-name must-input" placeholder="제목 입력" />
+                                            </div>
+                                            <em class="helper-msg">30자 남음</em>
+                                        </div>
+                                    </section>
+                                    <section class="section-container" style="max-width: 630px">
+                                        <div class="section-header profile">
+                                            <h3 class="section-title">
+                                                첨부파일
+                                                <span class="blind-text-hidden">필수</span>
+                                            </h3>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="make-profile-img-container">
+                                                <div class="img-form-field">
+                                                    <div class="img-form-field-btn-wrapper">
+                                                        <label for="" class="img-file-btn-label">
+                                                            <button class="img-file-btn" type="button">
+                                                                <i class="icon-camera"></i>
+                                                                등록하기
+                                                            </button>
+                                                            <div class="img-file-btn-input">
+                                                                <input class="file must-input" id="file-input" accept="image/jpg,image/jpeg,image/png" name="upload-file" placeholder="" type="file" value="" multiple/>
+                                                            </div>
+                                                        </label>
+                                                        <em class="helper error"></em>
+                                                        <em class="helper img-form-field-helper">3MB 이하의 JPG, JPEG, PNG 파일</em>
+                                                        <em class="helper img-form-field-helper">해상도 300x300 픽셀 이상 / 최대 4개까지 가능</em>
+                                                    </div>
+                                                    <div class="prev-img-field-container">
+                                                        <!-- 미리보기 이미지 및 x 버튼은 이곳에 추가됩니다. -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section class="section-container" style="max-width: 630px">
+                                        <div class="section-header">
+                                            <h3 class="section-title">
+                                                포인트
+                                                <span class="blind-text-hidden">필수</span>
+                                            </h3>
+                                        </div>
+                                        <div class="section-description">
+                                            <p>장소를 공유하고 받을 포인트를 입력해 주세요.</p>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="text-field">
+                                                <input type="text" name="place-points" id="point-input" class="maker-input input-maker-name must-input" placeholder="포인트 입력" />
+                                                <span class="text-field-fixed-text">포인트</span>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <!-- 장소등록 -->
+                                    <section class="section-container" style="max-width: 630px">
+                                        <div class="section-header">
+                                            <h3 class="section-title">대여 가능 날짜</h3>
+                                        </div>
+                                        <div class="section-description">
+                                            <p>원랩의 회원들이 해당 장소를 대여할 수 있는 날짜를 선택해 주세요.</p>
+                                        </div>
+
+                                        <!-- 날짜 쪽 -->
+                                        <div class="section-content">
+                                            <div>
+                                                <div class="date-field-container">
+                                                    <div class="ant-picker date-picker" style="width: 100%">
+                                                        <div class="ant-picker-input">
+                                                            <input name="place-date" class="must-input" placeholder="예시) 2024-02-20" autocomplete="off" id="change-input" type="date" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 달력 쪽 -->
+                                    </section>
+                                    <section class="section-container">
+                                        <div style="max-width: 630px">
+                                            <div class="section-header">
+                                                <h3 class="section-title section-is-required">대여 가능 시간</h3>
+                                                <div class="section-guide"></div>
+                                            </div>
+                                            <div class="section-description">원랩 회원들에게 장소에 대한 설명과 대여가 가능한 시간을 함께 공유해 주세요.</div>
+                                            <div class="section-content">
+                                                <div class="story-summary-field-container">
+                                                    <div class="field form-field form-field-textarea-field">
+                                                        <div class="wide column-2"></div>
+                                                        <div class="wide column-4">
+                                                            <div class="wz input">
+                                                                <textarea class="content-textarea must-input" id="content-input" placeholder="내용 입력" name="place-content" maxlength="2000" rows="10" style="resize: none;"></textarea>
+                                                            </div>
+                                                            <em class="helper form-field-textarea-helper">2000자 남음</em>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section class="section-container" style="max-width: 630px">
+                                        <div class="section-header profile">
+                                            <h3 class="section-title">
+                                                문의 이메일
+                                                <span class="blind-text-hidden">필수</span>
+                                            </h3>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="text-field">
+                                                <input type="text" name="place-ask-email" id="email-input" class="maker-input input-email must-input" placeholder="이메일 입력" value="" />
+                                            </div>
+                                        </div>
+                                    </section>
+
+                                    <section class="section-container" style="max-width: 630px">
+                                        <div class="section-header profile">
+                                            <h3 class="section-title">홈페이지 URL</h3>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="text-field">
+                                                <input type="text" name="place-url" class="maker-input input-id must-input" placeholder="홈페이지 URL 입력" value="" />
+                                            </div>
+                                        </div>
+                                    </section>
+                                </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'place/js/write.js' %}"></script>
+{% endblock %}

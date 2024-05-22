@@ -1,0 +1,87 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+@font-face {
+    font-family: GabiaHeuldot;
+    src: url('../font/GabiaHeuldot.ttf');
+}
+
+div.warn-modal {
+    height: 400px;
+    width: 400px;
+    font-family: GabiaHeuldot;
+}
+
+.content-wrap span {
+    font-family: GabiaHeuldot;
+    margin-top: 10px;
+    margin-left: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.content-wrap input {
+    font-family: GabiaHeuldot;
+    outline: none;
+    border: 1px solid #9a9a9a;
+    height: 50px;
+    width: 80%;
+    margin-bottom: 30px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.content-wrap input::placeholder {
+    font-family: GabiaHeuldot;
+    font-size: 16px;
+}
+
+.school-submit-btn {
+    font-family: GabiaHeuldot;
+    border: 1px solid #008243;
+    border-radius: 5px;
+    background: #008243;
+    padding: 10px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.close-btn {
+    font-family: GabiaHeuldot;
+    cursor: pointer;
+    margin-left: 40px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+div.modal2 {
+    display: none;
+    position: fixed;
+    flex-direction: column;
+    inset: 0px;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #8586898a;
+}
+
+div.warn-modal2 {
+    box-sizing: border-box;
+    position: unset;
+    width: 288px;
+    margin: 20vh 0px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(33 35 41 / 12%) 0px 2px 12px;
+    border-radius: 8px;
+}
+
+div.warn-modal2 {
+    padding: 24px;
+}
+
+div#content-wrap2 span{
+    display: block;
+}

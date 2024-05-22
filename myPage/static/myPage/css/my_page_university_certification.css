@@ -1,0 +1,394 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    --rpv-core__annotation--link-hover-background-color: rgba(255, 255, 0, .2);
+    --rpv-core__annotation-popup-wrapper-background-color: #faf089;
+    --rpv-core__annotation-popup-wrapper-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
+    --rpv-core__annotation-popup-content-border-top-color: #1a202c;
+    --rpv-core__arrow-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__asking-password-color: #000;
+    --rpv-core__asking-password-wrapper-background-color: #fff;
+    --rpv-core__asking-password-wrapper-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__button-background-color: rgba(0, 0, 0, .3);
+    --rpv-core__button-color: #000;
+    --rpv-core__doc-error-background-color: #fff;
+    --rpv-core__doc-error-text-background-color: #c02424;
+    --rpv-core__doc-error-text-color: #fff;
+    --rpv-core__doc-loading-background-color: #fff;
+    --rpv-core__full-screen-target-background-color: #fff;
+    --rpv-core__inner-page-background-color: #fff;
+    --rpv-core__menu-divider-border-bottom-color: rgba(0, 0, 0, .3);
+    --rpv-core__menu-item-color: #000;
+    --rpv-core__menu-item--hover-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__menu-item--disabled-color: rgba(0, 0, 0, .3);
+    --rpv-core__minimal-button-color: #000;
+    --rpv-core__minimal-button--hover-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__minimal-button--disabled-color: rgba(0, 0, 0, .3);
+    --rpv-core__minimal-button--selected-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__modal-body-background-color: #fff;
+    --rpv-core__modal-body-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__modal-overlay-background-color: rgba(0, 0, 0, .5);
+    --rpv-core__page-layer-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, .2);
+    --rpv-core__popover-body-background-color: #fff;
+    --rpv-core__popover-body-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__popover-body-color: #000;
+    --rpv-core__primary-button-background-color: #2566e8;
+    --rpv-core__primary-button-color: #fff;
+    --rpv-core__progress-bar-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__progress-bar-progress-background-color: #2566e8;
+    --rpv-core__progress-bar-progress-color: #fff;
+    --rpv-core__separator-border-bottom-color: rgba(0, 0, 0, .3);
+    --rpv-core__spinner-border-color: rgba(0, 0, 0, .4);
+    --rpv-core__spinner-border-transparent-color: transparent;
+    --rpv-core__splitter-background-color: transparent;
+    --rpv-core__splitter--hover-background-color: rgba(0, 0, 0, .2);
+    --rpv-core__text-layer-text--selection-background-color: rgb(0, 0, 255, 1);
+    --rpv-core__text-layer-text--selection-color: transparent;
+    --rpv-core__textbox-background-color: #fff;
+    --rpv-core__textbox-border-color: rgba(0, 0, 0, .2);
+    --rpv-core__textbox-color: #000;
+    --rpv-core__tooltip-body-background-color: #000;
+    --rpv-core__tooltip-body-color: #fff;
+}
+
+:root {
+    --scrollbar-width: 0;
+}
+
+html {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+html {
+    font-family: Pretendard,-apple-system,blinkmacsystemfont,system-ui,roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    line-height: inherit;
+    color: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: inherit;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+div {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+main {
+    display: block;
+}
+
+h2 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+h3 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+span {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+em {
+    font-weight: inherit;
+    font-style: normal;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+p {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+:after {
+    box-sizing: border-box;
+}
+
+:before {
+    box-sizing: border-box;
+}
+
+/* 헤더 위치  */
+.web-header {
+    z-index: 1201;
+    top: 0;
+    transition: top .25s;
+    width: 100%;
+}
+
+/* 메인 css style 적용 */
+.main-wrapper-content {
+    padding-bottom: 0;
+    padding-top: 0;
+    transition: padding-top .25s;
+}
+
+.my-reward-container-container{
+    margin: 0 auto;
+    padding: 32px 0;
+    max-width: 1032px;
+}
+
+.my-reward-container-title{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.35;
+    display: block;
+    margin: 0 auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: 1032px;
+    text-align: left;
+    padding: 0 0 32px;
+}
+
+.my-reward-container-column {
+    padding: 0 16px;
+    position: relative;
+}
+
+.simple-pay-info{
+    max-width: 420px;
+}
+
+.simple-pay-info-title {
+    margin-bottom: 32px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #495057;
+}
+
+.simple-pay-card {
+    position: relative;
+    transform: translateY(0);
+    transition: max-width .45s,transform .45s;
+    margin-bottom: 16px;
+    width: 100%;
+    overflow: hidden;
+    color: #1d2129;
+    max-width: 400px;
+}
+
+.simple-pay-card-info {
+    max-width: 464px;
+}
+
+.simple-pay-card-unregisted {
+    display: block;
+    text-align: center;
+}
+.simple-pay-card-add-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: dashed 1px #00c4c4;
+    border-radius: 9px;
+    background-color: #fafbfc;
+    cursor: pointer;
+    padding: 44px 0;
+    color: #60656a;
+    font-size: 13px;
+}
+
+.simple-pay-card-add-card {
+    padding: 72px 0;
+}
+div.image {
+    position:absolute;
+    cursor: pointer;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 420px;
+    height: 238.33px;
+}
+
+div.cancel {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("/staticfiles/images/cancel.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    right: 15px;
+    top: 0;
+}
+.with-icon-icon {
+    display: block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.simple-pay-card-add-icon {
+    width: 32px;
+    height: 32px;
+    color: #00b2b2;
+    font-size: 24px;
+}
+
+
+.simple-pay-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 8px 0;
+    color: #00b2b2;
+}
+
+.simple-pay-card-description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #868e96;
+}
+
+.simple-pay-card-notice {
+    display: none;
+    position: relative;
+    padding-top: 17px;
+    padding-left: 27px;
+    line-height: 18px;
+}
+
+.with-icon-inline {
+    display: inline;
+}
+
+.simple-pay-card-notice svg {
+    position: absolute;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    color: rgba(0,0,0,.54);
+    font-size: 18px;
+}
+
+.simple-pay-card-registed {
+    display: none;
+}
+
+.simple-pay-card-credit-card {
+    padding: 106px 20px;
+    position: relative;
+    border: 1px solid #5cdede;
+    border-radius: 8px;
+    background-color: #e7f9f9;
+}
+
+.simple-pay-card-edit-button {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    padding: 24px;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.simple-pay-card-delete-icon {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+}
+
+.simple-pay-card-created-at {
+    font-weight: 400;
+    line-height: 1.5;
+    display: block;
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    margin-top: 6px;
+    text-align: center;
+    color: #868e96;
+    font-size: 14px;
+}
+
+.simple-pay-card-created-at>span {
+    margin-left: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.simple-pay-card-registed .simple-pay-card-notice {
+    display: block;
+    margin-top: 12px;
+    padding: 0;
+}
+
+.simple-pay-info-notice-list {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-left: 16px;
+    color: #495057;
+}
+
+.simple-pay-info-notice-list li {
+    list-style: disc;
+}
+
+.my-reward-container-container:after {
+    display: block;
+    clear: both;
+    content: "";
+}

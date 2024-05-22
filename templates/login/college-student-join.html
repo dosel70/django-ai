@@ -1,0 +1,1145 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/css/login/college-student-join.css' %}">
+{% endblock %}
+{% block title %}Oauth 회원가입{% endblock %}
+{% block content %}
+    <div class="page-container">
+      <main class="main-app">
+        <div class="web-header">
+          <div class="web-header-large">
+            <header class="header-wrapper web-header-simple">
+              <div class="header-container">
+                <h1 class="wadiz-logo">
+                  <a href="/">
+{#                    <img#}
+{#                    src="../../oneLabProject/static/public/images/header-logo.png"#}
+{#                    width="100px"#}
+{#                    height="65px"#}
+{#                    alt=""/>#}
+                  </a>
+                </h1>
+                <ul class="gnb-large">
+                  <li class="login">
+                    <a href="#" class="item"><span>로그인</span></a>
+                  </li>
+                  <li class="signup">
+                    <a href="#" class="item"><span>회원가입</span></a>
+                  </li>
+                </ul>
+              </div>
+            </header>
+          </div>
+        </div>
+        <div class="main-wrapper">
+          <div class="main-container">
+
+            <div class="easy-login-box">
+              <div class="easy-login-title-box">
+                <div class="easy-login-title-inner">
+                  <div>
+                    <h2 class="easy-login-title">
+                      간편가입
+                    </h2>
+                  </div>
+                </div>
+              </div>
+                {#          구글 카카오 네이버 있던 자리  div#}
+              <div>
+                <button class="login-btn kakao" type="button">
+                  <span>
+                    <span class="login-btn-text">
+                      <svg
+                        viewBox="0 0 32 32"
+                        focusable="false"
+                        role="presentation"
+                        class="login-btn-icon"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M16 4.64c-6.96 0-12.64 4.48-12.64 10.08 0 3.52 2.32 6.64 5.76 8.48l-.96 4.96 5.44-3.6 2.4.16c6.96 0 12.64-4.48 12.64-10.08S22.96 4.56 16 4.64z"
+                        ></path>
+                      </svg>
+                      카카오로 시작하기
+                    </span>
+                  </span>
+                </button>
+                <button class="login-btn naver" type="button">
+                  <span>
+                    <span class="login-btn-text">
+                      <svg
+                        viewBox="0 0 32 32"
+                        focusable="false"
+                        role="presentation"
+                        class="login-btn-icon"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M19.52 5.76v10.32L12.48 5.76H4.8v20.48h7.68V15.92l7.12 10.32h7.6V5.76z"
+                        ></path></svg
+                      >네이버로 시작하기
+                    </span>
+                  </span>
+                </button>
+                <button class="login-btn google" type="button">
+                  <span>
+                    <span class="login-btn-text">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                        focusable="false"
+                        role="presentation"
+                        class="login-btn-icon"
+                      >
+                        <defs>
+                          <path id="a" d="M0 0h348v46H0z"></path>
+                        </defs>
+                        <g fill="none" fill-rule="evenodd">
+                          <g transform="translate(-16 -13)">
+                            <use></use>
+                            <path
+                              stroke="#DADCE0"
+                              d="M-.5-.5h349v47H-.5z"
+                            ></path>
+                          </g>
+                          <path
+                            fill="#4285F4"
+                            d="M18.64 10.205c0-.639-.057-1.252-.164-1.841H10v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"
+                          ></path>
+                          <path
+                            fill="#34A853"
+                            d="M10 19c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H1.957v2.332A8.997 8.997 0 0 0 10 19z"
+                          ></path>
+                          <path
+                            fill="#FBBC05"
+                            d="M4.964 11.71A5.41 5.41 0 0 1 4.682 10c0-.593.102-1.17.282-1.71V5.958H1.957A8.996 8.996 0 0 0 1 10c0 1.452.348 2.827.957 4.042l3.007-2.332z"
+                          ></path>
+                          <path
+                            fill="#EA4335"
+                            d="M10 4.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C14.463 1.891 12.426 1 10 1a8.997 8.997 0 0 0-8.043 4.958L4.964 8.29C5.672 6.163 7.656 4.58 10 4.58z"
+                          ></path>
+                          <path d="M0 0h20v20H0z"></path>
+                        </g></svg
+                      >구글로 시작하기</span
+                    >
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="content-space-div"></div>
+            <div class="easy-join-box">
+              <div class="esay-join-radio-bar">
+                <div class="radio-box">
+                  <label for="college-student" class="radio-label">
+                    <div class="outer-radio-box outer-radio-choice">
+                      <div class="inner-radio-box inner-radio-choice"></div>
+                    </div>
+                    <span class="radio-span">대학생</span>
+                    <input
+                      type="radio"
+                      name="student"
+                      id="college-student"
+                      style="display: none;"
+                      class="radio-input"
+                    />
+                  </label>
+                </div>
+                <div class="radio-box">
+                  <label for="student" class="radio-label radio-high-school">
+                    <div class="outer-radio-box">
+                      <div class="inner-radio-box"></div>
+                    </div>
+                    <span class="radio-span">고등학생</span>
+                    <input
+                      type="radio"
+                      name="student"
+                      id="student"
+                      style="display: none;"
+                      class="radio-input"
+                    />
+                  </label>
+                </div>
+              </div>
+              <h3 class="easy-join-title">
+                대학생 간편가입
+              </h3>
+                {% if memberType == 'kakao' or memberType == 'naver' %}
+                 <form action="{% url 'member:join' %}" method="post" enctype="multipart/form-data" name="join-normal">
+                    {% csrf_token %}
+                    <div class="easy-join-email-container">
+                        <div class="easy-join-email-inner">
+                            <label class="easy-join-email-label">이메일</label>
+                            <div class="easy-join-email-box">
+                                <div class="easy-join-email-input-box">
+                                    <input name="email" value="{{ memberEmail }}" type="email" class="email-input" />
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="easy-join-email-inner">
+                            <label class="easy-join-email-label">학교 이메일</label>
+                            <div class="easy-join-email-box">
+                                <div class="easy-join-email-input-box">
+                                    <input name="member-school-email" placeholder="ex) abc123@smu.ac.kr" type="email" class="email-input el-input" />
+                                </div>
+                                <button class="email-submit-btn" disabled="true">
+                                    <span>
+                                        <span> 인증하기 </span>
+                                    </span>
+                                </button>
+                                 
+                                <button class="email-edit-btn" type="button">
+                                    <span>
+                                        <span> 수정 </span>
+                                    </span>
+                                </button>
+                            </div>
+                            <p class="validate-msg email-validate">이메일 정보를 입력해 주세요</p>
+                        </div>
+                        <div class="certification-number-form">
+                            <div class="certification-number-container">
+                                <label class="certification-number-label">인증번호</label>
+                                <div class="certification-number-box">
+                                    <div class="certification-number-input-box"><input name="authCode" maxlength="6" placeholder="인증번호 입력" type="tel" class="certification-number-input" /><span class="count-time">3:00</span></div>
+                                    <button class="certification-number-btn" type="submit">
+                                        <span>
+                                            <span class="certification-number-btn-text">확인 </span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <p class="guide-msg certification-validate validate">인증번호 6자리를 입력하세요.</p>
+                                <p class="validate-msg certification-validate">인증번호를 정확히 입력해 주세요.</p>
+                                <p class="validate-msg certification-validate">인증 유효 시간을 초과했습니다. 다시 시도해 주세요.</p>
+                            </div>
+                        </div>
+                        <div class="retry" style="display: none">
+                            <span class="retry-inner"> 인증번호 다시 보내기 </span>
+                        </div>
+                    </div>
+                    <div class="easy-join-name-input-box">
+                        <label>이름</label>
+                        <div class="name-input-box">
+                            <input name="name" value="{{ memberName }}" type="text" class="name-input" />
+                        </div>
+                        <p class="validate-msg name-validate">최소 2자 이상입니다.</p>
+                        <p class="validate-msg name-validate">이름을 입력해 주세요</p>
+                    </div>
+                    <div class="easy-join-name-input-box">
+                        <label>핸드폰 번호</label>
+                        <div class="name-input-box">
+                            <input name="member-phone" id="phone" placeholder="예)01011112222" type="text" class="name-input" autocomplete="off"/>
+                        </div>
+                        <p class="validate-msg name-validate">최소 2자 이상입니다.</p>
+                        <p class="validate-msg name-validate">이름을 입력해 주세요</p>
+                    </div>
+                    <div class="easy-join-department-input-box">
+                        <label>학과명</label>
+                        <div class="department-input-box">
+                            <input name="university-member-major" placeholder="학과명 입력" type="text" class="department-input" />
+                        </div>
+                        <p class="validate-msg department-validate">학과명을 입력해 주세요</p>
+                    </div>
+                    <div class="easy-join-password-input-box">
+                        {% else %}
+                        <label>비밀번호</label>
+                        <div class="password-input-box">
+                            <input name="password" autocomplete="password" disabled placeholder="비밀번호 입력" type="password" class="password-input" />
+                            <button class="password-visible-btn" type="button">
+                                <span>
+                                    <span class="password-visible-btn-icon-box">
+                                        <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="visible-icon on" style="width: 46px; height: 46px">
+                                            <path
+                                                d="M23.589 7.895l.411.001c10.56 0 20.16 6.504 23.34 15.78l.132.432-.144.396c-3.216 9.168-12.816 15.6-23.328 15.6A24.84 24.84 0 0 1 .684 24.492l-.168-.432.156-.42A24.804 24.804 0 0 1 24 7.896zM24 14.46a9.6 9.6 0 1 0 0 19.2 9.6 9.6 0 0 0 0-19.2zm0 4.14a5.4 5.4 0 1 1 0 10.8 5.4 5.4 0 0 1 0-10.8z"
+                                            ></path>
+                                        </svg>
+                                        <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="unvisible-icon" style="width: 46px; height: 46px">
+                                            <path
+                                                d="M42.48 3.864l2.04 2.04-6.324 6.324-.864.852-.864.876-4.68 4.668-3.072 3.084-7.2 7.2-3.084 3.072-3.804 3.816-.912.912-.912.9-7.02 7.032-2.04-2.04 6.408-6.444a23.868 23.868 0 0 1-9.6-11.652l-.168-.432.156-.42A24.816 24.816 0 0 1 23.868 7.968c4.08.008 8.101.978 11.736 2.832l6.876-6.936zm-1.788 10.308a22.296 22.296 0 0 1 6.516 9.516l.072.444-.144.396c-3.216 9.168-12.816 15.6-23.328 15.6a25.676 25.676 0 0 1-7.872-1.2l5.532-5.532a9.06 9.06 0 0 0 2.4.312 9.6 9.6 0 0 0 9.6-9.6 9.06 9.06 0 0 0-.312-2.4zm-10.776 2.4a9.6 9.6 0 0 0-15.6 7.536l-.048-.036A9.6 9.6 0 0 0 16.332 30l3.12-2.964a5.316 5.316 0 0 1-.876-2.928 5.412 5.412 0 0 1 5.4-5.4c1.04 0 2.059.304 2.928.876z"
+                                            ></path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                        <p class="validate-msg password-validate">비밀번호를 입력해주세요.</p>
+                        <p class="validate-msg password-validate">최소 8자입니다.</p>
+                        <p class="validate-msg password-validate">영문,숫자,특수문자를 조합한 8자 이상</p>
+                    </div>
+                    <div class="easy-join-password-check-input-box">
+                        <label></label>
+                        <div class="password-check-input-box">
+                            <input name="verifyPassword" autocomplete="verifyPassword" disabled placeholder="비밀번호 확인" type="password" class="password-input" />
+                            <button class="password-visible-btn" type="button">
+                                <span>
+                                    <span class="password-visible-btn-icon-box">
+                                        <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="visible-icon on" style="width: 46px; height: 46px">
+                                            <path
+                                                d="M23.589 7.895l.411.001c10.56 0 20.16 6.504 23.34 15.78l.132.432-.144.396c-3.216 9.168-12.816 15.6-23.328 15.6A24.84 24.84 0 0 1 .684 24.492l-.168-.432.156-.42A24.804 24.804 0 0 1 24 7.896zM24 14.46a9.6 9.6 0 1 0 0 19.2 9.6 9.6 0 0 0 0-19.2zm0 4.14a5.4 5.4 0 1 1 0 10.8 5.4 5.4 0 0 1 0-10.8z"
+                                            ></path>
+                                        </svg>
+                                        <svg viewBox="0 0 48 48" focusable="false" role="presentation" class="unvisible-icon" style="width: 46px; height: 46px">
+                                            <path
+                                                d="M42.48 3.864l2.04 2.04-6.324 6.324-.864.852-.864.876-4.68 4.668-3.072 3.084-7.2 7.2-3.084 3.072-3.804 3.816-.912.912-.912.9-7.02 7.032-2.04-2.04 6.408-6.444a23.868 23.868 0 0 1-9.6-11.652l-.168-.432.156-.42A24.816 24.816 0 0 1 23.868 7.968c4.08.008 8.101.978 11.736 2.832l6.876-6.936zm-1.788 10.308a22.296 22.296 0 0 1 6.516 9.516l.072.444-.144.396c-3.216 9.168-12.816 15.6-23.328 15.6a25.676 25.676 0 0 1-7.872-1.2l5.532-5.532a9.06 9.06 0 0 0 2.4.312 9.6 9.6 0 0 0 9.6-9.6 9.06 9.06 0 0 0-.312-2.4zm-10.776 2.4a9.6 9.6 0 0 0-15.6 7.536l-.048-.036A9.6 9.6 0 0 0 16.332 30l3.12-2.964a5.316 5.316 0 0 1-.876-2.928 5.412 5.412 0 0 1 5.4-5.4c1.04 0 2.059.304 2.928.876z"
+                                            ></path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </button>
+                        </div>
+                        <p class="validate-msg password-check-validate">동일한 비밀번호를 입력해주세요.</p>
+                    </div>
+                     {% endif %}
+                    <button class="join-submit-btn send" type="submit" name="join-normal" disabled="true">
+                        <span class="join-submit-btn-text"> 약관 동의후 가입 완료하기 </span>
+                    </button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="modal-container" style="background-color: rgba(0, 0, 0, 0.2);">
+      <div class="modal-box">
+        <div class="modal-header">
+          <div title="인증번호 전송안내" class="modal-title">
+            인증번호 전송안내
+          </div>
+        </div>
+        <div class="modal-main">
+          <div class="modal-message-box">
+            <div class="modal-message-inner">
+              <span class="modal-message">asd@n.a</span>의 메일로 인증번호를
+              전송했습니다.<br />
+              메일에 있는 인증번호를 입력해 주세요.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="modal-submit-btn-box">
+            <button class="modal-submit-btn" type="button">
+              <span><span class="modal-submit-btn-text">확인</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container">
+      <div class="error-toast-inner">
+        <div class="error-toast">
+          인증번호가 일치하지 않습니다.
+        </div>
+      </div>
+      <div class="success-toast-inner">
+        <div class="success-toast">
+          이메일 인증이 완료되었어요.
+        </div>
+      </div>
+    </div>
+{#    <div class="ReactModalPortal">#}
+{#      <div#}
+{#        class="ReactModal__Overlay ReactModal__Overlay--after-open ConfirmModal_overlay waffle__modal__overlay"#}
+{#        style="z-index: 9000; background-color: rgba(0, 0, 0, 0.2);"#}
+{#      >#}
+{#        <div#}
+{#          class="ReactModal__Content ReactModal__Content--after-open ConfirmModal_confirmModal ConfirmModal_sizeSm App_modal"#}
+{#          tabindex="-1"#}
+{#          role="dialog"#}
+{#          aria-modal="true"#}
+{#        >#}
+{#          <div class="ConfirmModal_header">#}
+{#            <div class="ConfirmModal_closeIconRoot">#}
+{#              <button class="ConfirmModal_closeIconWrapper">#}
+{#                <svg#}
+{#                  viewBox="0 0 40 40"#}
+{#                  focusable="false"#}
+{#                  role="presentation"#}
+{#                  class="withIcon_icon ConfirmModal_closeIcon"#}
+{#                  aria-hidden="true"#}
+{#                >#}
+{#                  <path#}
+{#                    d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"#}
+{#                  ></path>#}
+{#                </svg>#}
+{#              </button>#}
+{#            </div>#}
+{#            <div#}
+{#              title=""#}
+{#              class="ConfirmModal_titlePlaceholder ConfirmModal_showCloseButton"#}
+{#            ></div>#}
+{#          </div>#}
+{#          <div class="ConfirmModal_content">#}
+{#            <div class="App_container">#}
+{#              <article class="TermsConfirmContainer_modalInner">#}
+{#                <div class="TermsConfirmContainer_header">#}
+{#                  <header class="TermsConfirmHeader_container">#}
+{#                    <h1 class="TermsConfirmHeader_title">약관확인</h1>#}
+{#                    <p class="TermsConfirmHeader_description">#}
+{#                      약관에 동의하셔야 해당 서비스를 이용할 수 있습니다.#}
+{#                    </p>#}
+{#                  </header>#}
+{#                  <section class="FullAgreementCheckbox_container">#}
+{#                    <label#}
+{#                      class="Checkbox_checkbox Checkbox_md Checkbox_labeled FullAgreementCheckbox_checkbox"#}
+{#                    >#}
+{#                      <input#}
+{#                        name="fullAgreement"#}
+{#                        data-testid="full-agreement-checkbo x"#}
+{#                        type="checkbox"#}
+{#                        class="Checkbox_input all-check-box"#}
+{#                        id="all"#}
+{#                      />#}
+{#                      <span class="Checkbox_icon" aria-hidden="true">#}
+{#                        <svg#}
+{#                          viewBox="0 0 16 2"#}
+{#                          focusable="false"#}
+{#                          role="presentation"#}
+{#                          class="withIcon_icon Checkbox_removeIcon"#}
+{#                          aria-hidden="true"#}
+{#                        >#}
+{#                          <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>#}
+{#                        </svg>#}
+{#                        <svg#}
+{#                          viewBox="0 0 48 48"#}
+{#                          focusable="false"#}
+{#                          role="presentation"#}
+{#                          class="withIcon_icon Checkbox_checkIcon"#}
+{#                          aria-hidden="true"#}
+{#                        >#}
+{#                          <path#}
+{#                            d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"#}
+{#                          ></path>#}
+{#                        </svg>#}
+{#                      </span>#}
+{#                      <span class="Checkbox_content">#}
+{#                        <span>#}
+{#                          <span class="FullAgreementCheckbox_text"#}
+{#                            >전체 동의#}
+{#                          </span>#}
+{#                          <span class="FullAgreementCheckbox_subtext"#}
+{#                            >(선택항목 포함)</span#}
+{#                          >#}
+{#                        </span>#}
+{#                      </span>#}
+{#                    </label>#}
+{#                  </section>#}
+{#                </div>#}
+{#                <div>#}
+{#                  <div#}
+{#                    class="AccordionCheckbox_accordionHeader ServiceAgreementCheckbox_container TermsConfirmBody_service"#}
+{#                  >#}
+{#                    <div data-testid="service-agreement-checkbox">#}
+{#                      <label#}
+{#                        class="Checkbox_checkbox Checkbox_md Checkbox_labeled AccordionCheckbox_checkbox"#}
+{#                        ><input#}
+{#                          name="funding"#}
+{#                          required=""#}
+{#                          type="checkbox"#}
+{#                          class="Checkbox_input possible parent service-check"#}
+{#                          id="detail"#}
+{#                        /><span class="Checkbox_icon" aria-hidden="true"#}
+{#                          ><svg#}
+{#                            viewBox="0 0 16 2"#}
+{#                            focusable="false"#}
+{#                            role="presentation"#}
+{#                            class="withIcon_icon Checkbox_removeIcon"#}
+{#                            aria-hidden="true"#}
+{#                          >#}
+{#                            <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>#}
+{#                          </svg>#}
+{#                          <svg#}
+{#                            viewBox="0 0 48 48"#}
+{#                            focusable="false"#}
+{#                            role="presentation"#}
+{#                            class="withIcon_icon Checkbox_checkIcon"#}
+{#                            aria-hidden="true"#}
+{#                          >#}
+{#                            <path#}
+{#                              d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"#}
+{#                            ></path>#}
+{#                          </svg>#}
+{#                        </span>#}
+{#                        <span class="Checkbox_content">#}
+{#                          <span>#}
+{#                            <div class="AccordionCheckbox_label">#}
+{#                              <div class="ServiceAgreementCheckbox_required">#}
+{#                                <strong>회원·서비스 가입</strong>#}
+{#                                <span> (필수)</span>#}
+{#                              </div>#}
+{#                            </div>#}
+{#                          </span>#}
+{#                        </span>#}
+{#                      </label>#}
+{#                    </div>#}
+{#                    <button#}
+{#                      class="AccordionCheckbox_accordionButton"#}
+{#                      aria-label="내용 보기"#}
+{#                    >#}
+{#                      <svg#}
+{#                        viewBox="0 0 32 32"#}
+{#                        focusable="false"#}
+{#                        role="presentation"#}
+{#                        class="withIcon_icon"#}
+{#                        aria-hidden="true"#}
+{#                        style="width: 16px; height: 16px;"#}
+{#                      >#}
+{#                        <path#}
+{#                          d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"#}
+{#                        ></path>#}
+{#                      </svg>#}
+{#                    </button>#}
+{#                  </div>#}
+{#                  <div class="detail-join">#}
+{#                    <div#}
+{#                      class="AccordionCheckbox_accordionHeader ServiceAgreementCheckbox_terms TermsConfirmBody_terms"#}
+{#                    >#}
+{#                      <div>#}
+{#                        <label#}
+{#                          class="Checkbox_checkbox Checkbox_sm Checkbox_labeled AccordionCheckbox_checkbox"#}
+{#                        >#}
+{#                          <input#}
+{#                            required=""#}
+{#                            type="checkbox"#}
+{#                            class="Checkbox_input possible children"#}
+{#                            id="detail"#}
+{#                          />#}
+{#                          <span class="Checkbox_icon" aria-hidden="true">#}
+{#                            <svg#}
+{#                              viewBox="0 0 16 2"#}
+{#                              focusable="false"#}
+{#                              role="presentation"#}
+{#                              class="withIcon_icon Checkbox_removeIcon"#}
+{#                              aria-hidden="true"#}
+{#                            >#}
+{#                              <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>#}
+{#                            </svg>#}
+{#                            <svg#}
+{#                              viewBox="0 0 48 48"#}
+{#                              focusable="false"#}
+{#                              role="presentation"#}
+{#                              class="withIcon_icon Checkbox_checkIcon"#}
+{#                              aria-hidden="true"#}
+{#                            >#}
+{#                              <path#}
+{#                                d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"#}
+{#                              ></path>#}
+{#                            </svg>#}
+{#                          </span>#}
+{#                          <span class="Checkbox_content">#}
+{#                            <span>#}
+{#                              <div#}
+{#                                class="AccordionCheckbox_label AccordionCheckbox_smallLabel"#}
+{#                              >#}
+{#                                회원가입 약관<span#}
+{#                                  class="TermsAgreementCheckbox_required"#}
+{#                                >#}
+{#                                  (필수)#}
+{#                                </span>#}
+{#                              </div>#}
+{#                            </span>#}
+{#                          </span>#}
+{#                        </label>#}
+{#                      </div>#}
+{#                      <button#}
+{#                        class="AccordionCheckbox_accordionButton AccordionCheckbox_text"#}
+{#                        aria-label="내용 보기"#}
+{#                      >#}
+{#                        <svg#}
+{#                          viewBox="0 0 32 32"#}
+{#                          focusable="false"#}
+{#                          role="presentation"#}
+{#                          class="withIcon_icon"#}
+{#                          aria-hidden="true"#}
+{#                          style="width: 12px; height: 12px;"#}
+{#                        >#}
+{#                          <path#}
+{#                            d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"#}
+{#                          ></path>#}
+{#                        </svg>#}
+{#                      </button>#}
+{#                    </div>#}
+{#                    <div class="TermsAgreementCheckbox_children">#}
+{#                      <main class="Terms_terms terms">#}
+{#                        <article>#}
+{#                          <h1>회원가입약관</h1>#}
+{#                          <p>#}
+{#                            와디즈 회원가입과 관련하여 필요한 사항을 규정합니다.#}
+{#                          </p>#}
+{#                          <div class="update">#}
+{#                            <h5>업데이트 노트</h5>#}
+{#                            <ul>#}
+{#                              <li>#}
+{#                                본 이용약관은 2023년 12월 25일부터 시행됩니다.#}
+{#                              </li>#}
+{#                              <li>개정 2023.12.21</li>#}
+{#                              <li>#}
+{#                                개정 2022.07.18#}
+{#                                <a#}
+{#                                  href="/web/wterms/signup/20230718"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 회원가입약관 보기<i#}
+{#                                    class="icon chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  ></i#}
+{#                                ></a>#}
+{#                              </li>#}
+{#                              <li>#}
+{#                                개정 2022.03.17#}
+{#                                <a#}
+{#                                  href="/web/wterms/signup/20220317"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 회원가입약관 보기<i#}
+{#                                    class="icon chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  ></i#}
+{#                                ></a>#}
+{#                              </li>#}
+{#                              <li>#}
+{#                                개정 2021.11.02#}
+{#                                <a#}
+{#                                  href="/web/wterms/signup/20211102"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 회원가입약관 보기<i#}
+{#                                    class="icon chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  ></i#}
+{#                                ></a>#}
+{#                              </li>#}
+{#                              <li>#}
+{#                                개정 2021.08.24#}
+{#                                <a#}
+{#                                  href="/web/wterms/signup/20210824"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 회원가입약관 보기<i#}
+{#                                    class="icon chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  ></i#}
+{#                                ></a>#}
+{#                              </li>#}
+{#                            </ul>#}
+{#                          </div>#}
+{#                        </article>#}
+{#                      </main>#}
+{#                    </div>#}
+{#                    <div#}
+{#                      class="AccordionCheckbox_accordionHeader ServiceAgreementCheckbox_terms TermsConfirmBody_terms"#}
+{#                    >#}
+{#                      <div>#}
+{#                        <label#}
+{#                          class="Checkbox_checkbox Checkbox_sm Checkbox_labeled AccordionCheckbox_checkbox"#}
+{#                        >#}
+{#                          <input#}
+{#                            required=""#}
+{#                            type="checkbox"#}
+{#                            class="Checkbox_input possible children"#}
+{#                            id="detail"#}
+{#                          />#}
+{#                          <span class="Checkbox_icon" aria-hidden="true">#}
+{#                            <svg#}
+{#                              viewBox="0 0 16 2"#}
+{#                              focusable="false"#}
+{#                              role="presentation"#}
+{#                              class="withIcon_icon Checkbox_removeIcon"#}
+{#                              aria-hidden="true"#}
+{#                            >#}
+{#                              <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>#}
+{#                            </svg>#}
+{#                            <svg#}
+{#                              viewBox="0 0 48 48"#}
+{#                              focusable="false"#}
+{#                              role="presentation"#}
+{#                              class="withIcon_icon Checkbox_checkIcon"#}
+{#                              aria-hidden="true"#}
+{#                            >#}
+{#                              <path#}
+{#                                d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"#}
+{#                              ></path>#}
+{#                            </svg>#}
+{#                          </span>#}
+{#                          <span class="Checkbox_content">#}
+{#                            <span>#}
+{#                              <div#}
+{#                                class="AccordionCheckbox_label AccordionCheckbox_smallLabel"#}
+{#                              >#}
+{#                                서포터 이용약관<span#}
+{#                                  class="TermsAgreementCheckbox_required"#}
+{#                                >#}
+{#                                  (필수)</span#}
+{#                                >#}
+{#                              </div>#}
+{#                            </span>#}
+{#                          </span>#}
+{#                        </label>#}
+{#                      </div>#}
+{#                      <button#}
+{#                        class="AccordionCheckbox_accordionButton AccordionCheckbox_text"#}
+{#                        aria-label="내용 보기"#}
+{#                      >#}
+{#                        <svg#}
+{#                          viewBox="0 0 32 32"#}
+{#                          focusable="false"#}
+{#                          role="presentation"#}
+{#                          class="withIcon_icon"#}
+{#                          aria-hidden="true"#}
+{#                          style="width: 12px; height: 12px;"#}
+{#                        >#}
+{#                          <path#}
+{#                            d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"#}
+{#                          ></path>#}
+{#                        </svg>#}
+{#                      </button>#}
+{#                    </div>#}
+{#                    <div class="TermsAgreementCheckbox_children">#}
+{#                      <main class="Terms_terms terms">#}
+{#                        <article>#}
+{#                          <h1>서포터 이용약관</h1>#}
+{#                          <p>와디즈(주)의 서포터 이용약관을 규정합니다.</p>#}
+{#                          <div class="update">#}
+{#                            <h5>업데이트 노트</h5>#}
+{#                            <ul>#}
+{#                              <li>#}
+{#                                본 이용약관은 2023년 11월 8일부터 시행됩니다.#}
+{#                              </li>#}
+{#                              <li>개정 2023.10.31</li>#}
+{#                              <li>#}
+{#                                개정 2023.10.05#}
+{#                                <a#}
+{#                                  href="/web/wterms/service_reward/20231005"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 약관 보기#}
+{#                                  <i#}
+{#                                    class="icon-chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  >#}
+{#                                  </i>#}
+{#                                </a>#}
+{#                              </li>#}
+{#                              <li>#}
+{#                                개정 2023.07.06#}
+{#                                <a#}
+{#                                  href="/web/wterms/service_reward/20230706"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 약관 보기#}
+{#                                  <i#}
+{#                                    class="icon-chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  >#}
+{#                                  </i>#}
+{#                                </a>#}
+{#                              </li>#}
+{#                              <li>#}
+{#                                개정 2023.02.21#}
+{#                                <a#}
+{#                                  href="/web/wterms/service_reward/20230221"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 약관 보기#}
+{#                                  <i#}
+{#                                    class="icon-chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  >#}
+{#                                  </i>#}
+{#                                </a>#}
+{#                              </li>#}
+{#                              <li>#}
+{#                                개정 2023.01.13#}
+{#                                <a#}
+{#                                  href="/web/wterms/service_reward/20230113"#}
+{#                                  class="previous-terms"#}
+{#                                  target="_blank"#}
+{#                                  >이전 약관 보기#}
+{#                                  <i#}
+{#                                    class="icon-chevron-right"#}
+{#                                    aria-hidden="true"#}
+{#                                  >#}
+{#                                  </i>#}
+{#                                </a>#}
+{#                              </li>#}
+{#                            </ul>#}
+{#                            <br />#}
+{#                            <a#}
+{#                              href="/web/wterms/service_reward/20221103"#}
+{#                              class="previous-terms"#}
+{#                              style="text-decoration: underline;"#}
+{#                              target="_blank"#}
+{#                              >2023년 이전 약관보기</a#}
+{#                            >#}
+{#                          </div>#}
+{#                          <ol class="table">#}
+{#                            <li><a href="#제1장-공통">제1장 공통</a></li>#}
+{#                            <li>#}
+{#                              <a href="#제2장-펀딩-서비스">제2장 펀딩 서비스</a>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                              <a href="#제3장-프리오더-서비스"#}
+{#                                >제3장 프리오더 서비스</a#}
+{#                              >#}
+{#                            </li>#}
+{#                            <li>#}
+{#                              <a href="#제4장-스토어-서비스"#}
+{#                                >제4장 스토어 서비스</a#}
+{#                              >#}
+{#                            </li>#}
+{#                          </ol>#}
+{#                          <hr />#}
+{#                        </article>#}
+{#                      </main>#}
+{#                    </div>#}
+{#                    <div#}
+{#                      class="AccordionCheckbox_accordionHeader ServiceAgreementCheckbox_terms TermsConfirmBody_terms"#}
+{#                    >#}
+{#                      <div>#}
+{#                        <label#}
+{#                          class="Checkbox_checkbox Checkbox_sm Checkbox_labeled AccordionCheckbox_checkbox"#}
+{#                        >#}
+{#                          <input#}
+{#                            required=""#}
+{#                            type="checkbox"#}
+{#                            class="Checkbox_input possible children"#}
+{#                            id="detail"#}
+{#                          />#}
+{#                          <span class="Checkbox_icon" aria-hidden="true"#}
+{#                            ><svg#}
+{#                              viewBox="0 0 16 2"#}
+{#                              focusable="false"#}
+{#                              role="presentation"#}
+{#                              class="withIcon_icon Checkbox_removeIcon"#}
+{#                              aria-hidden="true"#}
+{#                            >#}
+{#                              <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>#}
+{#                            </svg>#}
+{#                            <svg#}
+{#                              viewBox="0 0 48 48"#}
+{#                              focusable="false"#}
+{#                              role="presentation"#}
+{#                              class="withIcon_icon Checkbox_checkIcon"#}
+{#                              aria-hidden="true"#}
+{#                            >#}
+{#                              <path#}
+{#                                d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"#}
+{#                              ></path></svg#}
+{#                          ></span>#}
+{#                          <span class="Checkbox_content">#}
+{#                            <span>#}
+{#                              <div#}
+{#                                class="AccordionCheckbox_label AccordionCheckbox_smallLabel"#}
+{#                              >#}
+{#                                개인정보 수집 및 이용 동의<span#}
+{#                                  class="TermsAgreementCheckbox_required"#}
+{#                                >#}
+{#                                  (필수)</span#}
+{#                                >#}
+{#                              </div></span#}
+{#                            >#}
+{#                          </span>#}
+{#                        </label>#}
+{#                      </div>#}
+{#                      <button#}
+{#                        class="AccordionCheckbox_accordionButton AccordionCheckbox_text"#}
+{#                        aria-label="내용 보기"#}
+{#                      >#}
+{#                        <svg#}
+{#                          viewBox="0 0 32 32"#}
+{#                          focusable="false"#}
+{#                          role="presentation"#}
+{#                          class="withIcon_icon"#}
+{#                          aria-hidden="true"#}
+{#                          style="width: 12px; height: 12px;"#}
+{#                        >#}
+{#                          <path#}
+{#                            d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"#}
+{#                          ></path>#}
+{#                        </svg>#}
+{#                      </button>#}
+{#                    </div>#}
+{#                    <div class="TermsAgreementCheckbox_children">#}
+{#                      <main class="Terms_terms terms">#}
+{#                        <article>#}
+{#                          <p>#}
+{#                            와디즈(주)(이하 “회사")가 제공하는 서비스에 회원가입#}
+{#                            신청하시는 분께 수집하는 개인정보의 항목, 이용 목적,#}
+{#                            보유 및 이용 기간을 안내 드리오니 확인 후 동의하여#}
+{#                            주시기 바랍니다.#}
+{#                          </p>#}
+{##}
+{#                          <h2>1. 수집하는 개인정보</h2>#}
+{##}
+{#                          <p>#}
+{#                            회사는 서비스 가입 및 이용 등을 위해 아래와 같은#}
+{#                            개인정보를 수집합니다.#}
+{#                          </p>#}
+{##}
+{#                          <ul>#}
+{#                            &lt;이메일 간편가입&gt;#}
+{#                            <li>(필수) 이메일 계정, 이름(닉네임), 비밀번호</li>#}
+{#                          </ul>#}
+{#                          <ul>#}
+{#                            &lt;SNS 간편가입&gt;#}
+{#                            <li>#}
+{#                              카카오#}
+{#                              <ul style="margin: 0;">#}
+{#                                <li>#}
+{#                                  (필수) 고유 식별자, 이메일 주소, 닉네임,#}
+{#                                  프로필 사진, 휴대전화 번호#}
+{#                                </li>#}
+{#                                <li>(선택) 성별, 생일, 출생연도, 친구 목록</li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                              네이버#}
+{#                              <ul style="margin: 0;">#}
+{#                                <li>(필수) 고유 식별자</li>#}
+{#                                <li>#}
+{#                                  (선택) 이메일 주소, 닉네임, 프로필 사진,#}
+{#                                  휴대전화 번호, 성별, 생일, 출생연도#}
+{#                                </li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                              구글#}
+{#                              <ul style="margin: 0;">#}
+{#                                <li>#}
+{#                                  (필수) 고유 식별자, 이메일 주소, 닉네임,#}
+{#                                  프로필 사진#}
+{#                                </li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                              페이스북#}
+{#                              <ul style="margin: 0;">#}
+{#                                <li>(필수) 고유 식별자, 닉네임, 프로필 사진</li>#}
+{#                                <li>(선택) 이메일 주소, 성별, 친구 목록</li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                              애플#}
+{#                              <ul style="margin: 0;">#}
+{#                                <li>(필수) 고유 식별자</li>#}
+{#                                <li>(선택) 이메일 주소</li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                          </ul>#}
+{##}
+{#                          <h2>2. 개인정보 이용 목적</h2>#}
+{#                          <ol class="fit">#}
+{#                            <li>#}
+{#                              홈페이지 회원관리: 회원제 서비스 이용 등에 따른#}
+{#                              본인확인, 개인식별, 불량회원의 부정 이용방지와#}
+{#                              비인가 사용방지, 가입의사 확인, 가입 및 가입횟수#}
+{#                              제한, 고지사항 전달, 상담처리 등#}
+{#                            </li>#}
+{#                            <li>회사가 제공하는 서비스 이용</li>#}
+{#                            <li>#}
+{#                              신규서비스(콘텐츠) 개발, 통계학적 특성에 따른#}
+{#                              서비스 제공 및 광고 게재, 접속 빈도 파악, 회원의#}
+{#                              서비스 이용에 대한 통계#}
+{#                            </li>#}
+{#                          </ol>#}
+{##}
+{#                          <h2>3. 개인정보 보유 및 이용 기간</h2>#}
+{#                          <p>#}
+{#                            이용자는 회원가입시 개인정보의 수집·이용 및 제공에#}
+{#                            대해 동의한 내용은 언제든지 회원탈퇴 등의 방법을#}
+{#                            통해 철회하실 수 있습니다. 또한, 수집 및 이용목적이#}
+{#                            달성되거나 동의를 얻은 개인정보의 보유·이용 기간이#}
+{#                            종료한 경우 지체 없이 파기하는 것을 원칙으로 합니다.#}
+{#                            다만, 법률에 따라 개인정보를 보존해야 하는 경우에는#}
+{#                            그러하지 아니하며, 귀하가 회원가입 등을 위해#}
+{#                            입력하신 정보는 내부 방침 및 기타 관련법령에 따라#}
+{#                            일정기간 저장 후 파기될 수 있습니다. 이때 일정기간#}
+{#                            저장된 개인정보는 법률에 의한 경우가 아니고서는 동의#}
+{#                            받지 아니한 다른 목적으로 이용되지 않습니다.#}
+{#                          </p>#}
+{##}
+{#                          <ul style="margin-top: 12px;">#}
+{#                            <li>#}
+{#                              회사 내부 방침에 의한 정보보유 사유#}
+{#                              <ul style="margin: 0;">#}
+{#                                <li>#}
+{#                                  이메일주소, 휴대전화 번호, 광고성정보 수신#}
+{#                                  동의<br />(보존 이유: 불량회원의#}
+{#                                  부정이용방지와 비인가 사용방지, 서비스 이용의#}
+{#                                  혼선 방지 및 분쟁 발생 시 감독기관 소명, 보존#}
+{#                                  기간: 1년)#}
+{#                                </li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                            <li>#}
+{#                              관계법령에 의한 정보보유 사유#}
+{#                              <ul style="margin: 0;">#}
+{#                                <li>#}
+{#                                  표시/광고에 관한 기록 (전자상거래등에서의#}
+{#                                  소비자보호에 관한 법률, 보존기간: 6개월)#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                  계약 또는 청약철회 등에 관한 기록#}
+{#                                  (전자상거래등에서의 소비자보호에 관한 법률,#}
+{#                                  보존기간: 5년)#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                  대금결제 및 재화 등의 공급에 관한 기록#}
+{#                                  (전자상거래등에서의 소비자보호에 관한 법률,#}
+{#                                  보존기간: 5년)#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                  소비자의 불만 또는 분쟁처리에 관한 기록#}
+{#                                  (전자상거래등에서의 소비자보호에 관한 법률,#}
+{#                                  보존기간: 3년)#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                  웹 사이트 방문에 관한 기록 (통신기밀보호법,#}
+{#                                  보존기간: 3개월)#}
+{#                                </li>#}
+{#                              </ul>#}
+{#                            </li>#}
+{#                          </ul>#}
+{#                          <p>#}
+{#                            개인정보 수집 및 이용에 대한 동의를 거부할 권리가#}
+{#                            있으며, 동의 거부 시 회원가입이 제한됩니다.#}
+{#                          </p>#}
+{#                        </article>#}
+{#                      </main>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div#}
+{#                    class="AccordionCheckbox_accordionHeader ServiceAgreementCheckbox_container TermsConfirmBody_service"#}
+{#                  >#}
+{#                    <div data-testid="service-agreement-checkbox">#}
+{#                      <label#}
+{#                        class="Checkbox_checkbox Checkbox_md Checkbox_labeled AccordionCheckbox_checkbox"#}
+{#                      >#}
+{#                        <input#}
+{#                          name="funding"#}
+{#                          type="checkbox"#}
+{#                          class="Checkbox_input"#}
+{#                          id="detail"#}
+{#                        />#}
+{#                        <span class="Checkbox_icon" aria-hidden="true">#}
+{#                          <svg#}
+{#                            viewBox="0 0 16 2"#}
+{#                            focusable="false"#}
+{#                            role="presentation"#}
+{#                            class="withIcon_icon Checkbox_removeIcon"#}
+{#                            aria-hidden="true"#}
+{#                          >#}
+{#                            <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>#}
+{#                          </svg>#}
+{#                          <svg#}
+{#                            viewBox="0 0 48 48"#}
+{#                            focusable="false"#}
+{#                            role="presentation"#}
+{#                            class="withIcon_icon Checkbox_checkIcon"#}
+{#                            aria-hidden="true"#}
+{#                          >#}
+{#                            <path#}
+{#                              d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"#}
+{#                            ></path>#}
+{#                          </svg>#}
+{#                        </span>#}
+{#                        <span class="Checkbox_content">#}
+{#                          <span>#}
+{#                            <div class="AccordionCheckbox_label">#}
+{#                              회원·서비스 이벤트 혜택 알림(선택)#}
+{#                            </div>#}
+{#                          </span>#}
+{#                        </span>#}
+{#                      </label>#}
+{#                      <em#}
+{#                        class="HelperMessage_helperMessage Checkbox_message Checkbox_md"#}
+{#                        >펀딩·프리오더·스토어 서비스, 이벤트·할인 혜택 등에 대한#}
+{#                        정보를 이메일, 앱 알림(앱 회원가입 시)로 받아볼 수#}
+{#                        있습니다. (동의 철회 시까지)</em#}
+{#                      >#}
+{#                    </div>#}
+{#                  </div>#}
+{#                  <div#}
+{#                    class="AccordionCheckbox_accordionHeader ServiceAgreementCheckbox_container TermsConfirmBody_service"#}
+{#                  >#}
+{#                    <div data-testid="service-agreement-checkbox">#}
+{#                      <label#}
+{#                        class="Checkbox_checkbox Checkbox_md Checkbox_labeled AccordionCheckbox_checkbox"#}
+{#                        ><input#}
+{#                          name="funding"#}
+{#                          required=""#}
+{#                          type="checkbox"#}
+{#                          class="Checkbox_input possible"#}
+{#                          id="detail"#}
+{#                        />#}
+{#                        <span class="Checkbox_icon" aria-hidden="true">#}
+{#                          <svg#}
+{#                            viewBox="0 0 16 2"#}
+{#                            focusable="false"#}
+{#                            role="presentation"#}
+{#                            class="withIcon_icon Checkbox_removeIcon"#}
+{#                            aria-hidden="true"#}
+{#                          >#}
+{#                            <path fill-rule="evenodd" d="M0 0h16v2H0z"></path>#}
+{#                          </svg>#}
+{#                          <svg#}
+{#                            viewBox="0 0 48 48"#}
+{#                            focusable="false"#}
+{#                            role="presentation"#}
+{#                            class="withIcon_icon Checkbox_checkIcon"#}
+{#                            aria-hidden="true"#}
+{#                          >#}
+{#                            <path#}
+{#                              d="M18 39.6L4.8 26.4l3.36-3.36L18 32.76l21.84-21.72 3.36 3.36z"#}
+{#                            ></path>#}
+{#                          </svg>#}
+{#                        </span>#}
+{#                        <span class="Checkbox_content">#}
+{#                          <span>#}
+{#                            <div class="AccordionCheckbox_label">#}
+{#                              <div class="ServiceAgreementCheckbox_required">#}
+{#                                <strong>만 14세 이상입니다.</strong>#}
+{#                                <span> (필수)</span>#}
+{#                              </div>#}
+{#                            </div>#}
+{#                          </span>#}
+{#                        </span>#}
+{#                      </label>#}
+{#                    </div>#}
+{#                  </div>#}
+{#                </div>#}
+{#                <div class="TermsConfirmFooter_container App_footer">#}
+{#                  <div class="FixedToast_toast"></div>#}
+{#                    <button#}
+{#                        aria-label="confirmation"#}
+{#                        class="Button_button Button_primary Button_contained Button_lg Button_block Button_disabled"#}
+{#                        #}
+{#                        disabled="true"#}
+{#                    >#}
+{#                        <span#}
+{#                          ><span class="Button_children">회원가입 완료</span></span#}
+{#                        >#}
+{#                    </button>#}
+{#                      #}
+{#                  </form>#}
+{#                </div>#}
+{#              </article>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{% endblock %}
+{% block js %}
+{#    <script>const memberName = `{{ member_name }}`#}
+{#            const mname = document.querySelector(".name-input");#}
+{#            mname.value = memberName#}
+{#    </script>#}
+
+    <script src="{% static 'member/js/login/college-student-join.js' %}"></script>
+    <script>const memberType = `{{ member_type }}`</script>
+{#    <script src="{% static 'js/login/check.js' %}"></script>#}
+{#    <script src="{% static 'js/login/login.js' %}"></script>#}
+{% endblock %}
+

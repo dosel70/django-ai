@@ -1,0 +1,951 @@
+{% extends 'share/base.html' %}
+{% load static %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'share/css/detail.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+{% endblock %}
+{% block title %}자료공유 상세페이지{% endblock %}
+{% block content %}
+    {% if request.session.member %}
+        {% include  "header/main-page-header-login.html"%}
+    {% else %}
+        {% include "header/main-page-header-all.html" %}
+    {% endif %}
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
+    <div id="page-container">
+            <main id="main-app" style="visibility: visible">
+                <div></div>
+                <!-- 메인 바디쪽 -->
+                <div class="main-wrapper-content">
+                    <section>
+                        <div class="main-container-root">
+                            <div class="detail-header-container">
+                                <!-- 왼쪽 맨위 그림 쪽 -->
+                                <div class="detail-header-detail-image-area">
+                                    <div class="store-slider-container">
+                                        <div class="store-slider-slick-list">
+                                            <div class="slick-slider">
+                                                <div
+                                                    class="slick-list"
+                                                    style="height: 620px; margin-bottom: 85px;"
+                                                >
+                                                    <div
+                                                        class="slick-track"
+                                                        style="
+                                                            width: 4382px;
+                                                            opacity: 1;
+                                                            transform: translate3d(
+                                                                -626px,
+                                                                0px,
+                                                                0px
+                                                            );
+                                                        "
+                                                    >
+                                                        <div
+                                                            class="slick-slide slick-cloned"
+                                                            aria-hidden="true"
+                                                            style="width: 626px"
+                                                        >
+{#
+                                                        </div>
+                                                        <div
+                                                            class="slick-slide slick-active slick-current"
+                                                            aria-hidden="false"
+                                                            style="
+                                                                outline: none;
+                                                                width: 626px;
+                                                            "
+                                                        >
+                                                            <div>
+                                                                <div
+                                                                    style="
+                                                                        width: 100%;
+                                                                        display: grid;
+                                                                        justify-items: center;
+                                                                    "
+                                                                >
+                                                                {% with university=share.university.university_member_school %}
+                                                                    {% if university == '연세대학교' %}
+                                                                        <div
+                                                                            class="store-slider-slick-background-image yonsei"
+                                                                            style="
+                                                                            "
+                                                                        ></div>
+                                                                    {% elif university == '서울대학교' %}
+                                                                        <div
+                                                                            class="store-slider-slick-background-image seoul"
+                                                                            style="
+                                                                            "
+                                                                        ></div>
+                                                                        {% elif university == '카이스트' %}
+                                                                        <div
+                                                                            class="store-slider-slick-background-image kaist"
+                                                                            style="
+                                                                            "
+                                                                        ></div>
+                                                                        {% elif university == '고려대학교' %}
+                                                                        <div
+                                                                            class="store-slider-slick-background-image korea"
+                                                                            style="background-size: contain; margin-right: -70px"
+                                                                        ></div>
+                                                                        {% else %}
+                                                                        <div
+                                                                            class="store-slider-slick-background-image onelab-logo"
+                                                                            style=" background-size: contain; width: 536px;
+                                                                            "
+                                                                        ></div>
+                                                                    {% endif %}
+                                                                {% endwith %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                        <div></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                                                class="recommendation-related-container" style="margin-top: 20px; padding-left: 20px;"
+                                                            >
+                                                                <div>
+                                                                    <div
+                                                                        class="recommendation-related-header"
+                                                                    >
+                                                                        <div
+                                                                            class="recommendation-related-title"
+                                                                        >
+                                                                            작성자의 다른 자료
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div
+                                                                    class="recommendation-best-list-container"
+                                                                >
+                                                                    {% for post in posts %}
+                                                                    <div class="recommendation-card-wrap-container">
+                                                                        <div class="home-vertical-card-container">
+                                                                            <a class="home-vertical-card-content" href="{% url 'share:detail' id=post.id %}">
+                                                                                <div class="home-vertical-card-thumbnail-box" style="padding-top: 56.25%;">
+                                                                                    <div class="home-vertical-card-thumbnail-wrap">
+                                                                                        {% with university=share.university.university_member_school %}
+                                                                                            {% if university == '연세대학교' %}
+                                                                                                <div class="thumbnail-image-container">
+                                                                                                    <img class="thumbnail-image-img" src="{% static 'share/images/yns-logo.png' %}" alt="">
+                                                                                                </div>
+                                                                                            {% elif university == '카이스트' %}
+                                                                                                <div class="thumbnail-image-container">
+                                                                                                    <img class="thumbnail-image-img" src="{% static 'share/images/kaist-logo.svg' %}" alt="">
+                                                                                                </div>
+                                                                                            {% elif university == '서울대학교' %}
+                                                                                                <div class="thumbnail-image-container">
+                                                                                                    <img class="thumbnail-image-img" src="{% static 'share/images/snu-logo.svg' %}" alt="">
+                                                                                                </div>
+                                                                                            {% elif university == '고려대학교' %}
+                                                                                                <div class="thumbnail-image-container">
+                                                                                                    <img class="thumbnail-image-img" src="{% static 'share/images/korea-logo.svg' %}" alt="">
+                                                                                                </div>
+                                                                                            {% else %}
+                                                                                                <div class="thumbnail-image-container">
+                                                                                                    <img class="thumbnail-image-img" src="{% static 'public/images/realfavicon.png' %}" alt="">
+                                                                                                </div>
+                                                                                            {% endif %}
+                                                                                        {% endwith %}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="home-vertical-card-info-box">
+                                                                                    <div class="home-vertical-card-info">
+                                                                                        <div class="store-badge-group-container">
+                                                                                            <div class="store-badges small" style="display: flex; margin-right: 5px;">
+                                                                                                {% with first_file=post.sharefile_set.first %}
+                                                                                                    {% if first_file %}
+                                                                                                        {% if first_file.file_extension == 'pdf' %}
+                                                                                                            <span class="label-badge pdf">PDF</span>
+                                                                                                        {% elif first_file.file_extension == 'hwp' %}
+                                                                                                            <span class="label-badge hwp">HWP</span>
+                                                                                                        {% elif first_file.file_extension == 'xlsx' %}
+                                                                                                            <span class="label-badge xls">XLS</span>
+                                                                                                        {% elif first_file.file_extension == 'docx' %}
+                                                                                                            <span class="label-badge docx">DOCX</span>
+                                                                                                        {% endif %}
+                                                                                                    {% endif %}
+                                                                                                {% endwith %}
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="price-info-wrapper-container">
+                                                                                            <span>{{ post.share_points }}포인트</span>
+                                                                                        </div>
+                                                                                        <strong class="title-title">{{ post.share_title }}</strong>
+                                                                                    </div>
+                                                                                    <div class="home-vertical-card-badge-group">
+{#                                                                                        <div class="store-rating-wrapper-rating-wrapper">#}
+{#                                                                                            <div class="rating-score-container">#}
+{#                                                                                                <div class="rating-score-icon ratings"></div>#}
+{#                                                                                                <span class="rating-score-score">4.7</span>#}
+{#                                                                                            </div>#}
+{#                                                                                            <em class="store-rating-wrapper-count">(44)</em>#}
+{#                                                                                        </div>#}
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="card-spinner-container">
+                                                                                    <div class="card-spinner-loader" style="width: 32px; height: 32px;">
+                                                                                        <svg viewBox="25 25 50 50" aria-label="Loading">
+                                                                                            <g class="loader-circular">
+                                                                                                <circle class="loader-path"></circle>
+                                                                                            </g>
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    {% endfor %}
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                    <div></div>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+
+
+                                </div>
+
+                                <!-- 오른쪽 글씨 쪽 -->
+                                <div class="detail-header-detail-info-area">
+                                    <div class="detail-info-container">
+                                        <div class="detail-info-header-container">
+                                            <h2
+                                                class="detail-info-header-text-blind"
+                                            >
+                                                스토어 스토리 상세페이지
+                                            </h2>
+                                            <div
+                                                class="category-and-hash-tags-info_search-info-wrapper" style="display: flex; justify-content: space-between;"
+                                            >
+                                                <div
+                                                    class="category-and-hash-tags-info-header"
+                                                >
+                                                    <div
+                                                        class="project-search-tags-container"
+                                                    >
+                                                        <a
+                                                            href=""
+                                                            class="project-search-tags-category"
+                                                        >
+                                                            <span
+                                                                >{{ share.share_choice_major }}</span
+                                                            >
+                                                            <svg
+                                                                viewBox="0 0 24 24"
+                                                                fill="none"
+                                                                focusable="false"
+                                                                role="presentation"
+                                                                class="with-icon-icon"
+                                                                aria-hidden="true"
+                                                                style="
+                                                                    width: 18px;
+                                                                    height: 18px;
+                                                                "
+                                                            >
+                                                                <path
+                                                                    fill-rule="evenodd"
+                                                                    d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                                                ></path>
+                                                            </svg>
+                                                        </a>
+                                                        <div
+                                                            class="project-search-tags-hash-tags"
+                                                        >
+                                                            <a
+                                                                href=""
+                                                                class="button-button button-tertiary-grey button-contained"
+                                                            >
+                                                                <span>
+                                                                    <span
+                                                                        class="button-children"
+                                                                    >
+                                                                        <div
+                                                                            class="project-search-tags-hash-tag"
+                                                                        >
+                                                                            <span
+                                                                                class="project-search-tags-hash"
+                                                                                >#</span
+                                                                            >
+                                                                            <span
+                                                                                >{{ share.share_choice_grade }}</span
+                                                                            >
+                                                                        </div>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% if request.session.member.id == share.university_id %}
+                                                    <div>
+                                                        <a href="{% url 'share:update' id=share.id %}">
+                                                            <button type="button" class="update-btn">수정하기</button>
+                                                        </a>
+                                                        <a href="/share/delete/?id={{ share.id }}">
+                                                            <button type="button" class="delete-btn">삭제하기</button>
+                                                        </a>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+
+                                            <div>
+                                                <div id="move_button">
+                                                    <div
+                                                        class="floating-button-button"
+                                                    ></div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="detail-info-header-badge-container"
+                                            ></div>
+                                            <div
+                                                class="detail-info-header-title-info"
+                                            >
+                                                <h3
+                                                    class="detail-info-header-title"
+                                                >
+                                                    {{ share.share_title }}
+                                                </h3>
+                                            </div>
+                                            <div
+                                                class="detail-info-header-participation-info"
+                                            >
+                                                <div>
+                                                    <a
+                                                        class="detail-info-header-rating"
+                                                        href=""
+                                                    >
+                                                        <div
+                                                            class="rating-score-sm-title"
+                                                        >
+                                                            <div
+                                                                class="rating-score-icon"
+                                                            ></div>
+                                                            <span
+                                                                class="rating-score-score"style="font-size: 16px; line-height: 2.5"
+                                                                >{{ review_avg_rounded }}</span
+                                                            >
+                                                        </div>
+
+                                                    </a>
+                                                </div>
+                                                <div
+                                                    class="detail-info-header-order-info"
+                                                >
+                                                    <span
+                                                        class="detail-info-header-text"
+                                                        >{{ review_count }}</span
+                                                    >
+                                                    명 참여
+                                                </div>
+                                            </div>
+                                            <div class="store-badge-group-container" style="margin-top: 16px;">
+                                                <div class="store-badges" style="display: flex; margin-right: 5px;">
+                                                    {% with first_file=share.sharefile_set.first %}
+                                                        {% if first_file %}
+                                                            {% if first_file.file_extension == 'pdf' %}
+                                                                <span class="label-badge pdf">PDF</span>
+                                                            {% elif first_file.file_extension == 'hwp' %}
+                                                                <span class="label-badge hwp">HWP</span>
+                                                            {% elif first_file.file_extension == 'xlsx' %}
+                                                                <span class="label-badge xls">XLS</span>
+                                                            {% elif first_file.file_extension == 'docx' %}
+                                                                <span class="label-badge docx">DOCX</span>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="detail-info-header-buy-info"
+                                            >
+                                                <div
+                                                    class="detail-info-header-price-wrapper"
+                                                >
+                                                    <div
+                                                        class="detail-info-header-price-area"
+                                                    >
+                                                        <span>{{ share.share_points }} 포인트</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 작성자 정보 -->
+                                        <div class="writer-info-container">
+                                            <div class="writer-info-contents">
+                                                <div class="writer-info-header">
+                                                    <div class="writer-info-content">
+                                                        <!-- 클릭시 작성자 정보보기 페이지 이동..-->
+                                                        <a href="" class="writer-info-link">
+                                                            <div class="avatar">
+                                                                <span class="avatar-has-image" style="background-image: url('/upload/{{ profile }}'), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYzl1cmF3eHIyYSIgZD0iTTAgMGg4MHY4MEgweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8Zz4KICAgICAgICAgICAgPG1hc2sgaWQ9IjZ2emt3OXN5NWIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYzl1cmF3eHIyYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04MCA0MGMwIDIyLjA5Mi0xNy45MDkgNDAtNDAgNDBTMCA2Mi4wOTIgMCA0MCAxNy45MDkgMCA0MCAwczQwIDE3LjkwOCA0MCA0MCIgZmlsbD0iI0U5RUNFRiIgbWFzaz0idXJsKCM2dnprdzlzeTViKSIvPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJtMjIuMzA1IDI2LjkxNC4yMyAyLjEyMWMtLjAxLjI5LjA0OS41NTkuMTgxLjgwNy4wODUuMjYxLjIyOC40ODUuNDMzLjY3Ni4xOS4yMDMuNDEzLjM0OC42NzQuNDMyLjI0OS4xMzIuNTE5LjE5MS44MDYuMThsLjU1Ny0uMDc1Yy4zNTUtLjA5OS42NjMtLjI3OS45MjQtLjUzN2wuMzI4LS40MjVjLjE5LS4zMjYuMjg1LS42OC4yODctMS4wNTgtLjA3OC0uNzA2LS4xNTQtMS40MTUtLjIzLTIuMTIxLjAxLS4yOS0uMDUtLjU1OS0uMTgtLjgwN2ExLjU3IDEuNTcgMCAwIDAtLjQzNC0uNjc1IDEuNTUzIDEuNTUzIDAgMCAwLS42NzQtLjQzMyAxLjU4NCAxLjU4NCAwIDAgMC0uODA3LS4xOGMtLjE4NS4wMjYtLjM3Mi4wNS0uNTU3LjA3NWEyLjA4MyAyLjA4MyAwIDAgMC0uOTI1LjUzOGwtLjMyNi40MjRjLS4xOS4zMjctLjI4NS42NzktLjI4NyAxLjA1OE01My44ODIgMjcuMzI4djIuNTIyYzAgLjUzOC4yMzMgMS4xMDIuNjEzIDEuNDgyLjE5LjIwMy40MTQuMzQ4LjY3NC40MzMuMjUuMTMuNTE4LjE5LjgwNy4xOC41NDItLjAyNCAxLjEwNC0uMjAyIDEuNDgxLS42MTMuMzc2LS40MS42MTQtLjkxNC42MTQtMS40ODJ2LTIuNTIyYzAtLjUzNi0uMjM0LTEuMS0uNjE0LTEuNDhhMS41NzYgMS41NzYgMCAwIDAtLjY3NC0uNDM0IDEuNTczIDEuNTczIDAgMCAwLS44MDctLjE4Yy0uNTQyLjAyNC0xLjEwNC4yMDItMS40ODEuNjE0LS4zNzYuNDA5LS42MTMuOTEzLS42MTMgMS40OE0zNi4yOTcgMjUuOTQ1Yy0uNzQzIDQuMzM1LTEuNDg0IDguNjczLTIuMjI1IDEzLjAxLS4xODQgMS4wNzUuMjg1IDIuMzA3IDEuNDYzIDIuNTc2IDEuMDE0LjIzIDIuMzc4LS4zMDkgMi41NzYtMS40NjJsMi4yMjUtMTMuMDExYy4xODQtMS4wNzUtLjI4NS0yLjMwOC0xLjQ2My0yLjU3Ny0xLjAxNS0uMjMtMi4zOC4zMDgtMi41NzYgMS40NjRNNDUuMTU4IDUwLjM4NmMtLjE2LS4zMy0uMTAxLS40NzctLjA0NS0uODA2LS4xMTEuMTc1LS4xMjUuMjAxLS4wNDIuMDc3YS4zNy4zNyAwIDAgMSAuMjAzLS4xNzhjLS4yMi4xMTctLjIzNS4xMzgtLjA0Ny4wNjRhMy40MyAzLjQzIDAgMCAxLS4zOTMuMTE2Yy0uMDgyLjAyLS42NTkuMS0uMjY1LjA1Ny0xLjExNS4xMjQtMi4yNC4xOS0zLjM2LjI4NWwtNi44NzcuNTc3Yy0xLjA4OS4wOTItMi4xNDguODk3LTIuMDk1IDIuMDk0LjA0OCAxLjA1Ni45MjYgMi4xOTIgMi4wOTUgMi4wOTNsOC44NC0uNzRjMS40NS0uMTIzIDMuMDQxLS4xMyA0LjI4Ny0uOTggMS42LTEuMDkzIDIuMTYzLTMuMDI4IDEuMzE2LTQuNzcyLS40OC0uOTktMS45NjYtMS4zMzMtMi44NjYtLjc1Mi0xLjAxMy42NTQtMS4yNjMgMS44MDctLjc1IDIuODY1IiBmaWxsPSIjQ0REM0Q4Ii8+CiAgICA8L2c+Cjwvc3ZnPgo='); box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;"></span>
+                                                            </div>
+                                                            <div class="writer-info-texts">
+                                                                <span class="writer-info-name">{{ share.university.member.member_name}}</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="writer-info-body">
+                                                    <div class="writer-info-wrapper">
+                                                        <div class="writer-info">
+                                                            <span class="writer-info-icon university"></span>
+                                                            <span>{{ share.university.university_member_school }} | {{ share.university.university_member_major }}</span>
+                                                        </div>
+                                                        <div class="writer-info" style="display: flex; justify-content: space-between;">
+                                                            <div style="display: flex; text-align: center;">
+                                                                <span class="writer-info-icon one-lab" style="margin-right: 5px;"></span>
+                                                                <span>참여하는 원랩 수</span>
+                                                            </div>
+                                                            <span>{{ onelab_count }}개</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 상품 선택 -->
+                                        <div
+                                            class="product-select-menu-container"
+                                        >
+                                            <div
+                                                class="product-select-container"
+                                            >
+                                                <input type="checkbox"
+                                                    id="check-btn"
+                                                    class="product-select-title menu"
+                                                >
+
+                                                    <div class="product-select-more-button"></div>
+                                                    <div
+                                                        class="product-select-more-buttons"
+                                                    >
+                                                    </div>
+
+                                                    <!-- ul쪽 -->
+                                                    <label for="check-btn"
+                                                        class="product-select-menu-default-value"
+                                                        style="cursor: pointer; margin-left: 14px;"
+                                                        >자료 선택</label
+                                                    >
+                                                    <ul class="menubars up">
+                                                        <li>
+
+                                                        <div class="product-select-menu-item-container" style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                                                            <div class="product-select-menu-item-title-wrapper product-select-menu-item-blured-p">
+                                                                <div class="product-select-menu-item-title">
+                                                                    <div class="product-select-menu-item-name">{{ share.share_title }}</div>
+                                                                    <div class="product-select-menu-item-description">
+                                                                        <div class="store-badge-group-container">
+                                                                            <div class="store-badges" style="display: flex; margin-right: 5px;">
+                                                                                {% with first_file=share.sharefile_set.first %}
+                                                                                    {% if first_file %}
+                                                                                        {% if first_file.file_extension == 'pdf' %}
+                                                                                            <span class="label-badge pdf">PDF</span>
+                                                                                        {% elif first_file.file_extension == 'hwp' %}
+                                                                                            <span class="label-badge hwp">HWP</span>
+                                                                                        {% elif first_file.file_extension == 'xlsx' %}
+                                                                                            <span class="label-badge xls">XLS</span>
+                                                                                        {% elif first_file.file_extension == 'docx' %}
+                                                                                            <span class="label-badge docx">DOCX</span>
+                                                                                        {% endif %}
+                                                                                    {% endif %}
+                                                                                {% endwith %}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="product-select-menu-item-bottom">
+                                                                <div class="product-select-menu-item-left">
+                                                                    <p class="product-select-menu-item-blured">{{ share.share_points }} 포인트</p>
+                                                                </div>
+                                                                <form action="{% url 'share:detail' id=share.id %}" method="POST" enctype="multipart/form-data" name="share-pay">
+                                                                    {% csrf_token %}
+                                                                    <button class="button-button product-select-menu-item-out-of-stock purchase-btn">
+                                                                        <span>
+                                                                            <span class="button-children">구매하기</span>
+                                                                        </span>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </input>
+                                            </div>
+                                        </div>
+
+                                        <!-- 재입고 알림신청 쪽 -->
+                                        <div class="product-buy-info-container">
+                                            <div
+                                                class="product-float-button-container"
+                                            >
+                                                <div
+                                                    class="product-float-button-wish-button-box"
+                                                >
+                                                    {% if member_like %}
+                                                        <button
+                                                            aria-label="찜하기 버튼"
+                                                            aria-pressed="false"
+                                                            class="button-button product-float-button-wish-button like_btn active"
+                                                            id="like-btn"
+                                                            type="button"
+                                                        >
+                                                            <span>
+                                                                <span
+                                                                    class="button-children"
+                                                                >
+                                                                    <div>
+                                                                        <svg
+                                                                            viewBox="0 0 32 32"
+                                                                            focusable="false"
+                                                                            role="presentation"
+                                                                            class="with-icon-icon"
+                                                                            aria-hidden="true"
+                                                                            style="
+                                                                                width: 24px;
+                                                                                height: 24px;
+                                                                            "
+                                                                        >
+                                                                            <path
+                                                                                d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
+                                                                            ></path>
+                                                                        </svg>
+                                                                        <span
+                                                                            class="product-float-button-count" id="like-count"
+                                                                            >{{ share_like_count }}</span
+                                                                        >
+                                                                    </div>
+                                                                </span>
+                                                            </span>
+                                                        </button>
+                                                    {% else %}
+                                                        <button
+                                                        aria-label="찜하기 버튼"
+                                                        aria-pressed="false"
+                                                        class="button-button product-float-button-wish-button like_btn"
+                                                        id="like-btn"
+                                                        type="button"
+                                                    >
+                                                        <span>
+                                                            <span
+                                                                class="button-children"
+                                                            >
+                                                                <div>
+                                                                    <svg
+                                                                        viewBox="0 0 32 32"
+                                                                        focusable="false"
+                                                                        role="presentation"
+                                                                        class="with-icon-icon"
+                                                                        aria-hidden="true"
+                                                                        style="
+                                                                            width: 24px;
+                                                                            height: 24px;
+                                                                        "
+                                                                    >
+                                                                        <path
+                                                                            d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"
+                                                                        ></path>
+                                                                    </svg>
+                                                                    <span
+                                                                        class="product-float-button-count" id="like-count"
+                                                                        >{{ share_like_count }}</span
+                                                                    >
+                                                                </div>
+                                                            </span>
+                                                        </span>
+                                                    </button>
+                                                    {% endif %}
+                                                </div>
+                                                <a href="{% url 'download' file_path=share.sharefile_set.first.path %}" style="width: 100%">
+                                                    <button
+                                                        class="button-button button-primary purchase-btn"
+                                                    >
+                                                        <span>
+                                                            <span
+                                                                class="button-children"
+                                                            >
+                                                                <span
+                                                                    >구매하기</span
+                                                                >
+                                                            </span>
+                                                        </span>
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- 구매전 반드시 확인 쪽 -->
+                                        <div
+                                                    color="basic"
+                                                    class="message-box" style="margin-top: 25px;"
+                                                >
+                                                    <svg
+                                                        viewBox="0 0 40 40"
+                                                        focusable="false"
+                                                        role="presentation"
+                                                        class="with-icon-icon message-box-icon"
+                                                        aria-hidden="true"
+                                                    >
+                                                        <path
+                                                            fill="none"
+                                                            d="M0 0h40v40H0z"
+                                                        ></path>
+                                                        <path
+                                                            d="M20 1a19 19 0 1 0 19 19A19.06 19.06 0 0 0 20 1zm1 28.6h-2v-13h2zm-1-15.84A1.8 1.8 0 1 1 21.8 12a1.8 1.8 0 0 1-1.8 1.76z"
+                                                        ></path>
+                                                    </svg>
+                                                    <div
+                                                        class="message-box-content"
+                                                    >
+                                                        <p
+                                                            class="message-box-title"
+                                                        >
+                                                            구매 전 반드시
+                                                            확인하세요!
+                                                        </p>
+                                                        <div
+                                                            class="message-box-description"
+                                                        >
+                                                            <ul>
+                                                                <li>
+                                                                    이 자료는 작성자 개개인이 직접 올린 자료입니다.
+                                                                </li>
+                                                                <li>
+                                                                    구매하기를 누르면 즉시 포인트가 차감되며 파일이 다운로드 됩니다.
+                                                                </li>
+                                                                <li>
+                                                                    파일이 다운로드 되고 난 후, 환불은 불가합니다.
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 밑에꺼 쪽 -->
+                            <div>
+                                <div class="detail-content-container">
+                                    <!-- 네비 쪽 -->
+                                    <nav class="detail-tab-container">
+                                        <ul>
+                                            <li class="detail-tab-is-active detail-tab">
+                                                <a href="">
+                                                    <span>상세보기</span>
+                                                </a>
+                                            </li>
+                                            <li class="detail-tab">
+                                                <a href="{% url 'share:review_list' %}?share_id={{ share.id }}" id="review-link">
+                                                    <span>
+                                                        후기
+                                                        <span class="detail-tab-badge"></span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <!-- 네비 밑 쪽 -->
+                                    <div class="store-tab-contents-wrapper">
+                                        <div class="store-tab-contents">
+                                            <div class="detail-story-container">
+                                                
+                                                <div class="story-container">
+                                                    <div
+                                                        class="story"
+                                                        style="
+                                                            height: 300px;
+                                                            overflow: hidden;
+                                                        "
+                                                    >
+                                                        <div
+                                                            style="
+                                                                position: relative;
+                                                            "
+                                                        >
+                                                            <div
+                                                                class="inner-contents"
+                                                            >
+                                                                <div class="detail-satisfaction-summary-wrap" style="height: 300px; display: block">
+                                                            <div style="display: grid; justify-items: center;">
+                                                                <span class="satisfaction-score-label location" style="margin: 10px">[학과 | 학년]</span>
+                                                                <div class="detail-satisfaction-summary-splitter" style="height: 5px;"></div>
+                                                                <div class="satisfaction-summary-containers">
+                                                                    <span>{{ share.share_text_major }} | {{ share.share_choice_grade }}</span>
+                                                                </div>
+                                                                <span class="satisfaction-score-label location" style="margin: 10px; margin-top: 15px;">[자료명]</span>
+                                                                <div class="detail-satisfaction-summary-splitter" style="height: 5px;"></div>
+                                                                <div class="satisfaction-summary-containers">
+                                                                    <span>{{ share.share_title }}</span>
+                                                                </div>
+                                                                <span class="satisfaction-score-label location" style="margin: 10px; margin-top: 15px;">[공유 자료 소개글]</span>
+                                                                <div class="detail-satisfaction-summary-splitter" style="height: 5px;"></div>
+                                                                <div class="satisfaction-summary-containers">
+                                                                    <span>{{ share.share_content }}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                                
+
+                                                                
+                                                            </div>
+                                                            <div></div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- 맨밑 그림 쪽 -->
+                                                <section>
+                                                    <div
+                                                        class="detail-page-recommendation-container"
+                                                    >
+                                                        <div
+                                                            class="detail-page-recommendation-wrapper"
+                                                        >
+                                                            
+                                                            <!-- 아래꺼 그림 목록 쪽 -->
+                                                            <div
+                                                                class="recommendation-best-container"
+                                                            >
+                                                                
+                                                                
+                                                                <!-- 맨밑 버튼 쪽 -->
+                                                                <div class="recommendation-best-link-button">
+                                                                    <div class="recommendation-best-button-wrapper">
+                                                                        <a href="{% url 'share:list' %}" class="button-lg l">
+                                                                            <span>
+                                                                                <span class="button-children">
+                                                                                    전체보기
+                                                                                    <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="with-icon-icon ic">
+                                                                                        <path fill-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="detail-page-recommendation-container-banner">
+                                                        <a href="" class="detail-page-recommendation-container-content">
+                                                            <div class="detail-page-recommendation-container-title">마감임박 프로젝트는 어때요?</div>
+                                                            <div class="detail-page-recommendation-container-description">
+                                                                <span>지금 보러가기</span>
+                                                                <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="with-icon-icon" style="width: 16px; height: 16px;">
+                                                                    <path fill-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                                                </svg>
+                                                            </div>
+                                                        </a>
+                                                        <button class="detail-page-recommendation-container-close">
+                                                            <svg viewBox="0 0 40 40" role="presentation" class="with-icon-icon g" style="width: 16px; height: 16px;">
+                                                                <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+
+                                        <!-- 밑에쪽 오른쪽부분 -->
+                                        <div class="store-tab-side-bar">
+                                            <div class="detail-content-sidebar">
+                                                <!-- 작성자 정보 -->
+                                        <div class="writer-info-container">
+                                            <div class="writer-info-contents">
+                                                <div class="writer-info-header">
+                                                    <div class="writer-info-content">
+                                                        <!-- 클릭시 작성자 정보보기 페이지 이동..-->
+                                                        <a href="" class="writer-info-link">
+                                                            <div class="avatar">
+                                                                <span class="avatar-has-image" style="background-image: url('/upload/{{ profile }}'), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYzl1cmF3eHIyYSIgZD0iTTAgMGg4MHY4MEgweiIvPgogICAgPC9kZWZzPgogICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8Zz4KICAgICAgICAgICAgPG1hc2sgaWQ9IjZ2emt3OXN5NWIiIGZpbGw9IiNmZmYiPgogICAgICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYzl1cmF3eHIyYSIvPgogICAgICAgICAgICA8L21hc2s+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik04MCA0MGMwIDIyLjA5Mi0xNy45MDkgNDAtNDAgNDBTMCA2Mi4wOTIgMCA0MCAxNy45MDkgMCA0MCAwczQwIDE3LjkwOCA0MCA0MCIgZmlsbD0iI0U5RUNFRiIgbWFzaz0idXJsKCM2dnprdzlzeTViKSIvPgogICAgICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJtMjIuMzA1IDI2LjkxNC4yMyAyLjEyMWMtLjAxLjI5LjA0OS41NTkuMTgxLjgwNy4wODUuMjYxLjIyOC40ODUuNDMzLjY3Ni4xOS4yMDMuNDEzLjM0OC42NzQuNDMyLjI0OS4xMzIuNTE5LjE5MS44MDYuMThsLjU1Ny0uMDc1Yy4zNTUtLjA5OS42NjMtLjI3OS45MjQtLjUzN2wuMzI4LS40MjVjLjE5LS4zMjYuMjg1LS42OC4yODctMS4wNTgtLjA3OC0uNzA2LS4xNTQtMS40MTUtLjIzLTIuMTIxLjAxLS4yOS0uMDUtLjU1OS0uMTgtLjgwN2ExLjU3IDEuNTcgMCAwIDAtLjQzNC0uNjc1IDEuNTUzIDEuNTUzIDAgMCAwLS42NzQtLjQzMyAxLjU4NCAxLjU4NCAwIDAgMC0uODA3LS4xOGMtLjE4NS4wMjYtLjM3Mi4wNS0uNTU3LjA3NWEyLjA4MyAyLjA4MyAwIDAgMC0uOTI1LjUzOGwtLjMyNi40MjRjLS4xOS4zMjctLjI4NS42NzktLjI4NyAxLjA1OE01My44ODIgMjcuMzI4djIuNTIyYzAgLjUzOC4yMzMgMS4xMDIuNjEzIDEuNDgyLjE5LjIwMy40MTQuMzQ4LjY3NC40MzMuMjUuMTMuNTE4LjE5LjgwNy4xOC41NDItLjAyNCAxLjEwNC0uMjAyIDEuNDgxLS42MTMuMzc2LS40MS42MTQtLjkxNC42MTQtMS40ODJ2LTIuNTIyYzAtLjUzNi0uMjM0LTEuMS0uNjE0LTEuNDhhMS41NzYgMS41NzYgMCAwIDAtLjY3NC0uNDM0IDEuNTczIDEuNTczIDAgMCAwLS44MDctLjE4Yy0uNTQyLjAyNC0xLjEwNC4yMDItMS40ODEuNjE0LS4zNzYuNDA5LS42MTMuOTEzLS42MTMgMS40OE0zNi4yOTcgMjUuOTQ1Yy0uNzQzIDQuMzM1LTEuNDg0IDguNjczLTIuMjI1IDEzLjAxLS4xODQgMS4wNzUuMjg1IDIuMzA3IDEuNDYzIDIuNTc2IDEuMDE0LjIzIDIuMzc4LS4zMDkgMi41NzYtMS40NjJsMi4yMjUtMTMuMDExYy4xODQtMS4wNzUtLjI4NS0yLjMwOC0xLjQ2My0yLjU3Ny0xLjAxNS0uMjMtMi4zOC4zMDgtMi41NzYgMS40NjRNNDUuMTU4IDUwLjM4NmMtLjE2LS4zMy0uMTAxLS40NzctLjA0NS0uODA2LS4xMTEuMTc1LS4xMjUuMjAxLS4wNDIuMDc3YS4zNy4zNyAwIDAgMSAuMjAzLS4xNzhjLS4yMi4xMTctLjIzNS4xMzgtLjA0Ny4wNjRhMy40MyAzLjQzIDAgMCAxLS4zOTMuMTE2Yy0uMDgyLjAyLS42NTkuMS0uMjY1LjA1Ny0xLjExNS4xMjQtMi4yNC4xOS0zLjM2LjI4NWwtNi44NzcuNTc3Yy0xLjA4OS4wOTItMi4xNDguODk3LTIuMDk1IDIuMDk0LjA0OCAxLjA1Ni45MjYgMi4xOTIgMi4wOTUgMi4wOTNsOC44NC0uNzRjMS40NS0uMTIzIDMuMDQxLS4xMyA0LjI4Ny0uOTggMS42LTEuMDkzIDIuMTYzLTMuMDI4IDEuMzE2LTQuNzcyLS40OC0uOTktMS45NjYtMS4zMzMtMi44NjYtLjc1Mi0xLjAxMy42NTQtMS4yNjMgMS44MDctLjc1IDIuODY1IiBmaWxsPSIjQ0REM0Q4Ii8+CiAgICA8L2c+Cjwvc3ZnPgo='); box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;"></span>
+                                                            </div>
+                                                            <div class="writer-info-texts">
+                                                                <span class="writer-info-name">{{ share.university.member.member_name }}</span>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="writer-info-body">
+                                                    <div class="writer-info-wrapper">
+                                                        <div class="writer-info">
+                                                            <span class="writer-info-icon university"></span>
+                                                            <span>{{ share.university.university_member_school }} | {{ share.university.university_member_major }}</span>
+                                                        </div>
+                                                        <div class="writer-info" style="display: flex; justify-content: space-between;">
+                                                            <div style="display: flex; text-align: center;">
+                                                                <span class="writer-info-icon one-lab" style="margin-right: 5px;"></span>
+                                                                <span>참여하는 원랩 수</span>
+                                                            </div>
+                                                            <span>{{ onelab_count }}개</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                <div class="product-select-menu-container">
+                                                    <input type="checkbox" id="check-btn2" class=" product-select-container">
+                                                        <div class="product-select-title" style="margin-left: 15px;">
+                                                            <label for="check-btn2" class="product-select-menu-default-value" style="cursor: pointer;">자료 선택</label>
+                                                            <div style="cursor: pointer;" class="product-select-more-button">
+                                                                <!-- <svg viewBox="0 0 32 32" role="presentation" class="with-icon-icon">
+                                                                    <path d="M16 9.6L26.4 20l-1.12 1.12L16 11.84l-9.28 9.28L5.6 20 16 9.6z"></path>
+                                                                </svg> -->
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        
+                                                    </input>
+                                                    <ul class="menubars2 up">
+                                                        <li>
+                                                            
+                                                            <div class="product-select-menu-item-container" style="border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                                                                <div class="product-select-menu-item-title-wrapper product-select-menu-item-blured-p">
+                                                                    <div class="product-select-menu-item-title">
+                                                                        <div class="product-select-menu-item-name">{{ share.share_title }}</div>
+                                                                        <div class="product-select-menu-item-description">
+                                                                            <div class="store-badge-group-container">
+                                                                                <div class="store-badges" style="display: flex; margin-right: 5px;">
+                                                                                    {% with first_file=share.sharefile_set.first %}
+                                                                                        {% if first_file %}
+                                                                                            {% if first_file.file_extension == 'pdf' %}
+                                                                                                <span class="label-badge pdf">PDF</span>
+                                                                                            {% elif first_file.file_extension == 'hwp' %}
+                                                                                                <span class="label-badge hwp">HWP</span>
+                                                                                            {% elif first_file.file_extension == 'xlsx' %}
+                                                                                                <span class="label-badge xls">XLS</span>
+                                                                                            {% elif first_file.file_extension == 'docx' %}
+                                                                                                <span class="label-badge docx">DOCX</span>
+                                                                                            {% endif %}
+                                                                                        {% endif %}
+                                                                                    {% endwith %}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="product-select-menu-item-bottom">
+                                                                    <div class="product-select-menu-item-left">
+                                                                        <p class="product-select-menu-item-blured">{{ share.share_points }} 포인트</p>
+                                                                    </div>
+                                                                    <button class="button-button product-select-menu-item-out-of-stock purchase-btn">
+                                                                        <span>
+                                                                            <span class="button-children">구매하기</span>
+                                                                        </span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    
+                                                    </ul>
+                                                </div>
+                                                <!-- 재입고 알림 신청 쪽 -->
+                                                <div class="product-buy-info-container">
+                                                    <div class="product-float-button-container">
+                                                        <!-- 재입고 알림신청 버튼 -->
+                                                        <button class="button-notification purchase-btn" type="button">
+                                                            <span>
+                                                                <span class="button-childrens">
+                                                                    <span>구매하기</span>
+                                                                </span>
+                                                            </span>
+                                                            
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <footer></footer>
+                </div>
+                <div class="floating-buttons-container">
+                    <button type="button" class="float-top-btn">
+                        <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="go-up-arrow-svg" aria-hidden="true">
+                            <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div></div>
+                {% include  "header/main-page-footer.html"%}
+            </main>
+    
+        </div>
+    
+{% endblock %}
+{% block js %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="{% static 'share/js/detail.js' %}"></script>
+    <script src="{% static 'public/js/modal.js' %}"></script>
+    <script>
+        purchaseBtns = document.querySelectorAll('.purchase-btn')
+        purchaseBtns.forEach((purchaseBtn) => {
+            purchaseBtn.addEventListener('click', (e) => {
+            let modalMessage = "<span>결제 완료되었습니다.</span>"
+            showWarnModal(modalMessage);
+            })
+        })
+
+        const share_id = '{{ share.id }}'
+        const csrfToken = '{{ csrf_token }}'
+
+        // 좋아요
+        async function likePost(jsonData) {
+            try {
+                const response = await fetch('/share/like/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: jsonData
+                });
+                if (!response.ok) {
+                    throw new Error('서버 응답 오류');
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('에러:', error);
+            }
+        }
+        
+        document.getElementById('like-btn').addEventListener('click', async function() {
+            const jsonData = JSON.stringify({'share_id': share_id})
+            const updatedLikes = await likePost(jsonData);
+            if (updatedLikes) {
+                document.getElementById('like-count').textContent = updatedLikes.like_count;
+            }
+        });
+    </script>
+    <script src="{% static 'share/js/review-list.js' %}"></script>
+{% endblock %}

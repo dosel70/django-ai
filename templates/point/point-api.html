@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pointAPI</title>
+    
+</head>
+<body>
+<input type="submit" name="close-btn" style="visibility: hidden">
+{#<em style="display: none" class="price">{{ price }}</em>#}
+</body>
+<script src="https://js.bootpay.co.kr/bootpay-4.3.4.min.js" type="application/javascript"></script>
+<script>
+    {#const point = document.querySelector('.price').textContent#}
+{#const urlParams = new URLSearchParams(window.location.search);#}
+{##}
+{#const price = parseInt(urlParams.get({{price}})) || 100; // 기본값은 100#}
+
+const pay = async () => {
+      const userInput = {{ point_value }}
+        // 입력된 값이 숫자인지 확인하고, 숫자가 아니거나 비어있으면 기본값 0으로 설정
+        const dynamicPrice = isNaN(parseInt(userInput)) || userInput === '' ? 0 : parseInt(userInput);
+        
+        const response = await Bootpay.requestPayment({
+        application_id: "59a4d323396fa607cbe75de4",
+        price: dynamicPrice,
+        order_name: "테스트결제",
+        order_id: "TEST_ORDER_ID",
+        pg: "나이스페이먼츠",
+        method: "카드",
+        tax_free: 0,
+        user: {
+            id: "회원아이디",
+            username: "회원이름",
+            phone: "01000000000",
+            email: "test@test.com",
+        },
+        items: [
+            {
+                id: "item_id",
+                name: "테스트아이템",
+                qty: 1,
+                price: dynamicPrice,  // Django 템플릿 변수로 가격 설정
+            },
+        ],
+        extra: {
+            open_type: "iframe",
+            card_quota: "0,2,3",
+            escrow: false,
+        },
+    });
+     if (response.success) {
+        console.log('결제 성공:', response);
+        document.getElementById('pay-price').textContent = dynamicPrice + '원 결제하기';
+
+        // Bootpay API 호출 URL을 받아와서 페이지 이동
+        const bootpayApiUrl = response.bootpay_api_url;
+        window.location.href = bootpayApiUrl;
+    } else {
+        console.log('결제 실패:', response);
+    }
+        // 동적으로 설정한 가격으로 버튼의 텍스트 업데이트
+        document.getElementById('pay-price').textContent = dynamicPrice + '원 결제하기';
+
+};
+
+pay();
+</script>
+</html>

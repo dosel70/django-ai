@@ -1,0 +1,226 @@
+{% extends 'community/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'community/css/community-detail.css' %}">
+{% endblock %}
+
+{% block title %}커뮤니티 상세보기{% endblock %}
+    
+{% block content %}
+    {% include 'community/header.html' %}
+    <div id="page-container">
+        <main id="main" style="visibility: visible;">
+            <!-- 헤더 -->
+            <div class="main-wrapper-content">
+                <div>
+                    <div class="community-container">
+                        <div class="community-content-wrapper">
+                            <div class="community-content">
+                                <div class="community-detail-container">
+                                    <a href="{% url 'community:list' %}">
+                                        {#{%  url 'community:list' page=1 %}#}
+                                        <button type="button" class="go-to-list-btn">
+                                            <span>
+                                                <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="go-to-list-svg" aria-hidden="true">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.076 2.576l.848.848L8.35 12l8.575 8.576-.848.848L6.65 12l9.425-9.424z"></path>
+                                                </svg>
+                                                <span class="go-to-list-text">목록으로 이동</span>
+                                            </span>
+                                        </button>
+                                    </a>
+                                    <div class="community-title-container">
+                                        <p>
+                                            <span class="community-detail-head">커뮤니티</span>
+                                            <span class="community-detail-line"></span>
+                                            {# 오픈예정 -> 커뮤니티 카테고리 중 하나로 질문, 자료요청, 기타 #}
+                                            <span class="community-detail-state">{{ community.get_post_status_display }}</span>
+                                        </p>
+                                        <div class="community-title-wrapper">
+                                            <p class="community-title">
+                                                {{ community.community_title }}
+                                            </p>
+                                            <!-- 좋아요 버튼 -->
+                                            <div class="community-like-icon">
+                                                <button type="button" style="position: relative;">
+                                                    <div style="position: absolute; visibility: hidden; left: -10px; top: -10px; width: 44px; height: 44px;"></div>
+                                                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="community-like-svg" aria-hidden="true" style="width: 32px; height: 32px;">
+                                                        <path class="like-icon" d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"></path>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="community-writer">
+                                            <span style="font-size: 18px">{{ community.member.member_name }} </span>
+                                            <span style="font-size: 18px"></span>
+                                        </div>
+                                       
+                                        <p class="community-write-date">{{ community.updated_date|date:"Y년 m월 d일 A h시 i분" }}
+                                            {% if request.session.member.id == community.member.id %}
+                                            <!-- 수정,삭제 버튼(글작성자만 볼수있음) -->
+                                                <br>
+                                                <a href="/community/update/?id={{ community.id }}" class="update-btn">수정하기</a>
+                                                {#{% url 'community:update community_id=community.id' %}#}
+                                                <a href="/community/delete/?id={{ community.id }}" class="delete-btn">삭제하기</a>
+                                            {% endif %}
+                                        </p>
+                                        
+                                    </div>
+
+                                    <!-- 글 바디 쪽 -->
+                                    <div class="community-detail-contents-container">
+                                        <div class="community-detail-contents-wrapper">
+                                            <div class="community-detail-contents">
+                                                {{ community.community_content }}
+                                            </div>
+                                        </div>
+                                        <div class="community-detail-file-wrapper">
+                                            {% for file in community_file.all %}
+                                                <div class="community-detail-file">
+                                                    <img src="/upload/{{ file.path }}" width="100%" class="file-list">
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <!-- 댓글 목록 전 유의사항 -->
+                                    <div>
+                                        <div class="comment-container">
+                                            <!-- 댓글 목록 -->
+{#                                                <input type="hidden" value="{{ community.id }}" name="community-id">#}
+                                                <div class="comment-user-wrapper-container-write">
+                                                    <div class="comment-user-wrapper-avatar">
+                                                        <!-- a태그 클릭시 마이페이지 이동 -->
+                                                        <!-- 로그인 안되어있을 경우 로그인 페이지로 이동 -->
+                                                        <a href="">
+                                                            <div class="project-navbar-maker">
+                                                                {% if profile.path is None or profile.path == '' %}
+                                                                    <img class="profile" style="width: 11%" src="{% static 'myPage/images/profile.jpg' %}">
+                                                                {% else %}
+                                                                    <img class="profile" src="/upload/{{ profile.path}}"
+                                                                         style=" 
+                                                                         width:42px; 
+                                                                         height: 42px; 
+                                                                         border-radius: 100%">
+                                                                {% endif %}
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <!-- 로그인 되어있을 경우 댓글 창 시작 -->
+                                                    <div class="comment-user-wrapper-main">
+                                                        <div class="comment-write-form">
+                                                            <p class="comment-write-form-nickname">{{ request.session.member.member_name }}</p>
+                                                            <div class="comment-form-textarea">
+                                                                <textarea id="reply-content" name="reply-content" class="comment-textarea" rows="2" maxlength="2000" placeholder="댓글을 남겨주세요."></textarea>
+                                                                <textarea aria-hidden="true" readonly="" tabindex="-1" class="comment-textarea" style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0px); pointer-events: none;"></textarea>
+                                                            </div>
+                                                            <div class="comment-form-bottom">
+                                                                <span class="comment-form-count">0/2,000</span>
+                                                            </div>
+                                                        </div>
+                                                        <div style="display: flex;">
+                                                            <div class="comment-notice">
+                                                                <div class="comment-warning-msg">
+                                                                    <div class="comment-info">
+                                                                        <div class="comment-info-text">
+                                                                           해당 게시글의 내용과 무관한 댓글 혹은 악의적 댓글 작성자는 법적 책임을 부담하게 될 수 있으니, 유의하여 주시기 바랍니다.
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        <button class="comment-ok-btn" id="reply-write">
+                                                            <span class="comment-ok-text">등록</span>
+                                                        </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 로그인o 끝 -->
+
+                                                <!-- 로그인 안되어있을 경우 댓글 창 시작-->
+                                                <!-- <div class="comment-user-wrapper-main">
+                                                    <div class="comment-write-form">
+                                                        <p class="comment-write-form-nickname"></p>
+                                                        <div class="comment-disable-write-form">로그인이 필요합니다.</div>
+                                                    </div>
+                                                </div> -->
+                                                <!-- 로그인x 끝 -->
+                                            <section id="replies-wrap">
+                                                <ul></ul>
+                                                <div class="reply-more-btn">
+                                                    <button type="button" id="more-replies">
+                                                        <div>더보기</div>
+                                                        <div><img src="{% static 'public/images/plus.png' %}" width="24"></div>
+                                                    </button>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 푸터 -->
+            </div>
+            <div class="floating-buttons-container">
+                <button type="button" class="float-top-btn">
+                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="go-up-arrow-svg" aria-hidden="true">
+                        <path d="M33 30l-1.4 1.4L20 19.8 8.4 31.4 7 30l13-13zm1-21H6v2h28z"></path>
+                    </svg>
+                </button>
+            </div>
+        </main>
+    </div>
+    <div class="login-modal">
+        <div class="login-modal-container">
+            <div class="login-modal-container-inner">
+                <div class="login-modal-box">
+                    <div class="login-modal-box-inner">
+                        <div class="login-modal-wrapper">
+                            <p class="login-modal-title">로그인이 필요합니다.</p>
+                            <div class="login-modal-buttons">
+                                <button type="button" class="login-modal-btn go-member-btn">
+                                    <span>
+                                        <span class="go-member-text">회원가입</span>
+                                    </span>
+                                </button>
+                                <button type="button" class="login-modal-btn go-to-login-btn">
+                                    <span>
+                                        <span class="go-to-login-text">로그인</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="close-btn">
+                            <span>
+                                <span class="close-icon">
+                                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="close-svg" aria-hidden="true">
+                                        <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+ {% block js %}
+     <script>
+         const csrf_token ='{{ csrf_token}}'
+         const community_id = '{{ community.id }}'
+         const memberId = '{{ request.session.member.id }}'
+     </script>
+     <script src="{% static 'reply/js/reply-module.js' %}"></script>
+    <script src="{% static 'reply/js/reply.js' %}"></script>
+    <script src="{% static '/community/js/community-detail.js' %}"></script>
+{% endblock %}
+
+
+
+
+

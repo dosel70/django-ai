@@ -1,0 +1,129 @@
+{% extends 'notification/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'notification/css/write.css' %}">
+{% endblock %}
+
+{% block title %}공지사항 작성{% endblock %}
+
+{% block content %}
+    <div class="flex-column">
+        <main role="main">
+            <div class="container">
+                <!-- 위에쪽 네비 -->
+                <div class="align-items-center">
+                    <nav class="col">
+                        <ol class="breadcrumbs">
+                            <li>
+                                <a href="">관리자 페이지</a>
+                            </li>
+                            <li>공지 등록</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="row">
+                    <div class="lg:col-9">
+                        <!-- 맨위쪽 큰 글씨 쪽 -->
+                        <header class="mb-5">
+                            <h1 class="h1">공지사항 작성</h1>
+                        </header>
+                        <div class="form">
+                            <div></div>
+
+                            <!-- 밑에 텍스트들 -->
+                            <form action="{% url 'notification:write' %}" method="post" name="write-form" enctype="multipart/form-data" class="request-form">
+                                {% csrf_token %}
+                                <!-- 첫번쨰 텍스트 -->
+                                <input name="utf8" type="hidden" />
+                                <div class="form-field" style="display: block"></div>
+                                <div class="form-field select optional request_ticket_form_id" style="display: block">
+                                    <label for="request_issue_type_select">
+                                        공지 카테고리를 선택해주세요:)
+                                    </label>
+                                    <a class="nesty-input" href="" style="
+                                            max-width: 100%;
+                                            display: none;
+                                        ">프로젝트 수정/변경요청하기</a>
+                                    <select name="notification-status" id="request_issue_type_select">
+                                        <option value="0">
+                                            커뮤니티 공지사항
+                                        </option>
+                                        <option value="1">
+                                            원랩 공지사항
+                                        </option>
+                                        <option value="2">
+                                            장소공유 공지사항
+                                        </option>
+                                        <option value="3">
+                                            공모전 공지사항
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-field string required request_anonymous_requester_email">
+                                    <label>제목 작성</label>
+                                    <input
+                                        name="notification-title"
+                                        id="request_anonymous_requester_email"
+                                        type="text"
+                                    />
+                                </div>
+
+                                <!-- 텍스트쪽 -->
+                                <div class="form-field text required request_description">
+                                    <label id="request_description_label" for="">공지사항 내용을 입력해주세요.</label>
+                                    <div role="group">
+                                            <textarea
+                                                name="notification-content"
+                                                class="tox-edit-area__iframe"
+                                                cols="30"
+                                                rows="10"
+                                                style="width: 100%; height: 100%;
+                                                resize: none;"
+                                            ></textarea>
+                                        </div>
+                                    <input
+                                        type="hidden"
+                                        value="text/html"
+                                        style="display: none"
+                                        autocomplete="off"
+                                    />
+                                </div>
+                                <!-- 맨밑 파일쪽 -->
+                                <div class="section-content" style="margin-top: 25px;">
+                                    <div class="attach-wrap">
+                                        <label for="upload1" class="attach">
+                                            <img src="" class="thumbnail">
+                                            <div class="x">
+                                                <img src="{% static 'exhibition/images/x.png' %}">
+                                            </div>
+                                            <h6 class="plus">+</h6>
+                                            <h6>대표 이미지</h6>
+                                        </label>
+                                    </div>
+                                </div>
+                                <input type="file" name="upload1" id="upload1" class="upload" style="display: none;">
+                                <!-- 맨밑 제출 버튼쪽 -->
+                                <input
+                                        class="btn"
+                                        type="submit"
+                                        name="commit"
+                                        value="제출"
+                                        style="margin-left: 711px;"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+    <script src="{% static 'notification/js/write.js' %}"></script>
+{% endblock %}
+
+

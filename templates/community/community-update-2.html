@@ -1,0 +1,432 @@
+{% extends 'community/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'community/css/community-write.css' %}">
+{% endblock %}
+
+{% block title %}커뮤니티 글 작성{% endblock %}
+
+{% block content %}
+    <div id="root">
+        <div id="layout-container">
+            <div class="layout-main">
+                <div class="sidebar-layout-contents">
+                    <div class="sidebar-reword-info-container">
+                        <div class="sidebar-reward-info-flag-group">
+                            <!-- <span class="sidebar-reward-info-flag1">프로젝트</span> -->
+                            <span class="sidebar-reward-info-flag2">작성 중</span>
+                        </div>
+                        <a href="" class="sidebar-reward-info-project-name" target="_blank">
+                            {{ request.session.member.member_name }}<br>글 작성 페이지
+                        </a>
+                        <button class="project-number-box" type="button">
+                            <span>
+                                <!-- <span class="project-number-text">
+                                    프로젝트 번호 272066ㄴ
+                                </span>
+                                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="down-icon-svg" aria-hidden="true" style="width: 20px; height: 20px;">
+                                    <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                                </svg> -->
+                            </span>
+                        </button>
+                    </div>
+                    <!-- 각 사이트 바 클릭시 마이페이지 내 해당되는 탭으로 이동 -->
+                    <nav class="sidebar-menu-list-container">
+                        <div class="sidebar-menu-list-margin"></div>
+                        <ul>
+                            <li>
+                                <a href="" class="sidebar-menu-item-nav-link">
+                                    마이 포인트</a>
+                                <a href="" class="sidebar-menu-item-nav-link result">100</a>
+                            </li>
+                            <li>
+                                <a href="" class="sidebar-menu-item-nav-link">
+                                    마이 포스트 수
+                                </a>
+                                <a href="" class="sidebar-menu-item-nav-link result">10</a>
+                            </li>
+                            <li>
+                                <a href="" class="sidebar-menu-item-nav-link">
+                                    마이 원랩 수
+                                </a>
+                                <a href="" class="sidebar-menu-item-nav-link result">5</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div id="layout-contents" class="layout-contents">
+                    <section class="page-container">
+                        <span class="blind-text-hidden">사이트 이동 경로</span>
+                        <ol class="current-page-position-list">
+                            <!-- <li class="page-position-item">프로젝트 관리</li> -->
+                            <li class="page-position-item">커뮤니티 글작성</li>
+                        </ol>
+                        <div style="display: flex; justify-content: space-between; width: 628px;">
+                            <h2 class="page-title">커뮤니티 글작성</h2>
+                            <!-- 저장 버튼 -->
+                            <!-- <div class="maker-info-container-btn-wrapper"> -->
+{#                            <button class="save-btn">#}
+{#                                <span>#}
+{#                                    <span class="save-btn-text">저장하기</span>#}
+{#                                </span>#}
+{#                            </button>#}
+                        </div>
+                        <div class="page-guide">
+                            <!-- <button class="banner-link-button-container" type="button">
+                                <div class="banner-link-button-icon">
+                                    <i class="banner-guide-icon"></i>
+                                </div>
+                                <div class="banner-link-button-content">
+                                    <p class="banner-link-button-description">다른 메이커들 다 본다는</p>
+                                    <strong class="banner-link-button-title">필수 가이드 모음집</strong>
+                                </div>
+                            </button> -->
+                            <button type="button" class="banner-link-button-container banner-guide-button">
+                                <div class="banner-link-button-icon">
+                                    <i class="banner-guide-gpt-icon"></i>
+                                </div>
+                                <div class="banner-link-button-content">
+                                    <p class="banner-link-button-content">
+                                        <p class="banner-link-button-description">궁금한 모든 것을 물어보세요</p>
+                                        <strong class="banner-link-button-title">AI 어드바이저</strong>
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div class="page-content">
+                            <nav class="project-navbar-container">
+                                <div>
+                                    <h1 class="nav-logo">
+                                        <span class="blind-text-hidden">프로젝트 정보</span>
+                                    </h1>
+                                </div>
+                                <div class="project-navbar-maker">
+                                    <div class="profile-img">
+                                        <span></span>
+                                    </div>
+                                    <!-- 회원 이름 -->
+                                    <div>{{ request.session.member.member_name }}</div>
+                                </div>
+                                <div class="project-navbar-btn-group">
+                                    <button type="button" class="pre-save-btn">
+                                        <span>
+                                            <span class="pre-save-btn-text">저장 하기</span>
+                                        </span>
+                                    </button>
+                                    <!-- 알림 아이콘 -->
+                                    <div class="announce-button-container">
+                                        <img src="https://static.wadiz.kr/studio/funding/static/media/announcement.56f4b8e3.svg" alt="" class="announce-button-icon">
+                                        <span class="badge-container"></span>
+                                        <div class="announce-pop-over-container">
+                                            <div class="announce-list-container">
+                                                <strong class="announce-list-title">안내</strong>
+                                                <ul class="announce-list">
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                            <span class="important-badge-container">
+                                                                <span class="important-text-badge">중요</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 24일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title important">
+                                                                프로젝트 카테고리 확장 및 기능 개편
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                            <span class="important-badge-container">
+                                                                <span class="important-text-badge">중요</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 24일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title important">
+                                                                펀딩.프리오더 요금제 서비스 개편
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                결제일 및 환불 정책 개편 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                서포터 안심번호 서비스 도입
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                '오늘 데이터 한번에 보기' 오픈
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                배송
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                추석 연휴 배송정보 사전 제공 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                펀딩/프리오더 요금제 개편 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                새소식 알림 서비스 오류 해결 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                프리오더 서비스 정책 변경 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="announce-detail-drawer-container">
+                                                    <div class="announce-detail-drawer-btn-group">
+                                                        <button class="announce-detail-drawer-back-btn" type="button">
+                                                            <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="announce-drawer-icon" aria-hidden="true" style="width: 24px; height: 24px;">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.076 2.576l.848.848L8.35 12l8.575 8.576-.848.848L6.65 12l9.425-9.424z"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="exit-button" type="button">
+                                        <span>
+                                            <span class="exit-button-text">나가기</span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </nav>
+                            <form action="{% url 'community:write' %}" method="post" name="write-form" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header">
+                                        <h3 class="section-title">게시글 제목
+                                            <span class="blind-text-hidden">필수</span>
+                                        </h3>
+                                    </div>
+                                    <div class="section-description">
+                                        <p>커뮤니티 게시글의 제목을 작성해 주세요.</p>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="text-field">
+                                            <input type="text" class="maker-input input-maker-name" name="community-title" placeholder="글제목 입력" maxlength="30" value="">
+                                        </div>
+                                        <em class="helper-msg">30자 남음</em>
+                                    </div>
+                                </section>
+
+                                <!-- 게시글 유형 선택 섹션 -->
+                                <section class="section-container project-type">
+                                    <div style="max-width: 630px;">
+                                        <div class="section-header">
+                                            <h3 class="section-title">게시글 유형
+                                                <span class="blind-text-hidden">필수</span>
+                                            </h3>
+                                        </div>
+                                        <div class="section-content">
+                                            <div class="radios-box">
+                                                <label for="categories_request" class="radio">
+                                                    <input type="radio" name="categories" id="categories_request" value="1">
+                                                    <span class="radio-icon"></span>
+                                                    <span class="radio-label">
+                                                        <span class="radios-label-content">
+                                                            <strong class="radios-category">자료 요청</strong>
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                                <label for="categories_question" class="radio">
+                                                    <input type="radio" name="categories" id="categories_question" value="2">
+                                                    <span class="radio-icon"></span>
+                                                    <span class="radio-label">
+                                                        <span class="radios-label-content">
+                                                            <strong class="radios category">질문</strong>
+                                                        </span>
+                                                    </span>
+                                                </label>
+                                                <label for="categories_other" class="radio etc">
+                                                    <input type="radio" name="categories" id="categories_other" value="3">
+                                                    <span class="radio-icon"></span>
+                                                    <span class="radio-label">
+                                                        <span class="radios-label-content">
+                                                            <strong class="radios category">기타</strong>
+                                                        </span>
+                                                        <div class="section-content etc" style="margin-top: 20px;">
+                                                            <div class="introduction-box" style="width: 500px;">
+                                                                <div class="text-area-field">
+                                                                    <label for=""></label>
+                                                                    <div class="input-text-field" style="width: 100%;">
+                                                                        <input type="text" name="content-sub-categories" id="" style="padding: 5px; height: 34px; width: 100%; border: 1px solid rgb(221, 226, 230);" placeholder="게시글에 해당되는 유형을 작성해주세요. ex) 잡담">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title">게시글 내용
+                                            <span class="blind-text-hidden">필수</span>
+                                        </h3>
+                                    </div>
+                                    <div class="section-description">
+                                        <p>상세 내용을 작성해 주세요.</p>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="story-field-container">
+                                            <div class="textarea-field">
+                                                <div class="textarea-box">
+                                                    <div class="textarea-input">
+                                                        <textarea placeholder="내용 입력" maxlength="2000" name="community-content" rows="10" style="resize: none;" ></textarea>
+                                                    </div>
+                                                    <em class="form-field-helper">2000자 남음</em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title-not-possible">사진 등록
+                                            <!-- <span class="blind-text-hidden">필수</span> -->
+                                        </h3>
+                                    </div>
+                                    <div class="section-description">
+                                        <p>상세페이지 내에 게시글과 함께 업로드 될 사진을 등록해 주세요.</p>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="form-field-file">
+                                            <label for="" class="file-upload">첨부 파일
+                                                <span class="optional">(선택 사항)</span>
+                                            </label>
+                                            <div class="upload-dropzone">
+                                                <input type="file" multiple="true" name="file" id="file-input">
+                                                <span>
+                                                    <a href="">파일 추가</a>
+                                                </span>
+                                            </div>
+                                            <div class="upload-error" style="display: none;">
+                                                <span>이미지 파일만 업로드 가능합니다.</span>
+                                            </div>
+                                            <ul class="upload-pool">
+                                                <li class="upload-item" id="file-list">
+                                                    <button class="cancel-upload" style="display: none;">X</button>
+                                                    <img id="thumbnail" src="#" alt="Thumbnail" style="display: none;" width="100px">
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                                <button class="save-btn">
+                                <span>
+                                    <span class="save-btn-text">저장하기</span>
+                                </span>
+                            </button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static '/community/js/community-write.js' %}"></script>
+{% endblock %}

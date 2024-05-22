@@ -1,0 +1,705 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+html {
+    font-family: Pretendard Variable,pretendard
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    line-height: inherit;
+    color: inherit;
+    font-size: 15px;
+}
+
+body, table th {
+    font-weight: 400;
+}
+
+body, button, input, select, textarea {
+    font-family: inherit;
+}
+
+body, button, html, input, textarea {
+    font-family: Pretendard;
+}
+
+article, aside, figcaption, figure, footer, header, main, nav, section {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+div.main-wrapper-content {
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: padding-top .25s;
+}
+
+div.main-wrapper-container {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+div.banner-img {
+    height: 440px;
+    position: relative;
+    background: no-repeat 50% 50%/cover;
+}
+
+img.banner-img {
+    height: 440px;
+    position: relative;
+    background: no-repeat 50% 50%/cover;
+}
+
+div.banner-text {
+    margin: -56px auto 0;
+    background: #fff;
+    padding: 56px 0;
+    max-width: 1032px;
+    text-align: center;
+    position: relative;
+}
+
+div.banner-title-box {
+    position: relative;
+}
+
+div.banner-title-wrapper {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    align-items: center;
+}
+
+p.banner-title {
+    line-height: 36px;
+    color: rgba(0,0,0,.84);
+    font-size: 28px;
+    font-weight: 700;
+    flex-grow: 1;
+}
+
+div.lab-member-box-container, div.lab-member-more-container, div.lab-member-back-container {
+    margin: 13px;
+    max-width: 800px;
+    line-height: 28px;
+    color: rgba(0,0,0,.54);
+    font-size: 17px;
+    font-weight: 400;
+}
+
+div.lab-member-box, div.lab-member-more-box, div.lab-member-back-box {
+    /* width: 22.6%; */
+    width: 300px;
+    height: 330px;
+    margin: 1.2%;
+    padding: 32px;
+    background-color: #F2F4F6;
+    border-radius: 16px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+div.lab-member-more-box, div.lab-member-back-box {
+    background-color: #fff;
+}
+
+dd.lab-member-university-icon {
+    margin-bottom: 20px;
+}
+
+i.plus-icon {
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
+    background-image: url("../images/plus-gray.png");
+    display: flex;
+    margin-right: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+i.back-icon {
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
+    background-image: url('../images/previous.png');
+    display: flex;
+    margin-right: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+i.university-icon {
+    width: 60px;
+    height: 60px;
+    background-size: 100%;
+    background-image: url('https://makercenter.wadiz.kr/menu/static/images/icon_maker_service_02.svg');
+    display: flex;
+    margin-right: 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+dd.member-name {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: #212529;
+    letter-spacing: -0.3px;
+}
+
+dd.member-name img {
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+}
+
+strong {
+    font-weight: 700;
+}
+
+dd.member-info {
+    max-height: 72px;
+    min-height: 96px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    color: #495057;
+    letter-spacing: -0.3px;
+    line-height: 1.6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: keep-all;
+    text-align: left;
+}
+
+dd.member-labs {
+    margin-top: 20px;
+}
+
+a.go-other-lab {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+    color: #212529;
+    letter-spacing: -0.3px;
+}
+
+a.go-other-lab::after {
+    content: '';
+    display: flex;
+    align-items: center;
+    width: 5px;
+    height: 10px;
+    margin-left: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('https://makercenter.wadiz.kr/menu/static/images/icon_next_s.svg');
+}
+
+div.lab-detail-info-container {
+    margin: 10px auto;
+    /* max-width: 100%; */
+    line-height: 28px;
+    color: rgba(0,0,0,.54);
+    font-size: 17px;
+    font-weight: 400;
+    margin-top: 100px;
+}
+
+div.lab-image-area{
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+div.lab-image {
+    width: 100%;
+    height: 0;
+    padding-top: 62.6%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 16px;
+}
+
+img.lab-image {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 16px;
+}
+
+div.lab-discription-text-area {
+    width: 100%;
+    padding-right: 15px;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+strong.lab-sub-title {
+    position: relative;
+    color: #008243;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: -0.3px;
+    line-height: 100%;
+}
+
+strong.lab-sub-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    width: 100%;
+    height: 8px;
+    background-color: #E7F9F9;
+    z-index: -1;
+}
+
+h2.lab-custom-title {
+    margin-top: 46px;
+    margin-bottom: 24px;
+    display: block;
+    font-weight: 700;
+    font-size: 48px;
+    color: #212529;
+    letter-spacing: -0.6px;
+    line-height: 1.291;
+}
+
+p.lab-custom-desc {
+    font-weight: 400;
+    font-size: 16px;
+    color: #495057;
+    letter-spacing: -0.3px;
+    line-height: 1.75;
+    word-break: break-all;
+}
+
+div.count-person-area {
+    color: rgb(0, 178, 178);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    outline: 0px;
+    margin: 0px 5px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    text-decoration: none;
+    text-transform: none;
+    font-family: NotoSansKR;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    max-width: 360px;
+    position: relative;
+    min-height: 48px;
+    flex-shrink: 0;
+    padding: 12px 24px;
+    overflow: hidden;
+    white-space: normal;
+    text-align: center;
+    background-color: rgb(73, 80, 87);
+    border: 1px solid rgb(73, 80, 87);
+    border-radius: 40px;
+    margin-bottom: 50px;
+}
+
+p.count-person {
+    margin: 0px;
+    font-family: NotoSansKR;
+    line-height: 1.5;
+    font-weight: 500;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+
+div.count-person-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+div.lab-member-info-container {
+    margin: 0 auto;
+}
+
+strong.lab-member-info-sub-title {
+    text-align: center;
+    display: block;
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #212529;
+    letter-spacing: -0.3px;
+    line-height: 100%;
+}
+
+div.lab-member-box-column {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: -1.2%;
+}
+
+div.member-list {
+    width: 117px;
+    height: 150px;
+}
+
+dd.lab-member-university-icon.member {
+    margin-bottom: 10px;
+}
+
+i.university-icon.member {
+    width: 40px;
+    height: 40px;
+}
+
+dd.member-name.member {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+ul.other-lab-list {
+    display: flex;
+}
+
+li.lab {
+    width: 30px;
+    height: 30px;
+    list-style: none;
+    margin-right: 7px;
+    cursor: pointer;
+}
+
+div.lab-img-area {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    border: 3px solid #a5a5a5;
+}
+
+img.lab-img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+div.apply-button-container {
+    position: fixed;
+    background-color: rgb(61, 64, 67);
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    box-shadow: rgba(10, 22, 70, 0.06) 0px 0px 5px, rgba(10, 22, 70, 0.1) 0px -4px 6px;
+}
+
+div.apply-button-wrapper {
+    position: relative;
+    max-width: 1280px;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 16px;
+}
+
+div.apply-msg {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 28px;
+    color: white;
+    margin-right: 50px;
+}
+
+div.apply-button {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: white;
+    padding: 10px 28px;
+    background-color: #008243;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* 지원 후, 비활성화 버튼 */
+div.apply-button.readonly{
+    display: none;
+    opacity: 0.5;
+}
+
+/* 지원 후, 수락되었을 때 소통url 나오는 버튼 */
+div.apply-button.participate {
+    display: none;
+}
+
+/* 좋아요 */
+button.wish-btn {
+    position: absolute;
+    top: 390px;
+    right: 440px;
+    z-index: 9;
+    outline: none;
+    width: 44px;
+    height: 44px;
+    background-color: transparent;
+    border: none;
+}
+
+button.like-btn.active svg path {
+    fill: crimson;
+}
+
+button.wish-btn>svg {
+    margin: 0 auto;
+    width: 45px;
+    height: 45px;
+    pointer-events: none;
+    will-change: transform;
+}
+
+svg.wish-icon {
+    display: block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    fill: currentColor;
+}
+
+svg.wish-icon path.dislike-icon {
+    stroke: #f2f4f6;
+    stroke-width: 2px;
+    fill: rgba(33,37,41,.4);
+    transition: fill .25s ease-in-out;
+    pointer-events: none;
+}
+
+svg.wish-icon path.like-icon {
+    display: none;
+    fill: #f25555;
+    stroke: #f2f4f6;
+    stroke-width: 2px;
+    transition: fill .25s ease-in-out;
+}
+
+/* 모달창 */
+div.onelab-modal-url {
+    position: static;
+    display: none;
+}
+
+div.onelab-modal-apply {
+    position: static;
+    display: none;
+}
+
+div.onelab-modal-apply-ok {
+    position: static;
+    display: none;
+}
+
+div.onelab-modal-container {
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition-property: opacity;
+    z-index: 20000;
+    background: rgba(0,0,0,.6);
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition-duration: 80ms;
+}
+
+div.onelab-modal-container-inner {
+    transform: none;
+    position: relative;
+    transition-property: opacity;
+    transition-timing-function: ease-out;
+    outline: none;
+    min-height: 100%;
+    transition-duration: 80ms;
+}
+
+div.onelab-modal-box {
+    background: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    text-align: center;
+}
+
+div.onelab-modal-box-inner {
+    display: inline-block;
+    margin: 5%;
+    box-shadow: 0 2px 6px rgba(0,0,0,.4);
+    background: #fff;
+    width: 400px;
+    position: relative;
+    padding-top: 56px;
+    height: 100%;
+    text-align: left;
+}
+
+div.onelab-modal-wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 16px 32px 32px;
+    max-width: 400px;
+}
+
+p.onelab-modal-title {
+    line-height: 28px;
+    color: #44484b;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 24px;
+    word-break: keep-all;
+}
+
+div.onelab-modal-buttons {
+    margin-top: 31px;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 18px;
+}
+
+div.onelab-modal-buttons {
+    display: grid;
+}
+
+button.onelab-modal-btn {
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0);
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+button.onelab-modal-btn.go-member-btn {
+    white-space: nowrap;
+    padding: 9px 23px;
+    height: 48px;
+    font-size: 16px;
+    color: #008243;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #008243;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0);
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+button.go-member-btn span {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+span.go-member-text, span.go-to-login-text {
+    vertical-align: top;
+}
+
+button.onelab-modal-btn.go-to-login-btn {
+    border-color: #008243;
+    background-color: #008243;
+    color: #fff;
+    white-space: nowrap;
+    padding: 9px 23px;
+    height: 48px;
+    font-size: 16px;
+}
+
+button.close-btn {
+    padding: 0;
+    height: auto;
+    width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 16px;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    transition: color .2s;
+    z-index: 50001;
+    margin: 0!important;
+    border: 0!important;
+    border-radius: 50%;
+    background: rgba(255,255,255,.7);
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #495057;
+}
+
+span.close-icon {
+    vertical-align: top;
+}
+
+svg.close-svg {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    fill: currentColor;
+}
+
+button.onelab-modal-btn.go-member-btn:hover {
+    background-color: #d5f1f1;
+}
+
+button.onelab-modal-btn.go-to-login-btn:hover {
+    background-color: #0aa7a7;
+}
+
+div.onelab-modal.active {
+    display: block;
+}
+
+div.member-box-container-lab {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+p.onelab-ask-email {
+    margin-top: 100px;
+    font-size: 15px;
+}

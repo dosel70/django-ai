@@ -1,0 +1,553 @@
+img {
+    max-width: 100%;
+    vertical-align: top;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+
+.ConfirmModal_overlay {
+    display: inline-flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    overflow: hidden;
+}
+
+.ConfirmModal_sizeX1 {
+    padding: 40px;
+    width: 840px;
+    max-width: calc(100% - 48px);
+}
+
+.ConfirmModal_confirmModal {
+    display: inline-flex;
+    flex-direction: column;
+    outline: none;
+    border-radius: 16px;
+    box-shadow: 0 32px 40px -2px rgba(10,22,70,.12), 0 0 5px rgba(10,22,70,.06);
+    background: #fff;
+    position: relative;
+    height: 100%;
+    max-height: calc(100vh - 160px);
+    overflow: hidden;
+    
+}
+
+
+.ConfirmModal_closeIconRoot {
+    display: inline-flex;
+    position: relative;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 8px;
+}
+
+.ConfirmModal_closeIconWrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(6px,-6px);
+    border: 0;
+    background: none;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.ConfirmModal_closeIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.ConfirmModal_showCloseButton {
+    margin-right: 64px;
+}
+
+.ConfirmModal_title {
+    line-height: 44px;
+    font-size: 32px;
+    font-weight: 700;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+div[title] {
+    color: #212529;
+}
+
+.ConfirmModal_hasTitle {
+    margin-top: 12px;
+}
+
+.ConfirmModal_content {
+    display: inline-flex;
+    flex-direction: column;
+    overflow: auto;
+    color: #495057;
+}
+[class*=ConfirmModal_content] {
+    height: 100%;
+}
+.RecentView_contents {
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 768px;
+}
+.RecentView_confirmModal {
+    position: relative;
+    height: 100%;
+}
+.Tabs_tabsWrapper {
+    position: relative;
+    width: 100%;
+    min-height: 48px;
+    overflow: hidden;
+}
+
+.Tabs_tabs {
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    padding: 0 8px;
+    height: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.Tabs_distribute {
+    display: inline-flex;
+    position: relative;
+    left: 0;
+    align-items: center;
+    justify-content: space-around;
+    transform: none;
+    padding: 0;
+    width: 100%;
+}
+
+.Tabs_tabs li {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    min-width: 30px;
+    max-width: 200px;
+    vertical-align: middle;
+    white-space: normal;
+    
+}
+
+.Tabs_distribute li {
+    display: inline-flex;
+    flex-grow: 1;
+    margin: 0;
+    max-width: none;
+    flex-shrink: 0;
+}
+
+.Tab_tab {
+    border: 0;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    padding: 0;
+    height: 40px;
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+.Tabs_distribute li button {
+    flex-grow: 1;
+}
+
+.Tab_md {
+    height: 40px;
+}
+
+.Tabs_tabs li:last-child {
+    margin-right: 8px;
+}
+
+.Tab_active>span:after {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: #212529;
+    width: 100%;
+    height: 2px;
+    content: "";
+}
+
+.Tab_active>span {
+    color: #212529;
+    font-weight: 700;
+}
+
+.Tab_tab span {
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: 400;
+    display: inline-flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    height: 40px;
+    color: #212529;
+    gap: 4px;
+}
+
+.Tab_md span {
+    height: 40px;
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.RecentView_content {
+    height: auto;
+    max-height: calc(100% - 56px);
+    width: 100%;
+    margin-left: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.RecentViewContents_filter{
+    margin-top: 12px;
+    height: 44px;
+    display: flex;
+    flex-direction: row;
+    max-width: 768px;
+}
+
+.FilterTab_container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.TabsMobile_tabRoot{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.TabsMobile_tabsWrapper {
+    position: relative;
+    max-width: 1440px;
+    min-height: 48px;
+    overflow: hidden;
+}
+
+.TabsMobile_tabs {
+    padding: 0;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    height: 100%;
+    overflow-x: auto;
+}
+.TabsMobile_hideScrollbar {
+    scrollbar-width: none;
+}
+
+.TabsMobile_tabs li {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    white-space: normal;
+}
+
+.Tab_rectangle.Tab_md{
+    padding: 0 16px 
+}
+
+.Tab_rectangle.Tab_active {
+    background-color: #212529;
+}
+.Tab_rectangle.Tab_active span {
+    color: #fff;
+}
+
+
+.Tab_active>span {
+    color: #212529;
+    font-weight: 700;
+}
+
+.Tab_rectangle{
+    border-radius: 8px 
+}
+
+.RecentViewContents_content {
+    max-height: calc(100% - 56px);
+    padding: 0;
+    position: relative;
+    width: 100%;
+    height: calc(100% - 56px);
+    max-width: 768px;
+}
+
+.RecentViewContents_contentHeader {
+    position: relative;
+    height: 40px;
+    display: flex;
+}
+
+.RecentViewContents_controlPanel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    line-height: 18px;
+    color: #868e96;
+    background-color: #fff;
+    height: 40px;
+}
+
+.RecentViewContents_bold {
+    font-weight: 700;
+}
+.RecentViewContents_editButton {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+}
+
+.RecentViewContents_editButton>* {
+    pointer-events: none;
+}
+
+.EmptyContent_container {
+    padding-top: 96px;
+    text-align: center;
+}
+
+.EmptyContent_title {
+    line-height: 38px;
+    font-size: 28px;
+    font-weight: 700;
+    display: block;
+}
+
+#tab2{
+    display: block;
+}
+
+.EmptyContent_description {
+    line-height: 28px;
+    font-size: 18px;
+    margin-top: 4px;
+    font-weight: 500;
+    color: #868e96;
+}
+
+.WishView_container {
+    padding: 0;
+    display: block;
+    height: 100%;
+}
+
+.CategoryFilter_container {
+    display: flex;
+    flex-direction: column;
+    margin: 4px auto 0;
+    padding: 8px 0;
+    overflow: hidden;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    gap: 8px;
+}
+
+.CategoryFilter_hideScrollbar {
+    scrollbar-width: none;
+}
+
+.CategoryFilter_categoryfilterList {
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    gap: 8px;
+}
+
+.CategoryFilter_filterItem {
+    display: flex;
+    position: relative;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.EmptyContainer_container {
+    margin-top: 152px;
+    color: #212529;
+}
+.EmptyContainer_content {
+    padding: 32px 0;
+    text-align: center;
+}
+
+.EmptyContainer_title {
+    line-height: 28px;
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+}
+
+.EmptyContainer_description {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 8px;
+    color: #868e96;
+}
+
+.EmptyContainer_searchList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.EmptyContainer_searchItem {
+    margin: 8px 4px;
+}
+
+.EmptyContainer_searchItem a {
+    line-height: 18px;
+    font-size: 12px;
+    display: block;
+    border-radius: 18px;
+    background-color: #f2f4f6;
+    padding: 9px 16px;
+    font-weight: 500;
+}
+
+a .EmptyContainer_hash {
+    color: #00c4c4;
+}
+
+.Tab_active span:after {
+    background-color: rgba(0,0,0,0);
+}
+
+#modal{
+    display:none;
+}
+
+#EmptyContainer{
+    display:none;
+}
+
+/* 모달창 내의 게시글 탭 */
+.TableLayout_container {
+    display: grid;
+    width: 100%;
+}
+
+.WishCard_container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: #fff;
+}
+
+.HomeVerticalCard_container {
+    position: relative;
+    border-radius: 8px 0 0;
+    overflow: hidden;
+}
+
+.HomeVerticalCard_content_content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.HomeVerticalCard_infoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+}
+
+.HomeVerticalCard_info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.HomeVerticalCard_title {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    height: 50px;
+    line-height: 50px;
+}
+
+.Title_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #212529;
+}
+
+.HomeVerticalCard_makerNameWrapper {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+    height: 18px;
+    color: #868e96;
+}
+
+strong {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.my-page-accumulate-divider{
+    margin: 12px 0;
+    height: 1px;
+    background-color: #f2f4f6;
+    opacity: 1;
+    border: 0;
+    width: 100%;
+}
+
+#total-page{
+    height: 480px;
+    overflow: scroll;
+}
+
+.Wishview_list_wrap {
+    display: block;
+}
+

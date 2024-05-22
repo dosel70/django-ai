@@ -1,0 +1,120 @@
+{% extends 'notification/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'notification/css/list.css' %}">
+{% endblock %}
+
+{% block title %}원랩 공지사항{% endblock %}
+
+{% block content %}
+<div id="page-container">
+    <div class="black-wrap" style="display: none"></div>
+        <main class="board-ui">
+            <!----------------공지사항 화면 부분-------------------------->
+            <div class="ui-header">
+                <h2 class="title" style="text-align: center;">공지 사항</h2>
+            </div>
+            <!----------사이드 메뉴----------------------------->
+            <div class="ui-tabs">
+                <ul>
+                    <li class="active">
+                        <p>커뮤니티</p>
+                    </li>
+                    <li class="deactive">
+                        <p>
+                            원랩    
+                        </p>
+                        
+                    </li>
+                    <li class="deactive">
+                        <p>장소공유</p>
+                    </li>
+                    <li class="deactive">
+                        <p>공모전</p>
+                    </li>
+                </ul>
+            </div>
+            <!----------사이드 메뉴----------------------------->
+            <!--------메인 사이드 베너들 있는 화면---------------->
+            <div class="board-main">
+                <ul>
+                    <li>
+                        
+                    </li>
+                </ul>
+            </div>
+{#            <button id="more">더보기</button>#}
+            <!--------메인 사이드 베너들 있는 화면---------------->
+
+
+            <!-----------1,2,3,4,5,6... 이동할 수 있는 번호 메뉴들---------------------->
+            <div class="board-footer">
+                <div class="pagination">
+                    <!--모바일 버튼-->
+                    <button class="prev-page mobile-only" onclick="movePage(0)" disabled>
+                        <span class="text-hidden">이전 목록</span>
+                    </button>
+                    <div class="page">
+                        <!--모바일용 페이지 리스트-->
+                        <div class="mobile-only">
+                            <span class="current-count">1</span>
+                            /
+                             <span class="total-count">
+                                <span>122</span>
+                                페이지
+                            </span>
+                        </div>
+                         <div class="desktop-only">
+                            
+                            <button class="prev-page" onclick="movePage(0)" disabled>
+                                <img src="{% static 'notification/images/button2.png' %}">
+                                <span class=text-hidden>이전 목록</span>
+                            </button>
+                        
+                            <a  href="#" data-page = "1" onclick="movePage(1)">1</a>
+                            <a  href="#" data-page = "2" onclick="movePage(2)">2</a>
+                            <a  href="#" data-page = "3" onclick="movePage(3)">3</a>
+                            <a  href="#" data-page = "4" onclick="movePage(4)">4</a>
+                            <a  href="#" data-page = "5" onclick="movePage(5)">5</a>
+                            <a  href="#" data-page = "6" onclick="movePage(6)">6</a>
+                            <!-- 데스크탑용 버튼 -->
+                            <button class="next-page icon-chevron-right" onclick="movePage(7)">
+                                <img src="{% static 'notification/images/button1.png' %}">
+                                <span class="text-hidden">다음 목록</span>
+                              </button>
+                        </div>
+                    </div>
+                    <button class="next-page mobile-only" onclick="movePage(2)">
+                    <span class="text-hidden">다음 목록</span>
+                </button>
+            </div>
+            <!-----------1,2,3,4,5,6... 이동할 수 있는 번호 메뉴들---------------------->
+
+            <!-------------------검색창 화면------------------------------------------->
+            <div class="search">
+                <div class="filter-container">
+                    <select id="searchSelectInBoard" class="filter" name>
+                        <option value="tc">제목 + 내용</option>
+                        <option value="t">제목</option>
+                        <option value="c">내용</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label class="text-hidden" for>검색창</label>
+                    <input id="searchTextInBoard" name="searchSelectInBoard" class="search-form" type="text" value>
+                    <button id="searchButton" class="btn-search" type="submit">검색</button>
+                </div>
+                <form id="fromSearch" name="formSearchBoard" action="/web/wboard/newBoardList/"></form>
+            </div>
+            <!-------------------------검색창 화면 완료----------------------->
+        </div>  
+    </main>
+</div>
+    
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'notification/js/list.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+.info-container {
+    margin-top: 16px;
+}
+
+.info-container-first {
+    margin-top: 24px;
+}
+
+
+.info-container label{
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+    color: rgb(24, 26, 28);
+}
+
+.info-container span {
+    position: relative;
+    display: block;
+}
+
+.info-container input {
+    box-sizing: border-box;
+    flex: 1 1 0%;
+    padding: 11px 32px 13px 12px;
+    width: 100%;
+    vertical-align: middle;
+    font-size: 15px;
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    color: rgb(24, 26, 28);
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    outline: none;
+}
+
+.info-container img {
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.info-container p.help {
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+    color: rgb(255, 64, 62);
+}
+
+div.basic-info-container {
+    margin: 24px 0px 0px;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+div.basic-info-container h3 {
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    color: rgb(24, 26, 28);
+}
+
+div.basic-info-container dl {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    letter-spacing: -0.4px;
+    line-height: 20px;
+    text-align: left;
+    margin-top: -8px;
+    margin-bottom: 0;
+}
+
+div.basic-info-container dt {
+    width: 88px;
+    margin-top: 8px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+    color: rgb(126, 128, 130);
+}
+
+div.basic-info-container dd {
+    margin-top: 8px;
+    margin-left: 0;
+    width: calc(100% - 88px);
+    font-weight: 500;
+    color: rgb(24, 26, 28);
+}
+
+div.password-check {
+    margin-top: 12px;
+}
+
+.password {
+    position: relative;
+}
+
+.email-wrap {
+    display: flex;
+}
+
+.email-wrap div {
+    position: relative;
+    flex: 1 1 0%;
+}
+
+.email-wrap span#seperator{
+    padding: 0px 10px;
+    align-self: center;
+}
+
+.email-select-wrap {
+    position: relative;
+    margin: 12px 0px 0px;
+}
+
+select.email {
+    position: relative;
+    padding: 11px 32px 13px 12px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.4px;
+    font-weight: 400;
+    color: rgb(24, 26, 28);
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    border-radius: 4px;
+    outline: none;
+    appearance: none;
+}
+h6.help {
+    display: flex;
+    margin: 16px 0px 32px;
+    padding: 11px 12px 13px;
+    border-radius: 4px;
+    color: rgb(255, 132, 0);
+    background-color: rgb(254, 249, 243);
+    font-weight: 100;
+    align-items: center;
+}
+
+img#warn {
+    display: inline-block;
+    position: static;
+    margin: 3px;
+    margin-right: 5px;
+    filter: brightness(1.2);
+}

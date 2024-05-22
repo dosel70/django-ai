@@ -1,0 +1,491 @@
+{% extends 'onelab/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'onelab/css/one-lab-write.css' %}">
+{% endblock %}
+
+{% block title %}원랩 글쓰기{% endblock %}
+
+{% block content %}
+    <div id="root">
+        <div id="layout-container">
+            <div class="layout-main">
+                <!-- 왼쪽 사이드바 -->
+                <div class="sidebar-layout-contents">
+                    <div class="sidebar-reword-info-container">
+                        <div class="sidebar-reward-info-flag-group">
+                            <!-- <span class="sidebar-reward-info-flag1">프로젝트</span> -->
+                            <span class="sidebar-reward-info-flag2">작성 중</span>
+                        </div>
+                        <a href="" class="sidebar-reward-info-project-name" target="_blank">
+                            {{ request.session.member.member_name }}<br>원랩 작성 페이지
+                        </a>
+                        <button class="project-number-box" type="button">
+                            <span>
+                                <!-- <span class="project-number-text">
+                                    프로젝트 번호 272066
+                                </span>
+                                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="down-icon-svg" aria-hidden="true" style="width: 20px; height: 20px;">
+                                    <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                                </svg> -->
+                            </span>
+                        </button>
+                    </div>
+                    <nav class="sidebar-menu-list-container">
+                        <div class="sidebar-menu-list-margin"></div>
+                        <ul>
+                            <li>
+                                <a href="" class="sidebar-menu-item-nav-link">
+                                    나의 포인트</a>
+                                <a href="" class="sidebar-menu-item-nav-link result">{{ university.university_member_points }}</a>
+                            </li>
+                            <li>
+                                <a href="" class="sidebar-menu-item-nav-link">
+                                    내가 참여 중인 원랩 수
+                                </a>
+                                <a href="" class="sidebar-menu-item-nav-link result">{{ university.university_member_school }}</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- 페이지 루트 -->
+            <form action="{% url 'onelab:write' %}" method="post" enctype="multipart/form-data" name="onelab-form">
+                {% csrf_token %}
+                <div id="layout-contents" class="layout-contents">
+                    <section class="page-container">
+                        <div style="display: flex; justify-content: space-between; width: 628px;">
+                            <h2 class="page-title">원랩 정보</h2>
+                            <!-- 저장 버튼 -->
+                            <!-- <div class="maker-info-container-btn-wrapper"> -->
+                            <button class="save-btn">
+                                <span>
+                                    <span class="save-btn-text">저장하기</span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="page-guide">
+                            <!-- <button class="banner-link-button-container" type="button">
+                                <div class="banner-link-button-icon">
+                                    <i class="banner-guide-icon"></i>
+                                </div>
+                                <div class="banner-link-button-content">
+                                    <p class="banner-link-button-description">다른 메이커들 다 본다는</p>
+                                    <strong class="banner-link-button-title">필수 가이드 모음집</strong>
+                                </div>
+                            </button> -->
+                            <button type="button" class="banner-link-button-container banner-guide-button">
+                                <div class="banner-link-button-icon">
+                                    <i class="banner-guide-gpt-icon"></i>
+                                </div>
+                                <div class="banner-link-button-content">
+                                    <p class="banner-link-button-content">
+                                        <p class="banner-link-button-description">궁금한 모든 것을 물어보세요</p>
+                                        <strong class="banner-link-button-title">AI 어드바이저</strong>
+                                    </p>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <!-- 헤더 navigation -->
+                        <div class="page-content">
+                            <nav class="project-navbar-container">
+                                <div style="display: flex; align-items: center;">
+                                    <div style="overflow: hidden; border-radius: 999px;">
+                                        <h1 class="nav-logo">
+                                            <!-- <span class="blind-text-hidden">메이커 스튜디오</span> -->
+                                        </h1>
+                                    </div>
+                                    <span style="padding-left: 10px;color: #008243;font-weight: bold;">ONELAB</span>
+                                </div>
+                                <!-- 회원 프로필 -->
+                                <div class="project-navbar-maker" >
+                                    {% if profile.path is None or profile.path == '' %}
+                                        <img class="profile" style="width: 11%" src="{% static 'myPage/images/profile.jpg' %}">
+                                    {% else %}
+                                        <img class="profile" src="/upload/{{ profile.path}}"
+                                             style=" 
+                                             width:42px; 
+                                             height: 42px; 
+                                             border-radius: 100%">
+                                    {% endif %}
+                                    <!-- 회원 이름 -->
+                                    <div>{{ request.session.member.member_name }}</div>
+                                </div>
+                                <div class="project-navbar-btn-group">
+                                    <!-- 알림 아이콘 -->
+                                    <div class="announce-button-container">
+                                        <img src="https://static.wadiz.kr/studio/funding/static/media/announcement.56f4b8e3.svg" alt="" class="announce-button-icon">
+                                        <span class="badge-container"></span>
+                                        <div class="announce-pop-over-container">
+                                            <div class="announce-list-container">
+                                                <strong class="announce-list-title">안내</strong>
+                                                <ul class="announce-list">
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                            <span class="important-badge-container">
+                                                                <span class="important-text-badge">중요</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 24일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title important">
+                                                                프로젝트 카테고리 확장 및 기능 개편
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                            <span class="important-badge-container">
+                                                                <span class="important-text-badge">중요</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 24일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title important">
+                                                                펀딩.프리오더 요금제 서비스 개편
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                결제일 및 환불 정책 개편 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                서포터 안심번호 서비스 도입
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                '오늘 데이터 한번에 보기' 오픈
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                배송
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                추석 연휴 배송정보 사전 제공 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                펀딩/프리오더 요금제 개편 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                서비스
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                새소식 알림 서비스 오류 해결 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="announce-list-item">
+                                                        <div class="announce-list-item-badge-area">
+                                                        </div>
+                                                        <div class="announce-list-item-content">
+                                                            <div class="announce-list-item-info">
+                                                                <div class="annouce-list-item-header">
+                                                                정책
+                                                                </div>
+                                                                <div class="annonce-list-item-register-date">1월 3일</div>
+                                                            </div>
+                                                            <div class="announce-list-item-title">
+                                                                프리오더 서비스 정책 변경 안내
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <div class="announce-detail-drawer-container">
+                                                    <div class="announce-detail-drawer-btn-group">
+                                                        <button class="announce-detail-drawer-back-btn" type="button">
+                                                            <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="announce-drawer-icon" aria-hidden="true" style="width: 24px; height: 24px;">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M16.076 2.576l.848.848L8.35 12l8.575 8.576-.848.848L6.65 12l9.425-9.424z"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <a href="/onelab/list/" class="exit-button" type="button">
+                                        <span>
+                                            <span class="exit-button-text">나가기</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </nav>
+
+                            <!-- 저장버튼 클릭시 전송될 form -->
+                            
+                                
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header">
+                                        <h3 class="section-title">원랩 이름
+                                            <span class="blind-text-hidden">필수</span>
+                                        </h3>
+                                    </div>
+                                    <div class="section-description">
+                                        <p>원랩의 이름을 적어주세요.</p>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="text-field">
+                                            <input type="text" name="onelab-main-title" id="title-input" class="maker-input input-maker-name" placeholder="원랩 이름 입력">
+                                        </div>
+                                        <em class="helper-msg">30자 남음</em>
+                                    </div>
+                                </section>
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title">첨부파일
+                                            <span class="blind-text-hidden">필수</span>
+                                        </h3>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="make-profile-img-container">
+                                            <div class="img-form-field">
+                                                <div class="img-form-field-btn-wrapper">
+                                                    <label for="" class="img-file-btn-label">
+                                                        <button class="img-file-btn" type="button">
+                                                            <i class="icon-camera"></i>
+                                                            등록하기
+                                                        </button>
+                                                        <div class="img-file-btn-input">
+                                                            <input class="file" accept="image/jpg,image/jpeg,image/png" name="file-img" placeholder="" type="file" value="">
+                                                        </div>
+                                                    </label>
+                                                    <em class="helper error"></em>
+                                                    <em class="helper img-form-field-helper">해상도 1500x700 픽셀 이상</em>
+                                                    <em class="helper img-form-field-helper">상세보기에 설명글과 함께 들어가는 이미지 입니다.</em>
+                                                </div>
+                                                <div class="prev-img-field" style="width: 100px; display: none; position: relative;">
+                                                    <img class="preview-img" src="" alt="이미지 미리보기">
+                                                    <button class="close-btn" type="button">&times;</button> <!-- x 버튼 추가 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title member">배너 이미지
+                                            <!-- <span class="blind-text-hidden">필수</span> -->
+                                        </h3>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="make-profile-img-container">
+                                            <div class="img-form-field">
+                                                <div class="img-form-field-btn-wrapper banner">
+                                                    <label for="" class="img-file-btn-label">
+                                                        <button class="img-file-btn" type="button">
+                                                            <i class="icon-camera"></i>
+                                                            등록하기
+                                                        </button>
+                                                        <div class="img-file-btn-input">
+                                                            <input class="file banner" accept="image/jpg,image/jpeg,image/png" name="file-banner" placeholder="" type="file" value="">
+                                                        </div>
+                                                    </label>
+                                                    <em class="helper error"></em>
+                                                    <em class="helper img-form-field-helper">해상도 2400x750 픽셀 이상</em>
+                                                    <em class="helper img-form-field-helper">등록하지 않을 시, 원랩 기본 이미지로 설정됩니다.</em>
+                                                </div>
+                                                <div class="prev-img-field banner" style="width: 100px; display: none; position: relative;">
+                                                    <img class="preview-img banner" src="" alt="이미지 미리보기">
+                                                    <button class="close-btn banner" type="button">&times;</button> <!-- x 버튼 추가 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title">원랩 한줄 설명
+                                            <span class="blind-text-hidden">필수</span>
+                                        </h3>
+                                    </div>
+                                    <div class="section-description">
+                                        <p>원랩을 간단하게 설명해주세요.</p>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="story-field-container">
+                                            <div class="textarea-field">
+                                                <div class="textarea-box">
+                                                    <div class="textarea-input">
+                                                        <textarea placeholder="간단한 설명글 작성" maxlength="100" name="onelab-content" rows="5" style="resize: none;" ></textarea>
+                                                    </div>
+                                                    <em class="form-field-helper">100자 남음</em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title">원랩의 자세한 설명글
+                                            <span class="blind-text-hidden">필수</span>
+                                        </h3>
+                                    </div>
+                                    <div class="section-description">
+                                        <p>원랩을 자세하게 설명해주세요.</p>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="story-field-container">
+                                            <div class="textarea-field">
+                                                <div class="textarea-box">
+                                                    <div class="textarea-input A">
+                                                        <textarea placeholder="자세한 설명글 작성" maxlength="1000" name="onelab-detail-content" rows="5" style="resize: none;" ></textarea>
+                                                    </div>
+                                                    <em class="form-field-helper form-field-helper-A">1000자 남음</em>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <!-- 랩원 등록 시, 랩원 계정 추가하는 섹션 -->
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header">
+                                        <h3 class="section-title">최대 인원</h3>
+                                        <span class="blind-text-hidden">필수</span>
+                                    </div>
+                                    <div class="section-description">
+                                        <p>원랩으로 함께 하게 될 팀원의 최대 인원을 적어주세요. 기본 2명</p>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="join-member-field">
+                                            <div class="join-member-text-field">
+                                                <label for=""></label>
+                                                <div class="text-field-box">
+                                                    <input type="text" class="input-member-email" name="onelab-max-count" placeholder="최대 인원 입력">
+                                                    <span class="text-field-fixed-text">명</span>
+                                                </div>
+                                                <em class="helper-message-email" style="display: none;">유효한 이메일 주소를 입력해주세요.</em>
+                                            </div>
+                                            
+                                        </div>
+                                        <!-- 추가 버튼 클릭하면 input태그의 value값이 list로 추가됨(x버튼도 함께)  -->
+                                        <div class="join-member-emails-list">
+                                            <!-- <div class="join-member-emails-badge">
+                                                <span>wmoon0023@gmail.com</span>
+                                                <button type="button" class="join-member-emails-remove-btn">
+                                                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="remove-btn-svg" aria-hidden="true">
+                                                        <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                                    </svg>
+                                                </button>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="section-container" style="max-width: 630px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title">문의 이메일
+                                            <span class="blind-text-hidden">필수</span>
+                                        </h3>
+                                    </div>
+                                    <div class="section-content">
+                                        <div class="text-field">
+                                            <input type="text" name="onelab-ask-email" id="" class="maker-input input-email" placeholder="이메일 입력" value="">
+                                        </div>
+                                    </div>
+                                </section>
+                                <section class="section-container" style="max-width: 640px;">
+                                    <div class="section-header profile">
+                                        <h3 class="section-title">원랩 소통 URL</h3>
+                                        <span class="blind-text-hidden">필수</span>
+                                    </div>
+                                    <div class="open-link-fields">
+                                        <div class="open-link-field">
+                                            <div class="url-field">
+                                                <label for=""></label>
+                                                <div class="text-field">
+                                                    <input type="text" name="onelab-url" id="" class="maker-input input-url" placeholder="홈페이지 URL 입력" value="">
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                </section>
+                        </div>
+                    </section>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'onelab/js/one-lab-write.js' %}"></script>
+{% endblock %}
+

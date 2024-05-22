@@ -1,0 +1,91 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/css/login/reset-link.css' %}">
+{% endblock %}
+{% block title %}비밀번호 재설정{% endblock %}
+{% block content %}
+    <div id="page-container">
+            <div id="ol-header">
+                <div class="web-header">
+                    <div class="web-header-large">
+                        <header class="header-wrapper web-header-simple">
+                            <div class="header-container">
+                                <h1 class="onelab-logo">
+                                    <a href="/"
+                                        >
+                                        <img class="logo-img" src="{% static 'public/images/header-logo_RE.png' %}" />
+                                    </a>
+                                </h1>
+                            </div>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="account-reset-password">
+            <div class="ol container">
+                <div class="page-header">
+                    <h2>비밀번호 재설정</h2>
+                    <p class="desc-a">새로 사용하기를 원하는 비밀번호를 입력해 주세요.</p>
+                    <p class="desc-b">
+                        비밀번호 재설정을 성공하였습니다.<br />아래의 버튼을 누르면 로그인 페이지로 이동합니다.
+                    </p>
+                </div>
+                <div class="page-body">
+                    <form action="{% url 'member:account-reset' id=id random=random%}" method="post" class="reset-password-form">
+                        {% csrf_token %}
+                        <input type="text" name="member-id" id="reset-pfp" value="{{ id }}" />
+                        <div class="pw-input-section">
+                            <div class="label">비밀번호</div>
+                            <div class="text-field reset-pw-new valid">
+                                <input
+                                    type="password"
+                                    id="new-pw"
+                                    name="member-password"
+                                    class="input-text"
+                                    placeholder="비밀번호 입력"
+                                    maxlenght="20"
+                                />
+                                <div class="trailing-icon"></div>
+                                <p class="helper-text focus-text">
+                                    영문, 숫자, 특수문자 !@#$%^&*+=-를 조합한 8자 이상 입력
+                                </p>
+                                <p class="helper-text focus-text">
+                                    영문, 숫자, 특수문자 !@#$%^&*+=-를 조합한 8자 이상 입력
+                                </p>
+                            </div>
+                            <div class="text-field reset-pw-re valid">
+                                <input
+                                    type="password"
+                                    id="new-pw-re"
+                                    name="new-pw-re"
+                                    class="input-text"
+                                    placeholder="비밀번호 확인"
+                                    maxlength="20"
+                                />
+                                <div class="trailing-icon"></div>
+                                <p class="helper-text-error">새 비밀번호가 일치하지 않습니다.</p>
+                            </div>
+                        </div>
+                        <div class="btn-wrap smaller">
+                            <button id="reset-done" type="submit" class="ol button primary block reset-pw-ok">
+                                완료
+                            </button>
+                            <button
+                                id="go-to-login"
+                                type="button"
+                                class="ol button primary blcok go-to-login"
+                                style="display: none"
+                            >
+                                <a href="">로그인</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'member/js/login/reset-link.js' %}"></script>
+{% endblock %}

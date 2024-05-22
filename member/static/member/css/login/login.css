@@ -1,0 +1,691 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+html {
+    font-family: Pretendard Variable,pretendard,-apple-system,blinkmacsystemfont,
+    system-ui,roboto,Helvetica Neue,
+    Segoe UI,Apple SD Gothic Neo,Noto Sans KR,
+    Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,
+    Segoe UI Symbol,sans-serif;
+}
+
+div,h1,a,span,header,ul, li, section, h3, form,label,p
+input,form
+{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+
+a,button{
+    outline: none;
+    color: inherit;
+
+}
+
+img {
+    /*max-width: 25%;*/
+    vertical-align: top;
+    /*margin-left: 284px;*/
+    width: 176px;
+    border: 0;
+    padding: 0;
+}
+
+div {
+    display: block;
+}
+
+main, section {
+    display:block;
+}
+*,:after,:before{
+    box-sizing:border-box
+}
+
+body {
+    overflow-x: hidden;
+    line-height: inherit;
+    color: inherit;
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -o-text-size-adjust: none;
+}
+
+body, table th {
+    font-weight: 400;
+}
+
+body, button, html, input, textarea {
+    font-family: Pretendard Variable,pretendard,-apple-system,blinkmacsystemfont,system-ui,roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+}
+
+body{
+    font-weight:400;
+}
+body{
+    font-family:inherit
+}
+
+h1{
+    font-weight: bold;
+}
+
+form {
+    display: block;
+}
+#main-app .web-header{
+    z-index: 1201;
+}
+
+
+
+@media screen and (min-width: 1097px){
+    .web-header {
+    position: static;
+    }
+}
+
+.web-header{
+    transition: top .25s;
+    width: 100%;
+    top: 0;
+}
+
+@media screen and (min-width: 1097px){
+    .web-large .header-simple {
+        position: relative;
+        border-bottom: 1px solid #f2f4f6;
+        padding: 0;
+        height: 56px;
+        text-align: left;
+    }
+}
+
+.header-simple {
+    display:block;
+    position: relative;
+    text-align: center;
+    top: 0;
+    z-index: 9998;
+    background-color: #fff;
+    width: 100%;
+
+}
+
+@media screen and (min-width: 1097px){
+    .web-header .header-simple .header-container {
+        padding: 0 80px;
+    }
+}
+
+.web-header .header-simple .header-container{
+    display: flex;
+    align-items : center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1440px;
+    height: 100%;
+}
+
+@media screen {
+    .web-header .header-simple{
+        position: relative;
+        border-bottom: 1px solid #f2f4f6;
+        padding: 0;
+        height: 56px;
+        text-align: left;
+    }
+}
+
+.wadiz-logo {
+    display: inline-block;
+    position: static;
+    margin: 0;
+    line-height: 22px;
+    font-size: 32px;
+}
+
+.label{
+    display: block;
+    position: absolute;
+    left: -9999px;
+    height: 1px;
+}
+@media screen and (min-width: 1097px) {
+    .web-header .wadiz-logo>a{
+        padding: 14px 0 18px
+    }
+
+}
+.web-header .wadiz-logo>a svg{
+    max-width: none;
+}
+.web-header .wadiz-logo>a{
+    display: block;
+}
+a{
+    text-decoration: none;
+}
+.header-simple{
+    text-align: center;
+}
+
+@media screen and (min-width:1097px) {
+    .web-header .header-simple .header-container .gnb-large{
+        display: block;
+    }
+}
+
+.gnb-large {
+    position: absolute;
+    right: 80px;
+    left: auto;
+    color: #495057;
+    z-index: 1;
+    bottom: 0;
+    padding: 0;
+    list-style : none;
+    vertical-align: top;
+}
+
+@media screen and (min-width:1097px){
+    .web-header .gnb-large{
+        margin-left: 24px;
+        box-shadow: none;
+        width: auto;
+    }
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.gnb-large li {
+    float:left;
+    width: auto;
+}
+ul, li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.item{
+    margin-left: 16px;
+    padding: 0;
+    display: block;
+    text-align: center;
+    color: #495057;
+    text-decoration: none;
+}
+.item span{
+    font-size: 15px;
+    font-weight: 400;
+    padding-top: 1px;
+    line-height: 55px;
+    color: #000;
+    display: block;
+    text-align: center;
+}
+.Preview-E{
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #ff9d9d;
+    border-bottom: 1px solid #ff9d9d;
+    background-color: #fff1f1;
+    color: #f66;
+}
+.MainWrapper{
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: padding-top .25s;
+}
+@media screen and (min-width:1201px) {
+    .Account-25{
+        margin-top: 78px;
+    }
+}
+
+.Account-25{
+    position: relative;
+    margin: 24px auto 0;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 390px;
+    overflow: hidden;
+}
+@media screen and (min-width:1097px) {
+    .Account-Xf{
+        line-height: 44px;
+        font-size: 32px;
+        font-weight: 700;
+        color:#212529;
+    }
+}
+section{
+    display: block;
+}
+
+h3{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.SignInForm-1G{
+    margin-top: 24px;
+}
+.SignInForm-Nh{
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.SignInForm-Nh p {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    display: inline;
+    color: #f25555;
+    display: none;
+}
+
+.BlindText-K9{
+    position: absolute;
+    margin: -1px;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.Input-email, .Input-pw{
+    display: block;
+    transition-property: border-color,background-color,color;
+    transition-duration: .15s;
+    outline: none;
+    border: 1px solid #dde2e6;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 0 16px;
+    width: 100%;
+    height: 48px;
+    /* vertical-align: middle; */
+    color: #212529;
+    /* -webkit-appearance: none; */
+    font-weight: 400;
+}
+
+input{
+    font-family: inherit;
+    margin: 0;
+}
+input, textarea{
+    background: none;
+}
+
+.Input-pw, .Input-email{
+    height: 48px;
+    min-height: 48px;
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.Input-email:hover {
+    border-color: #868e96;
+}
+
+.Input-pw:hover {
+    border-color: #868e96;
+}
+
+.SignInForm-e2 {
+    float: right;
+    line-height: 0px;
+    color: #adb5bd;
+    font-size: 13px;
+}
+p {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    display: block;
+}
+a, button{
+    color: inherit;
+}
+.Button-1G{
+    margin-top: 32px;
+    border-color: #e8f5e9;
+    background-color: #e8f5e9;
+    color: #008243;
+    padding: 9px 23px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 32px;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 0px solid #cdd3d8;
+    border-radius: 4px;
+    /* background-color: rgba(0,0,0,0); */
+    cursor: pointer;
+    height: 48px;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    /* color: #495057; */
+    /* -webkit-appearance: none; */
+}
+
+.Button-1G:hover {
+    border-color: #c8e6c9;
+    background-color: #c8e6c9;
+    color: #00704A;
+}
+
+.Button-1G span{
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+.Button-7g{
+    vertical-align: top;
+}
+.sns-Button-kakao{
+    padding: 9px 23px;
+    height: 48px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 12px;
+    border-color: #fee500;
+    background-color: #fee500;
+}
+
+.sns-Button-google {
+    padding: 9px 23px;
+    height: 48px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 12px;
+    border-color: rgb(208, 83, 63);
+    background-color: rgb(208, 83, 63);
+}
+
+.btn-first{
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 0px solid #cdd3d8;
+    border-radius: 4px;
+    /* background-color: rgba(0,0,0,0); */
+    cursor: pointer;
+    padding: 9px 23px;
+    height: 48px;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #495057;
+    font-size: 16px;
+    /* -webkit-appearance: none; */
+}
+
+.btn-first:hover {
+    border: 1px solid #cdd3d8;
+    border-color: #adb5bd;
+    color: #343a40;
+}
+
+.btn-first .Button-children {
+    vertical-align: top;
+}
+
+.sns-Button-naver{
+    padding: 9px 23px;
+    height: 48px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 12px;
+    border-color: #00d337;
+    background-color: #00d337;
+    color: #fff;
+}
+.sns-Button-kakao span svg{
+    display: inline-block;
+}
+.kakao{
+
+    position: absolute;
+    left: 13px;
+    right: auto;
+    top: 12px;
+    width: 22px;
+    height: 22px;
+    transform: scale(1);
+    transition: transform .3s;
+    fill: currentColor;
+    display: inline-block;
+
+}
+.button{
+    margin: 0;
+    font-family: inherit;
+}
+
+.sns-button-three{
+    margin-top: 56px;
+    display: flex;
+    justify-content: center;
+}
+
+.button-google{
+    margin-left: 0;
+    border-radius: 999em;
+    cursor: pointer;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 20px;
+    border-color: #ced4da;
+    background-color:#fff;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    /* border-radius: 4px; */
+    /* background-color: rgba(0,0,0,0); */
+    /* cursor: pointer; */
+    /* padding: 9px 23px; */
+    /* height: 48px; */
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #495057;
+    font-size: 16px;
+    /* -webkit-appearance: none; */
+}
+
+.button-google:hover {
+    border-color: #adb5bd;
+    color: #343a40;
+}
+
+.button-google span{
+    vertical-align: text-top;
+    display: inline-flex;
+    align-items: center;
+}
+.button-child-1{
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+}
+.svg-google{
+    display: inline-block;
+}
+.button-child-2{
+    border-radius: 999em;
+    margin-left: 12px;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 20px;
+    border-color: #fee500;
+    background-color: #fee500;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #fee500;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.button-child-2 span{
+    vertical-align: text-top;
+    display: inline-flex;
+    align-items: center;
+}
+
+.button-child-2:hover {
+    color: #343a40;
+    border: 1px solid #cdd3d8;
+}
+.button-child-2-2{
+    vertical-align: top;
+    text-align: center;
+    line-height: 48px;
+    font-size:20px
+}
+.svg-facebook{
+    display: inline-block;
+    transform: scale(1);
+    transition: transform .3s;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    cursor: pointer;
+}
+.button-apple{
+    border-radius: 999em;
+    cursor: pointer;
+    margin-left: 12px;
+    padding: 0;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 20px;
+    border-color: #000;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.button-apple:hover {
+    background-color: #000;
+    border-color: #adb5bd;
+    color: #343a40;
+}
+
+.button-child-3{
+    vertical-align: top;
+    display: inline-flex;
+    text-align: center;
+    line-height: 48px;
+    font-size: 20px;
+}
+.button-apple span{
+    display: inline-block;
+    align-items: center;
+}
+.svg-apple{
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+.SignInApp{
+    text-align: center;
+    line-height: 56px;
+}
+.SignInApp a{
+    margin-left: 6px;
+    text-decoration: underline;
+    color: #008243;
+    font-weight: 700;
+}
+
+.google {
+  border-color: #adb5bd;
+  background-color: #fff;
+  color: #000;
+}
+.google:hover {
+  background-color: #e9e9e9;
+  border-color: #e9e9e9;
+}
+
+.login-btn {
+  padding: 9px 23px;
+  height: 48px;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 12px;
+  -webkit-appearance: none;
+  vertical-align: middle;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #495057;
+  position: relative;
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: 0.15s;
+  border: 1px solid #cdd3d8;
+  border-radius: 4px;
+}
+
+.login-btn-icon {
+  display: inline-block;
+  position: absolute;
+  left: 16px;
+  width: 22px;
+  height: 22px;
+  transform: scale(1);
+  transition: transform 0.3s ease-out;
+  fill: currentColor;
+}
+

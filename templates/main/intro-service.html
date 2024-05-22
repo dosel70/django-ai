@@ -1,0 +1,194 @@
+{% extends 'login/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'member/css/main/main-page.css' %}" />
+{% endblock %}
+
+{% block title %}로그인{% endblock %}
+{% block content %}
+    <div id="page-container">
+            <main id="main-app">
+                <div class="web-header"></div>
+                <div class="MainWrapper-content">
+                    <div class="registrationproject-container">
+                        <section class="keyvisual-container"></section>
+                        <div class="aiadviceguide-container"></div>
+                        <div class="serviceinfo-inner">
+                            <h3 class="serviceinfo-title">원랩으로 쉽고 즐거운 캠퍼스 라이프</h3>
+                            <p class="serviceinfo-description">이미 많은 학생들이 원랩을 경험했어요</p>
+                            <ul class="serviceinfo-list">
+                                <li class="serviceinfo-listitem">
+                                    <a href="">
+                                        <div
+                                            class="serviceinfo-iconbox"
+                                            style="background-image: url('/staticfiles/images/data-share.svg')"
+                                        ></div>
+                                        <dl>
+                                            <dt class="serviceinfo-term">자료 공유</dt>
+                                            <dd class="serviceinfo-termdescription">
+                                                원하는 자료를 <br />언제든 어디서든!
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </li>
+                                <li class="serviceinfo-listitem">
+                                    <a href="">
+                                        <div
+                                            class="serviceinfo-iconbox"
+                                            style="background-image: url('/staticfiles/images/Competition.svg')"
+                                        ></div>
+                                        <dl>
+                                            <dt class="serviceinfo-term">대회/공모전</dt>
+                                            <dd class="serviceinfo-termdescription">
+                                                누구보다 빠르게 <br />내 스펙 업그레이드!
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </li>
+                                <li class="serviceinfo-listitem">
+                                    <a href="">
+                                        <div
+                                            class="serviceinfo-iconbox"
+                                            style="
+                                                background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuMjM2MDIgMTQuNzcyVjQwLjUyNEM3LjIzNjAyIDQxLjk4OCA4LjM0MDAyIDQzLjE4OCA5LjY5NjAyIDQzLjE4OEgyMC4wNjRWMzMuOTI0QzIwLjA2NCAzMy40MDggMjAuNDQ4IDMyLjk4OCAyMC45MjggMzIuOTg4SDI3LjA2QzI3LjU0IDMyLjk4OCAyNy45MjQgMzMuNDA4IDI3LjkyNCAzMy45MjRWNDMuMTg4SDM4LjI5MkMzOS42NDggNDMuMTg4IDQwLjc1MiA0MiA0MC43NTIgNDAuNTI0VjE0Ljc3Mkg3LjIzNjAyWiIgZmlsbD0iIzYxOTdGRCIvPgo8cGF0aCBkPSJNNDUuNDQ0IDE3LjExMkw0My44ODQgMTAuMzMyQzQzLjQ3NiA4LjUzMjA1IDQxLjg5MiA3LjI0ODA1IDQwLjA4IDcuMjQ4MDVIMzEuMkgxNi44VjcuMjg0MDVDMTYuOCA3LjI3MjA1IDE2Ljc4OCA3LjI0ODA1IDE2Ljc2NCA3LjI0ODA1SDcuODk2MDJDNi4wODQwMSA3LjI0ODA1IDQuNTEyMDIgOC41MjAwNSA0LjA5MjAyIDEwLjMzMkwyLjUzMjAxIDE3LjExMkMyLjM4ODAxIDE3Ljg1NiAyLjQwMDAxIDE4LjMyNCAyLjQzNjAxIDE4Ljc4QzIuNDQ4MDEgMTguODUyIDIuNDYwMDEgMTguOTEyIDIuNDcyMDEgMTguOTg0QzMuMDM2MDEgMjIuNSA2LjAxMjAyIDI1LjIgOS42MDAwMiAyNS4yQzEzLjM5MiAyNS4yIDE2LjUgMjIuMjEyIDE2Ljc4OCAxOC40MDhDMTcuMDg4IDIyLjIxMiAyMC4xODQgMjUuMiAyMy45NzYgMjUuMkMyNy43NjggMjUuMiAzMC44NzYgMjIuMjEyIDMxLjE2NCAxOC40MDhDMzEuNDY0IDIyLjIxMiAzNC41NiAyNS4yIDM4LjM1MiAyNS4yQzQxLjE4NCAyNS4yIDQzLjYyIDIzLjUzMiA0NC44MDggMjEuMTJDNDUuMTU2IDIwLjQ5NiA0NS4zOTYgMTkuNzE2IDQ1LjUxNiAxOC43OEM0NS41ODggMTguMzM2IDQ1LjU2NCAxNy45NjQgNDUuNDQ0IDE3LjExMloiIGZpbGw9IiMwMDYxRkYiLz4KPC9zdmc+Cg==');
+                                            "
+                                        ></div>
+                                        <dl>
+                                            <dt class="serviceinfo-term">장소 공유</dt>
+                                            <dd class="serviceinfo-termdescription">
+                                                찾기 힘들었던 LAB,<br />
+                                                내 손안에서 해결!
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </li>
+                                <li class="serviceinfo-listitem">
+                                    <a href="">
+                                        <div
+                                            class="serviceinfo-iconbox"
+                                            style="background-image: url('/staticfiles/images/community.svg')"
+                                        ></div>
+                                        <dl>
+                                            <dt class="serviceinfo-term">커뮤니티</dt>
+                                            <dd class="serviceinfo-termdescription">
+                                                최신 트렌드를<br />손쉽게 한번에!
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </li>
+                                <li class="serviceinfo-listitem">
+                                    <a href="">
+                                        <div
+                                            class="serviceinfo-iconbox"
+                                            style="background-image: url('/staticfiles/images/one-lab.svg')"
+                                        ></div>
+                                        <dl>
+                                            <dt class="serviceinfo-term">원랩</dt>
+                                            <dd class="serviceinfo-termdescription">
+                                                너, 내 동료가 되라!<br />다 같이 스펙 업!
+                                            </dd>
+                                        </dl>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bannercontainer-inner">
+                            <div class="banneritem-container">
+                                <div class="banneritem-textbox">
+                                    <div
+                                        class="banneritem-icon"
+                                        style="background-image: url('/staticfiles/images/header-logo_RE.png')"
+                                    ></div>
+                                    <p class="banneritem-text">다양한 정보와 확실한 자료, 흥미로운 콘텐츠가 넘쳐나는</p>
+                                </div>
+                                <button type="button" href="홈 링크">
+                                    <span class="banneritem-button">홈으로 바로가기</span>
+                                </button>
+                            </div>
+                            <div class="banneritem-container bannercontainer-A">
+                                <div class="banneritem-textbox">
+                                    <div
+                                        class="banneritem-icon"
+                                        style="background-image: url('/staticfiles/images/header-logo_RE.png')"
+                                    ></div>
+                                    <p class="banneritem-text">더 많은 즐거움과 완벽한 캠퍼스 라이프를 위해서</p>
+                                </div>
+                                <button type="button" href="회원가입 링크">
+                                    <span class="banneritem-button">회원가입으로 바로가기</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="serviceprovide-container">
+                            <div class="serviceprovide-inner">
+                                <h3 class="serviceprovide-title">원랩이 도와드릴게요</h3>
+                                <p class="serviceprovide-description">원랩은 학교에게도 큰 도움을 드릴 수 있어요</p>
+                                <ul class="serviceprovide-list">
+                                    <li class="serviceprovide-listitem">
+                                        <div class="serviceprovide-content">
+                                            <p class="serviceprovide-question">1. 캠퍼스 공간을 활용해 수익 창출</p>
+                                            <dl>
+                                                <dt class="serviceprovide-term">장소 공유</dt>
+                                                <dd class="serviceprovide-termdescription">
+                                                    캠퍼스 내의 공간을 공유 하고<br />
+                                                    포인트를 받으세요
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div
+                                            class="serviceprovide-imagebox"
+                                            aria-hidden="true"
+                                            style="background-image: url('/staticfiles/images/place-share-big.svg')"
+                                        ></div>
+                                        <div class="serviceprovide-link">
+                                            <span class="blindtext-texthidden">장소 공유</span>
+                                        </div>
+                                    </li>
+                                    <li class="serviceprovide-listitem">
+                                        <div class="serviceprovide-content">
+                                            <p class="serviceprovide-question">2. 전국 학생들의 이목 절대 집중</p>
+                                            <dl>
+                                                <dt class="serviceprovide-term">광고 / 홍보</dt>
+                                                <dd class="serviceprovide-termdescription">
+                                                    열심히 모은 포인트,<br />페이지 내의 각 종 배너에 홍보물을
+                                                    올려드려요
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div
+                                            class="serviceprovide-imagebox"
+                                            aria-hidden="true"
+                                            style="background-image: url('/staticfiles/images/advertisement.jpg')"
+                                        ></div>
+                                        <div class="serviceprovide-link">
+                                            <span class="blindtext-texthidden">스토리 제작 서비스</span>
+                                        </div>
+                                    </li>
+                                    <li class="serviceprovide-listitem">
+                                        <div class="serviceprovide-content">
+                                            <p class="serviceprovide-question">3. 학생들의 워너비를 빠르게!</p>
+                                            <dl>
+                                                <dt class="serviceprovide-term">커뮤니티</dt>
+                                                <dd class="serviceprovide-termdescription">
+                                                    쉽게 알기 어려운 학생들의 속마음, <br />빠르고 쉽게 파악해서
+                                                    학생들의 마음을 사로잡으세요
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div
+                                            class="serviceprovide-imagebox"
+                                            aria-hidden="true"
+                                            style="background-image: url('/staticfiles/images/advertisementibig.jpg')"
+                                        ></div>
+                                        <div class="serviceprovide-link">
+                                            <span class="blindtext-texthidden">커뮤니티 서비스</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <footer id="footer" class="web-footer inner-utils show-page-top"></footer>
+                </div>
+            </main>
+        </div>
+{% endblock %}

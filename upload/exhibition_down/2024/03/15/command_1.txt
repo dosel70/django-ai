@@ -1,0 +1,29 @@
+명령어
+
+가상환경으로 접속
+		venv/Scripts/activate
+
+현재 설치된 라이브러리를 파일로 정리
+		pip freeze > requirements.txt
+
+새로운 서비스 폴더 만들기
+		python manage.py startapp [서비스 이름]
+
+requirements.txt에 저장된 라이브러리 설치
+		pip install -r requirements.txt
+
+
+※ 최초 1회에만 사용
+Model 객체 및 settings.py 설정 반영 파일 제작
+		python manage.py makemigrations [서비스 이름]
+
+※ 최초 1회에만 사용
+makemigrations로 만든 migration 파일 실행
+		python manage.py migrate [서비스 이름]
+
+
+※ 주의 : 강사에게 보고 후 사용
+migration 전체 삭제
+		python manage.py migrate --fake [서비스 이름] zero
+		직접 migrations의 파일 삭제
+		직접 DBMS 테이블 DROP

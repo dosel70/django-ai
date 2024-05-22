@@ -1,0 +1,114 @@
+{% extends 'review/base.html' %}
+{% load static %}
+{% block static %}
+<link rel="stylesheet" href="{% static 'review/css/write.css' %}">
+<link rel="stylesheet" href="{% static 'public/css/main-page-footer.css' %}">
+{% endblock %}
+{% block title %}후기 작성페이지{% endblock %}
+{% block content %}
+    <!-- 메인 시작 -->
+        <main class="review-main">
+            <div class="container" id="page-container">
+                <div class="review-form-container">
+                    <div class="review-form-wrapper">
+                        <header class="review-title">
+                            <h1>후기 등록</h1>
+                        </header>
+                        <div class="form-inner">
+                            <form action="{% url 'review:share-write' %}" method="POST" id="new-review-request" class="review-request-form" name="commit" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="utf-8" autocomplete="off">
+                                <div class="form-field-select-product" style="display: block;">
+                                    <label for="registration-review" class="select-product-text">후기를 작성할 상품명</label>
+                                    <input type="hidden" name="share-id" value="{{ share.id }}">
+                                    <a class="select-product-box" style="max-width: 100%;">{{ share.share_title }}</a>
+                                </div>
+                                <div class="form-field-review-score">
+                                    <label for="" class="select-review-score">상품 별점</label>
+                                    <div class="review-score-wrap">
+                                        <div class="review-score-box">
+                                            <div class ="star-rating">
+                                                <span class="star on" style="cursor: pointer;" value="1">
+                                                    <input type="hidden" value="1">
+                                                </span>
+                                                <span class="star" style="cursor: pointer;" value="2">
+                                                    <input type="hidden" value="2">
+                                                </span>
+                                                <span class="star" style="cursor: pointer;" value="3">
+                                                    <input type="hidden" value="3">
+                                                </span>
+                                                <span class="star" style="cursor: pointer;" value="4">
+                                                    <input type="hidden" value="4">
+                                                </span>
+                                                <span class="star" style="cursor: pointer;" value="5">
+                                                    <input type="hidden" value="5">
+                                                </span>
+                                              </div>
+                                            <div class="choice-text none">선택해주세요</div>
+                                            <div class="choice-text one" style="display: none;">1점(별로에요)</div>
+                                            <div class="choice-text two" style="display: none;">2점(그저 그래요)</div>
+                                            <div class="choice-text three" style="display: none;">3점(보통이에요)</div>
+                                            <div class="choice-text four" style="display: none;">4점(괜찮아요)</div>
+                                            <div class="choice-text five" style="display: none;">5점(좋아요)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 후기글 작성 섹션 -->
+                                <div class="form-field-review-text">
+                                    <label for="" class="write-reivew-text">후기를 작성해 주세요</label>
+                                    <textarea name="review-content" id="" cols="30" rows="10" style="resize: none;"></textarea>
+                                </div>
+                                <!-- 후기 사진 첨부 섹션 -->
+                                <div class="form-field-file">
+                                    <label for="" class="file-upload">첨부 파일
+                                        <span class="optional">(선택 사항)</span>
+                                    </label>
+                                    <div class="upload-dropzone">
+                                        <input type="file" name="upload-file" id="file-input">
+                                        <span>
+                                            <a href="">이미지 추가</a>
+                                        </span>
+                                    </div>
+                                    <div class="upload-error" style="display: none;">
+                                        <span>이미지 파일만 업로드 가능합니다.</span>
+                                    </div>
+                                    <!-- 업로드 시, 파일 미리보기 되는 부분 -->
+                                    <ul class="upload-pool">
+                                        <li class="upload-item" id="file-list">
+                                            <button class="cancel-upload" style="display: none;">X</button>
+                                            <img id="thumbnail" src="#" alt="Thumbnail" style="display: none;" width="100px">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <input type="submit" name="commit" class="submit-btn" value="제출">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% endblock %}
+{% block js %}
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="{% static 'review/js/write.js' %}"></script>
+    <script src="{% static 'place/js/review-list.js' %}"></script>
+    <script>
+        let rate = 1
+        // 별점 선택시, 해당 value값 선택
+        const stars = document.querySelectorAll('.star')
+        stars.forEach((star) => {
+            star.addEventListener('click', function (e){
+                stars.forEach(((star) => {
+                    const input = star.children;
+                    input[0].setAttribute('name', '')
+                }))
+                const input = star.children;
+                rate = input[0].value;
+                input[0].setAttribute('name', 'review-rating')
+            })
+        })
+        {#document.querySelector('.submit-btn').click(#}
+        {#    {% url 'review:write' %}#}
+        {#)#}
+    </script>
+{% endblock %}

@@ -1,0 +1,475 @@
+{% extends 'login/base.html' %}
+{% load static %}
+
+{% block title %}로그인{% endblock %}
+{% block content %}
+    <!--푸터-->
+        <footer id="footer" class="web-footer">
+            <div class="footer-menu-container">
+                <div class="footer-menu-bar">
+                    <div class="footer-menu-left">
+                        <div class="footer-menu-menu" id="btn-a">
+                            정책 · 약관<svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                focusable="false"
+                                role="presentation"
+                                class="withicon-icon linker-linker-icon"
+                                aria-hidden="true"
+                                style="width: 16px; height: 16px;"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                ></path>
+                            </svg>
+                            <div class="menu-a" style="width: 230px;">
+                                <ul class="link-menu-block">
+                                    <li>
+                                        <a class="link-menu-link" href="" target="_blank" rel="noopener noreferrer"
+                                            >공통 정책·약관
+                                            <svg
+                                                viewBox="0 0 40 40"
+                                                focusable="false"
+                                                role="presentation"
+                                                class="withicon-icon link-menu-open-link-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <path
+                                                    d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"
+                                                ></path>
+                                                <path
+                                                    d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"
+                                                ></path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="link-menu-link" href="" target="_blank" rel="noopener noreferrer"
+                                            >원랩 정책·약관
+                                            <svg
+                                                viewBox="0 0 40 40"
+                                                focusable="false"
+                                                role="presentation"
+                                                class="withicon-icon link-menu-open-link-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <path
+                                                    d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"
+                                                ></path>
+                                                <path
+                                                    d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"
+                                                ></path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="link-menu-link" href="" target="_blank" rel="noopener noreferrer"
+                                            >원랩파이낸스 정책·약관
+                                            <svg
+                                                viewBox="0 0 40 40"
+                                                focusable="false"
+                                                role="presentation"
+                                                class="withicon-icon link-menu-open-link-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <path
+                                                    d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"
+                                                ></path>
+                                                <path
+                                                    d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"
+                                                ></path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="footer-menu-menu-bold" id="btn-b">
+                            개인정보처리방침<svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                focusable="false"
+                                role="presentation"
+                                class="withicon-icon linker-linker-icon"
+                                aria-hidden="true"
+                                style="width: 16px; height: 16px;"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                ></path>
+                            </svg>
+                            <div class="menu-b" style="width: 270px;">
+                                <ul class="link-menu-block">
+                                    <li>
+                                        <a class="link-menu-link" href="" target="_blank" rel="noopener noreferrer"
+                                            >원랩 개인정보처리방침
+                                            <svg
+                                                viewBox="0 0 40 40"
+                                                focusable="false"
+                                                role="presentation"
+                                                class="withicon-icon link-menu-open-link-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <path
+                                                    d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"
+                                                ></path>
+                                                <path
+                                                    d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"
+                                                ></path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="link-menu-link" href="" target="_blank" rel="noopener noreferrer"
+                                            >원랩파이낸스 개인정보처리방침
+                                            <svg
+                                                viewBox="0 0 40 40"
+                                                focusable="false"
+                                                role="presentation"
+                                                class="withicon-icon link-menu-open-link-icon"
+                                                aria-hidden="true"
+                                            >
+                                                <path
+                                                    d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"
+                                                ></path>
+                                                <path
+                                                    d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"
+                                                ></path>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-menu-right">
+                        <div class="footer-menu-menu" id="btn-c">
+                            제휴문의<svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                focusable="false"
+                                role="presentation"
+                                class="withicon-icon linker-linker-icon"
+                                aria-hidden="true"
+                                style="width: 16px; height: 16px;"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                ></path>
+                            </svg>
+                            <div class="menu-c">
+                                <div class="contract-line-contact-menu">
+                                    <span class="contact-menu-title">광고 서비스 문의</span
+                                    ><a href="" class="contact-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        >ad@wadiz.kr</a
+                                    ><span class="contact-menu-sep">|</span
+                                    ><a href="" class="contact-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        >광고상품보기</a
+                                    >
+                                </div>
+                                <div class="contract-line-contact-menu">
+                                    <span class="contact-menu-title">제휴 문의</span
+                                    ><a href="" class="contact-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        >partner@wadiz.kr</a
+                                    >
+                                </div>
+                                <div class="contract-line-contact-menu">
+                                    <span class="contact-menu-title">마케팅 제휴/PR 문의</span
+                                    ><a href="" class="contact-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        >mktpr@wadiz.kr</a
+                                    >
+                                </div>
+                                <div class="contract-line-contact-menu">
+                                    <span class="contact-menu-title">IP 제휴 문의</span
+                                    ><a href="" class="contact-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        >ip@wadiz.kr</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <a href="" class="footer-menu-menu-notice" target="_blank" rel="noopener noreferrer"
+                            >공지사항<svg
+                                viewBox="0 0 40 40"
+                                focusable="false"
+                                role="presentation"
+                                class="withicon-icon footer-menu-open-link-icon"
+                                aria-hidden="true"
+                            >
+                                <path d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"></path>
+                                <path
+                                    d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"
+                                ></path></svg></a
+                        ><a href="" class="footer-menu-menu-recru" target="_blank" rel="noopener noreferrer"
+                            >인재채용<svg
+                                viewBox="0 0 40 40"
+                                focusable="false"
+                                role="presentation"
+                                class="withicon-icon footer-menu-open-link-icon"
+                                aria-hidden="true"
+                            >
+                                <path d="M31.42 35.84h-27V8.4h14.76v-2H2.42v31.44h31V22.55h-2v13.29z"></path>
+                                <path
+                                    d="M37.32 15.41l-.01-13-12.99.01v2l9.72-.01-18.19 19.42 1.46 1.37 18-19.22.01 9.43h2z"
+                                ></path>
+                            </svg>
+                        </a>
+                        <div class="footer-menu-menu-sns" id="btn-d">
+                            SNS<svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                focusable="false"
+                                role="presentation"
+                                class="withicon-icon linker-linker-icon"
+                                aria-hidden="true"
+                                style="width: 16px; height: 16px;"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                ></path>
+                            </svg>
+                            <div class="menu-d">
+                                <div class="sns-menu-menu">
+                                    <a href="" class="sns-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        ><svg
+                                            viewBox="0 0 48 48"
+                                            focusable="false"
+                                            role="presentation"
+                                            class="withicon-icon withicon-inline"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M36.65 28.633h-2.71V22.51c0-1.41-.82-2.167-2.08-2.167-1.408 0-2.311.863-2.311 2.608v5.68h-2.711V13.66h2.71v5.632c.652-.988 1.703-1.472 3.131-1.472 1.156 0 2.102.378 2.837 1.157.757.778 1.135 1.83 1.135 3.197v6.459zm-19.489-2.555c2 0 3.71-1.198 4.225-3.05h2.958c-.723 3.563-3.493 5.899-7.183 5.899-4.287 0-7.687-3.202-7.687-7.657 0-4.456 3.4-7.657 7.687-7.657 3.727 0 6.516 2.382 7.205 6.006h-2.95c-.448-1.97-2.217-3.198-4.255-3.198-2.882 0-4.8 2.058-4.8 4.849 0 2.79 2.18 4.808 4.8 4.808zM24 2.4c-11.267 0-20.4 8.458-20.4 18.89 0 7.706 3.223 11.385 7.638 14.738l.022.01v9.042c0 .427.485.671.828.417l7.736-5.753.166.072a22.03 22.03 0 0 0 4.01.366c11.267 0 20.4-8.458 20.4-18.891C44.4 10.858 35.267 2.4 24 2.4z"
+                                            ></path>
+                                        </svg>
+                                        펀딩</a
+                                    >
+                                </div>
+                                <div class="sns-menu-menu">
+                                    <a href="" class="sns-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        ><svg
+                                            viewBox="0 0 48 48"
+                                            focusable="false"
+                                            role="presentation"
+                                            class="withicon-icon withicon-inline"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M44.4 24.12C44.4 12.787 35.267 3.6 24 3.6S3.6 12.787 3.6 24.12c0 10.242 7.46 18.732 17.212 20.271v-14.34h-5.18v-5.93h5.18v-4.522c0-5.143 3.046-7.983 7.706-7.983 2.232 0 4.566.4 4.566.4v5.05h-2.572c-2.534 0-3.325 1.582-3.325 3.205v3.85h5.658l-.904 5.93h-4.753v14.34C36.94 42.851 44.4 34.362 44.4 24.121"
+                                            ></path>
+                                        </svg>
+                                        펀딩</a
+                                    >
+                                </div>
+                                <div class="sns-menu-menu">
+                                    <a href="" class="sns-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        ><svg
+                                            viewBox="0 0 40 40"
+                                            focusable="false"
+                                            role="presentation"
+                                            class="withicon-icon withicon-inline"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M25.7 12c.5 1.2-.3 2.2-1.2 3.1s-2.6 2.7-3.8 4.2-3.1 4.3-4.7 6.5l.3.3.7-.6a20.6 20.6 0 0 1 6-4.5 9.5 9.5 0 0 1 3.3-.8c1.7-.1 2.7 1 2.7 2.8a6.7 6.7 0 0 1-1.8 4.3A18.6 18.6 0 0 1 17 33.2a35.6 35.6 0 0 1-4.8.8c-.8.1-1.4.4-1.5 1.2s-2 2.1-3.5 2.6l2.4-4.2c-1.2-1-1.2-1-1.1-1.6l1.5.7 2.3-4c3.5-6 6.9-12 10.4-17.9A26.3 26.3 0 0 1 29.2 3a5.5 5.5 0 0 1 1.4-.9 2.2 2.2 0 0 1 1.6-.1c.3.2.3 1 .2 1.5a10.7 10.7 0 0 1-2.7 4.9c-1.2 1.4-2.6 2.4-4 3.6zM12 33.2l1.6-.2c4-.6 7.6-2.1 10.4-5.2a9 9 0 0 0 2.4-4.6c.2-1.2-.4-1.9-1.6-1.6l-1.4.5c-4.9 2.5-8.3 6.5-11.4 11.1zM30.7 3.8l-.2-.2-6.2 7.6.2.2a15.5 15.5 0 0 0 6.2-7.6zM24 11.7l-2.8 4.7 2.7-2.5a1.4 1.4 0 0 0 .1-2.2zm8.4 25.8h-21l-.7.3c2.7.5 21.6.3 22.2-.2z"
+                                            ></path>
+                                        </svg>
+                                        브런치</a
+                                    ><span class="sns-menu-space"></span
+                                    ><a href="" class="sns-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        ><svg
+                                            viewBox="0 0 32 32"
+                                            focusable="false"
+                                            role="presentation"
+                                            class="withicon-icon withicon-inline"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M16 5.52h5.2l1.44.16.88.32.8.4.72.56.56.64c.131.23.241.496.315.777l.245.903c.121.445.207.964.239 1.498q.001.982.081 1.862T26.4 16v5.278c0 .511-.058 1.009-.169 1.486a3.805 3.805 0 0 1-.321.857 3.341 3.341 0 0 1-.398.792l-.472.708-.64.56-.8.4-.88.24-1.44.24h-10.4l-1.44-.16-.88-.32-.8-.4-.72-.56-.64-.8a3.267 3.267 0 0 1-.315-.777l-.325-.903a6.712 6.712 0 0 1-.16-1.438q0-.962-.08-1.842t0-3.36v-3.36q0-.8.08-1.84a9.087 9.087 0 0 1 .169-1.577 3.87 3.87 0 0 1 .32-.843c.093-.284.228-.549.397-.789l.473-.63.64-.56.8-.32.88-.32 1.52-.16h5.2zm0-2.32h-5.28l-1.76.16-1.36.4-1.2.72a4.335 4.335 0 0 0-1.038.798 5.503 5.503 0 0 0-.868 1.097L3.84 7.6a9.135 9.135 0 0 0-.388 1.294 11.965 11.965 0 0 0-.25 1.79Q3.2 11.76 3.12 12.56T3.2 16v3.44q0 .8.08 1.84c.045.655.13 1.258.255 1.845.095.44.233.896.405 1.333l.54 1.141.88 1.12 1.04.88 1.28.64 1.36.32 1.76.24h10.48l1.76-.16 1.36-.4 1.2-.64 1.12-.88c.296-.328.561-.695.784-1.089.225-.374.414-.77.562-1.185a9.74 9.74 0 0 0 .402-1.34c.13-.599.215-1.23.251-1.874q.001-.992.081-1.872t0-3.36v-3.44q0-.88-.08-1.84a13.088 13.088 0 0 0-.255-1.845 8.703 8.703 0 0 0-.405-1.334l-.54-1.141a6.56 6.56 0 0 0-.881-1.121 3.86 3.86 0 0 0-1.021-.869l-1.218-.65-1.36-.4-1.76-.24H16zm0 6.24l-.125-.001c-.878 0-1.715.177-2.477.497a6.508 6.508 0 0 0-3.382 3.461c-.334.787-.519 1.654-.519 2.563s.185 1.776.52 2.563a6.724 6.724 0 0 0 1.346 2.039 6.542 6.542 0 0 0 4.664 1.947c.915 0 1.786-.187 2.577-.525a6.585 6.585 0 0 0 3.381-3.382c.341-.798.53-1.678.53-2.602s-.189-1.804-.53-2.603a6.328 6.328 0 0 0-1.344-2.037 6.747 6.747 0 0 0-2.035-1.343 6.416 6.416 0 0 0-2.601-.577zm0 10.8l-.08.001a4.24 4.24 0 0 1-4.24-4.24V16a4.32 4.32 0 1 1 8.64 0v.001a4.24 4.24 0 0 1-4.24 4.24l-.084-.001zm8.4-11.12a1.52 1.52 0 1 1-.479-1.119c.295.264.48.647.48 1.073l-.001.048z"
+                                            ></path>
+                                        </svg>
+                                        인스타그램</a
+                                    >
+                                </div>
+                                <div class="sns-menu-menu">
+                                    <a href="" class="sns-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        ><svg
+                                            viewBox="0 0 32 32"
+                                            focusable="false"
+                                            role="presentation"
+                                            class="withicon-icon withicon-inline"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M8.88 14.88a.96.96 0 1 1-1.92 0 .96.96 0 0 1 1.92 0zm9.84-.08a1.04 1.04 0 1 1-2.081-.001 1.04 1.04 0 0 1 2.081.001z"
+                                            ></path>
+                                            <path
+                                                d="M26.56 4H5.44A3.84 3.84 0 0 0 1.6 7.84V20.4a3.84 3.84 0 0 0 3.84 3.84h7.44l2.56 6s.16.48.56.48.56-.48.56-.48l2.64-6h7.36a3.84 3.84 0 0 0 3.84-3.84V7.84A3.84 3.84 0 0 0 26.56 4zM10.64 15.04c0 2.32-2.4 2.32-2.4 2.32l-.051.001c-.54 0-1.029-.214-1.389-.561l.001.401h-1.68v-7.04h1.68v2.64c.4-.72 1.6-.64 1.6-.64 2.56.24 2.24 2.88 2.24 2.88zm3.04-2.72v4.88H12v-4.8c0-.64-.8-.8-.8-.8V9.92a2.32 2.32 0 0 1 2.48 2.488zm4 5.04l-.081.001a2.72 2.72 0 0 1-2.719-2.637 2.721 2.721 0 0 1 2.804-2.644l.077-.001a2.72 2.72 0 0 1 2.719 2.637v.005a2.72 2.72 0 0 1-2.72 2.72l-.084-.001zm9.28 0l.001.081a2.4 2.4 0 0 1-2.4 2.4c-.029 0-.057 0-.085-.002h-.796v-1.6h.48s1.04.08 1.04-1.52c0 0-.24.64-1.68.64a2.242 2.242 0 0 1-2.16-2.156v-.804a2.401 2.401 0 0 1 2.316-2.32 1.676 1.676 0 0 1 1.441.637l.003-.556h1.68z"
+                                            ></path>
+                                            <path
+                                                d="M25.28 14.8a1.04 1.04 0 1 1-2.081-.001 1.04 1.04 0 0 1 2.081.001z"
+                                            ></path>
+                                        </svg>
+                                        블로그</a
+                                    ><span class="sns-menu-space"></span
+                                    ><a href="" class="sns-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        ><svg
+                                            viewBox="0 0 32 32"
+                                            focusable="false"
+                                            role="presentation"
+                                            class="withicon-icon withicon-inline"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M22 16a.88.88 0 0 0-.475-.878L13.52 10.08a.96.96 0 0 0-1.044.002.96.96 0 0 0-.476.88V21.04l-.001.048c0 .354.192.663.477.83l.485.162.56-.16 8-5.04a.88.88 0 0 0 .48-.884zm8 0v2.32q0 .8-.16 2.16a17.451 17.451 0 0 1-.34 2.434c-.133.645-.502 1.301-1.019 1.806a3.264 3.264 0 0 1-1.989.88c-2.751.261-5.936.409-9.155.409-.47 0-.939-.003-1.407-.009a103.562 103.562 0 0 1-10.813-.43c-.345-.055-1.007-.374-1.519-.852a3.604 3.604 0 0 1-1.114-1.894 18.217 18.217 0 0 1-.32-2.276Q2.08 19.2 2 18.32T2 16v-2.32q0-.8.16-2.16c.061-.865.175-1.659.34-2.434.156-.653.552-1.309 1.097-1.804a3.267 3.267 0 0 1 1.909-.881 99.415 99.415 0 0 1 9.158-.41c.47 0 .939.003 1.407.009a103.562 103.562 0 0 1 10.813.43c.345.055 1.007.374 1.519.852.55.493.947 1.15 1.113 1.894.143.675.256 1.469.32 2.276Q29.92 12.8 30 13.68T30 16z"
+                                            ></path>
+                                        </svg>
+                                        유튜브</a
+                                    >
+                                </div>
+                                <div class="sns-menu-menu">
+                                    <a href="" class="sns-menu-sub" target="_blank" rel="noopener noreferrer"
+                                        ><svg
+                                            viewBox="0 0 32 32"
+                                            focusable="false"
+                                            role="presentation"
+                                            class="withicon-icon withicon-inline"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                d="M29.36 7.76c-.907.42-1.96.729-3.065.874a5.675 5.675 0 0 0 2.334-2.995 11.546 11.546 0 0 1-3.357 1.308c-1.069-1.067-2.492-1.741-4.073-1.741a5.44 5.44 0 0 0-5.439 5.518c.003.452.062.893.168 1.314-4.615-.279-8.661-2.495-11.344-5.847-.493.757-.771 1.706-.771 2.72 0 1.882.955 3.54 2.407 4.517a5.244 5.244 0 0 1-2.489-.642l.029.014v.02a5.442 5.442 0 0 0 4.365 5.334L6.72 18.4H5.68c.725 2.184 2.738 3.736 5.117 3.76a10.873 10.873 0 0 1-6.741 2.32H2.639a15.37 15.37 0 0 0 8.399 2.48c10.081 0 15.601-8.32 15.601-15.6v-.72a11.215 11.215 0 0 0 2.694-2.838z"
+                                            ></path>
+                                        </svg>
+                                        트위터</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-container-container">
+                <div class="footer-container-inner">
+                    <section class="footer-container-left-section">
+                        <strong class="footer-container-title">원랩 고객센터</strong>
+                        <div class="footer-container-button-block">
+                            <button type="button" class="footer-container-direct-btn">
+                                채팅 상담하기<svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    focusable="false"
+                                    role="presentation"
+                                    class="withicon-icon"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                    ></path>
+                                </svg></button
+                            ><a href="" class="footer-container-direct-btn" target="_blank" rel="noreferrer"
+                                >문의 등록하기<svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    focusable="false"
+                                    role="presentation"
+                                    class="withicon-icon"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                    ></path></svg></a
+                            ><a href="" class="footer-container-direct-btn" target="_blank" rel="noreferrer"
+                                >도움말 센터 바로가기<svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    focusable="false"
+                                    role="presentation"
+                                    class="withicon-icon"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                    ></path></svg></a
+                            ><a href="" class="footer-container-direct-btn" target="_blank" rel="noreferrer"
+                                >Contact for Global<svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    focusable="false"
+                                    role="presentation"
+                                    class="withicon-icon"
+                                    aria-hidden="true"
+                                >
+                                    <path
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                        d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"
+                                    ></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <dl class="footer-container-enable-time">
+                            <dt>상담 가능 시간</dt>
+                            <dd>평일 오전 9시 ~ 오후 6시 (주말, 공휴일 제외)</dd>
+                        </dl>
+                    </section>
+                    <section class="footer-container-right-section">
+                        <address>
+                            <ul class="footer-info-info">
+                                <li>원랩㈜</li>
+                                <li>대표이사 신혜성</li>
+                                <li>사업자등록번호 258-87-01370</li>
+                                <li>통신판매업신고번호 2021-성남분당C-1153</li>
+                                <li>경기 성남시 분당구 판교로 242 PDC A동 402호</li>
+                            </ul>
+                            <div class="footer-info-contact-info-wrap">
+                                <ul class="footer-info-contact-info">
+                                    <li>
+                                        <a href="" target="_blank" rel="noreferrer">이메일 상담 info@wadiz.kr</a>
+                                    </li>
+                                    <li>유선 상담 <a href="tel:1661-9056">1661-9056</a></li>
+                                </ul>
+                                <span class="footer-info-copyright">© onelab Co., Ltd.</span>
+                            </div>
+                        </address>
+                        <div class="footer-container-info-notice">
+                            <p>일부 상품의 경우 원랩는 통신판매중개자이며 통신판매 당사자가 아닙니다.</p>
+                            <p>
+                                해당되는 상품의 경우 상품, 상품정보, 거래에 관한 의무와 책임은 판매자에게 있으므로, 각
+                                상품 페이지에서 구체적인 내용을 확인하시기 바랍니다.
+                            </p>
+                        </div>
+                        <div class="footer-container-app-store-section">
+                            <img
+                                src="https://theme.zdassets.com/theme_assets/13612819/cc34cc7bfae1dab45c2a08e3c5167fce24a7009a.png"
+                                alt=""
+                                id="google"
+                            />
+                            <a href="" target="_blank" class="icon-google-play" rel="noopener noreferrer">Android앱</a>
+                            <img
+                                src="https://theme.zdassets.com/theme_assets/13612819/0aa3f86bb1b2e28aaf28ea469a3e7a0cc680eb2d.png"
+                                alt=""
+                                id="apple"
+                            />
+                            <a href="" target="_blank" class="icon-apple" rel="noopener noreferrer">iOS앱</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </footer>
+{% endblock %}
+{% block js %}
+    <script src="{% static 'member/js/header/main-page-footer-menu-box.js' %}"></script>
+{% endblock %}

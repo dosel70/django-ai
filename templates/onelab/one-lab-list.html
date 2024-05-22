@@ -1,0 +1,107 @@
+{% extends 'onelab/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'onelab/css/one-lab-list.css' %}">
+{% endblock %}
+
+{% block title %}원랩 목록{% endblock %}
+
+{% block content %}
+    <!--헤더-->
+    {% include 'onelab/header.html' %}
+    <!-- 메인 시작 -->
+    <div class="page-container">
+        <main id="main-app">
+            <!-- 헤더 -->
+            <!-- <div class="web-header"></div>  -->
+            <div class="mainWrapper-content">
+                <!-- 헤더 쪽 탭 부분 -->
+                <!-- <div class="mainWrapper-cotent-header"></div> -->
+                <div class="main-container">
+                    <div class="main-list-title-container">
+                        <div class="main-list-title-container-inner"></div>
+                        <h2>원랩목록</h2>
+                        <div class="main-list-count">{{ total }}</div>
+                        <div class="main-list-count-kor">개</div>
+                    </div>
+                    <!-- 전체/인기순 필터 부분 -->
+                    <div class="main-list-filter-container" style="position: relative;">
+                        <ul class="filter-list-wrapper">
+                            <button type="button" class="major-btn active-btn">
+                                <span>전체</span>
+                            </button>
+                            <button type="button" class="major-btn">
+                                <span>참여 가능</span>
+                            </button>
+                            <!-- 글 작성 버튼 -->
+                            <button type="button" class="make-btn">
+                                <a href="/onelab/write/">
+                                    <span>원랩 만들기</span>
+                                </a>
+                            </button>
+                        </ul>
+                        
+                    </div>
+                    <!-- 광고 배너~ 전체 리스트들 감싸는 div -->
+                        <div class="search-result-card-container">
+                            <div class="table-layout-container" style="grid-template-columns: repeat(4, calc(25% - 18px));
+                            gap: 24px;" >
+                                <!-- 리스트 1개 시작 -->
+                                {% for onelab in onelab %}
+                                <div class="one-lab-list-card">
+                                    <a class="list-card-content" href={{ onelab.get_absolute_url }}>
+                                        <div class="list-card-thumbnailBox" style="padding-top: 56.25%;">
+                                            <div class="list-card-thumbnailWrap">
+                                            {% for onelabfile in onelab.onelabfile_set.all %}
+                                                {% if onelabfile.path %}
+                                                <div class="thumbnail-image-container">
+                                                    <img class="thumbnail-image" src="{{ onelabfile.path.url }}">
+                                                </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                            </div>
+                                        </div>
+                                        <div class="list-card-info-box-ing">
+                                            <div class="list-card-info">
+                                                <div class="price-info-wrapper">
+                                                    <span>{{ onelab.onelab_main_title }}</span>
+                                                </div>
+                                                <strong class="info-title">
+                                                    {{ onelab.onelab_content }}
+                                                </strong>
+                                                <p class="info-maker-name">
+                                                    {% if onelab.one_lab_member_count %}
+                                                        {{ onelab.one_lab_member_count }} / {{ onelab.onelab_max_count }}
+                                                    {% else %}
+                                                        0 / {{ onelab.onelab_max_count }}
+                                                    {% endif %}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <!-- 더보기 버튼 -->
+                        <div class="search-result-more-container">
+                            <button class="get-more-result-btn">
+                                <span>
+                                    <span class="more-result-btn-text">더보기 {{ total }}/ {{ total }} </span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            </div>
+        </main>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'onelab/js/one-lab-list.js' %}"></script>
+{% endblock %}

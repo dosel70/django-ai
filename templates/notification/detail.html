@@ -1,0 +1,71 @@
+{% extends  'notification/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'notification/css/detail.css' %}">
+{% endblock %}
+
+{% block title %}공지사항 상세보기{% endblock %}
+
+{% block content %}
+    <div id="page-container">
+        <div class="black-wrap" style="display: none"></div>
+       <!-----------------바디 작업 시작------------------------------------------------->
+        <div id="newContainer">
+            <div id="wBoardWrap">
+                <div class="wboard-wrap">
+                    <div class="wboard-content">
+        <!-----------------------바디 제목 부분 시작---------------------------------------->
+                        <div class="article-top">
+                            <div class="info">
+                                <em class="user-img" style="background-image:url({% static 'notification/images/favicon.png' %})"></em>
+                                <span class="user-info">관리자
+                                    <br>
+                                    {{ notification.created_date }}
+                                </span>
+                            </div>
+                            <p class="title">{{ notification.notification_title }}</p>
+                            {% if request.session.member.member_status == False %}
+                                <a href="{% url 'notification:update' id=notification.id %}">수정하기</a>
+                            {% endif %}
+                            
+                        </div>
+                        <div class="slick-slide slick-active slick-current" id="big" aria-hidden="false" style="outline: none; width: 705px; margin-top: 92px; margin-left: 276px">
+                            <div>
+                                <div style="width: 100%; max-height: 100%; display: inline-block; margin-left: -158px">
+                                    {% if notification.notificationfile_set.all %}
+                                        {% for file in notification.notificationfile_set.all %}
+                                            {% if forloop.counter0 == 0 %}
+                                                {% if file.file %}
+                                                    <img src="/upload/{{ file.path }}" class="lazy-load-img" id="big-img"  style="display: block; margin: 5px auto; text-align: center"/>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notification-content-box" id="content">
+                            {{ notification.notification_content }}
+                        </div>
+                    </div>
+                    
+                    <div class="wboard-btn-wrap">
+                        {% if request.session.member.member_status == False %}
+                            <a href="{% url 'member:admin_main_notification' %}">
+                        {% else %}
+                            <a href="{% url 'notification:list' %}">
+                        {% endif %}
+                            목록으로 돌아가기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+

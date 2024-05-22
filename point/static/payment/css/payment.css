@@ -1,0 +1,1544 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+html {
+    font-family: Pretendard Variable,pretendard,-apple-system,blinkmacsystemfont,
+    system-ui,roboto,Helvetica Neue,
+    Segoe UI,Apple SD Gothic Neo,Noto Sans KR,
+    Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,
+    Segoe UI Symbol,sans-serif;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+body, button, html, input, textarea {
+    font-family: Pretendard Variable,pretendard,-apple-system,blinkmacsystemfont,system-ui,roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+}
+
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, button, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, input, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, select, small, span, strike, strong, sub, summary, sup, table, tbody, td, textarea, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a, button {
+    color: inherit;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+button {
+    background-color: transparent;
+}
+
+body, button, input, select, textarea {
+    font-family: inherit;
+}
+
+body, table th {
+    font-weight: 400;
+}
+
+body {
+    pointer-events: auto!important;
+    line-height: inherit;
+    color: inherit;
+    font-size: 15px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+}
+
+article, aside, figcaption, figure, footer, header, main, nav, section {
+    display: block;
+}
+
+input, textarea {
+    background: none;
+}
+
+input, optgroup, select, textarea {
+    color: inherit;
+}
+
+hr {
+    margin: 0;
+    border: 0;
+    background-color: #f2f4f6;
+    width: 100%;
+    height: 8px;
+}
+
+.MainWrapper_content {
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: padding-top .25s;
+}
+
+.PaymentLayout_root {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.PaymentLayout_paymentLayoutContainer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 64px 0;
+    background-color: #fff;
+    width: 100%;
+    max-width: 1280px;
+}
+
+/* 왼쪽 부분쪽 css */
+.PaymentLayout_paymentLayoutContainer .PaymentLayout_leftPanel {
+    width: 100%;
+    width: calc((100% + 16px)/12*7 - 16px);
+}
+
+.PaymentLayout_paymentLayoutContainer .PaymentLayout_leftPanel .PaymentLayout_pageTitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.5;
+    padding: 0 16px;
+}
+
+
+.StorePaymentSection_container {
+    background-color: #fff;
+    padding: 24px 16px;
+}
+
+/* 서포터 정보부분 쪽 css */
+.StorePaymentSection_container .StorePaymentSection_titleContainer {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 32px;
+}
+
+.StorePaymentSection_container .StorePaymentSection_titleContainer .StorePaymentSection_title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.StorePaymentSection_container .StorePaymentSection_titleContainer .StorePaymentSection_headerContent {
+    line-height: 1.5;
+    font-size: 14px;
+    font-weight: 400;
+    color: #212529;
+}
+
+.StorePaymentSection_sectionContent {
+    margin-top: 16px;
+    height: auto;
+    overflow: visible;
+    word-break: break-all;
+    width: 100%;
+}
+
+.StorePaymentInformation_storePaymentInformation .StorePaymentInformation_row:first-child {
+    margin-top: 0;
+}
+
+.StorePaymentInformation_storePaymentInformation .StorePaymentInformation_row span {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.StorePaymentInformation_storePaymentInformation .StorePaymentInformation_row {
+    margin-top: 8px;
+}
+
+.StorePaymentInformation_mobileAuthContainer {
+    margin-top: 12px;
+    width: 100%;
+}
+
+.StorePaymentInformation_mobileAuthContainer .StorePaymentInformation_label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+}
+
+.StorePaymentInformation_mobileAuthContainer .StorePaymentInformation_mobileAuth {
+    margin-top: 8px;
+}
+
+.MobileAuthField_mobileAuthField {
+    padding-bottom: 8px;
+}
+
+.MobileAuthField_mobileAuthField .MobileAuthField_fieldLabel {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-bottom: 8px;
+}
+
+.MobileAuthField_mobileAuthField .MobileAuthField_inputFieldContainer {
+    display: flex;
+}
+
+.MobileAuthField_mobileAuthField .MobileAuthField_inputField {
+    position: relative;
+    width: 100%;
+}
+
+.Input_input.input_d {
+    margin-top: 8px;
+    height: 40px;
+    min-height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.Input_input {
+    display: block;
+    transition-property: border-color,background-color,color;
+    transition-duration: .15s;
+    outline: none;
+    border: 1px solid #dde2e6;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 0 16px;
+    width: 100%;
+    height: 48px;
+    vertical-align: middle;
+    color: #212529;
+    -webkit-appearance: none;
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.MobileAuthField_mobileAuthField .MobileAuthField_inputField .MobileAuthField_input {
+    padding-right: 55px;
+    height: 32px;
+    min-height: 32px;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.Button_button {
+    position: relative;
+    transition-property: background-color,border-color,color,opacity;
+    transition-duration: .15s;
+    border: 1px solid #cdd3d8;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    padding: 9px 23px;
+    height: 48px;
+    vertical-align: middle;
+    text-decoration: none;
+    white-space: nowrap;
+    color: #495057;
+    font-size: 16px;
+    -webkit-appearance: none;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+.Button_button.Button_sm {
+    padding: 6px 11px;
+    height: 32px;
+    font-size: 14px;
+}
+
+.Button_button.Button_primarys.Button_contained {
+    border-color: #008243;
+    background-color: #008243;
+    color: #fff;
+    margin-left: 8px;
+}
+
+.Button_button span {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+}
+
+.MobileAuthField_mobileAuthField .MobileAuthField_helperMessage {
+    line-height: 18px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 8px;
+    color: #868e96;
+}
+
+.StorePaymentSection_divider {
+    padding: 0 16px;
+}
+
+.Divider_divider {
+    background-color: #f2f4f6;
+    opacity: 1;
+    margin: 0;
+    border: 0;
+}
+
+/* 배송정보 부분쪽 css */
+.Tabs_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.Tabs_container .Tabs_item.Tabs_active {
+    background: #212529;
+    color: #fff;
+    padding: 0 12px;
+    height: 40px;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+}
+
+.StorePaymentNewShippingAddress_storePaymentNewDelivery .StorePaymentNewShippingAddress_label {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 16px;
+    color: #212529;
+}
+
+.StorePaymentNewShippingAddress_storePaymentNewDelivery .StorePaymentNewShippingAddress_input {
+    margin-top: 8px;
+    height: 40px;
+    min-height: 40px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.StorePaymentSafeNumber_container {
+    line-height: 18px;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    margin-top: 8px;
+    color: #868e96;
+}
+
+.StorePaymentSafeNumber_container>div {
+    display: inline;
+}
+
+.Tooltip_button {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    outline: none;
+    border: 0;
+    background-color: rgba(0,0,0,0);
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+}
+
+.StorePaymentSafeNumber_tooltip {
+    margin-right: 6px;
+    margin-left: -4px;
+}
+
+.Tooltip_button .Tooltip_label {
+    max-width: 264px;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    display: inline-block;
+}
+
+.Tooltip_button .Tooltip_helpIconWrap {
+    vertical-align: middle;
+    margin-left: 4px;
+    display: inline-block;
+}
+
+.withIcon_icon {
+    display: block;
+    transform: scale(1);
+    transition: transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.Tooltip_button span svg {
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.Tooltip_button .Tooltip_helpIcon, .Tooltip_button.Tooltip_open .Tooltip_helpOutlineIcon {
+    display: none;
+}
+
+/* 배송지 부분 css */
+.StorePaymentNewShippingAddress_storePaymentNewDelivery .StorePaymentNewShippingAddress_findAddress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.Input_input.Input_md {
+    height: 40px;
+    min-height: 40px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    border-color: #f2f4f6;
+    background-color: #f9fafb;
+    cursor: default;
+    pointer-events: none;
+}
+
+.StorePaymentNewShippingAddress_storePaymentNewDelivery .StorePaymentNewShippingAddress_button {
+    margin-left: 8px;
+    padding: 9px 15px;
+    height: 40px;
+    font-size: 14px;
+    border-color: #495057;
+    background-color: #495057;
+    color: #fff;
+}
+
+.Input_input[readonly], .Input_input[disabled] {
+    border-color: #f2f4f6;
+    background-color: #f9fafb;
+    cursor: default;
+    pointer-events: none;
+}
+
+.DeliveryRequestMessage_container {
+    margin-top: 16px;
+}
+
+.DeliveryRequestMessage_container .DeliveryRequestMessage_deliveryRequestLabel {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.select-menu {
+    position: relative;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.select-menu-hidden-input-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 3;
+}
+
+.select-menu-hidden-input-box input {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.Textf {
+    z-index: 9999;
+    border: 0px;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    overflow: hidden;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.menu {
+    -webkit-box-align: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(204, 204, 204);
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: default;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: 38px;
+    position: relative;
+    transition: all 100ms ease 0s;
+    box-sizing: border-box;
+    outline: 0px !important;
+}
+
+.select_menu_control {
+    border: 1px solid #dde2e6;
+    border-radius: 3px;
+    box-shadow: none;
+}
+
+.select_menu_container {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    flex: 1 1 0%;
+    flex-wrap: wrap;
+    padding: 2px 8px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.select-menu__placeholder {
+    color: rgb(128, 128, 128);
+    margin-left: 2px;
+    margin-right: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+}
+
+.dummyInput {
+    background: 0px center;
+    border: 0px;
+    font-size: inherit;
+    outline: 0px;
+    padding: 0px;
+    width: 1px;
+    color: transparent;
+    left: -100px;
+    opacity: 0;
+    position: relative;
+    transform: scale(0);
+}
+
+.select_menu {
+    -webkit-box-align: center;
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.select_menu_indicator {
+    color: rgb(204, 204, 204);
+    display: flex;
+    padding: 8px;
+    transition: color 150ms ease 0s;
+    box-sizing: border-box;
+    pointer-events: none;
+    font-size: 24px;
+}
+
+.Textarea_textarea {
+    display: block;
+    transition-property: border-color,background-color,color;
+    transition-duration: .15s;
+    outline: none;
+    border: 1px solid #dde2e6;
+    border-radius: 4px;
+    background: #fff;
+    padding: 10px 16px;
+    resize: none;
+    width: 100%;
+    height: auto;
+    color: #212529;
+    -webkit-appearance: none;
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.Textarea_textarea.DeliveryRequestMessage_input{
+    padding: 10px 12px;
+    line-height: 18px;
+    font-size: 12px;
+    font-weight: 400;
+    font-size: 14px;
+    display: none;
+    margin-top: 8px;
+    height: 104px;
+}
+
+/* 배송 요청사항 누르면 밑에 css */
+.m:checked ~ .select_menu_menu {
+    z-index: 1110;
+    margin-top: 4px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(33,37,41,.06), 0 6px 6px -1px rgba(33,37,41,.1);
+    padding: 8px 4px;
+}
+
+.select_menu_menu_list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#check-btn4 { display: none; }
+#check-btn4:checked ~ .iwts{ display: block; }
+.iwts { display: none; }
+
+.sec_menu {
+    background-color: transparent;
+    color: inherit;
+    cursor: default;
+    display: block;
+    font-size: inherit;
+    padding: 8px 12px;
+    width: 100%;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+}
+
+.new_menu {
+    /* background-color: rgb(222, 235, 255); */
+    color: inherit;
+    cursor: default;
+    display: block;
+    font-size: inherit;
+    padding: 8px 12px;
+    width: 100%;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+}
+
+.select_menu_option {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* 상품 정보 쪽 css */
+.m_memu {
+    top: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 4px 11px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+
+
+/* 배송 요청 사항 */
+.select {
+    position: relative;
+  }
+
+  .select .option-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+  }
+
+  .select.active .option-list {
+    max-height: none;
+  }
+
+  /* 테마 적용하기 */
+  #theme {}
+  #theme .select {
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  #theme .select:hover {
+    color: #333;
+    transition: all .3s;
+  }
+  #theme .select .text {}
+  #theme .select .option-list {
+    list-style: none;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+  }
+  #theme .select .option-list .option {
+    padding: 10px 15px;
+  }
+  #theme .select .option-list .option:hover {
+    background-color: #f2f2f2;
+  }
+
+/* 상품 정보 쪽 css */
+.StorePaymentProducts_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.StorePaymentProductInfo_container {
+    display: flex;
+    position: relative;
+}
+
+.StorePaymentProductInfo_contents {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.StorePaymentProductInfo_title {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #212529;
+}
+
+.StorePaymentProductInfo_info {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 2px;
+    color: #868e96;
+}
+
+.StorePaymentProductInfo_promotion {
+    margin-top: 8px;
+}
+
+.StorePaymentProductInfo_priceWrap {
+    display: flex;
+    align-items: center;
+}
+
+.StorePaymentProductInfo_price {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.StorePaymentProducts_container>:not(:first-child) {
+    margin-top: 16px;
+
+}
+
+.Input_mds {
+    height: 40px;
+    min-height: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+
+/* 쿠폰 css */
+.my-container {
+   pointer-events: none;
+   position: relative;
+   box-sizing: border-box;
+}
+
+.css-a11yText {
+    z-index: 9999;
+    border: 0px;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    overflow: hidden;
+    padding: 0px;
+    white-space: nowrap;
+}
+
+.select-menu__control {
+    border: 1px solid #dde2e6;
+    border-radius: 3px;
+    box-shadow: none;
+    cursor: default;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    min-height: 38px;
+    position: relative;
+    transition: all 100ms ease 0s;
+    box-sizing: border-box;
+    outline: 0px !important;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.select_menu_value_container {
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    flex: 1 1 0%;
+    flex-wrap: wrap;
+    padding: 2px 8px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.select_menu_placeholder {
+    color: rgb(128, 128, 128);
+    margin-left: 2px;
+    margin-right: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+}
+
+.css-dummyInput {
+    background: 0px center;
+    border: 0px;
+    font-size: inherit;
+    outline: 0px;
+    padding: 0px;
+    width: 1px;
+    color: transparent;
+    left: -100px;
+    opacity: 0;
+    position: relative;
+    transform: scale(0);
+}
+
+.select_menu_indicators {
+    -webkit-box-align: center;
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+
+/* 결제 수단 css */
+.SettlementMethod_container>* {
+    padding: 16px 0;
+}
+
+.SettlementMethod_container>*:first-child {
+    padding-top: 0;
+
+}
+
+.SettlementMethod_horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Radio_radio {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    width: 100%;
+    position: relative;
+}
+
+label.Radio_radio>input {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.Radio_icon {
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+    font-weight: 400;
+    line-height: 1.5;
+    position: relative;
+    transition-property: opacity,border-color,background-color;
+    transition-duration: .15s;
+    opacity: 1;
+    z-index: 1;
+    border: 1px solid #cdd3d8;
+    border-radius: 999em;
+    background-color: #fff;
+    width: 1em;
+    height: 1em;
+}
+label.Radio_radio>input:checked+.Radio_icon, label.Radio_radio>input:checked:hover+.Radio_icon {
+    border-color: #00c4c4!important;
+    background-color: #fff;
+}
+
+label.Radio_radio>input:checked+.Radio_icon, label.Radio_radio>input:checked+.Radio_icon:before {
+    background: #00c4c4;
+}
+
+label.Radio_radio>.Radio_icon:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition-property: background-color;
+    transition-duration: .15s;
+    border-radius: 999em;
+    background-color: #fff;
+    width: 0.5em;
+    height: 0.5em;
+    content: "";
+}
+
+.Radio_label {
+    vertical-align: -1px;
+    color: #495057;
+}
+
+
+
+label.Radio_radio>input:checked+.Radio_icon, label.Radio_radio>input:checked:hover+.Radio_icon {
+    border-color: #00c4c4!important;
+    background-color: #fff;
+}
+
+.SettlementMethod_naver {
+    display: block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDYiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA0NiAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ1Ljc2MSIgaGVpZ2h0PSIyMCIgcng9IjEwIiBmaWxsPSIjMDBERTVBIi8+CjxwYXRoIGQ9Ik0xNi42NjUyIDEwLjAwMDJDMTYuNjY1MSAxMS4zMjIzIDE2LjI3MzYgMTIuNjE0NyAxNS41NDAxIDEzLjcxMzlDMTQuODA2NyAxNC44MTMyIDEzLjc2NDIgMTUuNjcgMTIuNTQ0NiAxNi4xNzU5QzExLjMyNDkgMTYuNjgxOSA5Ljk4Mjg0IDE2LjgxNDMgOC42ODgwNSAxNi41NTY0QzcuMzkzMjcgMTYuMjk4NSA2LjIwMzkyIDE1LjY2MTggNS4yNzAzOSAxNC43MjdDNC40OTQxNyAxMy45NDk3IDMuOTIxMzYgMTIuOTkyNiAzLjYwMjcgMTEuOTQwNkMzLjI4NDAzIDEwLjg4ODYgMy4yMjkzNSA5Ljc3NDE4IDMuNDQzNDkgOC42OTU5N0MzLjY1NzYzIDcuNjE3NzUgNC4xMzM5OSA2LjYwOTA3IDQuODMwMzcgNS43NTkyNkM1LjUyNjc1IDQuOTA5NDYgNi40MjE2NSA0LjI0NDc3IDcuNDM1OCAzLjgyNDA3QzguNDQ5OTYgMy40MDMzNyA5LjU1MjA2IDMuMjM5NjUgMTAuNjQ0NSAzLjM0NzQxQzExLjczNjkgMy40NTUxNyAxMi43ODYgMy44MzEwOCAxMy42OTg3IDQuNDQxODRDMTQuNjExNCA1LjA1MjYxIDE1LjM1OTYgNS44NzkzOCAxNS44NzcgNi44NDg5MUMxNi4zOTQ1IDcuODE4NDUgMTYuNjY1MiA4LjkwMDgyIDE2LjY2NTIgMTAuMDAwMlpNMTEuMTA2NiA2Ljg1ODNWMTAuMjE5TDguNzcwMzggNi44NTgzSDYuODUzMDVWMTMuMTUwNEg4Ljg3MjE2VjkuNzc5NTZMMTEuMjA4NCAxMy4xNDJIMTMuMTMyNVY2Ljg1ODNIMTEuMTA2NlpNNDAuODcyOCA2LjUwOTFMMzkuMDEwMyAxMC43NTkyTDM2LjkwMzUgNi41MDkxSDM1LjI4MzZMMzguMjY3MyAxMi40MDU2TDM3LjAzNzQgMTUuMTY4NkgzOC42MTA0TDQyLjQ0NTggNi41MTc0MUw0MC44NzI4IDYuNTA5MVpNMzQuMjQ4NCAxMy4wODEySDMyLjcwODlWMTIuNDY3NkMzMi4xNDg5IDEyLjk1OTIgMzEuNDI3IDEzLjIyNTUgMzAuNjgyNCAxMy4yMTUzQzI4Ljg0MTYgMTMuMjE1MyAyNy40MDA5IDExLjcwNjQgMjcuNDAwOSA5Ljc5NTE1QzI3LjQwMDkgNy44ODM4MyAyOC44NCA2LjM3NDk3IDMwLjY4MjQgNi4zNzQ5N0MzMS40MjY3IDYuMzY0MjcgMzIuMTQ4NyA2LjYzMDA2IDMyLjcwODkgNy4xMjEwM1Y2LjUwOTFIMzQuMjQ4NFYxMy4wODEyWk0zMi44ODk2IDkuODAzNTJDMzIuODg5NiA4LjU2NDU1IDMyLjAyNjEgNy42MjQwMSAzMC44ODE2IDcuNjI0MDFDMjkuNzM2OSA3LjYyNDAxIDI4Ljg3MzQgOC41NjQ1NSAyOC44NzM0IDkuODAzNTJDMjguODczNCAxMS4wNDI1IDI5LjczNTIgMTEuOTgzIDMwLjg4MTUgMTEuOTgzQzMyLjAyNzggMTEuOTgzIDMyLjg4OTYgMTEuMDM0MSAzMi44ODk2IDkuODAzNTJaTTE5Ljc4NzMgMTUuMTY4NEgyMS4zOTM3VjEyLjUyMjlDMjEuOTQzMyAxMi45ODA4IDIyLjYzODUgMTMuMjI2NSAyMy4zNTMzIDEzLjIxNTNDMjUuMTk0IDEzLjIxNTMgMjYuNjM2NSAxMS43MDY0IDI2LjYzNjUgOS43OTUxNUMyNi42MzY1IDcuODgzODMgMjUuMTk1NyA2LjM3NDk3IDIzLjM1MzMgNi4zNzQ5N0MyMi42MDcgNi4zNjE1NCAyMS44ODI1IDYuNjI3NTkgMjEuMzIxOCA3LjEyMTAzVjYuNTA5MUgxOS43ODIzTDE5Ljc4NzMgMTUuMTY4NFpNMjMuMTYyNSA3LjYyMzk0QzI0LjMwNzIgNy42MjM5NCAyNS4xNzA2IDguNTY0NDggMjUuMTcwNiA5LjgwMzQ1QzI1LjE3MDYgMTEuMDQyNCAyNC4zMDcyIDExLjk4MyAyMy4xNjI1IDExLjk4M0MyMi4wMTggMTEuOTgzIDIxLjE1NDUgMTEuMDQyNCAyMS4xNTQ1IDkuODAzNDVDMjEuMTU0NSA4LjU2NDQ4IDIyLjAwNzkgNy42MjM5NCAyMy4xNjI1IDcuNjIzOTRaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K);
+    width: 46px;
+    height: 20px;
+}
+
+.Badge_container {
+    display: inline-flex;
+    position: relative;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.Badge_badge {
+    border: solid 1px #fff1f1;
+    background-color: #fff1f1;
+    color: #f66;
+    border-radius: 9px;
+    padding: 2px 6px;
+    height: 18px;
+    line-height: 1.4;
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+/* 네이버 카드결제 포인트결제 css */
+.SettlementMethod_naverSub {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    padding: 16px;
+    gap: 12px;
+}
+
+.SettlementMethod_guideText {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #868e96;
+}
+
+#n_pay { display: none; }
+/* #n_pay:checked ~ .SettlementMethod_naverSub{ display: block; }  */
+.SettlementMethod_naverSub { display: none; }
+
+.SettlementMethod_horizontals {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* 카카오 css */
+.SettlementMethod_horizontal {
+    border-top: 1px solid #f2f4f6;
+}
+
+.kakao {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.SettlementMethod_kakao {
+    display: block;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA0OCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zNy45OTY5IDE5LjkyNDVIMTAuMDAzMUM0LjQ3OSAxOS45MjQ1IDAgMTUuNDYzOCAwIDkuOTYyMjZDMCA0LjQ2MDcyIDQuNDc5IDAgMTAuMDAzMSAwSDM4LjAyMThDNDMuNTQ1OSAwIDQ4LjAyNDkgNC40NjA3MiA0OC4wMjQ5IDkuOTYyMjZDNDguMDI0OSAxNS40NjM4IDQzLjUyMSAxOS45MjQ1IDM3Ljk5NjkgMTkuOTI0NVoiIGZpbGw9IiNGRkVCMDAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS4yMjE5IDQuNzgyNzFDOC4yMTEwMyA0Ljc4MjcxIDUuNzcyNDYgNi42OTA5MSA1Ljc3MjQ2IDkuMDY5OTZDNS43NzI0NiAxMC41ODE2IDYuNzkyNjggMTEuOTE5OSA4LjMxMDU2IDEyLjY4ODFMNy43ODgwMSAxNC42MjExQzcuNzYzMTMgMTQuNjcwNiA3Ljc4ODAxIDE0Ljc0NSA3LjgzNzc4IDE0Ljc5NDVDNy44NjI2NiAxNC44MTkzIDcuOTEyNDMgMTQuODQ0MSA3LjkzNzMxIDE0Ljg0NDFDNy45NjIyIDE0Ljg0NDEgOC4wMTE5NiAxNC44MTkzIDguMDM2ODUgMTQuODE5M0wxMC4yNTE1IDEzLjMzMjRDMTAuNTc0OSAxMy4zODIgMTAuODk4NCAxMy40MDY4IDExLjI0NjggMTMuNDA2OEMxNC4yNTc3IDEzLjQwNjggMTYuNjk2MyAxMS40NzM4IDE2LjY5NjMgOS4xMTk1MkMxNi42OTYzIDYuNjkwOTEgMTQuMjU3NyA0Ljc4MjcxIDExLjIyMTkgNC43ODI3MVoiIGZpbGw9IiMyMTI1MjkiLz4KPHBhdGggZD0iTTIxLjMwMDIgMTIuNjM4NFYxNS40MTRIMTkuMzA5NlY1LjE3OTA5SDIwLjcwM0wyMC45NTE5IDUuODIzNDJDMjEuMzc0OSA1LjQwMjEzIDIyLjAyMTkgNC45NTYwNSAyMy4wNDIxIDQuOTU2MDVDMjQuOTgzIDQuOTU2MDUgMjUuOTAzNyA2LjM5MzQgMjUuOTAzNyA4Ljc0NzY2QzI1LjkwMzcgMTEuMjAxMSAyNC40ODUzIDEyLjc2MjMgMjIuNDQ0OSAxMi43NjIzQzIyLjA0NjcgMTIuNzg3MSAyMS43NDgxIDEyLjc2MjMgMjEuMzAwMiAxMi42Mzg0Wk0yMS4zMDAyIDYuODM5NDdWMTEuMjUwNkMyMS4zOTk4IDExLjI3NTQgMjEuNjczNSAxMS4zMDAyIDIxLjk0NzIgMTEuMzAwMkMyMy4zNjU2IDExLjMwMDIgMjMuOTEzIDEwLjMwODkgMjMuOTEzIDguNzQ3NjZDMjMuOTEzIDcuMzg0NjcgMjMuNTM5NyA2LjU2Njg3IDIyLjQyIDYuNTY2ODdDMjIuMDIxOSA2LjU2Njg3IDIxLjYyMzcgNi42NjYgMjEuMzAwMiA2LjgzOTQ3WiIgZmlsbD0iIzIxMjUyOSIvPgo8cGF0aCBkPSJNMzAuMjA4MSA4LjA3ODhIMzEuMzI3OFY3LjgzMDk4QzMxLjMyNzggNy4wMTMxOCAzMC44NTUxIDYuNjQxNDUgMzAuMDU4OCA2LjY0MTQ1QzI5LjQzNjcgNi42NDE0NSAyOC42NjUzIDYuODE0OTMgMjguMDE4NCA3LjEzNzA5TDI3LjQ3MDkgNS44MjM2NkMyOC4xNjc3IDUuMzI4MDIgMjkuMjYyNSA1LjAwNTg2IDMwLjIzMyA1LjAwNTg2QzMyLjEyNDEgNS4wMDU4NiAzMy4xNjkyIDUuOTk3MTMgMzMuMTY5MiA3LjkwNTMyVjEyLjU4OTFIMzEuNzc1N0wzMS41NzY3IDExLjk2OTVDMzAuNzgwNCAxMi41Mzk1IDMwLjAzMzkgMTIuNzg3MyAyOS4zODY5IDEyLjc4NzNDMjcuOTQzNyAxMi43ODczIDI3LjEyMjYgMTEuOTIgMjcuMTIyNiAxMC40NTc4QzI3LjEyMjYgOC44OTY1OSAyOC4xOTI1IDguMDc4OCAzMC4yMDgxIDguMDc4OFpNMzEuMzUyNyAxMC42ODA5VjkuMzE3ODhIMzAuNDMyQzI5LjQxMTggOS4zMTc4OCAyOC44ODkzIDkuNjg5NjEgMjguODg5MyAxMC40MDgzQzI4Ljg4OTMgMTAuOTUzNSAyOS4xNjMgMTEuMjI2MSAyOS43NjAyIDExLjIyNjFDMzAuMzA3NiAxMS4yNTA5IDMxLjAwNDQgMTAuOTc4MyAzMS4zNTI3IDEwLjY4MDlaIiBmaWxsPSIjMjEyNTI5Ii8+CjxwYXRoIGQ9Ik0zOS4xOTEgMTEuODIwOEMzOC40OTQzIDEzLjY1NDcgMzcuNjczMiAxNC45OTI5IDM2LjQ1MzkgMTUuNzM2NEwzNS4yMzQ2IDE0LjYyMTJDMzUuOTMxMyAxNC4wMDE2IDM2LjQ1MzkgMTMuNDA2OSAzNi44NzY5IDEyLjYxMzlMMzQuMjM5MyA1LjQ1MTk0TDM2LjIwNSA0LjkzMTUyTDM3Ljg5NzEgMTAuNzMwNUwzOS41NjQzIDQuOTA2NzRMNDEuNTA1MiA1LjQ1MTk0TDM5LjE5MSAxMS44MjA4WiIgZmlsbD0iIzIxMjUyOSIvPgo8L3N2Zz4K);
+    width: 48px;
+    height: 20px;
+}
+
+.kakao_card {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.kakao_btn {
+    border: 0;
+    border-color: rgba(0,0,0,0);
+    padding: 0;
+    height: auto;
+    font-size: 14px;
+    color: #00c4c4;
+}
+
+.Button_icon {
+    margin-left: 4px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+/* 오른쪽 부분 css */
+.PaymentLayout_rightPanel {
+    width: calc((100% + 16px)*.375 - 8px);
+}
+
+.PaymentLayout_floatingSection {
+    position: sticky;
+    top: 40px;
+}
+
+
+.PaymentLayout_paymentAmount {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+
+.BasePrice_priceArea {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 타이틀 밑에 리스트 css*/
+.TitleValuePrice_container {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.TitleValuePrice_container dl {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #868e96;
+}
+
+.TitleValuePrice_container dt {
+    display: flex;
+    align-items: center;
+}
+
+.TitleValuePrice_container dd {
+    display: flex;
+    align-items: center;
+}
+
+.TitleValuePrice_value {
+    color: #212529;
+}
+
+.TitleValuePrice_money {
+    margin-right: 4px;
+    font-weight: inherit;
+    font-style: normal;
+}
+
+.BasePrice_priceArea>:not(:first-child) {
+    margin-top: 8px
+}
+
+.BasePrice_contents .BasePrice_priceArea .BasePrice_totalPrice {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+    color: #212529;
+}
+
+.BasePrice_price {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.Divider_horizontal {
+    margin: 16px 0;
+    background-color: #f2f4f6;
+    opacity: 1;
+    height: 1px;
+    border: 0;
+    width: 100%;
+}
+
+/* 총 결제 금액 밑에꺼 css*/
+.SupporterClubPromotion_container {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    cursor: pointer;
+    color: #212529;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+}
+
+.SupporterClubPromotion_title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    pointer-events: none;
+}
+
+.SupporterClubPromotion_text {
+    display: flex;
+    align-items: center;
+}
+
+.SupporterClubPromotion_container .SupporterClubPromotion_title .SupporterClubPromotion_text:before {
+    display: inline-block;
+    margin-right: 4px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDciIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxwYXRoIGQ9Ik0wIDBoNDYuMTU0djQwSDB6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iIzAzQ0NDQyIgZD0iTTI1LjM2OCAxLjUzOSAxNi42NjQgMTkuNjhsMjQuNjM0IDEzLjI2NSA0LjcyNS0yMC4wMTN6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTAgMTIuOTM0djIwLjAxMmg0MS4yOThsNC43MjUtMjAuMDEyeiIvPgogICAgICAgIDxnIGZpbGw9IiNGRkYiPgogICAgICAgICAgICA8cGF0aCBkPSJNNS4xNjkgMjMuNTQ4YzAtMi4xNTcgMS41MDEtMy45MTMgNC4yMy0zLjkxMyAxLjIyNyAwIDIuMTguNDEyIDIuNzcxLjgzNXYxLjg3M2gtLjAxYy0uODE1LS41NC0xLjU5Ny0xLjAwNi0yLjY5OC0xLjAwNi0xLjQ1OSAwLTIuMzI2LjkxLTIuMzI2IDIuMiAwIDEuMjYuODI0IDIuMTU5IDIuMzE2IDIuMTU5IDEuMSAwIDEuOTE1LS4zOTIgMi43MDctLjk4NGguMDExdjEuODkzYy0uNTQuMzctMS41NjUuNzkzLTIuODk4Ljc5My0yLjgwMyAwLTQuMTAzLTEuNzEzLTQuMTAzLTMuODVNMTMuOTY0IDE5LjgxNEgxNS45djUuNjkxaDQuMDcybC0uMDc1IDEuNzE0aC01LjkzM3pNMjEuMTc2IDI0LjM0MnYtNC41MjdoMS45NDV2NC40YzAgMS4xMS44MDQgMS40NiAxLjcxNCAxLjQ2LjkxIDAgMS43MjQtLjMyOSAxLjcyNC0xLjQxOHYtNC40NDJoMS45MzVWMjQuM2MwIDIuMjk0LTEuNTY1IDMuMTItMy42NyAzLjEyLTIuMTE1IDAtMy42NDgtLjgyNi0zLjY0OC0zLjA3OE0zNC41NzggMjUuNjUzYy43MDktLjAxLjk4NC0uMjQzLjk4NC0uNzcyIDAtLjUwOC0uMjU0LS43NjEtLjk4NC0uNzYxaC0yLjIzMnYxLjU0NGwyLjIzMi0uMDF6bS0uMDk1LTIuODY2Yy42NjYgMCAuOTMtLjIwMS45My0uNzMgMC0uNDg2LS4yOTUtLjY4OC0uOTMtLjY4OGgtMi4xMzd2MS40MThoMi4xMzd6bS00LjA0LTIuOTczaDQuNDQyYzEuNTM0IDAgMi40NTMuNjM1IDIuNDUzIDEuODYyIDAgLjgyNS0uMzI4IDEuNDE4LTEuMjQ3IDEuNjkyLjk1MS4zODEgMS40MDcuODg5IDEuNDA3IDEuNzY3IDAgMS41MzQtMS4xNjUgMi4wODQtMi43OTMgMi4wODRoLTQuMjYzdi03LjQwNXoiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    width: 30px;
+    height: 24px;
+    content: "";
+}
+
+.SupporterClubPromotion_subText {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 6px;
+    color: #868e96;
+}
+
+/* 할인 금액 css */
+.SupporterClubPromotion_contents {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    pointer-events: none;
+}
+
+.SupporterClubPromotion_horizontal {
+    display: flex;
+    align-items: center;
+}
+
+.SupporterClubPromotion_radio {
+    margin: 0 8px 0 0;
+    display: block;
+    position: relative;
+}
+
+label.SupporterClubPromotion_radio>input {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.Radio_iconed {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    display: block;
+    position: relative;
+    transition-property: opacity,border-color,background-color;
+    transition-duration: .15s;
+    opacity: 1;
+    z-index: 1;
+    border: 1px solid #cdd3d8;
+    border-radius: 999em;
+    background-color: #fff;
+    width: 1em;
+    height: 1em;
+}
+
+label.SupporterClubPromotion_radio>.Radio_iconed:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition-property: background-color;
+    transition-duration: .15s;
+    border-radius: 999em;
+    background-color: #fff;
+    width: 0.5em;
+    height: 0.5em;
+    content: "";
+}
+
+.Radio_label.label_span {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.Badge_tertiary {
+    border: solid 1px #e7f9f9;
+    background-color: #e7f9f9;
+    color: #00c4c4;
+    border-radius: 3px;
+    padding: 2px 4px;
+    height: 18px;
+    line-height: 1.4;
+    font-size: 10px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    box-sizing: border-box;
+}
+
+.SupporterClubPromotion_price {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-left: 12px;
+}
+
+/* 결제 진행 필수 동의 부분쪽 css */
+
+.StorePaymentSection_container.PaymentLayout_floating {
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+.PaymentTerms_container {
+    display: flex;
+    flex-direction: column;
+    color: #495057;
+}
+
+.PaymentTerms_header {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 0.5;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.Checkbox_checkbox {
+    display: block;
+    position: relative;
+}
+
+.Checkbox_input {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    margin: 0;
+    border: none;
+    background-color: rgba(0,0,0,0);
+    padding: 0;
+}
+
+.checkbox-icon {
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    transition-property: opacity,border-color,background-color;
+    transition-duration: .15s;
+    opacity: 1;
+    z-index: 1;
+    border: 1px solid #cdd3d8;
+    border-radius: 2px;
+    background-color: #fff;
+    width: 1em;
+    height: 1em;
+    cursor: pointer;
+}
+
+
+
+.Checkbox_removeIcon {
+    opacity: 0;
+    width: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition-property: opacity,width,fill;
+    transition-duration: .15s;
+    height: 0.7791666667em;
+    fill: #fff;
+}
+
+.checkbox-icon .c_icon {
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition-property: opacity,width,fill;
+    transition-duration: .15s;
+    width: 0.7791666667em;
+    height: 0.7791666667em;
+    fill: #fff;
+}
+
+
+
+.PaymentTerms_title {
+    margin-left: 8px;
+}
+
+.PaymentTerms_contents {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 0.5;
+    display: flex;
+    flex-direction: column;
+}
+
+.PaymentTerms_termsItem {
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+}
+
+.PaymentTerms_text {
+    margin-left: 8px;
+}
+
+.PaymentTerms_container .PaymentTerms_contents .PaymentTerms_termsItem:not(:first-child) {
+    margin-top: 16px;
+}
+
+.PaymentTerms_subContents {
+    margin-left: 28px;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.PaymentTerms_subTermsItem {
+    position: relative;
+}
+
+.btns {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-color: rgba(0,0,0,0);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 14px;
+}
+
+.c_box {
+    display: inline-block;
+}
+
+.PaymentTerms_subTermsItem {
+    margin-top: 8px;
+}
+
+.Button_text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-color: rgba(0,0,0,0);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 14px;
+}
+
+.agree_svg {
+    display: inline-block;
+}
+
+/* 개인 3자 동의 쪽 css */
+.icon_btns {
+    display: inline-block;
+}
+
+.PaymentTerms_TermsItem {
+    position: relative;
+}
+
+/* 버튼 부분 쪽 css */
+.payment {
+    margin-top: 24px;
+}
+
+
+.Button_primarys {
+    border-color: #008243;
+    background-color: #008243;
+    color: #fff;
+    padding: 9px 23px;
+    height: 48px;
+    font-size: 16px;
+}
+
+.Button_primary {
+    border-color: #008243;
+    background-color: #008243;
+    color: #fff;
+    width: 100%;
+    padding: 9px 23px;
+    height: 48px;
+    font-size: 16px;
+}
+
+.PaymentLayout_buttonContent {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* check 박스 css */
+.check_on.active:checked+.check_on, .Checkbox_checkbox .check_on:indeterminate+.checkbox-icon {
+    border: solid 1px #00b2b2;
+    background-color: #00c4c4;
+}
+
+.active ~ span.checkbox-icon {
+
+}
+
+
+
+
+
+.Checkbox_checkbox.checkbox-icon:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.checkbox-icon:after {
+    object-fit: cover;
+    border: solid 1px #008244;
+    background-color: #008244;
+    color: white;
+    /* content: "V"; */
+    /* background-image: url(/staticfiles/images/cancel.png); */
+    /* position: absolute; */
+    display: none;
+    transform: translate(0px, 30px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition-property: opacity,width,fill;
+    transition-duration: .15s;
+    width: 17px;
+    height: 17px;
+    fill: #fff;
+    font-size: 14px;
+    padding: 3px;
+
+}
+
+.Checkbox_checkbox input:checked ~ .checkbox-icon:after {
+    display: block;
+    /* height: 18px; */
+}
+
+.Checkbox_input:checked+.checkbox-icon {
+    border: solid 1px #008243;
+    background-color: #008243;
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.select {
+    position: relative;
+  }
+
+.select_menu_menu_list {
+    display: none;
+}
+
+.select_menu_option:hover {
+    background-color: rgb(222, 235, 255);
+}

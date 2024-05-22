@@ -1,0 +1,181 @@
+{% extends 'mypage/base.html' %}
+{%  load static %}
+{% block static %}
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'myPage/images/favicon-16x16.png' %}">    
+<link rel="stylesheet" href="{% static 'myPage/css/my_page_point.css' %}">
+ <link rel="stylesheet" href="{% static 'myPage/css/myPage-footer.css' %}" />
+{% endblock %}
+{% block title %}마이페이지 포인트화면{% endblock %}
+{%  block content %}
+    {% include 'mypage/header.html' %}
+    {%  csrf_token %}
+    <div id="page-container">
+            <div class="black-bg-wrap" style="display:none;"></div>
+            <!-- 헤더 -->
+            <div id="wz-header"></div>
+            <!-- 바디 -->
+            <div id="wadizContainer">
+                <div id="mypageWrap">
+                    <div class="mybenefit-wrap">
+                        <h2 class="mypage-top-title short">포인트</h2>
+                        <div class="mypage-project short ">
+                            <p class="point-guide">
+                                포인트 충전, 적립, 사용 내역입니다.
+                            </p>
+                            <div class="usable-point">
+                                <p>현재 사용가능 포인트 <em>{{ current_point }} 포인트 </em></p>
+                            </div>
+                            <div class="point-tab-container">
+                                <p class="point-keywords">
+                                    <button class="point-keywords-tab active">
+                                        <span>
+                                            <span
+                                                class="point-keywords-children"
+                                                >충전</span
+                                            >
+                                        </span>
+                                    </button>
+                                    <button class="point-keywords-tab">
+                                        <span>
+                                            <span
+                                                class="point-keywords-children"
+                                                >적립</span
+                                            >
+                                        </span>
+                                    </button>
+                                    <button class="point-keywords-tab">
+                                        <span>
+                                            <span
+                                                class="point-keywords-children"
+                                                >사용</span
+                                            >
+                                        </span>
+                                    </button>
+                                </p>
+                            </div>
+                            <!-- 포인트 충전 내역 -->
+                            <div class="point-list show">
+                                <ul>
+                                    <li>
+                                        <div class="point-card">
+                                            <dl>
+                                                <dt>
+                                                    <p class="title">
+{#                                                        결제 충전된 포인트#}
+                                                        통합 충전 포인트
+                                                    </p>
+                                                    <a class="sub-title" href="{% url 'point:list' %}">
+{#                                                        유효기간 2024.04.14 23시#}
+{#                                                        59분 까지#}
+                                                        충전내역 바로가기 >
+                                                    </a>
+                                                </dt>
+                                                <dd>
+                                                    <p class="point plus">
+                                                        {{ point }} p 충전
+                                                    </p>
+                                                    <p class="date">
+                                                        최근 충전 {{ charge_time }}
+                                                    </p>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 포인트 적립 내역 -->
+                            <div class="point-list">
+                                <ul>
+                                    <li>
+                                        <div class="point-card">
+                                            <dl>
+                                                <dt>
+                                                    <p class="title">
+                                                        자료 공유 적립 포인트
+                                                    </p>
+                                                    <p class="sub-title" href="{% url 'point:get' %}">
+{#                                                        유효기간 2024.04.14 23시#}
+{#                                                        59분 까지#}
+                                                    </p>
+                                                    <a class="sub-title" href="{% url 'point:get' %}">
+{#                                                        유효기간 2024.04.14 23시#}
+{#                                                        59분 까지#}
+                                                        적립내역 바로가기 >
+                                                    </a>
+                                                </dt>
+                                                <dd>
+                                                    <p class="point plus">
+                                                        {{ point1 }} p 적립
+                                                    </p>
+                                                    <p class="date">
+                                                        최근 적립 {{ get_time }}
+                                                    </p>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 포인트 사용 내역 -->
+                            <div class="point-list">
+                                <ul>
+                                    <li>
+                                        <div class="point-card">
+                                            <dl>
+                                                <dt>
+                                                    <p class="title">
+                                                        이용한 포인트 내역
+                                                    </p>
+                                                    <a class="sub-title" href="{% url 'point:use' %}">
+                                                        포인트 사용내역 바로가기 >
+                                                    </a>
+                                                </dt>
+                                                <dd>
+                                                    <p class="point plus">
+                                                        {{ use_point }} p 사용
+                                                    </p>
+                                                    <p class="date">
+                                                        최근 사용 {{ use_time }}
+                                                    </p>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 포인트가 없는 경우 -->
+                            <div class="no-point-list point-list">
+                                <p id="emptyProjectText" style="display:block">
+                                    포인트 거래 내역이 없습니다.
+                                </p>
+
+                                <div class="bottom-notice">
+                                    <h4>포인트 이용안내</h4>
+                                    <p>
+                                        1. 적립하신 포인트는 리워드 펀딩 참여시
+                                        결제금액에서 차감 사용할 수 있습니다.
+                                        (펀딩 서비스 서포터 이용약관 동의 시)<br />
+                                        2. 1 Point 당 1 원과 동일한 가치로
+                                        사용할 수 있습니다.<br />
+                                        3. 유효기간 내 사용하지 않은 잔여
+                                        포인트는 유효기간 종료일의 익일에
+                                        소멸됩니다.<br /><br />
+                                        <a href="javascript:void(0)" onclick=""
+                                            >포인트 이용 자세히 보기
+                                            <i
+                                                class="wadizicon wa-chevron-right"
+                                            ></i
+                                        ></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% include 'header/main-page-footer.html' %}
+{% endblock %}
+{%  block js %}
+    <script src="{% static 'myPage/js/my_page_point.js' %}"></script>
+{% endblock  %}

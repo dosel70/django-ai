@@ -1,0 +1,280 @@
+{% extends 'onelab/base.html' %}
+
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'onelab/css/one-lab-detail.css' %}">
+{% endblock %}
+
+{% block title %}원랩 상세보기{% endblock %}
+
+{% block content %}
+    <div id="page-container">
+        <main id="main">
+            <!-- 헤더 -->
+            <div class="main-wrapper-content">
+                <div class="main-wrapper-container">
+                    <div class="banner-container">
+                    {% for file in onelab_banner_file.all %}
+{#                        <div class="banner-img" style="background-image: url('{{ file.path }}');"></div>#}
+                        <img class="banner-img" src="/upload/{{ file.path }}" style="width: 100%">
+                    {% endfor %}
+                            <!-- 공유하기 버튼 -->
+                        <button type="button" class="wish-btn" style="right: 480px;">
+                            <img src="{% static '/onelab/images/share.png' %}" style="width: 35px; height: 35px;" alt="">
+                        </button>
+                        <!-- 좋아요 버튼 -->
+                        <button type="button" class="wish-btn like-btn">
+                            <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="wish-icon" aria-hidden="true">
+                                <path class="dislike-icon" d="M22.16 4h-.007a8.142 8.142 0 0 0-6.145 2.79A8.198 8.198 0 0 0 9.76 3.998a7.36 7.36 0 0 0-7.359 7.446c0 5.116 4.64 9.276 11.6 15.596l2 1.76 2-1.76c6.96-6.32 11.6-10.48 11.6-15.6v-.08A7.36 7.36 0 0 0 22.241 4h-.085z"></path>
+                            </svg>
+                        </button>
+                        <div class="banner-text">
+                            <div class="banner-title-box">
+                                <div class="banner-title-wrapper">
+                                    <p class="banner-title">{{ onelab.onelab_title }}</p>
+                                </div>
+                            </div>
+                            <!-- 인원 섹션 -->
+                            <div class="count-person-area" style="min-width: 140px;">
+                                <div class="count-person-icon" style="background-image: url('{% static "onelab/images/person-count.png"%}')"></div>
+                                <p class="count-person">{{ onelab.onelabmember_set.all|length }}명 / {{ onelab.onelab_max_count }}명</p>
+                            </div>
+
+                            <div class="member-box-container-lab">
+                                <!-- 랩장 -->
+                                <div class="lab-member-box-container" style="margin: 0 auto;">
+                                    <div class="lab-member-box" style="margin-right: 30px;">
+                                        <dl class="lab-member-detail">
+                                            <!-- 대학 로고 -->
+                                            <dd class="lab-member-university-icon">
+                                                <i class="university-icon"></i>
+                                            </dd>
+                                            <dd class="member-name">
+                                                <img src="{% static '/onelab/images/crown-yellow.png' %}" alt="">
+                                                <strong>{{ onelab.university.member.member_name}}</strong>
+                                            </dd>
+                                            <dd class="member-info">
+                                                랩장은 {{ onelab.university.university_member_school }}이며, <br> {{ onelab.university.university_member_major }}에요.
+                                            </dd>
+                                            <dd class="member-labs">
+                                                <!-- <a href="" class="go-other-lab">다른 랩 보기</a> -->
+                                                <ul class="other-lab-list">
+                                                    <!-- li 클릭시 해당 원랩 상세페이지로 이동 -->
+                                                    <a href="">
+                                                        <li class="lab">
+                                                            <div class="lab-img-area">
+                                                                <img class="lab-img" src="{% static '/onelab/images/community-green.png' %}" alt="">
+                                                            </div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="">
+                                                        <li class="lab">
+                                                            <div class="lab-img-area">
+                                                                <img class="lab-img" src="{% static '/onelab/images/community-green.png' %}" alt="">
+                                                            </div>
+                                                        </li>
+                                                    </a>
+                                                    <a href="">
+                                                        <li class="lab">
+                                                            <div class="lab-img-area">
+                                                                <img class="lab-img" src="{% static '/onelab/images/community-green.png' %}" alt="">
+                                                            </div>
+                                                        </li>
+                                                    </a>
+                                                </ul>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <!-- 전체 랩원 섹션 -->
+                                <div class="lab-member-info-container" style="margin: 0 auto;">
+                                    <!-- <strong class="lab-member-info-sub-title">
+                                        각 분야의 전문서비스로 메이커님의 고민을 함께 해결합니다
+                                    </strong> -->
+                                    <div class="lab-member-box-column">
+
+                                        <!-- +버튼을 눌렀을 때 활성화 될 이전 버튼 -->
+{#                                        <div class="lab-member-back-container">#}
+{#                                            <div class="lab-member-back-box member-list">#}
+{#                                                <dl class="lab-member-back-detail">#}
+{#                                                    <dd class="lab-member-back-icon member">#}
+{#                                                        <i class="back-icon member"></i>#}
+{#                                                    </dd>#}
+{#                                                </dl>#}
+{#                                            </div>#}
+{#                                        </div>#}
+
+                                        <div class="lab-member-box-container">
+                                            <div class="lab-member-box member-list">
+                                                <dl class="lab-member-detail">
+                                                    <dd class="lab-member-university-icon member">
+                                                        <i class="university-icon member"></i>
+                                                    </dd>
+                                                    <dd class="member-name member">
+                                                        <strong>랩원 이름</strong>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+
+                                        <!-- 랩원이 10명 이상일 경우, 활성화 될 +버튼 -->
+                                        <div class="lab-member-more-container">
+                                            <div class="lab-member-more-box member-list">
+                                                <dl class="lab-member-more-detail">
+                                                    <dd class="lab-member-more-icon member">
+                                                        <i class="plus-icon member"></i>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lab-detail-info-container" style="margin-top: 0px;">
+                                <!-- 이미지 섹선 -->
+
+                                {% for file in onelab_file %}
+                                    <div class="lab-image-area">
+                                        <img src="/upload/{{ file.path }}" width="100%" class="lab-image">
+                                    </div>
+                                {% endfor %}
+                                <!-- 설명 글 섹션 -->
+                                <div class="lab-discription-text-area" >
+                                    <strong class="lab-sub-title" name="onelab-content">{{ onelab.onelab_content }}</strong>
+                                    <h2 class="lab-custom-title" name="onelab-main-title">
+                                        {{ onelab.onelab_main_title }}
+                                    </h2>
+                                    <p class="lab-custom-desc" name="onelab-detail-content">
+                                        {{ onelab.onelab_detail_content }}
+                                    </p>
+                                    <p class="onelab-ask-email" name="onelab-ask-email">
+                                        문의 메일: {{ onelab.onelab_ask_email }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="apply-button-container">
+                <div class="apply-button-wrapper">
+                    <div class="apply-msg">지금 지원하고 자신만의 스펙을 쌓아보세요.</div>
+                    <!-- 지원 전 버튼 -->
+                    <div class="apply-button apply">원랩 지원하기</div>
+                    <!-- 지원 후, 비활성화 된 버튼 -->
+                    <div class="apply-button readonly">원랩 지원하기</div>
+                    <!-- 지원 후, 신청 수락이후 url나오는 버튼 -->
+                    <div class="apply-button participate">원랩 참가하기</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 소통 url 모달 -->
+    <div class="onelab-modal-url">
+        <div class="onelab-modal-container">
+            <div class="onelab-modal-container-inner">
+                <div class="onelab-modal-box">
+                    <div class="onelab-modal-box-inner">
+                        <div class="onelab-modal-wrapper">
+                            <p class="onelab-modal-title">원랩 참여하기</p>
+                            <div class="onelab-modal-buttons">
+                               
+                                    <button type="button" class="onelab-modal-btn go-member-btn" style="width: 100%;">
+                                        <span>
+                                            <!-- 이 곳에 소통 url -->
+                                            <a href="">naver.com</a>
+                                        </span>
+                                    </button>
+                               
+                            </div>
+                        </div>
+                        <button type="button" class="close-btn url-close">
+                            <span>
+                                <span class="close-icon">
+                                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="close-svg" aria-hidden="true">
+                                        <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 지원할때 모달 -->
+    <div class="onelab-modal-apply">
+        <div class="onelab-modal-container">
+            <div class="onelab-modal-container-inner">
+                <div class="onelab-modal-box">
+                    <div class="onelab-modal-box-inner">
+                        <div class="onelab-modal-wrapper">
+                            <p class="onelab-modal-title">원랩에 지원하시겠습니까?</p>
+                            <div class="onelab-modal-buttons apply">
+                              <form action="{% url 'onelab:detail' %}" method="post" enctype="multipart/form-data" name="join-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="onelab_id" value="{{ onelab.id }}">
+                                <button type="submit" class="onelab-modal-btn go-member-btn" style="width: 100%;">
+                                    <span>
+                                        <input type="hidden" name="join" value="join">
+                                        <span class="go-member-text">지원하기</span>
+                                    </span>
+                                </button>
+                              </form>
+                                <button type="button" class="onelab-modal-btn go-to-login-btn">
+                                    <span>
+                                        <span class="cancel-text">취소하기</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="close-btn apply-close">
+                            <span>
+                                <span class="close-icon">
+                                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="close-svg" aria-hidden="true">
+                                        <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 지원하기 눌렀을 때 모달 -->
+    <div class="onelab-modal-apply-ok">
+        <div class="onelab-modal-container">
+            <div class="onelab-modal-container-inner">
+                <div class="onelab-modal-box">
+                    <div class="onelab-modal-box-inner">
+                        <div class="onelab-modal-wrapper">
+                            <p class="onelab-modal-title">지원 완료 되었습니다.</p>
+                            <p>원랩장의 수락 후, 알림을 통해 결과를 알려드리겠습니다.</p>
+                        </div>
+                        <button type="button" class="close-btn apply-ok-close">
+                            <span>
+                                <span class="close-icon">
+                                    <svg viewBox="0 0 40 40" focusable="false" role="presentation" class="close-svg" aria-hidden="true">
+                                        <path d="M33.4 8L32 6.6l-12 12-12-12L6.6 8l12 12-12 12L8 33.4l12-12 12 12 1.4-1.4-12-12 12-12z"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+{#    <script>const members = `{{ }}`</script>#}
+    <script src="{% static 'onelab/js/one-lab-detail.js' %}"></script>
+{% endblock %}

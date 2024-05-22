@@ -1,0 +1,132 @@
+{% extends 'point/base.html' %}
+{% load static %}
+{% block static %}
+    <link rel="stylesheet" href="{% static 'payment/css/pay-list.css'%}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'payment/images/favicon-32x32.png'%}">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <style>
+    .cardlist-item-container{
+        margin-bottom: 10px;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .step-links a {
+        padding: 10px;
+        margin: 0 5px;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+
+    .step-links .current {
+        padding: 10px;
+        margin: 0 5px;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        background-color: #008244;
+        color: #fff;
+    }
+
+    .step-links a:hover {
+        background-color:  #E8F5E9;
+    }
+</style>
+{% endblock %}
+{% block title %}결제 내역{% endblock %}
+{% block content %}
+    <!-- 헤더 -->
+    <form action="/point/list/" method="post" name="list-form">
+    {% csrf_token %}
+        <div class="main-wrapper-content">
+            <!-- 전체 리스트 다 감싸는 섹션 -->
+            <section class="order-list-page-container">
+                <h2>나의 포인트 충전 내역</h2>
+                    <ul class="cardlist-container" style="width: calc(100% + 0px);">
+                        <!-- 충전 내역 1개 li -->
+                        {% for point in points %}
+                        <li class="cardlist-item-container" style="width: calc(100% - 0.01px); margin-left: 0px; margin-right: 0px;" >
+                            <div class="purchase-summary-card">
+                                <!-- 주문번호와 일자 -->
+                                <dl class="card-etc-area">
+                                    <dt class="blind-text">주문번호</dt>
+                                    <dd>사용날짜 : {{point.updated_date}}</dd>
+                                    <dt class="blind-text">주문일자</dt>
+                                    <dd>{{ date.updated_date }}</dd>
+                                </dl>
+                                <!-- 상품 사진과 결제상태 및 상품명 -->
+                                <div class="purchase-card-content">
+                                    <div class="purchase-card-thumbnail">
+                                        <div class="thumbnail-placeholder">
+                                            <div class="thumnail-visible" style="background-image: url({% static 'payment/images/point.png' %}");></div>
+                                        </div>
+                                    </div>
+                                    <dl class="purchase-card-title">
+                                        <dt class="blind-text">상태</dt>
+                                        <dd>
+                                            <span class="badge-container">
+                                                <span class="badge">충전 완료</span>
+                                            </span>
+                                        </dd>
+                                        <dt class="blind-text">상품명</dt>
+                                        <dd class="purchase-card-title-text">[{{ point.point }} 포인트 충전!]</dd>
+                                        <dd class="purchase-description">
+                                            <span class="purchase-seller-name">{{ member.member_name }}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <!-- 리스트 내, 오른편 하단 상세보기 클릭시 결제 내역 상세로 이동 -->
+                                <a href="/point/detail/?id={{ point.id }}">
+                                <div class="purchase-card-detail-text">상세보기
+                                    <svg viewBox="0 0 24 24" fill="none" focusable="false" role="presentation" class="purchase-detail-arrow-svg" aria-hidden="true">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.924 2.576l-.848.848L15.65 12l-8.575 8.576.848.848L17.35 12 7.924 2.576z"></path>
+                                    </svg>
+                                </div></a>
+                            </div>
+                        </li>
+                        <!-- 포인트 충전시마다 list 추가 -->
+                        {% endfor %}
+                    </ul>
+                <div class="blank" style="height: 10px">
+                </div>
+
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if points.has_previous %}
+                            <a href="?page=1">&laquo; 처음</a>
+                            <a href="?page={{ points.previous_page_number }}">이전</a>
+                        {% endif %}
+                
+                        {% for i in points.paginator.page_range %}
+                            {% if points.number == i %}
+                                <span class="current">{{ i }}</span>
+                            {% else %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+                
+                        {% if points.has_next %}
+                            <a href="?page={{ points.next_page_number }}">다음</a>
+                            <a href="?page={{ points.paginator.num_pages }}">마지막 &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+                <div></div>
+
+
+            </section>
+
+            <!-- 푸터 -->
+        </div>
+
+    </form>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

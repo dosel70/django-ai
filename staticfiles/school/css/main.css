@@ -1,0 +1,711 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+@font-face {
+    font-family: GabiaHeuldot;
+    src: url('../font/GabiaHeuldot.ttf');
+}
+
+html {
+    font-family: GabiaHeuldot;
+}
+
+a, address, article, aside, audio, b, body, button, canvas, caption, dd, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, html, i, img, input, label, legend, li, nav, ol, p, pre, section, small, span, strong, summary, table, tbody, td, th, thead, time, tr, ul, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+article, aside, figcaption, figure, footer, header, nav, section {
+    display: block;
+}
+
+.wz.container, body a {
+    color: rgba(0,0,0,.84);
+}
+
+a, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    overflow-y: scroll;
+    line-height: 1.5em;
+    letter-spacing: -.02em;
+    color: rgba(0,0,0,.84);
+    font-size: 15px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, body button, body input, body select, body textarea {
+    font-family: roboto,Noto Sans KR,-apple-system,dotum,sans-serif;
+}
+
+body, body button, body input, body li, body ol, body select, body textarea, body ul {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+body li, body ol, body ul {
+    list-style: none;
+}
+
+.SpaceBackground_bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    -webkit-transform: scaleZ(1);
+    transform: scaleZ(1);
+    z-index: -1;
+    background: url('../images/main_logo.jpg');
+    width: 100%;
+    height: 100vh;
+}
+
+.SpaceHeader_observer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 30px;
+    pointer-events: none;
+}
+
+/* 헤더 css */
+.SpaceHeader_header {
+    display: block;
+    /* position: relative;
+    position: fixed; */
+    position: sticky;
+    top: 0;
+    left: 0;
+    transition-property: background-color,box-shadow;
+    z-index: 1;
+    box-shadow: 0 1px hsla(0,0%,100%,.16);
+    width: 100%;
+    transition-duration: .25s;
+    background: url('../images/main_logo.jpg');
+}
+
+.SpaceHeader_wrapper {
+    /* position: sticky; */
+    top: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: 1000px;
+    box-sizing: content-box;
+}
+
+.SpaceHeader_top {
+    padding: 16px;
+    padding-left: 0;
+    height: auto;
+}
+
+.SpaceHeader_logo {
+    margin: 4px 0;
+    width: auto;
+    height: 20px;
+    fill: #fff;
+    transition-property: fill;
+    transition-duration: .25s;
+}
+
+/* 헤더 네비 쪽 css */
+.SpaceHeader_nav {
+    height: 72px;
+}
+
+
+
+.SpaceHeader_nav ul {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-around;
+    margin: 0 -122px;
+}
+
+.SpaceHeader_nav ul>li[aria-hidden] {
+    display: none;
+}
+
+a.SpaceHeader_link, a:active.SpaceHeader_link, a:visited.SpaceHeader_link {
+    font-family: GabiaHeuldot;
+    display: block;
+    transition-property: color,box-shadow;
+    padding: 22px 18px;
+    height: 72px;
+    line-height: 28px;
+    letter-spacing: -.4px;
+    color: #fff;
+    font-size: 17px;
+    box-sizing: border-box;
+    transition-duration: .25s;
+}
+
+
+
+.SpaceHeader_home {
+    position: static;
+    top: 16px;
+    right: 16px;
+
+}
+
+
+
+.SpaceHeader_wadizLogo {
+    width: 74px;
+    height: 26px;
+    fill: #fff;
+    transition-property: fill;
+    transition-duration: .25s;
+}
+
+/* main쪽 css */
+.SpaceMain_main {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    letter-spacing: -.6px;
+    color: #fff;
+    font-size: 15px;
+}
+
+
+
+
+.SpaceMain_more {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    -webkit-animation: SpaceMain_space-main-more__1fAtZ 3s ease-out infinite;
+    animation: SpaceMain_space-main-more__1fAtZ 3s ease-out infinite;
+    margin-left: -16px;
+    width: 32px;
+    height: 32px;
+    fill: #fff;
+}
+
+.withIcon_icon {
+    display: block;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: -webkit-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+/* 공간 소개 부분 css */
+.SpaceSection_section {
+    margin-top: calc(var(--space-header-height)*-1);
+    padding-top: var(--space-header-height);
+    pointer-events: none;
+}
+
+
+
+.SpaceSection_container {
+    background: #fff;
+    padding: 64px 0 16px;
+    color: #1d2129;
+    pointer-events: all;
+}
+
+.SpaceAboutSection_about {
+    background: #efede6;
+    padding-top: 160px;
+}
+
+.SpaceSection_wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: 1000px;
+    box-sizing: border-box;
+    display: flex;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.SpaceSection_title {
+    position: relative;
+    margin-bottom: 28px;
+    line-height: 40px;
+    letter-spacing: -1.4px;
+    font-size: 28px;
+}
+
+
+.SpaceSection_title:before {
+    position: absolute;
+    top: 50%;
+    left: -15px;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    background: #000;
+    width: 100%;
+    height: 1px;
+    content: "";
+}
+
+
+.title_back {
+    background: no-repeat 0 50%/contain;
+}
+
+.SpaceSectionTitle_title {
+    background-image: url(https://spacewadiz.com/_next/static/media/title-about.85fdf1605679de93908cb2dd3c1d6527.svg);
+    width: 338px;
+    height: 35px;
+}
+
+.SpaceSection_main {
+    font-family: GabiaHeuldot;
+    -ms-flex: 1 1;
+    flex: 1 1;
+    padding-right: 20px;
+    margin-bottom: 144px;
+}
+
+.SpaceSection_main>p {
+    margin-bottom: 2em;
+    line-height: 26px;
+    font-size: 15px;
+}
+
+.SpaceAboutSection_strong {
+    font-weight: 700;
+}
+
+
+/* 대관 안내 쪽 css */
+.SpaceIntroduceSection_wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: 1000px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 144px;
+    min-height: 530px;
+}
+
+
+
+.SpaceIntroduceSection_title {
+    margin-bottom: 35px;
+    margin-right: 460px;
+    width: auto;
+    min-width: 215px;
+}
+
+
+.SpaceSectionTitle_introduce {
+    background: no-repeat 0 50%/contain;
+    width: 157px;
+    height: 35px;
+}
+
+.SpaceSectionTitle_titles {
+    background-image: url(https://spacewadiz.com/_next/static/media/title-introduce.47805e7114af27b5ede003059999370d.svg);
+    height: 25px;
+}
+
+.SpaceIntroduceSection_main {
+    margin-bottom: 48px;
+}
+
+/* @media screen and (min-width: 640px) {
+    .SpaceIntroduceSection_main {
+        margin-right: 460px;
+        width: auto;
+        min-width: 215px;
+        margin-bottom: 144px;
+    }
+} */
+
+.SpaceIntroduceSection_floor {
+    margin-top: 32px;
+    background: url(https://spacewadiz.com/_next/static/media/space-floor.8f0b6184883bef36f591c972e043c3a4.png) no-repeat 50% 0/contain;
+    padding-top: 97.11816%;
+}
+
+/* @media screen and (min-width: 640px) {
+    .SpaceIntroduceSection_floor {
+        position: absolute;
+        right: 16px;
+        bottom: 7px;
+        margin-top: 0;
+        padding-top: 0;
+        width: 440px;
+        height: 418px;
+    }
+} */
+
+.SpaceIntroduceSection_workStation {
+    margin-top: 55px;
+}
+
+/* @media screen and (min-width: 640px) {
+    .SpaceIntroduceSection_workStation {
+        margin-top: 40px;
+    }
+} */
+
+.SpaceIntroduceSection_btnWrap {
+    margin-bottom: 30px;
+}
+
+/* @media screen and (min-width: 640px) {
+    .SpaceIntroduceSection_workStationRequest {
+        display: inline-block;
+    }
+} */
+
+.SpaceIntroduceSection_workStationRequest {
+    display: inline-block;
+    margin-bottom: 20px;
+    border: 2px solid #1d2129;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 52px;
+    box-sizing: border-box;
+}
+
+/* @media screen and (min-width: 640px) {
+    .SpaceIntroduceSection_workStationRequest {
+        display: inline-block;
+    }
+} */
+
+.SpaceIntroduceSection_workStation .SpaceIntroduceSection_btnWrap a:first-child {
+    margin-right: 16px;
+}
+
+.SpaceIntroduceSection_workStationDocText {
+    background: url(https://spacewadiz.com/_next/static/media/workstation-intro.0e51313ddba8d686305b8e1ece593b71.svg) no-repeat 50%/contain;
+    width: 147px;
+    height: 17px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.SpaceIntroduceSection_workStationRequestText {
+    background: url(https://spacewadiz.com/_next/static/media/workstation-request.4933ca9ba92ced95da36670a99586c51.svg) no-repeat 50%/contain;
+    width: 96px;
+    height: 17px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.SpaceIntroduceSection_workStation>p {
+    margin-bottom: 2em;
+    line-height: 26px;
+    font-size: 15px;
+}
+
+.SpaceIntroduceSection_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.SpaceIntroduceSection_list li {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 4px;
+    line-height: 26px;
+}
+
+.SpaceIntroduceSection_list li:before {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 14px;
+    height: 18px;
+    text-align: center;
+    font-size: 14px;
+    content: "•";
+    box-sizing: border-box;
+}
+
+.SpaceIntroduceSection_list li b {
+    font-weight: 700;
+}
+
+/* 입점 안내 쪽 css */
+.SpaceStoreSection_store {
+    background-image: url(https://spacewadiz.com/_next/static/media/store-large.ab5cf8575c9e0e2b84615801e8f3c047.jpg);
+    color: #fff;
+}
+
+.SpaceSection_wrappers {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: 1000px;
+    box-sizing: border-box;
+}
+
+
+.space_title::before {
+    background: #fff;
+}
+
+
+.spaceSectionTitle_titles {
+    background: no-repeat 0 50%/contain;
+}
+
+.spaceSection_titles {
+    /*background-image: url(https://spacewadiz.com/_next/static/media/title-store.3f8f39371a64a4a6c46118e9e20a8fcb.svg);*/
+    height: 35px;
+    font-family: GabiaHeuldot;
+    font-size: 38px;
+    font-weight: 500;
+}
+
+.spaceSection_main {
+    margin-bottom: 144px;
+}
+
+
+
+.SpaceStoreSection_box {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+
+.SpaceStoreBox_box {
+    margin: 20px -6px;
+    background: #fff;
+    text-align: center;
+    color: #1d2129;
+    width: calc(50% - 11px);
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.SpaceStoreBox_main {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0 14px;
+    height: 343px;
+}
+
+.SpaceStoreBox_content {
+    display: block;
+}
+
+.SpaceStoreBox_subtitle {
+    font-family: GabiaHeuldot;
+    line-height: 24px;
+    letter-spacing: -.2px;
+    font-size: 14px;
+}
+
+.SpaceStoreBox_title {
+    line-height: 48px;
+    letter-spacing: -1px;
+    font-size: 32px;
+    font-family: GabiaHeuldot;
+}
+
+.SpaceStoreBox_description {
+    font-family: GabiaHeuldot;
+    position: relative;
+    margin-top: 17px;
+    letter-spacing: -.4px;
+}
+
+.SpaceStoreBox_description:before {
+    display: block;
+    margin: 0 auto 44px;
+    background: #000;
+    width: 40px;
+    height: 1px;
+    content: "";
+}
+
+.SpaceStoreBox_description>p {
+    line-height: 28px;
+    font-size: 17px;
+}
+
+.SpaceStoreBox_buttons {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.SpaceStoreBox_button {
+    display: block;
+    border-bottom-style: solid;
+    border-right-style: solid;
+    border-left: 1px solid #000;
+    border-bottom-color: #000;
+    border-right-color: #000;
+    border-top: 1px solid #000;
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    letter-spacing: -.8px;
+    font-size: 17px;
+}
+
+.SpaceStoreBox_button:first-child {
+    border-left-width: 0;
+}
+
+.SpaceStoreBox_buttonText {
+    display: inline-block;
+    background: no-repeat 50%/contain;
+    height: 16px;
+}
+
+.SpaceStoreBox_guide {
+    /*background-image: url(https://spacewadiz.com/_next/static/media/store-guide.4371192a0c9c80a1f3292e3f82c94e65.svg);*/
+    font-family: GabiaHeuldot;
+    width: 84px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.SpaceStoreBox_request {
+    /*background-image: url(https://spacewadiz.com/_next/static/media/store-request.ef6021555f47e149978d2b73c61c64e3.svg);*/
+    font-family: GabiaHeuldot;
+    width: 116px;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* 오시는 길 쪽 css */
+.SpaceLocationSection_location {
+    letter-spacing: -.4px;
+    font-size: 17px;
+}
+
+.SpaceLocationSection_wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 16px;
+    padding-left: 16px;
+    max-width: 1000px;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 180px;
+    height: 360px;
+}
+
+.SpaceSectionTitles_title {
+    background: no-repeat 0 50%/contain;
+}
+
+.SpaceSectionTitle_location {
+    background-image: url(https://spacewadiz.com/_next/static/media/title-location.2a3a3e6b9d746201ae4263d329551383.svg);
+    height: 35px;
+}
+
+
+
+.SpaceLocationSection_main {
+    height: 100%;
+    margin-bottom: 144px;
+}
+
+/* 지도 쪽  css*/
+.SpaceLocationSection_map {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 574px;
+    height: 360px;
+}
+
+.SpaceLocationMap_frame {
+    width: 100%;
+    height: 100%;
+}
+
+.SpaceLocationSection_address {
+    margin-top: 46px;
+}
+
+.SpaceLocationSection_address dt, .SpaceLocationSection_address dd{
+    margin-bottom: 8px;
+}
+
+.SpaceLocationSection_address dd {
+    padding-left: 13px;
+}
+
+.SpaceLocationSection_address strong {
+    font-weight: 700;
+}
+
+.SpaceLocationSection_openHour {
+    margin-top: 28px;
+}
+
+.SpaceLocationSection_openHour dd, .SpaceLocationSection_openHour dt {
+    margin-bottom: 8px;
+}
+
+.SpaceLocationSection_openHour dd {
+    padding-left: 13px;
+}
+
+.SpaceLocationSection_openHour strong {
+    font-weight: 700;
+}
+
+
+.SpaceLocationSection_openHour a, .SpaceLocationSection_openHour a:hover {
+    text-decoration: underline;
+}
+
+.SpaceLocationSection_parking {
+    margin-top: 55px;
+    padding-left: 3px;
+    line-height: 26px;
+    color: #495057;
+    font-size: 15px;
+}

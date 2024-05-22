@@ -1,0 +1,568 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://static.wadiz.kr/assets/fonts/wadizicon.css");
+
+/* 기본 태그 스타일 */
+html {
+    font-family: Pretendard Variable,pretendard,-apple-system,blinkmacsystemfont,
+    system-ui,roboto,Helvetica Neue,
+    Segoe UI,Apple SD Gothic Neo,Noto Sans KR,
+    Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,
+    Segoe UI Symbol,sans-serif, wadizicon;
+}
+
+
+:root {
+    --rpv-core__annotation--link-hover-background-color: rgba(255, 255, 0, .2);
+    --rpv-core__annotation-popup-wrapper-background-color: #faf089;
+    --rpv-core__annotation-popup-wrapper-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
+    --rpv-core__annotation-popup-content-border-top-color: #1a202c;
+    --rpv-core__arrow-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__asking-password-color: #000;
+    --rpv-core__asking-password-wrapper-background-color: #fff;
+    --rpv-core__asking-password-wrapper-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__button-background-color: rgba(0, 0, 0, .3);
+    --rpv-core__button-color: #000;
+    --rpv-core__doc-error-background-color: #fff;
+    --rpv-core__doc-error-text-background-color: #c02424;
+    --rpv-core__doc-error-text-color: #fff;
+    --rpv-core__doc-loading-background-color: #fff;
+    --rpv-core__full-screen-target-background-color: #fff;
+    --rpv-core__inner-page-background-color: #fff;
+    --rpv-core__menu-divider-border-bottom-color: rgba(0, 0, 0, .3);
+    --rpv-core__menu-item-color: #000;
+    --rpv-core__menu-item--hover-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__menu-item--disabled-color: rgba(0, 0, 0, .3);
+    --rpv-core__minimal-button-color: #000;
+    --rpv-core__minimal-button--hover-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__minimal-button--disabled-color: rgba(0, 0, 0, .3);
+    --rpv-core__minimal-button--selected-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__modal-body-background-color: #fff;
+    --rpv-core__modal-body-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__modal-overlay-background-color: rgba(0, 0, 0, .5);
+    --rpv-core__page-layer-box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, .2);
+    --rpv-core__popover-body-background-color: #fff;
+    --rpv-core__popover-body-border-color: rgba(0, 0, 0, .3);
+    --rpv-core__popover-body-color: #000;
+    --rpv-core__primary-button-background-color: #2566e8;
+    --rpv-core__primary-button-color: #fff;
+    --rpv-core__progress-bar-background-color: rgba(0, 0, 0, .1);
+    --rpv-core__progress-bar-progress-background-color: #2566e8;
+    --rpv-core__progress-bar-progress-color: #fff;
+    --rpv-core__separator-border-bottom-color: rgba(0, 0, 0, .3);
+    --rpv-core__spinner-border-color: rgba(0, 0, 0, .4);
+    --rpv-core__spinner-border-transparent-color: transparent;
+    --rpv-core__splitter-background-color: transparent;
+    --rpv-core__splitter--hover-background-color: rgba(0, 0, 0, .2);
+    --rpv-core__text-layer-text--selection-background-color: rgb(0, 0, 255, 1);
+    --rpv-core__text-layer-text--selection-color: transparent;
+    --rpv-core__textbox-background-color: #fff;
+    --rpv-core__textbox-border-color: rgba(0, 0, 0, .2);
+    --rpv-core__textbox-color: #000;
+    --rpv-core__tooltip-body-background-color: #000;
+    --rpv-core__tooltip-body-color: #fff;
+}
+
+:root {
+    --scrollbar-width: 0;
+    view-transition-name: root;
+}
+html {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+    font-family: Pretendard Variable,pretendard,-apple-system,blinkmacsystemfont,system-ui,roboto,Helvetica Neue,Segoe UI,Apple SD Gothic Neo,Noto Sans KR,Malgun Gothic,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,sans-serif;
+    height: 100%;
+}
+html {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+article{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+article{
+    display: block;
+}
+body {
+    background: #f9f9f9;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    line-height: inherit;
+    color: inherit;
+    font-size: 15px;
+
+}
+
+div {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+section {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+section{
+    display: block;
+}
+
+h3 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+h5 {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+button:not(:disabled) {
+    cursor: pointer;
+}
+
+button {
+    font-family: inherit;
+    color: inherit;
+    outline: none;
+    vertical-align: baseline;
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+em {
+    font-weight: inherit;
+    font-style: normal;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+p {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+span {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    vertical-align: baseline;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    vertical-align: baseline;
+}
+
+input {
+    color: inherit;
+    font-family: inherit;
+    /*background-color: none;*/
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+:after {
+    box-sizing: border-box;
+}
+
+textarea{
+    color: inherit;
+    font-family: inherit;
+    background: none;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+/* 메인 바디 스타일 적용 */
+#web-header {
+    position: static;
+}
+
+#waccountWrap {
+    width: 100%;
+    min-height: 100%;
+    background: #f9f9f9;
+}
+
+.waccount-wrap {
+    width: 100%;
+}
+
+#waccountContainer {
+    width: 400px;
+    margin: 0 auto;
+    padding: 50px 0;
+    color: #4a4a4a;
+}
+
+.waccount-wrap h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: normal;
+}
+
+.waccount-wrap h5 {
+    margin-bottom: 5px;
+    padding-top: 10px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: normal;
+}
+.profileimg {
+    position: relative;
+    display: block;
+    padding: 0;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 25px;
+    background: #000;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+}
+div.image {
+    display: block;
+    background-image:url(https://static.wadiz.kr/assets/icon/profile-icon-1.png);
+    background-size: 90%;
+    background-position: center center;
+    background-color: white;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.profileimg input {
+    display: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: no-repeat center center;
+    background-size: cover;
+    
+}
+
+.setting-profileimg {
+    display: block;
+    text-align: center;
+}
+
+.setting-profileimg button {
+    display: inline-block;
+    padding: 0;
+    margin: 0 5px;
+    font-size: 13px;
+    color: #4a4a4a;
+    line-height: 13px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #4a4a4a;
+}
+
+.input-div2 {
+    width: 100%;
+    padding: 0;
+}
+
+.input-div2 li:first-child {
+    float: left;
+    width: 49%;
+    padding: 0;
+}
+
+.input-text {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 0 17px;
+    margin-bottom: 7px;
+    height: 46px;
+    line-height: 45px;
+    font-size: 13px;
+    color: #4a4a4a;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    outline: none;
+    appearance: none;
+    border-radius: 0;
+}
+
+.input-div2 li:last-child {
+    float: right;
+    width: 49%;
+    padding: 0;
+}
+
+.input-div2:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.textarea-wrap {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.textarea-wrap textarea {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 0 17px;
+    margin-bottom: 7px;
+    height: 100px;
+    line-height: 20px;
+    font-size: 13px;
+    color: #4a4a4a;
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    outline: none;
+    resize: none;
+}
+
+.btn-bottom {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.btn-div2 {
+    width: 100%;
+    padding: 0;
+}
+
+.btn-div2 li:first-child {
+    float: left;
+    width: 49%;
+    padding: 0;
+}
+
+.wz.button.gray {
+    background-color: #90949c;
+    color: #fff;
+    border-color: #90949c;
+}
+
+.waccount-wrap .btn-darkgray {
+    display: block;
+    width: 100%;
+    height: 44px;
+    font-size: 13px;
+    line-height: 46px;
+    text-align: center;
+    color: #fff;
+    background: #8c8881;
+    border: none;
+    box-sizing: border-box;
+}
+
+.wz.button {
+    transition-property: background-color, border-color, color, opacity;
+    transition-duration: 0.2s;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    padding: 0 1.4117647059em;
+    height: 48px;
+    vertical-align: middle;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box !important;
+}
+
+.wz.button {
+    display: inline-block;
+    padding-top: 0.07em;
+    text-decoration: none;
+}
+
+.btn-div2 li:last-child {
+    float: right;
+    width: 49%;
+    padding: 0;
+}
+.waccount-wrap .btn-mint {
+    display: block;
+    width: 100%;
+    height: 46px;
+    font-size: 13px;
+    line-height: 44px;
+    text-align: center;
+    color: #fff;
+    background: #23dbab;
+    border: none;
+    box-sizing: border-box;
+}
+.wz.button.primary {
+    background-color: #00c4c4;
+    color: #fff;
+    border-color: #00c4c4;
+}
+
+.btn-div2:after {
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.fileuploder label {
+    display: inline-block;
+    padding: .5em .75em;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #cae1f2;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
+.fileuploder input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* 확인 모달창 */
+#confirm-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .6;
+    z-index: 99999;
+    background-color: #000;
+}
+
+.alertify-o {
+    display: none;
+    top: 20%;
+    margin-left: -150px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    width: 300px;
+    box-shadow: 0 3px 3px rgba(0,0,0,.3);
+    background: #fff;
+    background-clip: padding-box;
+    position: fixed;
+    left: 50%;
+    opacity: 1;
+    z-index: 999999;
+}
+
+.alertify-o-resetFocus {
+    position: absolute;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.alertify-o-inner {
+    text-align: center;
+}
+
+.alertify-o-message {
+    margin-bottom: 30px;
+    line-height: 20px;
+    color: #4a4a4a;
+    font-size: 12px!important;
+}
+
+.alertify-o-message {
+    margin: 35px auto 40px;
+    padding: 2px 15px 0;
+}
+
+.alertify-o-buttons {
+    margin-bottom: 20px;
+}
+nav {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+nav {
+    display: block;
+}
+
+.alertify-o-button-ok{
+    outline: none;
+    border: none;
+    background: #50e3c2;
+}
+
+.alertify-o-button {
+    border-radius: 0;
+    padding: 0;
+    width: 110px;
+    height: 42px;
+    text-shadow: none;
+    line-height: 42px;
+    font-size: 14px;
+    font-weight: 400;
+    box-shadow: inset 0 1px 0 0 hsla(0,0%,100%,.5);
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+}

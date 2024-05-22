@@ -1,0 +1,98 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    color: rgb(24, 26, 28);
+    margin: 0;
+    font-family: "Noto Sans KR";
+    font-size: 16px;
+    min-width: 320px;
+}
+
+div.title {
+    display: flex;
+    align-items: center;
+}
+
+#mypage-container {
+    width: 447px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    padding: 48px 40px;
+}
+
+#mypage-container {
+    height: 100vh;
+}
+
+#logo {
+    position: relative;
+    line-height: 5.5;
+    top: 10px;
+    padding-bottom: 0;
+}
+
+#logo #back {
+    cursor: pointer;
+}
+
+#logo #back img {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 0;
+}
+
+#logo img {
+    width: 146px;
+}
+
+#mypage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 40px;
+    margin: 0 auto;
+}
+
+div.basic-info-container {
+    position: relative;
+    margin: 0;
+    height: 186px;
+    border: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.basic-info-container img {
+    border-radius: 50%;
+    width: 150px;
+    cursor: pointer;
+}
+
+#mypage-container {
+    height: 84vh;
+    border: none;
+    padding: 0;
+}
+
+div.cancel {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    background-image: url("/static/member/images/cancel.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    right: 130px;
+    top: 0;
+}

@@ -1,0 +1,168 @@
+{% extends 'point/base.html' %}
+{% load static %}
+
+{% block static %}
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="{% static 'payment/css/pay-list-detail.css' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'payment/images/favicon-32x32.png'%}">
+        <style>
+    .cardlist-item-container{
+        margin-bottom: 10px;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .step-links a {
+        padding: 10px;
+        margin: 0 5px;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+
+    .step-links .current {
+        padding: 10px;
+        margin: 0 5px;
+        border: 1px solid #fff;
+        border-radius: 5px;
+        background-color: #008244;
+        color: #fff;
+    }
+
+    .step-links a:hover {
+        background-color:  #E8F5E9;
+    }
+</style>
+{% endblock %}
+{% block title %}결제 상세 내역{% endblock %}
+
+{% block content %}
+    <div class="main-wrapper-content">
+        <div class="order-detail-page-container">
+            <div>
+                <div class="order-detail-page-inner">
+                    <div class="order-card-info-area">
+                        <!-- 주문번호 및 결제 시간 -->
+                        <div class="detail-header-card-item">
+                            <div class="detail-header-etc-area">
+                                <span>회원 이메일 {{ member.member_email }}</span>
+                                <span>{{ point.updated_date }} 구매</span>
+                            </div>
+                            <!-- 결제한 상품 -->
+                            <div class="detail-header-card-content">
+                                <div class="detail-header-card-title-area">
+                                    <a href="" class="detail-header-card-title">[{{ point.point }} 포인트 충전!]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 결제 상태 -->
+                    <div class="state-msg-box-container">
+                        <div>
+                            <span class="badge-container">
+                                <span class="badge">결제 완료</span>
+                            </span>
+                        </div>
+                        <div class="state-msg-box">
+                            <span>충전이 완료되었어요.</span>
+                        </div>
+                        <div class="state-msg-box-footer"></div>
+                    </div>
+
+                    <!-- 결제 정보 -->
+                    <div>
+                        <div>
+                            <div class="payment-info-header">
+                                <h3>결제 정보</h3>
+                                
+                            </div>
+                            <div class="value-list-container">
+                                <div class="value-list-wrapper">
+                                    <dl>
+                                        <dt class="price">
+                                            <span>상품 금액</span>
+                                        </dt>
+                                        <dd class="value-text price-value">
+                                            <span>{{ point.point }} 원</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="total-price-box">
+                                    <dl class="value-list-strong">
+                                        <dt class="total-price">
+                                            <span>최종 결제 금액</span>
+                                        </dt>
+                                        <dd class="value-text total-price-value">{{ point.point }} 원</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="how-to-purchase">
+                                            <span>결제 수단</span>
+                                        </dt>
+                                        <dd class="value-text purchase-value">
+                                            <span>부트페이 API 결제연동 서비스</span>
+                                        </dd>
+                                    </dl>
+                                    <dl>
+                                        <dt class="card-info">
+                                            <span>결제 카드</span>
+                                        </dt>
+                                        <dd class="value-text card-info-value">
+                                            <span>토스페이 {{ member.member_email }}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 상품 정보 -->
+                        <div>
+                            <h3>상품 정보</h3>
+                        </div>
+                        <div class="value-list-container">
+                            <div class="order-card-container">
+                                <div class="order-card-content">
+                                    <!-- 상품명 -->
+                                    <span class="order-card-title">{{ point.point }} 포인트 충전</span>
+                                    <!-- 상품개수 -->
+                                    <span class="order-card-option">1개</span>
+                                    <!-- 상품가격 -->
+                                    <span class="order-card-price">{{ point.point }}원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 판매자 정보 -->
+                    <div>
+                        <h3>판매자 정보</h3>
+                        <div class="value-list-container">
+                            <div class="value-list-wrapper seller">
+                                <dl>
+                                    <dt>
+                                        <span>판매자명</span>
+                                    </dt>
+                                    <dd class="value-text">
+                                        <span>{{ member.member_name }}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <hr class="order-detail-page-space"> -->
+        </div>
+        <!-- 푸터 -->
+    </div>
+    
+{% endblock %}
+
+{% block js %}
+    
+{% endblock %}
