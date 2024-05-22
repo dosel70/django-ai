@@ -114,7 +114,13 @@ class MainView(View):
         member_id = request.session.get('member', {}).get('id')
         if member_id is None:
             print('회원 ID 없음')
-            recommended_onelabs = []
+            # 랜덤으로 몇 개의 원랩을 가져옵니다. 예를 들어, 랜덤으로 3개를 가져오는 경우:
+            random_onelabs = OneLab.objects.order_by('?')[:3]
+            # 위에서 가져온 원랩을 템플릿으로 전달합니다.
+            context = {
+                'onelabs': random_onelabs
+            }
+            return render(request, 'main/main-page.html', context)
         else:
             # REST API를 통해 추천 원랩 가져오기
             api_view = GetRecommendationsAPIView.as_view()
