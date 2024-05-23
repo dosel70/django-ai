@@ -181,71 +181,50 @@
 
 <h4>📌 Django</h4>
 
-**상세 설명**
+**상세 설명**  
+
+- Django에서는 REST API를 사용하여 메인페이지에 원랩 추천 서비스 및 예측 API를 구현 하였습니다.
+- 최종적으로 회원 각각의 관심사를 반영한 맞춤형 원랩 추천을 통해 개인화된 사용자 경험을 제공할 수 있습니다.
 
 - AIView
-  - Post 방식으로 json 형태로 통신된 사전훈련 모델을 Django에 이식하여 각 원랩목록의 예측 결과와 확률을 반환할 수 있습니다.
-  - 제목과 내용, 한줄 소개 등을 onelab_main_title과 onelab_content, onelab_detail_content 라는 변수에 할당합니다.
-  - 제목, 내용, 한줄소개들을 하나의 문자열로 만들어주고 get_index_from_member_tag 함수를 호출합니다.
+  - Post 방식으로  사전훈련 모델을 Django에 이식하여 각 원랩목록의 관심사에 따른 예측 결과와 확률을 반환할 수 있습니다.
+  
   - <details><summary>👉 코드 보기</summary>
-    <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/f341703e-905a-450c-9c10-416fa3a28638">
+    <img width="800" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/75bfdf40-ae78-4721-b4ed-087f234b9d2a">
   </details>
 
     
-- get_index_from_member_tag
   
 > 기존 사전 훈련 데이터 csv를 Django Database에 insert 하였습니다.
 
-- onelabs = list(OneLab.objects.filter(tag__tag_name=member_tag)): 주어진 멤버 태그와 관련된 OneLab 객체들을 데이터베이스에서 쿼리합니다.
+- `get_index_from_member_tag`
   
-- onelabs_list = [f"{onelab.onelab_main_title} {onelab.onelab_content} {onelab.onelab_detail_content}" for onelab in onelabs]: OneLab 객체들의 콘텐츠를 문자열 리스트로 만듭니다. 이 리스트는 각 OneLab 객체의 주요 제목, 내용, 한줄 소개 등 으로 구성됩니다.
-  
-
-- vectorizer = CountVectorizer(): CountVectorizer를 사용하여 텍스트 데이터를 벡터화할 준비를 합니다.
-  
-
-- content_vectors = vectorizer.fit_transform(onelabs_list): 벡터화된 원랩 콘텐츠를 생성합니다.
-  
-
-- similarity_matrix = cosine_similarity(content_vectors): 콘텐츠 간의 유사도 행렬을 계산합니다. 이 행렬은 각 콘텐츠 쌍 간의 코사인 유사도를 포함합니다.
-  
-
-- mean_similarity_scores = np.mean(similarity_matrix, axis=1): 각 OneLab 객체의 콘텐츠와 다른 모든 콘텐츠 간의 평균 유사도 점수를 계산합니다.
-
-  
-
-- max_similarity_index = np.argmax(mean_similarity_scores): 가장 높은 평균 유사도 점수를 가진 OneLab 객체의 인덱스를 찾습니다.
-  
-
-- ✨ 해당 함수는 최종적으로 가장 높은 유사도를 가진 OneLab 객체의 인덱스와 벡터화된 콘텐츠를 반환하며, 메인 페이지에 반환된 원랩 목록들을 보여줄 수 있습니다. 
+- ✨ 해당 메서드는 회원의 관심사 태그 에 관하여 가장 유사한 원랩을 찾아내는 역할을 합니다.
+- `CountVectorizer()`를 통해 , 코사인 유사도를 계산하고, 가장 높은 평균 유사도를 가진 원랩을 추출하여 MainView(메인페이지)에 전달합니다.
   - <details><summary>👉 코드 보기</summary>
       <img width="800" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/f6bf6d5a-b662-4c67-b5a7-35a10967206a">
-    </details>
+    </details>  
 
-
-- AIView
-  - 다시 AIView로 돌아와서 get_similar_communities 함수로 return 된 similar_content를 similar_communities라는 변수에 할당해줍니다.
-  - JsonResponse를 통해 similar_communities를 return하고 비동기통신을 종료합니다.
+- `get_index_from_member_tag`
+    
+- 다시 AIView로 돌아와서 클래스 내에서 회원의 관심사 태그를 기반으로 가장 유사한 OneLab의 객체들을 데이터베이스에서 가져오는 메서드를 정의 하였습니다.
+- 해당 코드는 주어진 회원 관심사 태그에 대해 데이터베이스에서 OneLab 객체를 가져와 해당 원랩의 데이터를 벡터화하여 유사도를 계산합니다. 그리고 각 OneLab 객체의 평균 유사도를 계산하고, 가장 높은 유사도를 가진 OneLab 객체의 인덱스와 벡터를 반환합니다.
   - <details><summary>👉 코드 보기</summary>
-      <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/009b8d77-f6ec-4f35-94e1-0b10ed6dcc9f">
+      <img width="800" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/4ec0bf7a-6c13-422e-8fcc-4a63bcdeb4c7">
     </details>
 
-- make_dataframe
-  - 불러온 community의 데이터 중 제목과 내용 그리고 범주를 list로 묶은 다음 데이터프레임으로 만듭니다.
-  - post_status가 수치형이기 때문에 translate_status 함수로 문자로 변환해줍니다.
-  - combined_features 라는 새로운 feature로 concatenate 라는 함수를 통해 하나의 문자열로 만들어줍니다.
-  - 그 데이터프레임을 return으로 반환합니다.
+- `recommend_similar_onelabs(self, member_tag, content_vectors, num_recommendations=3)`
+
+-  recommend_similar_onelabs 메서드를 통해 실제 메인화면에서 회원의 관심사와 유사한 OneLab 목록을 추천해주는 기능을 수행합니다.
+-  기본적으로 주어진 회원의 관심사 태그에 가장 유사한 원랩 목록 들을 우선적으로 추천하지만 만약 유사한 객체가 부족하면 무작위로 추가하여 추천 목록을 채우는 방식으로 동작하게 하였습니다.
+ 
   - <details><summary>👉 코드 보기</summary>
-      <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/b8d2379d-2572-4247-bc75-cd53fcfaebe9">
+      <img width="400" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/7c57293c-e660-49e8-b5bc-ffafc7fff3c1">  
+
+      <img width="400" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/86ec6391-2815-4d76-827b-a0dee6ce4ede">
     </details>
 
-- translate_status & concatenate
-  - 수치형인 범주값을 문자로 변환해주는 함수와 하나의 문자열로 만들어주는 함수입니다.
-  - <details><summary>👉 코드 보기</summary>
-      <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/233658ce-adeb-4059-8b2e-55c526552835">
-    </details>
 
----
 
 <h3>📌 서버 배포 및 화면 시연</h3>
 
@@ -256,10 +235,12 @@
 <h3>📌 Trouble-Shooting</h3>
 
 - MainView에서 RestAPI를 이용하여 기존 GetRecommendationsAPIView에서 정의된 함수들을 불러오지 못하여 메인 페이지에 원랩 목록들이 출력이 되지 않은 ISSUE
-- 
-  - CSRF-Token을 찾지 못하여 Not Certificated Token 에러
-  - View로 넘어왔지만 같이 넘어온 데이터가 None 인 에러
-  - Django에서 비동기 방식으로 데이터를 불러오는 중 발생한 문제
+  
+- 메인페이지에서 회원의 관심사 태그와 맞지 않는 원랩 목록이 더 많이 보여지는 에러
+  
+- View로 넘어왔지만 같이 넘어온 데이터가 None 인 에러
+ 
+- Django에서 비동기 방식으로 데이터를 불러오는 중 발생한 문제
  
 <h4>📌 await fetch() 를 이용하여 url을 통해 view로 넘어갈 때 url을 찾지 못하는 Not Found 에러</h4>
 
