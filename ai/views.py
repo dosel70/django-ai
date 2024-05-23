@@ -117,7 +117,6 @@ class PredictAPIView(APIView):
             model_path = os.path.join(Path(__file__).resolve().parent, 'test_onelab.pkl')
             with open(model_path, 'rb') as f:
                 model = joblib.load(f)
-                print(f'피클 잘 불러옴: {model}')
 
             predictions = model.predict(datas.reshape(-1, 4))
             probabilities = model.predict_proba(datas.reshape(-1, 4))
