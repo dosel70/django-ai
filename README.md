@@ -181,10 +181,9 @@
 **상세 설명**
 
 - AIView
-  - Post 방식으로 json 형태로 통신된 사전훈련 모델을 Django에 이식하여 각 원랩목록의 예측 결과와 확률을 반환할 수 있습니.
-  - 제목과 범주를 title과 radio_active 라는 변수에 할당합니다.
-  - radio_active는 수치형이기에 translate_status 함수를 통해 범주이름으로 변경합니다.
-  - 제목과 범주를 하나의 문자열로 만들어주고 get_similar_communities 함수를 호출합니다.
+  - Post 방식으로 json 형태로 통신된 사전훈련 모델을 Django에 이식하여 각 원랩목록의 예측 결과와 확률을 반환할 수 있습니다.
+  - 제목과 내용, 한줄 소개 등을 onelab_main_title과 onelab_content, onelab_detail_content 라는 변수에 할당합니다.
+  - 제목, 내용, 한줄소개들을 하나의 문자열로 만들어주고 get_index_from_member_tag 함수를 호출합니다.
   - <details><summary>👉 코드 보기</summary>
     <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/f341703e-905a-450c-9c10-416fa3a28638">
   </details>
@@ -215,7 +214,7 @@
 - max_similarity_index = np.argmax(mean_similarity_scores): 가장 높은 평균 유사도 점수를 가진 OneLab 객체의 인덱스를 찾습니다.
   
 
-- ✨함수는 최종적으로 가장 높은 유사도를 가진 OneLab 객체의 인덱스와 벡터화된 콘텐츠를 반환하며, 메인 페이지에 반환된 원랩 목록들을 보여줄 수 있습니다. 
+- ✨ 해당 함수는 최종적으로 가장 높은 유사도를 가진 OneLab 객체의 인덱스와 벡터화된 콘텐츠를 반환하며, 메인 페이지에 반환된 원랩 목록들을 보여줄 수 있습니다. 
   - <details><summary>👉 코드 보기</summary>
       <img width="800" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/f6bf6d5a-b662-4c67-b5a7-35a10967206a">
     </details>
@@ -253,19 +252,19 @@
 
 <h3>📌 Trouble-Shooting</h3>
 
-- JavaScript에서 비동기 통신을 이용하여 view로 원하는 데이터를 넘길 때 다음과 같은 에러를 경험했습니다.
-  - await fetch() 를 이용하여 url을 통해 view로 넘어갈 때 url을 찾지 못하는 Not Found 에러
+- MainView에서 RestAPI를 이용하여 기존 GetRecommendationsAPIView에서 정의된 함수들을 불러오지 못하여 메인 페이지에 원랩 목록들이 출력이 되지 않은 ISSUE
+- 
   - CSRF-Token을 찾지 못하여 Not Certificated Token 에러
   - View로 넘어왔지만 같이 넘어온 데이터가 None 인 에러
   - Django에서 비동기 방식으로 데이터를 불러오는 중 발생한 문제
  
-<h4>🥕 await fetch() 를 이용하여 url을 통해 view로 넘어갈 때 url을 찾지 못하는 Not Found 에러</h4>
+<h4>📌 await fetch() 를 이용하여 url을 통해 view로 넘어갈 때 url을 찾지 못하는 Not Found 에러</h4>
 
 - url 경로를 제대로 설정해 주었는데도 불구하고 Not Found 에러가 나타났습니다.
 - 경로를 다시 추적을 해보니, Main url 파일에 새로이 만든 ai url을 추가하지 않아 못 찾는 것을 파악하고 추가해주었습니다.
 - 수정한 다음 다시 확인하니 View로 넘어가는 것을 파악했으나, CSRF-Token 에러가 나타났습니다.
 
-<h4>🥕 CSRF-Token을 찾지 못하여 Not Certificated Token 에러</h4>
+<h4>📌 CSRF-Token을 찾지 못하여 Not Certificated Token 에러</h4>
 
 - View로 넘어간 것을 확인하고자 했으나 개발자 도구에서 Token과 관련된 에러가 나타나는 것을 확인했습니다.
 - HTML상 form태그안에 CSRF-Token 있었으나, 비동기 통신 방식으로 통신할 때 token이 포함되지 않는 것을 확인했습니다.
