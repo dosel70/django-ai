@@ -20,24 +20,24 @@
 
 ---
 
-<h3>🥕 화면</h3>
+<h3>📌 화면</h3>
 
 <details><summary>👉 AI 적용할 화면 확인</summary>
 <br>
 <img width="650" alt="슬라이드0001" src="https://github.com/dosel70/django-ai/assets/143694489/92c725ea-affe-4298-b59b-c2c61fd19fdc" style="margin-bottom" : 10px">  
 </details>
 
-- 회원의 관심사와 유사한 원랩 목록을 추천해주고, 각 관심사(공부, 친목, 수다, 공모전 및 대회)에 따라 가장 유사도가 높은 원랩 목록 순으로 (왼쪽-->오른쪽) 4개가 보여집니다.
+- 회원의 관심사와 유사한 원랩 목록을 추천해주고, 각 관심사(공부, 친목, 수다, 공모전 및 대회)에 따라서 가장 유사도가 높은 원랩 목록 순으로 (왼쪽-->오른쪽) 4개가 보여집니다.
 
 ---
 
-<h3>🥕 데이터 수집(Data Crowling)</h3>
+<h3>📌  데이터 수집(Data Crowling)</h3>
 
 <details><summary>👉 수집해야할 데이터 종류</summary>
 <br>
   - BeuatifulSoup를 이용하여 데이터를 수집 하였습니다.  
   
-  - 우선 데이터 수집 전 관심사 태그가 총 4개이고, 각각의 주제가 다르기 때문에, 각각 다른 사이트에서 크롤링을 하였습니다.
+  - 우선 데이터 수집 전 관심사 태그가 총 4개이고, 각각의 종류가 다르기 때문에, 각각 주제에 맞는 사이트에서 크롤링을 하였습니다.
     
   - ✏️ 공부 : https://letspl.me/ (랫플 : 프로젝트 & 스터디 모임 문화 플랫폼)
     
@@ -49,156 +49,139 @@
   
 </details>
 
-- BeautifulSoup을 이용하여 데이터를 수집했습니다.
-- 게시글의 유형별로 데이터를 수집하기 위해 다음 사이트를 참고하여 수집했습니다.
-- 데이터를 수집하기 위한 코드는 Jupyter Notebook 환경에서 진행하였습니다.
 
-<h4>🥕 자료 요청</h4>
+<h4>📃 사전 훈련 모델 (원랩) 데이터세트 csv</h4>
 
-- 위에 해당하는 내용은 사이트에서 크롤링을 하여서 csv파일로 만들었습니다.
+- 태그별로 수집한 데이터세트를  csv파일로 만들었습니다.
 
-<details><summary>👉 코드 확인</summary>
+<details><summary>👉 데이터 수집 코드 확인</summary>
 <br>
-<img width="960" alt="file_request_code" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/fe05e43a-e561-4b10-aa6c-f0a8206cd59d">
-<img width="960" alt="file_request_code2" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/eeec7bb2-42d1-46e9-9ff7-6e8f80a47dc6">
-</details>
-
-<h4>🥕 질문</h4>
-
-- https://www.a-ha.io/
-
-<details><summary>👉 a-ha 페이지</summary>
-<br>
-<img width="960" alt="a-ha_page" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/c05a3592-1146-4d5a-82ac-e2bdf07d114b">
-</details>
-
-
-<details><summary>👉 코드 확인</summary>
-<br>
-<img width="960" alt="question_code2" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/d06dfcf2-1f7c-4d4a-9c93-692dfbc2ee17">
-<img width="960" alt="question_code1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/6b042a46-ea8a-4405-896a-216f16772bd3">
-</details>
-
-<h4>🥕 기타</h4>
-
-- https://news.naver.com/
-
-<details><summary>👉 네이버 뉴스 페이지</summary>
-<br>
-<img width="960" alt="naver_news" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/59c852c9-e175-4d6a-a128-e635b451c5be">
-</details>
-
-
-<details><summary>👉 코드 확인</summary>
-<br>
-<img width="960" alt="etc_code" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/a851a9d2-2a6e-4f95-a26c-ff5bf4b9338d">
-<img width="960" alt="etc_code1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/d8f4a62e-6c78-434e-831f-de5b424c9c66">
-<img width="960" alt="etc_code2" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/e13469d3-26bf-42d8-ad5a-c3c481c4e7cf">
-</details>
-
----
-
-<h3>🥕 Cosine_Similarity 이용하여 유사도 분석</h3>
-
-- Jupyter Notebook에서 앞서 만든 데이터에서 제목과 내용, 그리고 글의 범주를 이용하여 유사도 분석을 진행했습니다.
-- 제목, 내용 그리고 범주를 우선 하나의 긴 문자열로 연결했습니다.
-- 긴 문자열로 만들어진 새로운 데이터프레임을 만들고 그 데이터프레임을 CountVectorizer에 fit_transform하여 벡터화를 해주었습니다.
-- 벡터화 된 metrix를 Sklearn의 Cosine_Similarity에 넣고 유사도를 나타내었습니다.
-- 이때 나타난 유사도는 metrix형태이기에 list로 바꾼 다음 유사도가 높은 순서대로 다시 바꿔주었습니다.
-- enumerate를 이용하여 key값을 인덱스로 나타나게 하였습니다.
-- 이 인덱스를 토대로 get_title_from_index라는 함수를 만들어 제목을 가져오게 했습니다.
-
-<details><summary>👉 코드 확인</summary>
-
-<br>
-
-- 먼저 만든 3개의 데이터를 하나로 합치고 제목과 내용과 범주를 가져왔습니다.
-
-<img width="960" alt="cs1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/37969b69-b471-4e5a-ab35-269f2445e34a">
-
-- 합쳐진 데이터가 한 줄로 나타나는 것을 확인했습니다.
-
-<img width="960" alt="cs2" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/116e546e-297a-406a-a1f6-2913c93b4cf5">
-
-- Sklearn의 CountVectorizer와 Cosine_Similarity를 이용하여 CountVector로 만들어준 다음, Cosine_Similarity에 넣어서 확인해 주었습니다.
-- 유사도 결과가 잘 나타나는 것을 확인하였습니다.
-
-<img width="960" alt="cs3" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/bd5b9d5d-a4ac-48ea-88d0-915265262b01">
-
-- 인덱스로 제목을 가져오는 함수와 제목으로 인덱스를 가져오는 함수를 만들어 각각 확인해 주었습니다.
-- 이 때, 네이버 뉴스에서 수집한 데이터 중 하나를 확인하여 제목과 인덱스 번호를 확인하였고, 그 제목과 유사한 내용을 가져오는 지 확인했습니다.
-
-<img width="960" alt="cs4" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/67b25334-c58c-4e75-902d-000cbc2aee1c">
-
-- 유사한 제목을 가져오는 것을 확인할 수 있었습니다.
-- 위의 로직을 이용하여 Django에 넣어 주었습니다.
-
-</details>
-
----
-
-<h3>🥕 Django</h3>
-
-- 제목과 범주주만 입력한 다음 자동완성 버튼을 누르면 데이터 베이스 내의 모든 커뮤니티 게시글을 확인하고 유사도 검사를 진행한 다음, 가장 유사도가 높은 제목의 내용을 화면상으로 나타내는 것이 목표입니다.
-- 위 목표를 위해 수정할 파일들은 다음과 같습니다.
+<h5> (관심사 태그 : 공부) 데이터 수집</h5>
+<img width="960" alt="file_request_code" src="https://github.com/dosel70/django-ai/assets/143694489/9f05498b-3304-48c2-aa89-81b186bce3e4">  
   
-  1. HTML, CSS
-  2. JS
-  3. View
+<h5> (관심사 태그 : 친목) 데이터 수집</h5>
+<img width="960" alt="file_request_code2" src="https://github.com/dosel70/django-ai/assets/143694489/c7326f0e-82b9-4d97-a4e7-cce80b9556a7">  
 
+<h5> (관심사 태그 : 수다) 데이터 수집</h5>  
+<img width="960" alt="file_request_code3" src="https://github.com/dosel70/django-ai/assets/143694489/a42a2fd3-2f9a-4dff-b1dd-75e808aa6660">  
 
-<h4>🥕 HTML, CSS</h4>
+<h5> (관심사 태그 : 공모전/대회) 데이터 수집 </h5>  
+<img width="960" alt="file_request_code4" src="https://github.com/dosel70/django-ai/assets/143694489/a2d8d7df-cb50-4602-96f8-900ef1674d3c">
 
-- 화면상에서 자동완성 버튼을 눌렀을 때, View를 통해 가장 유사도가 높은 3개의 내용을 추천하는 Div 태그를 새로 만들었습니다.
-- 비동기 방식으로 내용을 불러오는 동안 Loading 하는 이미지도 포함하였습니다.
-- 내용을 수정하지 않으면 저장하기 버튼을 비활성화해서 내용을 수정하게끔 했습니다.
-- CSS 파일은 따로 표기하지 않았습니다.
-
-<details><summary>👉 화면 확인</summary>
-<br>
-<img width="600" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/cf5feeb7-f4a6-4b2a-9e25-383797c16b8b">
-
-- 표기한 부분에 제목을 입력하고 해당되는 범주를 고른 다음 오른쪽의 ai 자동추천 버튼을 누릅니다.
-
-<img width="600" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/fee5aefc-a1ec-41e2-b9b2-d60aecb6e4ac">
-
-- 유사도가 가장 높은 내용 중 상위 3개의 내용을 표현합니다.
-- 이 중 하나를 선택합니다.
-
-<img width="600" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/e34ec4ae-a084-4ef7-a8c3-539ed7d0c2b2">
-
-- 선택한 내용이 게시글 작성 부분으로 들어갑니다.
-- 이 때, 내용을 수정하지 않으면 저장되지 않도록 저장버튼을 비활성화합니다.
 </details>
 
+
+- 📌 수집한 데이터세트 병합
 
 <details><summary>👉 코드 확인</summary>
 <br>
-  <img width="600" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/49600bc6-da17-489b-b752-7ec9cfef8474">
-  <img width="600" alt="html2" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/35a37548-b074-4dd0-adac-999c431227df">
+<img width="960" alt="a-ha_page" src="https://github.com/dosel70/django-ai/assets/143694489/e2ae8952-c3ce-4029-8d19-08bb52591e73">
 </details>
 
-<h4>🥕 JS</h4>
 
-- 내용 추천 버튼을 눌렀을 때 view로 보내기 위해 비동기 방식을 이용하여 JavaScript를 구성했습니다. 
-> 상세 설명은 주석을 통해 확인하실 수 있습니다.
-
-<details><summary>👉 코드 확인</summary>
+<details><summary>👉 사전 훈련 모델 csv</summary>
 <br>
-  <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/eceb48bd-980d-4be0-8f83-ab598fa2c431">
-  <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/f80d5beb-34e1-40ee-86e4-02a07ed9eb28">
-  <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/18c27fbe-cdd2-4b3d-b82b-ea8ddc27f1b9">
+<img width="960" alt="question_code2" src="https://github.com/dosel70/django-ai/assets/143694489/42ca33db-c191-412a-9cc5-d64177154d3a">
 </details>
 
-<h4>🥕 Django</h4>
 
-- JavaScript로 비동기통신 방식을 이용하기 위해 view 와 url을 작성하였습니다.
-- 앞선 JupyterNotebook으로 작성한 코드를 View에 모듈화하였습니다.
+
+---
+
+<h3>📌 Sklearn 라이브러리를 통한 다중분류 naive_bayes 분석</h3>  
+
+- 앞서 만든 데이터세트에서 제목,내용,한줄소개 그리고 대표 관심사 태그를 이용하여 다중 분류 나이브 베이즈 분석을 진행하였습니다.  
+
+- 먼저 원랩 데이터가 담겨있는 csv 파일을 읽어옵니다. 데이터에는 제목, 내용, 한줄소개, 관심사 태그 등의 정보가 포함되어 있습니다.
+    
+- 결측치 및 중복된 데이터를 제거 후 제목, 내용, 한줄 소개 등의 독립변수들을 하나의 긴 문자열로 연결하여 새로운 데이터를 만들고, 이 데이터를 이용하여 모델을 훈련합니다.
+    
+- 그 다음 데이터를 훈련 세트와 테스트 세트로 분할하여 타겟 데이터인 대표 관심사 태그를 예측 할 수 있도록 합니다.
+    
+- 파이프 라인을 이용하여 데이터를 벡터화 시키면서 모델 훈련을 동시에 수행할 수 있도록 합니다.
+    
+- 그 다음 훈련된 모델을 사용하여 테스트 세트에 대한 예측을 수행하고 각 클래스에 대한 예측 확률을 계산합니다.
+    
+- 모델의 성능을 평가하기 위해 정확도, 정밀도, 재현율, F1 점수와 같은 지표를 계산합니다.
+    
+- 최종적으로 예측확률이 가장 높게 나온 관심사태그는 '친목'이 나왔으며, 그 다음으로 높게 나타난 관심사 태그는 '공부' 였습니다.
+
+- 결과적으로 '친목', '공부'를 나타내는 관심사 태그를 기준으로, Django에서 CountVectorizer와 코사인 유사도를 활용하여
+  전체 원랩을 대상으로 '친목' 및 '공부' 관련 원랩을 찾고, 이와 유사한 다른 원랩을 추천합니다.
+
+- 이러한 유사도 분석 결과를 바탕으로 사용자에게 맞춤형 원랩 추천 시스템을 구축할 수 있으며,
+  
+- 이를 통해 사용자의 관심사에 맞는 원랩을 보다 정확하게 추천할 수 있는 원랩 서비스를 구현할 수 있습니다.
+
+- 추가적으로 원랩을 이용하는 각각의 회원들의 대표 관심사 태그와도 분석하여, 회원의 관심사에 맞는 알맞는 원랩을 추천 할 수 있습니다.
+  
+<details><summary>👉 코드 확인</summary>
+
+<br>
+
+- 제목, 내용, 한줄 소개 등의 독립변수들을 하나의 긴 문자열로 연결하여 새로운 데이터를 만들었습니다.
+
+<img width="960" alt="cs1" src="https://github.com/dosel70/django-ai/assets/143694489/c685b9eb-b6eb-4983-87aa-6468c97bc99a">
+
+- 기존 Feature들을 제거 후 하나의 독립변수와 종속변수가 있는 데이터를 훈련 세트와 테스트 세트로 분할하였습니다. 여기서는 타겟 데이터인 대표 관심사 태그를 예측합니다.
+
+<img width="960" alt="cs2" src="https://github.com/dosel70/django-ai/assets/143694489/c6c4fffa-ea47-4ec1-b76d-583ddd3eed87">
+
+- Sklearn의 CountVectorizer와 다중분류 나이브 베이즈 모델인 MultinomialNB을 활용하 파이프라인으로 벡터화와 모델 훈련을 동시에 수행 하였습니다.
+
+<img width="960" alt="cs3" src="https://github.com/dosel70/django-ai/assets/143694489/a28667e0-e6a5-452c-a5e7-e22dcee5a579">
+
+- 그 다음 훈련된 모델을 사용하여 테스트 세트에 대한 예측을 수행하고 각 Feature에 대한 예측 확률을 계산하였습니다.
+- 여기서 대표 관심사를 나타내는 타겟 데이터 번호들 중 가장 높은 예측확률을 가진 타겟데이터 순으로 내림차순으로 정렬하였습니다.
+- 결과적으로 예측확률이 가장 높게 나온 관심사태그는 '친목'을 나타내는 2이 나왔으며, 그 다음으로 높게 나타난 관심사 태그는 '공부' 였습니다.
+- 결과적으로 Django 내에서 유사도 분석 시 가장 높은 유사도를 보일만한 관심사 역시 친목, 공부 와 같은 관심사가 우선적으로 추천됨을 의미합니다.
+- 결과적으로 '친목', '공부'를 나타내는 관심사 태그를 기준으로, Django에서 CountVectorizer와 코사인 유사도를 활용하여
+  전체 원랩을 대상으로 '친목' 및 '공부' 관련 원랩을 찾고, 이와 유사한 다른 원랩을 추천할 수 있습니다.
+
+<img width="960" alt="cs4" src="https://github.com/dosel70/django-ai/assets/143694489/ad3984f9-eb1a-424e-93c4-9bb8d59cc0a8">  
+
+✨ 예측확률 순위 (1 ~ 4 타겟 데이터)  
+> 1 : 공부
+> 
+> 2 : 친목
+> 
+> 3 : 수다
+> 
+> 4 : 공모전 및 대회
+> 
+<img width="960" alt="cs4" src="https://github.com/dosel70/django-ai/assets/143694489/9fd0e6db-e758-4e95-84b5-5854bd7ccbcd">
+
+- 모델의 성능을 평가하기 위해 정확도, 정밀도, 재현율, F1 점수와 같은 지표를 계산하였으며, 정확도는 0.8750로 준수한 성능이 나온 것을 확인 할 수 있었습니다.
+
+<img width="960" alt="cs4" src="https://github.com/dosel70/django-ai/assets/143694489/cbb4eb36-048c-472c-bb24-f7f7953d5e84">  
+
+- 이러한 사전 훈련 모델을 활용하여 Django에서 사용할 수 있도록 onelab.pkl 파일로 만들었으며, Django에 이식하겠습니다.
+
+<img width="960" alt="cs4" src="https://github.com/dosel70/django-ai/assets/143694489/33378ab0-6bce-4a1d-8bce-3a2d06333d70">    
+
+ <h4> ✨ 이 결과를 바탕으로 Django에서 CountVectorizer와 코사인 유사도를 활용하여 유사도 분석을 진행하고, 사용자 맞춤형 원랩 추천 시스템을 구축할 계획입니다. </h4> 
+
+</details>
+
+---
+
+<h3>📌 Django - 코사인 유사도 분석</h3>
+
+- 기존 사전훈련 모델을 pkl 파일은 Django서버에 AI 폴더에 이식하고, 훈련 데이터세트는 서버 데이터베이스에 이식을 하였습니다.
+- 우선 목표는 Django에서 CountVectorizer와 코사인 유사도를 활용하여 메인 페이지에 나타날 원랩 데이터들의 유사도 분석을 진행하고,
+- 추가적으로 원랩 서비스를 이용하는 각각의 회원들의 대표 관심사 태그와도 유사도 분석을 진행하여 회원의 관심사에 맞는 알맞은 원랩을 추천할 수 있도록 사용자 맞춤형 원랩 추천 시스템을 구축할 계획입니다.
+
+- 구체적인 단계는 다음과 같습니다.
+1. Django ai 폴더에 이식한 사전훈련모델 pkl 파일을 활용하여, 다른 원랩과의 유사도를 분석합니다.
+2. 마찬가지로 Django에서 CountVectorizer와 코사인 유사도를 활용하여 유사한 다른 원랩을 추천합니다.
+3. 최종적으로 회원의 대표 관심사 태그와도 유사도 분석을 진행하여 사용자에게 맞춤형 원랩 추천 시스템을 구축합니다.
+
+<h4>📌 Django</h4>
 
 **상세 설명**
 
 - AIView
-  - Post 방식으로 json 형태로 통신된 데이터를 data에 담아줍니다.
+  - Post 방식으로 json 형태로 통신된 사전훈련 모델을 Django에 이식하여 각 원랩목록의 예측 결과와 확률을 반환할 수 있습니.
   - 제목과 범주를 title과 radio_active 라는 변수에 할당합니다.
   - radio_active는 수치형이기에 translate_status 함수를 통해 범주이름으로 변경합니다.
   - 제목과 범주를 하나의 문자열로 만들어주고 get_similar_communities 함수를 호출합니다.
@@ -207,19 +190,34 @@
   </details>
 
     
-- get_similar_communities
-  - community.objects.all을 통해 커뮤니티의 모든 내용을 가져옵니다.
-  - 가져온 community를 make_dataframe 함수를 통해 df라는 데이터프레임으로 만들어줍니다.
-  - Sklearn의 CountVectorizer()를 호출합니다.
-  - df 데이터프레임에 make_dataframe 함수를 통해 미리 만들어진 combined_features 를 CountVectorizer에 담아 Count_Matrix로 만들어줍니다.
-  - 앞서만든 하나의 문자열 (제목과 범주) 또한 CountVectorizer에 담아 title_vector_matrix로 만들어줍니다.
-  - Sklearn의 Cosine_Similarity를 호출하여 데이터프레임으로 만들어진 Count_Matrix와 title_vector_matrix간의 유사도를 구합니다.
-  - 구해진 유사도를 enumerate를 통해 index를 나타나게 하고, list에 담아 similar_community라는 변수에 할당합니다.
-  - 할당된 similar_community를 다시 유사도가 높은 순서로 정렬하여 similar_community_sorted라는 변수에 할당합니다.
-  - 유사도가 가장 높은 3개를 추출합니다.
-  - 이때, 기존의 데이터프레임에 유사도가 가장 높은 상위 3개의 인덱스를 참조하여 similar_content라는 리스트에 append하여 return 해줍니다.
+- get_index_from_member_tag
+  
+> 기존 사전 훈련 데이터 csv를 Django Database에 insert 하였습니다.
+
+- onelabs = list(OneLab.objects.filter(tag__tag_name=member_tag)): 주어진 멤버 태그와 관련된 OneLab 객체들을 데이터베이스에서 쿼리합니다.
+  
+- onelabs_list = [f"{onelab.onelab_main_title} {onelab.onelab_content} {onelab.onelab_detail_content}" for onelab in onelabs]: OneLab 객체들의 콘텐츠를 문자열 리스트로 만듭니다. 이 리스트는 각 OneLab 객체의 주요 제목, 내용, 한줄 소개 등 으로 구성됩니다.
+  
+
+- vectorizer = CountVectorizer(): CountVectorizer를 사용하여 텍스트 데이터를 벡터화할 준비를 합니다.
+  
+
+- content_vectors = vectorizer.fit_transform(onelabs_list): 벡터화된 원랩 콘텐츠를 생성합니다.
+  
+
+- similarity_matrix = cosine_similarity(content_vectors): 콘텐츠 간의 유사도 행렬을 계산합니다. 이 행렬은 각 콘텐츠 쌍 간의 코사인 유사도를 포함합니다.
+  
+
+- mean_similarity_scores = np.mean(similarity_matrix, axis=1): 각 OneLab 객체의 콘텐츠와 다른 모든 콘텐츠 간의 평균 유사도 점수를 계산합니다.
+
+  
+
+- max_similarity_index = np.argmax(mean_similarity_scores): 가장 높은 평균 유사도 점수를 가진 OneLab 객체의 인덱스를 찾습니다.
+  
+
+- ✨함수는 최종적으로 가장 높은 유사도를 가진 OneLab 객체의 인덱스와 벡터화된 콘텐츠를 반환하며, 메인 페이지에 반환된 원랩 목록들을 보여줄 수 있습니다. 
   - <details><summary>👉 코드 보기</summary>
-      <img width="800" alt="html1" src="https://github.com/Respec-Do/django_with_AI/assets/105579519/8a40cacb-6fc9-498a-b436-e901c9ddd475">
+      <img width="800" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/f6bf6d5a-b662-4c67-b5a7-35a10967206a">
     </details>
 
 
@@ -247,13 +245,13 @@
 
 ---
 
-<h3>🥕 서버 배포 및 화면 시연</h3>
+<h3>📌 서버 배포 및 화면 시연</h3>
 
 - 로컬에서 구현한 기능이 정상적으로 작동이 되는 것을 확인하고 이를 ubuntu를 이용하여 서버에 배포하였습니다.
 
 ---
 
-<h3>🥕 Trouble-Shooting</h3>
+<h3>📌 Trouble-Shooting</h3>
 
 - JavaScript에서 비동기 통신을 이용하여 view로 원하는 데이터를 넘길 때 다음과 같은 에러를 경험했습니다.
   - await fetch() 를 이용하여 url을 통해 view로 넘어갈 때 url을 찾지 못하는 Not Found 에러
