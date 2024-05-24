@@ -15,6 +15,7 @@ from rest_framework.templatetags.rest_framework import data
 from exhibition.models import Exhibition
 from notification.models import Notification
 from school.models import School
+from tag.models import Tag
 from visitRecord.models import VisitRecord
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -55,17 +56,24 @@ class MemberNormalJoinView(View):
 
     @transaction.atomic
     def post(self, request):
+        member_data = request.session.get('member')
         data = request.POST
         university_major = data['university-member-major']
+        # tag_name = data['tag-name']
+        tag_id = data['tag']
+
+        tag = Tag.objects.get(pk=tag_id)
         data = {
             'member_name': data['member-name'],
             'member_password': data['member-password'],
             'member_email': data['member-email'],
             'member_school_email': data['member-school-email'],
             'member_phone': data['member-phone'],
-
+            'tag': tag,
         }
 
+        print("태그 들어옴")
+        print(tag_id)
         member = Member.objects.create(**data)
 
         # member = Member.objects.filter(id=request.POST.get('id'))
@@ -87,6 +95,15 @@ class MemberNormalJoinView(View):
 
         University.objects.create(**university_info)
 
+        # member = Member.objects.get(id=member.id)
+        tag = Tag.objects.get(pk=tag_id)
+        tag_info = {
+            # 'tag_name': tag_name,
+            'tag': tag,
+        }
+
+        print(tag_info)
+        member = Member.objects.create(**tag_info)
         return redirect('member:login')
 
 

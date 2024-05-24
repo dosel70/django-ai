@@ -2,7 +2,7 @@
 {% load socialaccount %}
 {% load static %}
 {% block static %}
-    <link rel="stylesheet" href="{% static 'member/css/login/college-student-join.css' %}">
+    <link rel="stylesheet" href="{% static 'member/css/login/college-students-join.css' %}">
 {% endblock %}
 {% block title %}일반 회원가입{% endblock %}
 {% block content %}
@@ -245,6 +245,114 @@
                         </div>
                         <p class="validate-msg department-validate">학과명을 입력해 주세요</p>
                     </div>
+                     <!-- 상품 정보 쪽 -->
+                     <section class="StorePaymentSection_container">
+                        <div class="StorePaymentSection_sectionContent">
+                            <div class="StorePaymentProducts_container">
+                                <div class="StorePaymentProductInfo_container">
+                                    <div class="StorePaymentProductInfo_contents">
+                                        <div class="StorePaymentProductInfo_promotion">
+                                            <div class="StorePaymentProductInfo_priceWrap">
+                                                <span class="StorePaymentProductInfo_price"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 배송 요청 사항쪽 -->
+                                <label class="DeliveryRequestMessage_deliveryRequestLabel" for="deliveryRequest">태그</label>
+                
+                                <input id="check-btn4" type="checkbox" class="DeliveryRequestMessage_container" name="check"/>
+                
+                                <label for="check-btn4" class="select-menu small menu_btn">
+                                    <div class="select-menu-hidden-input-box">
+                                        <input type="text" readonly />
+                                    </div>
+                                    <div class="container">
+                                        <span class="Textf"></span>
+                                        <div class="select_menu_control menu">
+                                            <div class="select_menu_container">
+                                                <div class="select-menu__placeholder">태그 선택</div>
+                                                <input class="dummyInput" name="tag-name" type="text" readonly />
+                                            </div>
+                                            <div class="select_menu">
+                                                <span class="select_menu_indicator_separator"></span>
+                                                <div class="select_menu_indicator">
+                                                    <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon">
+                                                        <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                
+                                <div class="select_menu_menu_list">
+                                    <div class="select_menu_option new_menu" data-value="1">공부</div>
+                                    <div class="select_menu_option sec_menu" data-value="2">친목</div>
+                                    <div class="select_menu_option sec_menu" data-value="3">수다</div>
+                                    <div class="select_menu_option sec_menu" data-value="4">공모전/대회</div>
+                                </div>
+                                <input type="hidden" name="tag" id="selected-tag-id" />
+                            </div>
+                        </div>
+                    </section>
+                     <!-- 상품 정보 쪽 -->
+{#                    <div class="easy-join-email-inner email-work-input">#}
+{#                            <div class="easy-join-email-box">#}
+{#                                 <div class="StorePaymentSection_sectionContent">#}
+{#                                    <div class="StorePaymentProducts_container">#}
+{##}
+{#                            <!-- 배송 요청 사항쪽 -->#}
+{#                            <label class="DeliveryRequestMessage_deliveryRequestLabel" for="deliveryRequest">포인트 충전 선택해주세요</label>#}
+{##}
+{#                            <input id="check-btn4" type="checkbox" class="DeliveryRequestMessage_container" name="check"/>#}
+{##}
+{#                            <label for="check-btn4" class="select-menu small menu_btn">#}
+{#                                <div class="select-menu-hidden-input-box">#}
+{#                                    <input type="text" name="number" readonly />#}
+{#                                </div>#}
+{#                                <div class="container">#}
+{#                                    <span class="Textf"></span>#}
+{#                                    <div class="select_menu_control menu">#}
+{#                                        <div class="select_menu_container">#}
+{#                                            <div class="select-menu__placeholder">포인트 충전</div>#}
+{#                                            <input class="dummyInput" type="text" />#}
+{#                                        </div>#}
+{#                                        <div class="select_menu">#}
+{#                                            <span class="select_menu_indicator_separator"></span>#}
+{#                                            <div class="select_menu_indicator">#}
+{#                                                <svg viewBox="0 0 32 32" focusable="false" role="presentation" class="withIcon_icon">#}
+{#                                                    <path d="M16 22.4L5.6 12l1.12-1.12L16 20.16l9.28-9.28L26.4 12 16 22.4z"></path>#}
+{#                                                </svg>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </label>#}
+{##}
+{#                            <div class="select_menu_menu_list">#}
+{#                                <div class="select_menu_option new_menu"  data-price=1000>#}
+{#                                    포인트 1000 충전#}
+{#                                </div>#}
+{#                                <div class="select_menu_option sec_menu"  data-price=5000>#}
+{##}
+{#                                    포인트 5000 충전#}
+{#                                </div>#}
+{#                                <div class="select_menu_option sec_menu" data-price=10000>#}
+{#                                    포인트 10000 충전#}
+{##}
+{#                                </div>#}
+{#                                <div class="select_menu_option sec_menu" data-price=30000>포인트 30000 충전</div>#}
+{#                                <div class="select_menu_option sec_menu"  data-price=50000>포인트 50000 충전</div>#}
+{#                                <div class="select_menu_option sec_menu point-choice" data-price="">직접 입력해주세요</div>#}
+{#                            </div>#}
+{#                            <input name="point" placeholder="예: 10000" type="text" class="Input_input input_d" id="input_detail" style="display: none" />#}
+{#                        </div>#}
+{#                    </div>#}
+{#                        </div>#}
+{#                    </div>#}
+
+
                      <div class="easy-join-name-input-box">
                         <label>핸드폰 번호</label>
                         <div class="name-input-box">
@@ -305,7 +413,6 @@
                         <span class="join-submit-btn-text"> 약관 동의후 가입 완료하기 </span>
                     </button>
                 </form>
-                
             </div>
           </div>
         </div>
@@ -333,6 +440,7 @@
                 <button class="modal-submit-btn" type="button">
                     <span><span class="modal-submit-btn-text">확인</span></span>
                 </button>
+              
               </form>
           </div>
         </div>
@@ -1148,10 +1256,14 @@
 {#            const mname = document.querySelector(".name-input");#}
 {#            mname.value = memberName#}
 {#    </script>#}
-
-    <script src="{% static 'member/js/login/college-student-normal-join.js' %}"></script>
     <script>const csrf_token = `{{ csrf_token }}` </script>
+    <script src="{% static 'member/js/login/colleges-student-normal-join.js' %}"></script>
+    
+{#    <script src="{% static 'member/js/login/payments.js' %}"></script>#}
+{#    <script src="{% static 'member/js/login/payContents.js' %}"></script>#}
+{#    <script src="{%  static 'member/js/login/payAPIs.js' %}"></script>#}
+{#    <script src="{% static 'member/js/login/modals.js' %}"></script>#}
+    
 {#    <script src="{% static 'js/login/check.js' %}"></script>#}
 {#    <script src="{% static 'js/login/join.js' %}"></script>#}
 {% endblock %}
-

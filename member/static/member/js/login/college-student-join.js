@@ -1,5 +1,5 @@
 // 이메일
-const emailInput = document.querySelector(".el-input");
+const emailInput = document.querySelector(".ei-input");
 const emailValidateMsg = document.querySelector(".email-validate");
 const emailSubmitBtn = document.querySelector(".email-submit-btn");
 const emailEditBtn = document.querySelector(".email-edit-btn");
@@ -39,6 +39,10 @@ const passwordCheckValidate = document.querySelector(
 const passwordVisibleBtn = document.querySelectorAll(".password-visible-btn");
 const joinSubmitBtn = document.querySelector(".join-submit-btn");
 
+// 메일쪽
+const realEmailValue = document.querySelector('.real-email')
+
+
 // 이메일 유효성 검사
 emailInput.addEventListener("keyup", (e) => {
   let inputValue = e.target.value;
@@ -46,11 +50,12 @@ emailInput.addEventListener("keyup", (e) => {
   if (!isValidate) {
     emailInput.style.border = "1px solid #f66";
     emailValidateMsg.classList.add("validate");
-    emailSubmitBtn.readOnly = true;
+    emailSubmitBtn.disabled = true;
   } else {
     emailInput.style.border = "";
     emailValidateMsg.classList.remove("validate");
     emailSubmitBtn.disabled = false;
+
   }
 });
 
@@ -91,8 +96,14 @@ function timer() {
 }
 
 // 이메일 인증하기 버튼 클릭 시
+
 emailSubmitBtn.addEventListener("click", (e) => {
   e.preventDefault();
+  if (emailInput) {
+    realEmailValue.value = emailInput.value
+    // console.log(realEmailValue.value)
+  }
+
   modalContainer.classList.add("modal-open");
   emailSubmitBtn.style.display = "none";
   emailEditBtn.style.display = "block";
@@ -101,6 +112,59 @@ emailSubmitBtn.addEventListener("click", (e) => {
   retry.style.display = "block";
   timer();
 });
+
+
+// 모달창 안에 버튼 클릭 시
+modalSubmitBtn.addEventListener("click", async (e, school)=>{
+  e.preventDefault();
+  // CSRF 토큰 가져오기
+  const csrftoken = getCookie('csrftoken');
+
+  // const data = {
+  //   'member-email': emailInput.value
+  // };
+
+  school = emailInput.value
+  console.log(school)
+
+  try {
+    const response = await fetch(`/member/activate/${school}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        'X-CSRFToken': csrftoken // CSRF 토큰 포함
+      },
+      body: JSON.stringify(school)
+    });
+
+    const responseData = await response.json();
+
+    if (response.ok) {
+      console.log("요청이 성공적으로 처리되었습니다.", responseData);
+      window.location.href = '/member/login';
+    } else {
+      console.error('요청이 실패했습니다.', responseData);
+      window.location.href = '/';
+    }
+  } catch (error) {
+    console.error('오류 발생:', error);
+  }
+})
+
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + '=')) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
 
 // 이메일 수정하기 버튼 클릭 시
 emailEditBtn.addEventListener("click", (e) => {
@@ -127,9 +191,7 @@ certificationInput.addEventListener("keyup", (e) => {
     certificationInput.style.border = "";
     defaultCertificationMsg.add("validate");
     minCertificationMsg.remove("validate");
-    joinSubmitBtn.disabled = false;
   }
-
 });
 
 // 인증번호 다시 보내기 버튼 클릭 시
@@ -170,7 +232,6 @@ departmentInput.addEventListener("keyup", (e) => {
     departmentInput.style.border = "";
     emptyDepartmentMsg.remove("validate");
   }
-
 });
 // 이름 입력 시
 nameInput.addEventListener("keyup", (e) => {
@@ -205,6 +266,7 @@ certificationNumberBtn.addEventListener("click", (e) => {
     passwordInputs.forEach((input) => {
       input.disabled = false;
     });
+
     certificationInput.disabled = true;
     certificationNumberBtn.disabled = true;
     clearInterval(timerInterval);
@@ -223,70 +285,70 @@ certificationNumberBtn.addEventListener("click", (e) => {
   }, 3000);
 });
 
-// // 비밀번호 유효성 검사
-// const passwordInput = passwordInputs[0];
-// passwordInput.addEventListener("click", (e) => {
-//   let inputValue = e.target.value;
-//   let isValidate = validatePassWord(inputValue);
-//   const emptyPWmsg = passwordValidateMsg[0].classList;
-//   const minPWmsg = passwordValidateMsg[1].classList;
-//   const validatePWmsg = passwordValidateMsg[2].classList;
-//   passwordInput.style.border = "1px solid #f66";
-//   if (!inputValue) {
-//     emptyPWmsg.add("validate");
-//     minPWmsg.remove("validate");
-//     validatePWmsg.remove("validate");
-//   } else if (inputValue.length <= 8) {
-//     emptyPWmsg.remove("validate");
-//     minPWmsg.add("validate");
-//     validatePWmsg.remove("validate");
-//   } else if (!isValidate) {
-//     emptyPWmsg.remove("validate");
-//     minPWmsg.remove("validate");
-//     validatePWmsg.add("validate");
-//   } else {
-//     passwordInput.style.border = "";
-//     emptyPWmsg.remove("validate");
-//     minPWmsg.remove("validate");
-//     validatePWmsg.remove("validate");
-//   }
-// });
-// // 비밀번호 유효성 검사 함수
-// function validatePassWord(password) {
-//   const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
-//   return passwordPattern.test(password);
-// }
-//
-// // 비밀번호 확인 검사
-// const passwordCheckInput = passwordInputs[1];
-// passwordCheckInput.addEventListener("keyup", (e) => {
-//   let inputValue = e.target.value;
-//   let inputCheckValue = passwordInput.value;
-//   passwordCheckInput.style.border = "1px solid #f66";
-//   if (inputValue != inputCheckValue) {
-//     passwordCheckValidate.classList.add("validate");
-//     joinSubmitBtn.disabled = true;
-//   } else if (inputValue === inputCheckValue) {
-//     passwordCheckInput.style.border = "";
-//     passwordCheckValidate.classList.remove("validate");
-//     joinSubmitBtn.disabled = false;
-//   }
-// });
-// // 비밀번호 보기(눈 아이콘) 클릭시
-// passwordVisibleBtn.forEach((btn) => {
-//   btn.addEventListener("click", () => {
-//     const visibleIcon = btn.querySelector(".visible-icon");
-//     const unvisibleIcon = btn.querySelector(".unvisible-icon");
-//     visibleIcon.classList.toggle("on");
-//     unvisibleIcon.classList.toggle("on");
-//
-//     if (!visibleIcon.classList.contains("on")) {
-//       btn.previousElementSibling.type = "text";
-//     } else {
-//       btn.previousElementSibling.type = "password";
-//     }
-//   });
-// });
+// 비밀번호 유효성 검사
+const passwordInput = passwordInputs[0];
+passwordInput.addEventListener("click", (e) => {
+  let inputValue = e.target.value;
+  let isValidate = validatePassWord(inputValue);
+  const emptyPWmsg = passwordValidateMsg[0].classList;
+  const minPWmsg = passwordValidateMsg[1].classList;
+  const validatePWmsg = passwordValidateMsg[2].classList;
+  passwordInput.style.border = "1px solid #f66";
+  if (!inputValue) {
+    emptyPWmsg.add("validate");
+    minPWmsg.remove("validate");
+    validatePWmsg.remove("validate");
+  } else if (inputValue.length <= 8) {
+    emptyPWmsg.remove("validate");
+    minPWmsg.add("validate");
+    validatePWmsg.remove("validate");
+  } else if (!isValidate) {
+    emptyPWmsg.remove("validate");
+    minPWmsg.remove("validate");
+    validatePWmsg.add("validate");
+  } else {
+    passwordInput.style.border = "";
+    emptyPWmsg.remove("validate");
+    minPWmsg.remove("validate");
+    validatePWmsg.remove("validate");
+  }
+});
+// 비밀번호 유효성 검사 함수
+function validatePassWord(password) {
+  const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+  return passwordPattern.test(password);
+}
+
+// 비밀번호 확인 검사
+const passwordCheckInput = passwordInputs[1];
+passwordCheckInput.addEventListener("keyup", (e) => {
+  let inputValue = e.target.value;
+  let inputCheckValue = passwordInput.value;
+  passwordCheckInput.style.border = "1px solid #f66";
+  if (inputValue != inputCheckValue) {
+    passwordCheckValidate.classList.add("validate");
+    joinSubmitBtn.disabled = true;
+  } else if (inputValue === inputCheckValue) {
+    passwordCheckInput.style.border = "";
+    passwordCheckValidate.classList.remove("validate");
+    joinSubmitBtn.disabled = false;
+  }
+});
+// 비밀번호 보기(눈 아이콘) 클릭시
+passwordVisibleBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const visibleIcon = btn.querySelector(".visible-icon");
+    const unvisibleIcon = btn.querySelector(".unvisible-icon");
+    visibleIcon.classList.toggle("on");
+    unvisibleIcon.classList.toggle("on");
+
+    if (!visibleIcon.classList.contains("on")) {
+      btn.previousElementSibling.type = "text";
+    } else {
+      btn.previousElementSibling.type = "password";
+    }
+  });
+});
 // 체크박스 선택
 //전체 선택
 NodeList.prototype.filter = Array.prototype.filter;
@@ -416,22 +478,34 @@ arrows.forEach((arrow) => {
 // });
 
 const radioInputs = document.querySelectorAll(".radio-label");
-const radioHighSchool = document.querySelectorAll(".radio-high-school");
-const emailsInput = document.querySelector(".easy-join-email-container")
-// const majorInput = document.querySelector(".easy-major")
-radioInputs.forEach((item) => {
-  console.log(item.classList);
+const emailsInput = document.querySelector(".email-work-input");
+const majorInput = document.querySelector(".major-input");
+const titleInput = document.querySelector(".easy-join-title");
+const schoolInput = document.querySelector(".school-input");
 
+radioInputs.forEach((item) => {
+  console.log(radioInputs);
   item.addEventListener("click", (e) => {
+    console.log(item)
     if(item.classList.contains("radio-high-school")) {
-      emailsInput.style.display = "none";
-      // majorInput.style.display = "none";
-      joinSubmitBtn.disabled = false;
+      schoolInput.style.display = "none";
+      emailsInput.style.display = "block";
+      majorInput.style.display ="none";
+      certificationInput.disabled = false;
+      certificationNumberBtn.disabled = false;
+      titleInput.innerHTML = '고등학생 간편가입'
+      passwordInputs.forEach((input) => {
+        input.disabled = false;
+      });
     }
     else {
+      schoolInput.style.display = "block";
       emailsInput.style.display = "block";
-      // majorInput.style.display = "block";
-      joinSubmitBtn.disabled = false;
+      majorInput.style.display = "block";
+      passwordInputs.forEach((input) => {
+        input.disabled = false;
+      });
+      titleInput.innerHTML = '대학생 간편가입'
     }
     radioInputs.forEach((radio) => {
       radio
@@ -449,10 +523,6 @@ radioInputs.forEach((item) => {
       .closest("label")
       .querySelector(".inner-radio-box")
       .classList.add("inner-radio-choice");
-    // if(e.target === "on") {
-    //     emailsInput.display = "none";
-    //     majorInput.display = "none";
-    // }
   });
 });
 
@@ -531,3 +601,117 @@ const showHelp = (input, fileName) => {
         input.style.background = "rgb(255, 246, 246)";
     }
 }
+
+// const radio = document.querySelectorAll("input[type=radio]");
+
+// radio.forEach((like) => {
+//     like.addEventListener("click", (e) => {
+//         // console.log(e.target.classList);
+//         e.target.classList.toggle("active");
+//         e.ariaPressed = "true";
+//         // alert("들어옴");
+//     });
+// });
+
+// const nPay = document.querySelector("#n_pay");
+// const menubars = document.querySelector(".menubars");
+// nPay.addEventListener("change", (e) => {
+//     if (e.target.checked) {
+//         menubars.style.display = "block";
+//     }
+// });
+
+// const all = document.querySelector("#all_check");
+// const terms = document.querySelectorAll("input.check_on");
+const span = document.querySelector(".checkbox-icon");
+
+NodeList.prototype.filter = Array.prototype.filter;
+// all.addEventListener("click", (e) => {
+//     e.target.classList.toggle("active");
+//     e.ariaPressed = "true";
+//     terms.forEach((term) => {
+//         // console.log("asgsagsa" + e.target);
+//         term.checked = e.target.checked;
+//     });
+// });
+
+// terms.forEach((term) => {
+//     // console.log(term)
+//     term.addEventListener("click", (e) => {
+//         console.log(e.target);
+//         all.checked = terms.filter((term) => term.checked).length === 3;
+//     });
+// });
+
+const label = document.querySelector(".select-menu-hidden-input-box");
+const dropdown = document.querySelector(".select_menu_menu_list");
+const dropdowns = document.querySelectorAll(".select_menu_option");
+const text = document.querySelector(".select-menu__placeholder");
+const point = document.querySelector(".point-choice");
+const inputDetail = document.getElementById("input_detail");
+
+label.addEventListener("click", (e) => {
+    dropdown.style.display = "block";
+});
+
+// dropdowns.forEach((list) => {
+//     dropdown.style.display = "none";
+//     list.addEventListener("click", () => {
+//         dropdown.style.display = "none";
+//         text.innerHTML = list.innerHTML;
+//         if (list === point) {
+//             inputDetail.style.display = "block";
+//         } else if (list !== point) {
+//             inputDetail.style.display = "none";
+//         }
+//     });
+// });
+
+document.querySelectorAll('.select_menu_option').forEach(option => {
+    option.addEventListener('click', function() {
+        const selectedValue = this.getAttribute('data-value');
+        document.getElementById('selected-tag-id').value = selectedValue;
+        document.querySelector('.select-menu__placeholder').textContent = this.textContent;
+
+        // 선택된 값이 "point" 옵션인 경우에만 inputDetail을 보여줍니다.
+        const inputDetail = document.getElementById('input_detail');
+        if (selectedValue === "point") {
+            inputDetail.style.display = "block";
+        } else {
+            inputDetail.style.display = "none";
+        }
+    });
+});
+
+
+
+// const kPay = document.querySelector("#payment_kakao");
+// kPay.addEventListener("change", (e) => {
+//     if (e.target.checked) {
+//         menubars.style.display = "none";
+//     }
+// });
+
+// const normalPay = document.querySelector("#payment_credit");
+// normalPay.addEventListener("change", (e) => {
+//     if (e.target.checked) {
+//         menubars.style.display = "none";
+//     }
+// });
+
+// window.onload = function () {
+//     const inputDetail = document.getElementById("input_detail");
+//     document.getElementById("address_btn").addEventListener("click", function () {
+//         //주소입력칸을 클릭하면
+//         //카카오 지도 발생
+//         new daum.Postcode({
+//             oncomplete: function (data) {
+//                 //선택시 입력값 세팅
+//                 console.log(data);
+//                 document.getElementById("zip_code").value = data.zonecode;
+//                 document.getElementById("address_input").value = data.address; // 주소 넣기
+//                 inputDetail.style.display = "block";
+//             },
+//         }).open();
+//     });
+// };
