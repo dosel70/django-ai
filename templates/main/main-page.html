@@ -1550,6 +1550,18 @@
     });
 </script>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var element = document.querySelector('.recommend-funding-wrap-tooltip');
+    if (element) {
+        element.addEventListener('click', function() {
+            console.log('들어옴')
+            location.reload();
+        });
+    }
+});
+</script>
+
 
 
 {#    <script>#}
