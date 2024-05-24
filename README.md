@@ -261,12 +261,12 @@
 <h4>✨ 회원의 관심사와 맞지 않은 원랩 목록들이 출력되는 에러</h4>
 
 - 원랩목록들이 나오지 않았던 문제를 해결한 다음 다시 확인했으나, View를 통해 받아온 추천 원랩 목록 기능 로직이 잘못 구성되어있다는 것을 알게 되었습니다.
-- 유사도가 높은 순으로 정렬된 원랩 객체가 사용자의 태그와 일치하지 않을 수 있는 문제를 해결하기 위해, 기존에는 밑에 있었던 `get_index_from_member_tag`라는 회원 관심사 태그가 주어지는 메서드를 먼저 호출 하여  원랩 유사도 계산 메서드에서 사용하게끔 하였습니다.  
+- 기존 코사인 유사도 분석 기능이 있는 메서드 내에서  원랩의 유사도 점수가 낮게 나와서 `onelabs_list = [f"{onelab.onelab_main_title[:10]} {onelab.onelab_content[:20]} {onelab.onelab_detail_content[:10]}" for onelab in onelabs]` 슬라이싱을 통해서 각 원랩의 제목,내용,한줄소개 부분이 축소되어 데이터가 줄어들게 되어 연산 속도를 높이고, 모델이 핵심 정보에 더 집중할 수 있게 되었습니다.
 - 최종적으로 사용자의 태그와 일치하는 원랩 객체를 우선적으로 추천하도록 로직을 수정했습니다.
 - 이를 확인하여 다시 메인 화면을 확인한 결과 정상적으로 회원의 관심사와 유사한 원랩 목록들이 출력 되는 것을 확인 할 수 있었습니다.
   
 - <details><summary>👉 코드 보기</summary>
-    <img width="800" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/f45d1891-c25f-49dc-9900-e25f517ab9ea">
+    <img width="800" alt="html1" src="https://github.com/dosel70/django-ai/assets/143694489/8cb8bc6d-999f-4b47-a50a-2dc615b1cdac">
   </details> 
 
 
