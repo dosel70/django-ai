@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-m&1gjc)a!0m&t4-skkigdplzw%e&f)5j@ksztwce%#bqaksqs)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['43.203.249.145', 'onelab.life']
+ALLOWED_HOSTS = ['13.124.60.207', 'onelab.life']
 
 
 
